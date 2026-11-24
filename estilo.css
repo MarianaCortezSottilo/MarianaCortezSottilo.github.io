@@ -23,7 +23,7 @@ nav a:hover { color: var(--tinta); }
 /* hero */
 .hero { padding: 88px 0 64px; border-bottom: 1px solid var(--linha); }
 .eyebrow { font: 600 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--marca); }
-.hero h1 { font: 500 clamp(40px, 6vw, 72px)/1.02 var(--serif); letter-spacing: -.02em; margin: 18px 0 18px; max-width: 14ch; }
+.hero h1 { font: 500 clamp(30px, 7vw, 72px)/1.02 var(--serif); letter-spacing: -.02em; margin: 18px 0 18px; white-space: nowrap; }
 .hero p.frase { font-size: 20px; color: var(--tinta2); max-width: 46ch; margin: 0 0 28px; }
 .botoes { display: flex; gap: 12px; flex-wrap: wrap; }
 .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 999px; border: 1px solid var(--tinta);
