@@ -19,7 +19,7 @@ window.PERFIL = {
 
   // Link do "Publicar na Web" do Power BI (https://app.powerbi.com/view?r=...)
   // Enquanto estiver vazio, o site mostra os prints dos painéis.
-  relatorio: "",
+  relatorio: "https://app.powerbi.com/view?r=eyJrIjoiN2RlODJjZDEtODhkMS00ODBkLWI1NjEtNjA2YzFhZGEzNmQ5IiwidCI6IjkxZGY2MzNlLTliNmEtNGRmOS1iZjg4LTc0YTNhNjVjODk5NSJ9",
 
   repositorio: "https://github.com/MarianaCortezSottilo/rede-vale-verde",
 
