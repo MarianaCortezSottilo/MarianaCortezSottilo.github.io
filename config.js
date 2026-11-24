@@ -12,7 +12,7 @@ window.PERFIL = {
   localizacao: { pt: "Brasil", en: "Brazil" },
 
   // Contatos: deixe "" para esconder o botão
-  linkedin: "",                                  // ex.: "https://www.linkedin.com/in/seu-perfil"
+  linkedin: "https://www.linkedin.com/in/mariana-cortez-sottilo/",
   github: "https://github.com/MarianaCortezSottilo",
   email: "",                                     // opcional; fica público no site
   curriculo: "",                                 // link para o PDF do currículo (opcional)
@@ -25,11 +25,13 @@ window.PERFIL = {
 
   sobre: {
     pt: [
-      "Escreva aqui 2 ou 3 frases sobre você: formação, área em que trabalha e o tipo de problema que gosta de resolver.",
+      "Sou analista de dados e trabalho com Power BI, DAX, SQL e Python. Gosto de pegar dados espalhados em vários sistemas, organizar em um modelo que faça sentido e transformar isso em painéis que respondem às perguntas que o negócio realmente faz: quanto cresceu, onde está o custo, o que precisa de atenção agora.",
+      "Meu foco é a parte que fica antes do gráfico: entender o processo, definir o grão de cada tabela e escrever medidas que deem o mesmo número para todo mundo. Tenho interesse especial por varejo e finanças: DRE, fluxo de caixa, estoque e indicadores de operação.",
       "Todos os dados deste portfólio são fictícios. Criei uma rede de supermercados completa (vendas, estoque, logística, RH e financeiro) para reproduzir a estrutura de um projeto real sem expor nenhuma empresa.",
     ],
     en: [
-      "Write 2 or 3 sentences about yourself here: background, the field you work in and the kind of problem you like to solve.",
+      "I'm a data analyst working with Power BI, DAX, SQL and Python. I like taking data scattered across several systems, organizing it into a model that makes sense and turning it into dashboards that answer the questions the business actually asks: how much did we grow, where is the cost, what needs attention right now.",
+      "My focus is the part that comes before the chart: understanding the process, defining the grain of each table and writing measures that give everyone the same number. I'm especially interested in retail and finance: P&L, cash flow, inventory and operational KPIs.",
       "All data in this portfolio is fictional. I built a complete supermarket chain (sales, inventory, logistics, HR and finance) to reproduce the structure of a real project without exposing any company.",
     ],
   },
