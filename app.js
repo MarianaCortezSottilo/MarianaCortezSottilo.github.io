@@ -72,6 +72,7 @@
       <h1>${esc(P.nome)}</h1><p class="cargo">${esc(t(P.cargo))}</p><p class="frase">${esc(t(P.frase))}</p>
       <div class="botoes"><a class="btn cheio" href="#projetos">${UI.verProjetos}</a>
         ${P.relatorio ? `<a class="btn" href="${esc(P.relatorio)}" target="_blank" rel="noopener">${UI.painel}</a>` : ""}
+        <a class="btn" href="sistema/rede/index.html" target="_blank" rel="noopener">${UI.sistemaBtn}</a>
         ${botoesContato()}</div>
       <div class="ferramentas">${(P.ferramentas || []).map(f => `<span>${esc(t(f))}</span>`).join("")}</div></div>`;
     $("#t-projetos").textContent = UI.projetos; $("#t-dashboards").textContent = UI.dashboards; $("#t-intro").textContent = UI.introProjetos;
