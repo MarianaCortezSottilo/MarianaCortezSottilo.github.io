@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sugestão de compra · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="vv03";window.VV_KEY="/compras/sugestao";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="ativo">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" selected>VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      <a href="unidades_7.html">ficha da unidade</a>
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Sugestão de compra e reposição</h1>
+  <div class="sub">VV03 · Vale Verde Rio Tijuca · itens abaixo do estoque mínimo, com quantidade para voltar ao máximo. Nas lojas, itens de CD viram transferência; perecíveis viram pedido ao fornecedor regional. Total: <b>R$ 13.627,32</b></div></div>
+  <div class="filtros">
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a>
+    <form method="post" onsubmit="return confirm('Gerar pedidos e transferências em aberto para a seleção atual?')"><button class="btn-primario" >Gerar pedidos e transferências</button></form></div></div>
+<div class="cartao"><div class="rolagem"><table>
+  <tr><th>Unidade</th><th>Origem</th><th>Produto</th><th class="n">Estoque</th><th class="n">Mínimo</th><th class="n">Máximo</th><th class="n">Saída/dia</th><th class="n">Cobertura</th><th class="n">Sugerido</th><th class="n">Valor</th></tr>
+  <tr><td>VV03</td><td>Fornecedor</td><td><a href="estoque_7_139.html">Alcatra Bovina</a></td><td class="n">17,0</td>
+    <td class="n">27,5</td><td class="n">78,8</td><td class="n">19,6</td><td class="n">0,9 d</td>
+    <td class="n">65,0</td><td class="n">R$ 3.190,20</td></tr>
+  <tr><td>VV03</td><td>Fornecedor</td><td><a href="#" data-off="1">Maçã Gala</a></td><td class="n">79,3</td>
+    <td class="n">147,0</td><td class="n">347,4</td><td class="n">66,8</td><td class="n">1,2 d</td>
+    <td class="n">270,0</td><td class="n">R$ 2.300,40</td></tr>
+  <tr><td>VV03</td><td>Fornecedor</td><td><a href="#" data-off="1">Mortadela Fatiada</a></td><td class="n">8,1</td>
+    <td class="n">8,5</td><td class="n">20,0</td><td class="n">3,8</td><td class="n">2,1 d</td>
+    <td class="n">12,0</td><td class="n">R$ 214,20</td></tr>
+  <tr><td>VV03</td><td>Fornecedor</td><td><a href="#" data-off="1">Picanha Bovina</a></td><td class="n">12,3</td>
+    <td class="n">13,1</td><td class="n">37,6</td><td class="n">9,3</td><td class="n">1,3 d</td>
+    <td class="n">30,0</td><td class="n">R$ 2.398,80</td></tr>
+  <tr><td>VV03</td><td>Fornecedor</td><td><a href="#" data-off="1">Presunto Cozido Fatiado</a></td><td class="n">11,7</td>
+    <td class="n">15,4</td><td class="n">36,5</td><td class="n">7,0</td><td class="n">1,7 d</td>
+    <td class="n">25,0</td><td class="n">R$ 664,50</td></tr>
+  <tr><td>VV03</td><td>Fornecedor</td><td><a href="estoque_7_165.html">Pão Francês</a></td><td class="n">139,4</td>
+    <td class="n">192,9</td><td class="n">552,2</td><td class="n">138,3</td><td class="n">1,0 d</td>
+    <td class="n">420,0</td><td class="n">R$ 3.040,80</td></tr>
+  <tr><td>VV03</td><td>Fornecedor</td><td><a href="#" data-off="1">Pão de Queijo</a></td><td class="n">10,9</td>
+    <td class="n">13,4</td><td class="n">38,3</td><td class="n">9,5</td><td class="n">1,1 d</td>
+    <td class="n">30,0</td><td class="n">R$ 608,10</td></tr>
+  <tr><td>VV03</td><td>Fornecedor</td><td><a href="#" data-off="1">Rosca Doce</a></td><td class="n">31,0</td>
+    <td class="n">43,1</td><td class="n">123,3</td><td class="n">30,7</td><td class="n">1,0 d</td>
+    <td class="n">96,0</td><td class="n">R$ 544,32</td></tr>
+  <tr><td>VV03</td><td>Fornecedor</td><td><a href="#" data-off="1">Uva Niágara</a></td><td class="n">19,7</td>
+    <td class="n">26,7</td><td class="n">76,6</td><td class="n">19,0</td><td class="n">1,0 d</td>
+    <td class="n">60,0</td><td class="n">R$ 666,00</td></tr>
+  
+</table></div></div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+
+</body>
+</html>

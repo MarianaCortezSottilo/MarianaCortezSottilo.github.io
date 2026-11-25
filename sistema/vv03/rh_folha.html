@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Folha 2026-10 · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="vv03";window.VV_KEY="/rh/folha";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="ativo">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" selected>VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      <a href="unidades_7.html">ficha da unidade</a>
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Folha de pagamento · out/26</h1>
+  <div class="sub">INSS e IRRF por tabelas progressivas simplificadas; encargos patronais 27,8% + FGTS 8%; provisões de 13º e férias + 1/3.</div></div>
+  <div class="filtros"><form class="filtros"><select name="comp" onchange="this.form.submit()"><option value="2026-10" selected>out/26</option><option value="2026-09" >set/26</option><option value="2026-08" >ago/26</option><option value="2026-07" >jul/26</option><option value="2026-06" >jun/26</option><option value="2026-05" >mai/26</option><option value="2026-04" >abr/26</option><option value="2026-03" >mar/26</option><option value="2026-02" >fev/26</option><option value="2026-01" >jan/26</option><option value="2025-12" >dez/25</option><option value="2025-11" >nov/25</option><option value="2025-10" >out/25</option><option value="2025-09" >set/25</option><option value="2025-08" >ago/25</option><option value="2025-07" >jul/25</option><option value="2025-06" >jun/25</option><option value="2025-05" >mai/25</option><option value="2025-04" >abr/25</option><option value="2025-03" >mar/25</option><option value="2025-02" >fev/25</option><option value="2025-01" >jan/25</option><option value="2024-12" >dez/24</option><option value="2024-11" >nov/24</option></select></form>
+  
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a>
+  <form method="post" action="/rh/folha/calcular" class="filtros" onsubmit="return confirm('Calcular a folha de 2026-11 para todas as unidades da seleção?')">
+    <input type="hidden" name="comp" value="2026-11"><label>HE/func. operacional</label><input type="number" name="horas_extras" value="5" style="width:60px">
+    <button class="btn-primario">Calcular folha de nov/26</button></form></div></div>
+<div class="grade g6">
+  <div class="cartao kpi">
+  <div class="rot">Funcionários na folha</div>
+  <div class="val">48</div>
+  <div class="det">VV03 · Vale Verde Rio Tijuca</div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Salários brutos</div>
+  <div class="val">R$ 135 mil</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Encargos (INSS + FGTS)</div>
+  <div class="val">R$ 48 mil</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Benefícios (VA + VT)</div>
+  <div class="val">R$ 19 mil</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Provisões 13º e férias</div>
+  <div class="val">R$ 36 mil</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Custo total</div>
+  <div class="val">R$ 239 mil</div>
+  <div class="det">líquido pago R$ 116 mil</div>
+</div>
+</div>
+<div class="grade g2 mt">
+  <div class="cartao"><h3>Composição do custo de pessoal por mês</h3><div class="grafico"><canvas id="gFolha"></canvas></div></div>
+  
+  <div class="cartao"><h3>Por departamento</h3><table><tr><th>Departamento</th><th class="n">Pessoas</th><th class="n">Horas extras</th><th class="n">Bruto</th><th class="n">Custo total</th></tr>
+    <tr><td>Frente de Caixa</td><td class="n">17</td><td class="n">69</td><td class="n">R$ 37.952,70</td><td class="n">R$ 68.875,00</td></tr><tr><td>Mercearia/Reposição</td><td class="n">8</td><td class="n">47</td><td class="n">R$ 19.405,09</td><td class="n">R$ 34.449,06</td></tr><tr><td>Gerência</td><td class="n">2</td><td class="n">0</td><td class="n">R$ 18.855,86</td><td class="n">R$ 31.285,24</td></tr><tr><td>Administrativo/Financeiro</td><td class="n">4</td><td class="n">0</td><td class="n">R$ 13.176,12</td><td class="n">R$ 22.899,00</td></tr><tr><td>Açougue</td><td class="n">4</td><td class="n">22</td><td class="n">R$ 12.287,64</td><td class="n">R$ 21.420,95</td></tr><tr><td>Padaria</td><td class="n">4</td><td class="n">11</td><td class="n">R$ 11.000,45</td><td class="n">R$ 19.424,64</td></tr><tr><td>Hortifrúti</td><td class="n">3</td><td class="n">17</td><td class="n">R$ 8.064,26</td><td class="n">R$ 14.318,61</td></tr><tr><td>Prevenção de Perdas</td><td class="n">2</td><td class="n">11</td><td class="n">R$ 5.291,80</td><td class="n">R$ 9.419,41</td></tr><tr><td>Recebimento/Depósito</td><td class="n">2</td><td class="n">12</td><td class="n">R$ 5.216,44</td><td class="n">R$ 9.255,34</td></tr><tr><td>Limpeza</td><td class="n">2</td><td class="n">5</td><td class="n">R$ 4.062,91</td><td class="n">R$ 7.392,19</td></tr></table></div>
+</div>
+<div class="cartao mt"><div class="rolagem"><table>
+  <tr><th>Unidade</th><th>Funcionário</th><th>Cargo</th><th class="n">Dias</th><th class="n">Base</th><th class="n">HE+DSR</th><th class="n">Rescisão</th><th class="n">Bruto</th><th class="n">INSS</th><th class="n">IRRF</th><th class="n">VT</th><th class="n">Líquido</th><th class="n">FGTS</th><th class="n">INSS patr.</th><th class="n">Custo total</th></tr>
+  <tr><td>VV03</td><td><a href="rh_funcionario_878.html">Beatriz Cavalcanti Pinto</a></td><td>Assistente Financeiro</td><td class="n">30</td>
+    <td class="n">3.206,38</td><td class="n">0,00</td><td class="n">0,00</td><td class="n">3.206,38</td>
+    <td class="n">273,37</td><td class="n">0,00</td><td class="n">192,38</td><td class="n">2.740,63</td>
+    <td class="n">256,51</td><td class="n">891,37</td><td class="n">5.578,54</td></tr><tr><td>VV03</td><td><a href="rh_funcionario_134.html">Fernando Ribeiro Ferreira</a></td><td>Comprador</td><td class="n">30</td>
+    <td class="n">5.225,10</td><td class="n">0,00</td><td class="n">0,00</td><td class="n">5.225,10</td>
+    <td class="n">533,03</td><td class="n">80,61</td><td class="n">0,00</td><td class="n">4.611,46</td>
+    <td class="n">418,01</td><td class="n">1.452,58</td><td class="n">8.825,42</td></tr><tr><td>VV03</td><td><a href="rh_funcionario_136.html">Marcelo Barbosa Santana</a></td><td>Assistente de DP/RH</td><td class="n">30</td>
+    <td class="n">3.825,53</td><td class="n">0,00</td><td class="n">0,00</td><td class="n">3.825,53</td>
+    <td class="n">347,66</td><td class="n">0,00</td><td class="n">220,00</td><td class="n">3.257,87</td>
+    <td class="n">306,04</td><td class="n">1.063,50</td><td class="n">6.555,22</td></tr><tr><td>VV03</td><td><a href="rh_funcionario_137.html">Tatiane Gonçalves Mendes</a></td><td>Jovem Aprendiz</td><td class="n">30</td>
+    <td class="n">919,11</td><td class="n">0,00</td><td class="n">0,00</td><td class="n">919,11</td>
+    <td class="n">68,93</td><td class="n">0,00</td><td class="n">55,15</td><td class="n">795,03</td>
+    <td class="n">18,38</td><td class="n">255,51</td><td class="n">1.939,82</td></tr><tr><td>VV03</td><td><a href="rh_funcionario_166.html">Aline Pinto Souza</a></td><td>Auxiliar de Açougue</td><td class="n">30</td>
+    <td class="n">2.264,24</td><td class="n">108,07</td><td class="n">0,00</td><td class="n">2.372,31</td>
+    <td class="n">189,19</td><td class="n">0,00</td><td class="n">135,85</td><td class="n">2.047,27</td>
+    <td class="n">189,78</td><td class="n">659,50</td><td class="n">4.282,16</td></tr><tr><td>VV03</td><td><a href="rh_funcionario_163.html">Júlia Souza Rodrigues</a></td><td>Açougueiro</td><td class="n">30</td>
+    <td class="n">3.574,02</td><td class="n">85,28</td><td class="n">0,00</td><td class="n">3.659,30</td>
+    <td class="n">327,72</td><td class="n">0,00</td><td class="n">214,44</td><td class="n">3.117,14</td>
+    <td class="n">292,74</td><td class="n">1.017,29</td><td class="n">6.291,15</td></tr><tr><td>VV03</td><td><a href="rh_funcionario_859.html">Marcos Marques Pinto</a></td><td>Auxiliar de Açougue</td><td class="n">30</td>
+    <td class="n">2.266,58</td><td class="n">144,24</td><td class="n">0,00</td><td class="n">2.410,82</td>
+    <td class="n">192,66</td><td class="n">0,00</td><td class="n">0,00</td><td class="n">2.218,16</td>
+    <td class="n">192,87</td><td class="n">670,21</td><td class="n">4.260,49</td></tr><tr><td>VV03</td><td><a href="rh_funcionario_164.html">Pedro Carvalho Souza</a></td><td>Açougueiro</td><td class="n">30</td>
+    <td class="n">3.698,13</td><td class="n">147,08</td><td class="n">0,00</td><td class="n">3.845,21</td>
+    <td class="n">350,02</td><td class="n">0,00</td><td class="n">220,00</td><td class="n">3.275,19</td>
+    <td class="n">307,62</td><td class="n">1.068,97</td><td class="n">6.587,15</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Ana Costa Soares</a></td><td>Empacotador</td><td class="n">30</td>
+    <td class="n">1.702,05</td><td class="n">54,16</td><td class="n">0,00</td><td class="n">1.756,21</td>
+    <td class="n">133,74</td><td class="n">0,00</td><td class="n">102,12</td><td class="n">1.520,35</td>
+    <td class="n">140,50</td><td class="n">488,23</td><td class="n">3.316,55</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Bruna Ramos Carvalho</a></td><td>Operador de Caixa</td><td class="n">30</td>
+    <td class="n">2.189,19</td><td class="n">104,49</td><td class="n">0,00</td><td class="n">2.293,68</td>
+    <td class="n">182,12</td><td class="n">0,00</td><td class="n">0,00</td><td class="n">2.111,56</td>
+    <td class="n">183,49</td><td class="n">637,64</td><td class="n">4.070,46</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Camila Prado Moreira</a></td><td>Operador de Caixa</td><td class="n">30</td>
+    <td class="n">2.189,19</td><td class="n">87,07</td><td class="n">0,00</td><td class="n">2.276,26</td>
+    <td class="n">180,55</td><td class="n">0,00</td><td class="n">131,35</td><td class="n">1.964,36</td>
+    <td class="n">182,10</td><td class="n">632,80</td><td class="n">4.130,87</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Carla Oliveira Pereira</a></td><td>Operador de Caixa</td><td class="n">30</td>
+    <td class="n">2.189,19</td><td class="n">121,89</td><td class="n">0,00</td><td class="n">2.311,08</td>
+    <td class="n">183,68</td><td class="n">0,00</td><td class="n">131,35</td><td class="n">1.996,05</td>
+    <td class="n">184,89</td><td class="n">642,48</td><td class="n">4.187,36</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Daniela Vieira Souza</a></td><td>Operador de Caixa</td><td class="n">30</td>
+    <td class="n">2.189,19</td><td class="n">121,89</td><td class="n">0,00</td><td class="n">2.311,08</td>
+    <td class="n">183,68</td><td class="n">0,00</td><td class="n">131,35</td><td class="n">1.996,05</td>
+    <td class="n">184,89</td><td class="n">642,48</td><td class="n">4.187,36</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Francisca Martins Cavalcanti</a></td><td>Fiscal de Caixa</td><td class="n">30</td>
+    <td class="n">2.676,85</td><td class="n">42,58</td><td class="n">0,00</td><td class="n">2.719,43</td>
+    <td class="n">220,43</td><td class="n">0,00</td><td class="n">160,61</td><td class="n">2.338,39</td>
+    <td class="n">217,55</td><td class="n">756,00</td><td class="n">4.820,45</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Guilherme Marques Silva</a></td><td>Operador de Caixa</td><td class="n">30</td>
+    <td class="n">2.189,19</td><td class="n">69,66</td><td class="n">0,00</td><td class="n">2.258,85</td>
+    <td class="n">178,98</td><td class="n">0,00</td><td class="n">131,35</td><td class="n">1.948,52</td>
+    <td class="n">180,71</td><td class="n">627,96</td><td class="n">4.102,63</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Luana Gomes Dias</a></td><td>Fiscal de Caixa</td><td class="n">30</td>
+    <td class="n">2.598,28</td><td class="n">82,67</td><td class="n">0,00</td><td class="n">2.680,95</td>
+    <td class="n">216,97</td><td class="n">0,00</td><td class="n">155,90</td><td class="n">2.308,08</td>
+    <td class="n">214,48</td><td class="n">745,30</td><td class="n">4.762,74</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Maria Pereira Costa</a></td><td>Operador de Caixa</td><td class="n">30</td>
+    <td class="n">2.189,19</td><td class="n">69,66</td><td class="n">0,00</td><td class="n">2.258,85</td>
+    <td class="n">178,98</td><td class="n">0,00</td><td class="n">131,35</td><td class="n">1.948,52</td>
+    <td class="n">180,71</td><td class="n">627,96</td><td class="n">4.102,63</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Mariana Machado Fernandes</a></td><td>Operador de Caixa</td><td class="n">30</td>
+    <td class="n">2.189,19</td><td class="n">34,83</td><td class="n">0,00</td><td class="n">2.224,02</td>
+    <td class="n">175,85</td><td class="n">0,00</td><td class="n">131,35</td><td class="n">1.916,82</td>
+    <td class="n">177,92</td><td class="n">618,28</td><td class="n">4.046,14</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Natália Alves Pereira</a></td><td>Operador de Caixa</td><td class="n">30</td>
+    <td class="n">2.189,19</td><td class="n">52,24</td><td class="n">0,00</td><td class="n">2.241,43</td>
+    <td class="n">177,41</td><td class="n">0,00</td><td class="n">131,35</td><td class="n">1.932,67</td>
+    <td class="n">179,31</td><td class="n">623,12</td><td class="n">4.074,38</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Otávio Lima Freitas</a></td><td>Operador de Caixa</td><td class="n">30</td>
+    <td class="n">2.189,19</td><td class="n">52,24</td><td class="n">0,00</td><td class="n">2.241,43</td>
+    <td class="n">177,41</td><td class="n">0,00</td><td class="n">131,35</td><td class="n">1.932,67</td>
+    <td class="n">179,31</td><td class="n">623,12</td><td class="n">4.074,38</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Paulo Lima Nascimento</a></td><td>Empacotador</td><td class="n">30</td>
+    <td class="n">1.702,05</td><td class="n">13,53</td><td class="n">0,00</td><td class="n">1.715,58</td>
+    <td class="n">130,09</td><td class="n">0,00</td><td class="n">102,12</td><td class="n">1.483,37</td>
+    <td class="n">137,25</td><td class="n">476,93</td><td class="n">3.250,66</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Pedro Soares Rodrigues</a></td><td>Empacotador</td><td class="n">30</td>
+    <td class="n">1.702,05</td><td class="n">13,53</td><td class="n">0,00</td><td class="n">1.715,58</td>
+    <td class="n">130,09</td><td class="n">0,00</td><td class="n">102,12</td><td class="n">1.483,37</td>
+    <td class="n">137,25</td><td class="n">476,93</td><td class="n">3.250,66</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Raquel Santos Cardoso</a></td><td>Operador de Caixa</td><td class="n">30</td>
+    <td class="n">2.288,11</td><td class="n">72,80</td><td class="n">0,00</td><td class="n">2.360,91</td>
+    <td class="n">188,17</td><td class="n">0,00</td><td class="n">0,00</td><td class="n">2.172,74</td>
+    <td class="n">188,87</td><td class="n">656,33</td><td class="n">4.179,51</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Simone Rocha Martins</a></td><td>Operador de Caixa</td><td class="n">30</td>
+    <td class="n">2.189,19</td><td class="n">104,49</td><td class="n">0,00</td><td class="n">2.293,68</td>
+    <td class="n">182,12</td><td class="n">0,00</td><td class="n">131,35</td><td class="n">1.980,21</td>
+    <td class="n">183,49</td><td class="n">637,64</td><td class="n">4.159,11</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Vinícius Moreira Teixeira</a></td><td>Operador de Caixa</td><td class="n">30</td>
+    <td class="n">2.189,19</td><td class="n">104,49</td><td class="n">0,00</td><td class="n">2.293,68</td>
+    <td class="n">182,12</td><td class="n">0,00</td><td class="n">131,35</td><td class="n">1.980,21</td>
+    <td class="n">183,49</td><td class="n">637,64</td><td class="n">4.159,11</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Luana Machado Moraes</a></td><td>Subgerente</td><td class="n">30</td>
+    <td class="n">6.783,85</td><td class="n">0,00</td><td class="n">0,00</td><td class="n">6.783,85</td>
+    <td class="n">751,25</td><td class="n">674,85</td><td class="n">220,00</td><td class="n">5.137,75</td>
+    <td class="n">542,71</td><td class="n">1.885,91</td><td class="n">11.353,78</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Patrícia Pereira Gonçalves</a></td><td>Gerente Geral</td><td class="n">30</td>
+    <td class="n">12.072,01</td><td class="n">0,00</td><td class="n">0,00</td><td class="n">12.072,01</td>
+    <td class="n">988,09</td><td class="n">2.139,35</td><td class="n">220,00</td><td class="n">8.724,57</td>
+    <td class="n">965,76</td><td class="n">3.356,02</td><td class="n">19.931,46</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Beatriz Costa Teixeira</a></td><td>Auxiliar de Hortifrúti</td><td class="n">30</td>
+    <td class="n">2.100,74</td><td class="n">83,56</td><td class="n">0,00</td><td class="n">2.184,30</td>
+    <td class="n">172,27</td><td class="n">0,00</td><td class="n">126,04</td><td class="n">1.885,99</td>
+    <td class="n">174,74</td><td class="n">607,24</td><td class="n">3.987,01</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Luana Soares Andrade</a></td><td>Encarregado de Hortifrúti</td><td class="n">30</td>
+    <td class="n">3.490,27</td><td class="n">222,11</td><td class="n">0,00</td><td class="n">3.712,38</td>
+    <td class="n">334,09</td><td class="n">0,00</td><td class="n">0,00</td><td class="n">3.378,29</td>
+    <td class="n">296,99</td><td class="n">1.032,04</td><td class="n">6.371,70</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Tatiane Gomes Cardoso</a></td><td>Auxiliar de Hortifrúti</td><td class="n">30</td>
+    <td class="n">2.100,74</td><td class="n">66,84</td><td class="n">0,00</td><td class="n">2.167,58</td>
+    <td class="n">170,77</td><td class="n">0,00</td><td class="n">126,04</td><td class="n">1.870,77</td>
+    <td class="n">173,41</td><td class="n">602,59</td><td class="n">3.959,90</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Daniela Moraes Alves</a></td><td>Auxiliar de Limpeza</td><td class="n">30</td>
+    <td class="n">2.015,07</td><td class="n">64,12</td><td class="n">0,00</td><td class="n">2.079,19</td>
+    <td class="n">162,81</td><td class="n">0,00</td><td class="n">0,00</td><td class="n">1.916,38</td>
+    <td class="n">166,34</td><td class="n">578,01</td><td class="n">3.722,57</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Rodrigo Dias Souza</a></td><td>Auxiliar de Limpeza</td><td class="n">30</td>
+    <td class="n">1.968,06</td><td class="n">15,66</td><td class="n">0,00</td><td class="n">1.983,72</td>
+    <td class="n">154,22</td><td class="n">0,00</td><td class="n">118,08</td><td class="n">1.711,42</td>
+    <td class="n">158,70</td><td class="n">551,47</td><td class="n">3.669,62</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">André Nascimento Machado</a></td><td>Repositor</td><td class="n">30</td>
+    <td class="n">2.156,02</td><td class="n">120,05</td><td class="n">0,00</td><td class="n">2.276,07</td>
+    <td class="n">180,53</td><td class="n">0,00</td><td class="n">129,36</td><td class="n">1.966,18</td>
+    <td class="n">182,09</td><td class="n">632,75</td><td class="n">4.132,56</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Beatriz Gonçalves Pinto</a></td><td>Repositor</td><td class="n">22</td>
+    <td class="n">1.581,08</td><td class="n">37,73</td><td class="n">0,00</td><td class="n">1.618,81</td>
+    <td class="n">121,41</td><td class="n">0,00</td><td class="n">0,00</td><td class="n">1.497,40</td>
+    <td class="n">129,50</td><td class="n">450,03</td><td class="n">2.882,47</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Elaine Cardoso Pinto</a></td><td>Repositor</td><td class="n">30</td>
+    <td class="n">2.156,02</td><td class="n">120,05</td><td class="n">0,00</td><td class="n">2.276,07</td>
+    <td class="n">180,53</td><td class="n">0,00</td><td class="n">0,00</td><td class="n">2.095,54</td>
+    <td class="n">182,09</td><td class="n">632,75</td><td class="n">4.041,92</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Fernanda Oliveira Alves</a></td><td>Encarregado de Mercearia</td><td class="n">30</td>
+    <td class="n">3.648,65</td><td class="n">261,20</td><td class="n">0,00</td><td class="n">3.909,85</td>
+    <td class="n">357,78</td><td class="n">0,00</td><td class="n">218,92</td><td class="n">3.333,15</td>
+    <td class="n">312,79</td><td class="n">1.086,94</td><td class="n">6.693,08</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Fábio Barbosa Ferreira</a></td><td>Repositor</td><td class="n">30</td>
+    <td class="n">2.268,64</td><td class="n">54,13</td><td class="n">0,00</td><td class="n">2.322,77</td>
+    <td class="n">184,73</td><td class="n">0,00</td><td class="n">136,12</td><td class="n">2.001,92</td>
+    <td class="n">185,82</td><td class="n">645,73</td><td class="n">4.201,54</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Renata Nunes Fernandes</a></td><td>Repositor</td><td class="n">30</td>
+    <td class="n">2.156,02</td><td class="n">51,45</td><td class="n">0,00</td><td class="n">2.207,47</td>
+    <td class="n">174,36</td><td class="n">0,00</td><td class="n">0,00</td><td class="n">2.033,11</td>
+    <td class="n">176,60</td><td class="n">613,68</td><td class="n">3.930,64</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Ricardo Silva Pinto</a></td><td>Repositor</td><td class="n">30</td>
+    <td class="n">2.351,20</td><td class="n">149,63</td><td class="n">0,00</td><td class="n">2.500,83</td>
+    <td class="n">200,76</td><td class="n">0,00</td><td class="n">0,00</td><td class="n">2.300,07</td>
+    <td class="n">200,07</td><td class="n">695,23</td><td class="n">4.406,48</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Samuel Pereira Lopes</a></td><td>Repositor</td><td class="n">30</td>
+    <td class="n">2.156,02</td><td class="n">137,20</td><td class="n">0,00</td><td class="n">2.293,22</td>
+    <td class="n">182,07</td><td class="n">0,00</td><td class="n">129,36</td><td class="n">1.981,79</td>
+    <td class="n">183,46</td><td class="n">637,52</td><td class="n">4.160,37</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Gabriela Santana Martins</a></td><td>Padeiro</td><td class="n">30</td>
+    <td class="n">3.323,68</td><td class="n">105,76</td><td class="n">0,00</td><td class="n">3.429,44</td>
+    <td class="n">300,13</td><td class="n">0,00</td><td class="n">0,00</td><td class="n">3.129,31</td>
+    <td class="n">274,36</td><td class="n">953,38</td><td class="n">5.912,75</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Larissa Costa Oliveira</a></td><td>Atendente de Padaria</td><td class="n">30</td>
+    <td class="n">2.156,02</td><td class="n">17,15</td><td class="n">0,00</td><td class="n">2.173,17</td>
+    <td class="n">171,27</td><td class="n">0,00</td><td class="n">129,36</td><td class="n">1.872,54</td>
+    <td class="n">173,85</td><td class="n">604,14</td><td class="n">3.965,64</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Murilo Rocha Soares</a></td><td>Padeiro</td><td class="n">30</td>
+    <td class="n">3.123,53</td><td class="n">49,69</td><td class="n">0,00</td><td class="n">3.173,22</td>
+    <td class="n">269,39</td><td class="n">0,00</td><td class="n">0,00</td><td class="n">2.903,83</td>
+    <td class="n">253,86</td><td class="n">882,16</td><td class="n">5.497,15</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Roberta Gonçalves Lopes</a></td><td>Atendente de Padaria</td><td class="n">30</td>
+    <td class="n">2.156,02</td><td class="n">68,60</td><td class="n">0,00</td><td class="n">2.224,62</td>
+    <td class="n">175,90</td><td class="n">0,00</td><td class="n">129,36</td><td class="n">1.919,36</td>
+    <td class="n">177,97</td><td class="n">618,44</td><td class="n">4.049,10</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">João Silva Rocha</a></td><td>Fiscal de Prevenção</td><td class="n">30</td>
+    <td class="n">2.581,93</td><td class="n">123,22</td><td class="n">0,00</td><td class="n">2.705,15</td>
+    <td class="n">219,15</td><td class="n">0,00</td><td class="n">154,92</td><td class="n">2.331,08</td>
+    <td class="n">216,41</td><td class="n">752,03</td><td class="n">4.802,98</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Pedro Nascimento Pereira</a></td><td>Fiscal de Prevenção</td><td class="n">30</td>
+    <td class="n">2.487,71</td><td class="n">98,94</td><td class="n">0,00</td><td class="n">2.586,65</td>
+    <td class="n">208,48</td><td class="n">0,00</td><td class="n">149,26</td><td class="n">2.228,91</td>
+    <td class="n">206,93</td><td class="n">719,09</td><td class="n">4.616,43</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Luis Silva Pinto</a></td><td>Conferente</td><td class="n">30</td>
+    <td class="n">2.878,08</td><td class="n">137,36</td><td class="n">0,00</td><td class="n">3.015,44</td>
+    <td class="n">250,45</td><td class="n">0,00</td><td class="n">0,00</td><td class="n">2.764,99</td>
+    <td class="n">241,24</td><td class="n">838,29</td><td class="n">5.241,22</td></tr><tr><td>VV03</td><td><a href="#" data-off="1">Samuel Pinto Almeida</a></td><td>Auxiliar de Depósito</td><td class="n">30</td>
+    <td class="n">2.100,74</td><td class="n">100,26</td><td class="n">0,00</td><td class="n">2.201,00</td>
+    <td class="n">173,77</td><td class="n">0,00</td><td class="n">126,04</td><td class="n">1.901,19</td>
+    <td class="n">176,08</td><td class="n">611,88</td><td class="n">4.014,12</td></tr>
+</table></div></div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+<script>
+const g = {"beneficios": [19092.71, 20323.88, 19612.94, 18726.83, 18838.93, 19241.21, 18529.73, 18807.93, 18957.6, 18809.78, 19437.09, 19039.24, 19250.49, 20791.22, 19818.84, 18697.61, 18762.71, 19379.42, 18135.44, 18666.61, 19000.82, 18640.62, 18889.97, 19319.62], "bruto": [125470.67, 132920.8, 126282.94, 123630.63, 121659.02, 123399.09, 131004.41, 129094.7, 127856.68, 127413.5, 129824.05, 130129.66, 130964.68, 143312.4, 132060.81, 125392.09, 129994.18, 131974.28, 134873.81, 131847.33, 133741.95, 133356.23, 135530.42, 135313.27], "encargos": [49036.38, 47540.32, 45160.08, 44605.14, 43504.75, 44127.66, 50676.79, 48585.76, 45720.9, 45562.24, 46425.19, 49595.74, 48008.96, 52978.65, 47225.24, 44837.81, 49945.86, 47283.25, 49195.41, 47146.15, 47824.49, 47857.08, 50799.21, 48387.02], "meses": ["nov/24", "dez/24", "jan/25", "fev/25", "mar/25", "abr/25", "mai/25", "jun/25", "jul/25", "ago/25", "set/25", "out/25", "nov/25", "dez/25", "jan/26", "fev/26", "mar/26", "abr/26", "mai/26", "jun/26", "jul/26", "ago/26", "set/26", "out/26"], "provisoes": [32063.29, 35089.66, 33336.19, 32113.47, 32115.24, 32574.68, 33468.0, 33639.63, 33751.25, 33634.25, 34270.74, 33780.35, 34005.83, 37325.87, 34861.23, 33100.32, 33193.15, 34287.79, 34456.12, 34804.31, 35304.64, 34753.3, 35198.98, 35719.53]};
+VV.grafico('gFolha', g.meses, [
+  {nome: 'Salários', dados: g.bruto, slot: 0, stack: 's'}, {nome: 'Encargos', dados: g.encargos, slot: 1, stack: 's'},
+  {nome: 'Benefícios', dados: g.beneficios, slot: 2, stack: 's'}, {nome: 'Provisões', dados: g.provisoes, slot: 3, stack: 's'}],
+  {fmt: 'brl', empilhado: true});
+</script>
+</body>
+</html>

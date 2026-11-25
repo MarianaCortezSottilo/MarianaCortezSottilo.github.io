@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TR-002173 · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="proprias";window.VV_KEY="/transferencias/2173";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" selected>Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Transferência TR-002173 <span class="etq alerta">Recebida parcial</span></h1>
+  <div class="sub">CD03 CD Nordeste/Norte → VV09 Vale Verde Recife Boa Viagem (loja própria) · 33 km · 1 viagem(ns) · frete R$ 526,92 · enviada em 28/10/2026 · recebida em 29/10/2026</div></div>
+  <a class="btn" href="transferencias.html">‹ Transferências</a></div>
+<div class="cartao"><div class="rolagem"><table>
+  <tr><th>SKU</th><th>Produto</th><th class="n">Solicitado</th><th class="n">Enviado</th><th class="n">Custo CD</th><th class="n">Preço transf.</th><th class="n">Total</th></tr>
+  <tr><td>080020</td><td>Absorvente com Abas 8un</td><td class="n">24</td>
+    <td class="n">24</td>
+    <td class="n">R$ 4,62</td><td class="n">R$ 4,96</td><td class="n">R$ 119,02</td></tr><tr><td>010049</td><td>Achocolatado em Pó 400g Bom Grão</td><td class="n">48</td>
+    <td class="n">48</td>
+    <td class="n">R$ 7,02</td><td class="n">R$ 7,54</td><td class="n">R$ 362,15</td></tr><tr><td>010050</td><td>Achocolatado em Pó 400g Tio Nino</td><td class="n">24</td>
+    <td class="n">24</td>
+    <td class="n">R$ 8,29</td><td class="n">R$ 8,91</td><td class="n">R$ 213,80</td></tr><tr><td>010051</td><td>Achocolatado em Pó 400g Vale Verde</td><td class="n">24</td>
+    <td class="n">24</td>
+    <td class="n">R$ 6,24</td><td class="n">R$ 6,71</td><td class="n">R$ 160,95</td></tr><tr><td>070010</td><td>Amaciante 2L Brilhante</td><td class="n">48</td>
+    <td class="n">48</td>
+    <td class="n">R$ 9,45</td><td class="n">R$ 10,15</td><td class="n">R$ 487,22</td></tr><tr><td>070011</td><td>Amaciante 2L Lar Limpo</td><td class="n">24</td>
+    <td class="n">24</td>
+    <td class="n">R$ 11,34</td><td class="n">R$ 12,18</td><td class="n">R$ 292,33</td></tr><tr><td>070012</td><td>Amaciante 2L Vale Verde</td><td class="n">12</td>
+    <td class="n">12</td>
+    <td class="n">R$ 8,75</td><td class="n">R$ 9,40</td><td class="n">R$ 112,84</td></tr><tr><td>010001</td><td>Arroz Branco Tipo 1 5kg Bom Grão</td><td class="n">90</td>
+    <td class="n">90</td>
+    <td class="n">R$ 21,91</td><td class="n">R$ 23,54</td><td class="n">R$ 2.118,88</td></tr><tr><td>010002</td><td>Arroz Branco Tipo 1 5kg Tio Nino</td><td class="n">90</td>
+    <td class="n">90</td>
+    <td class="n">R$ 26,48</td><td class="n">R$ 28,45</td><td class="n">R$ 2.560,65</td></tr><tr><td>010003</td><td>Arroz Branco Tipo 1 5kg Vale Verde</td><td class="n">60</td>
+    <td class="n">60</td>
+    <td class="n">R$ 18,85</td><td class="n">R$ 20,25</td><td class="n">R$ 1.215,03</td></tr><tr><td>010076</td><td>Aveia em Flocos 200g Bom Grão</td><td class="n">36</td>
+    <td class="n">36</td>
+    <td class="n">R$ 4,09</td><td class="n">R$ 4,39</td><td class="n">R$ 158,17</td></tr><tr><td>010071</td><td>Azeite de Oliva Extra Virgem 500ml Tio Nino</td><td class="n">24</td>
+    <td class="n">24</td>
+    <td class="n">R$ 38,75</td><td class="n">R$ 41,63</td><td class="n">R$ 999,17</td></tr><tr><td>010072</td><td>Azeite de Oliva Extra Virgem 500ml Vale Verde</td><td class="n">12</td>
+    <td class="n">12</td>
+    <td class="n">R$ 28,15</td><td class="n">R$ 30,25</td><td class="n">R$ 362,99</td></tr><tr><td>010010</td><td>Açúcar Refinado 1kg Bom Grão</td><td class="n">430</td>
+    <td class="n">430</td>
+    <td class="n">R$ 3,88</td><td class="n">R$ 4,17</td><td class="n">R$ 1.793,66</td></tr><tr><td>010011</td><td>Açúcar Refinado 1kg Tio Nino</td><td class="n">100</td>
+    <td class="n">100</td>
+    <td class="n">R$ 4,67</td><td class="n">R$ 5,02</td><td class="n">R$ 501,97</td></tr><tr><td>010012</td><td>Açúcar Refinado 1kg Vale Verde</td><td class="n">100</td>
+    <td class="n">100</td>
+    <td class="n">R$ 3,59</td><td class="n">R$ 3,86</td><td class="n">R$ 385,82</td></tr><tr><td>090007</td><td>Batata Pré-Frita 1kg</td><td class="n">32</td>
+    <td class="n">32</td>
+    <td class="n">R$ 14,14</td><td class="n">R$ 15,19</td><td class="n">R$ 486,09</td></tr><tr><td>010046</td><td>Biscoito Cream Cracker 350g Bom Grão</td><td class="n">20</td>
+    <td class="n">20</td>
+    <td class="n">R$ 4,41</td><td class="n">R$ 4,74</td><td class="n">R$ 94,74</td></tr><tr><td>010048</td><td>Biscoito Cream Cracker 350g Vale Verde</td><td class="n">40</td>
+    <td class="n">40</td>
+    <td class="n">R$ 3,85</td><td class="n">R$ 4,14</td><td class="n">R$ 165,64</td></tr><tr><td>010043</td><td>Biscoito Recheado 130g Bom Grão</td><td class="n">90</td>
+    <td class="n">90</td>
+    <td class="n">R$ 2,08</td><td class="n">R$ 2,23</td><td class="n">R$ 200,89</td></tr><tr><td>010044</td><td>Biscoito Recheado 130g Tio Nino</td><td class="n">30</td>
+    <td class="n">30</td>
+    <td class="n">R$ 2,40</td><td class="n">R$ 2,58</td><td class="n">R$ 77,27</td></tr><tr><td>010045</td><td>Biscoito Recheado 130g Vale Verde</td><td class="n">30</td>
+    <td class="n">30</td>
+    <td class="n">R$ 1,89</td><td class="n">R$ 2,03</td><td class="n">R$ 60,90</td></tr><tr><td>010013</td><td>Café Torrado e Moído 500g Bom Grão</td><td class="n">260</td>
+    <td class="n">260</td>
+    <td class="n">R$ 18,21</td><td class="n">R$ 19,56</td><td class="n">R$ 5.086,56</td></tr><tr><td>010014</td><td>Café Torrado e Moído 500g Tio Nino</td><td class="n">40</td>
+    <td class="n">40</td>
+    <td class="n">R$ 20,39</td><td class="n">R$ 21,91</td><td class="n">R$ 876,28</td></tr><tr><td>010015</td><td>Café Torrado e Moído 500g Vale Verde</td><td class="n">50</td>
+    <td class="n">50</td>
+    <td class="n">R$ 15,87</td><td class="n">R$ 17,05</td><td class="n">R$ 852,44</td></tr><tr><td>100005</td><td>Carvão Vegetal 3kg</td><td class="n">150</td>
+    <td class="n">150</td>
+    <td class="n">R$ 11,59</td><td class="n">R$ 12,45</td><td class="n">R$ 1.868,00</td></tr><tr><td>010061</td><td>Cereal Matinal 300g Bom Grão</td><td class="n">12</td>
+    <td class="n">12</td>
+    <td class="n">R$ 9,86</td><td class="n">R$ 10,59</td><td class="n">R$ 127,14</td></tr><tr><td>010062</td><td>Cereal Matinal 300g Tio Nino</td><td class="n">12</td>
+    <td class="n">12</td>
+    <td class="n">R$ 11,83</td><td class="n">R$ 12,71</td><td class="n">R$ 152,47</td></tr><tr><td>020016</td><td>Cerveja Lata 350ml Cevada Nobre</td><td class="n">468</td>
+    <td class="n">468</td>
+    <td class="n">R$ 3,48</td><td class="n">R$ 3,74</td><td class="n">R$ 1.748,92</td></tr><tr><td>020017</td><td>Cerveja Lata 350ml Serra Fria</td><td class="n">336</td>
+    <td class="n">336</td>
+    <td class="n">R$ 2,61</td><td class="n">R$ 2,81</td><td class="n">R$ 943,42</td></tr><tr><td>020019</td><td>Cerveja Long Neck 330ml Cevada Nobre</td><td class="n">48</td>
+    <td class="n">48</td>
+    <td class="n">R$ 4,63</td><td class="n">R$ 4,98</td><td class="n">R$ 239,01</td></tr><tr><td>020018</td><td>Cerveja Long Neck 330ml Lúpulo Dourado</td><td class="n">240</td>
+    <td class="n">240</td>
+    <td class="n">R$ 4,08</td><td class="n">R$ 4,38</td><td class="n">R$ 1.052,02</td></tr><tr><td>020020</td><td>Cerveja Long Neck 330ml Serra Fria</td><td class="n">336</td>
+    <td class="n">336</td>
+    <td class="n">R$ 3,57</td><td class="n">R$ 3,84</td><td class="n">R$ 1.289,57</td></tr><tr><td>020022</td><td>Cerveja Pack 12 Latas 350ml Cevada Nobre</td><td class="n">20</td>
+    <td class="n">20</td>
+    <td class="n">R$ 39,34</td><td class="n">R$ 42,27</td><td class="n">R$ 845,37</td></tr><tr><td>020021</td><td>Cerveja Pack 12 Latas 350ml Lúpulo Dourado</td><td class="n">42</td>
+    <td class="n">42</td>
+    <td class="n">R$ 34,39</td><td class="n">R$ 36,95</td><td class="n">R$ 1.551,72</td></tr><tr><td>020023</td><td>Cerveja Pack 12 Latas 350ml Serra Fria</td><td class="n">20</td>
+    <td class="n">20</td>
+    <td class="n">R$ 29,72</td><td class="n">R$ 31,94</td><td class="n">R$ 638,72</td></tr><tr><td>010079</td><td>Chocolate em Barra 90g Bom Grão</td><td class="n">60</td>
+    <td class="n">60</td>
+    <td class="n">R$ 5,19</td><td class="n">R$ 5,58</td><td class="n">R$ 334,51</td></tr><tr><td>010080</td><td>Chocolate em Barra 90g Tio Nino</td><td class="n">40</td>
+    <td class="n">40</td>
+    <td class="n">R$ 6,03</td><td class="n">R$ 6,48</td><td class="n">R$ 259,37</td></tr><tr><td>010081</td><td>Chocolate em Barra 90g Vale Verde</td><td class="n">80</td>
+    <td class="n">80</td>
+    <td class="n">R$ 4,63</td><td class="n">R$ 4,98</td><td class="n">R$ 398,34</td></tr><tr><td>080014</td><td>Condicionador 350ml Bem-Estar</td><td class="n">12</td>
+    <td class="n">12</td>
+    <td class="n">R$ 12,65</td><td class="n">R$ 13,59</td><td class="n">R$ 163,14</td></tr><tr><td>080013</td><td>Condicionador 350ml Suavità</td><td class="n">36</td>
+    <td class="n">36</td>
+    <td class="n">R$ 11,17</td><td class="n">R$ 12,00</td><td class="n">R$ 431,96</td></tr><tr><td>080015</td><td>Condicionador 350ml Vale Verde</td><td class="n">12</td>
+    <td class="n">12</td>
+    <td class="n">R$ 10,03</td><td class="n">R$ 10,78</td><td class="n">R$ 129,32</td></tr><tr><td>100008</td><td>Copo Descartável 200ml 100un</td><td class="n">40</td>
+    <td class="n">40</td>
+    <td class="n">R$ 4,71</td><td class="n">R$ 5,06</td><td class="n">R$ 202,40</td></tr><tr><td>080008</td><td>Creme Dental 90g Bem-Estar</td><td class="n">24</td>
+    <td class="n">24</td>
+    <td class="n">R$ 4,10</td><td class="n">R$ 4,40</td><td class="n">R$ 105,69</td></tr><tr><td>080007</td><td>Creme Dental 90g Suavità</td><td class="n">120</td>
+    <td class="n">120</td>
+    <td class="n">R$ 3,73</td><td class="n">R$ 4,01</td><td class="n">R$ 481,16</td></tr><tr><td>010055</td><td>Creme de Leite 200g Bom Grão</td><td class="n">96</td>
+    <td class="n">96</td>
+    <td class="n">R$ 2,90</td><td class="n">R$ 3,12</td><td class="n">R$ 299,61</td></tr><tr><td>010056</td><td>Creme de Leite 200g Tio Nino</td><td class="n">96</td>
+    <td class="n">96</td>
+    <td class="n">R$ 3,48</td><td class="n">R$ 3,74</td><td class="n">R$ 358,75</td></tr><tr><td>010057</td><td>Creme de Leite 200g Vale Verde</td><td class="n">96</td>
+    <td class="n">96</td>
+    <td class="n">R$ 2,56</td><td class="n">R$ 2,75</td><td class="n">R$ 263,73</td></tr><tr><td>070016</td><td>Desinfetante 2L Brilhante</td><td class="n">48</td>
+    <td class="n">48</td>
+    <td class="n">R$ 6,53</td><td class="n">R$ 7,02</td><td class="n">R$ 336,94</td></tr><tr><td>070017</td><td>Desinfetante 2L Lar Limpo</td><td class="n">18</td>
+    <td class="n">18</td>
+    <td class="n">R$ 7,36</td><td class="n">R$ 7,91</td><td class="n">R$ 142,35</td></tr><tr><td>070018</td><td>Desinfetante 2L Vale Verde</td><td class="n">24</td>
+    <td class="n">24</td>
+    <td class="n">R$ 5,82</td><td class="n">R$ 6,25</td><td class="n">R$ 150,05</td></tr><tr><td>110008</td><td>Desinfetante Profissional 5L</td><td class="n">8</td>
+    <td class="n">0 <span class="etq alerta">falta no CD</span></td>
+    <td class="n">R$ 26,73</td><td class="n">R$ 28,72</td><td class="n">R$ 0,00</td></tr><tr><td>080017</td><td>Desodorante Aerossol 150ml Bem-Estar</td><td class="n">24</td>
+    <td class="n">24</td>
+    <td class="n">R$ 13,21</td><td class="n">R$ 14,19</td><td class="n">R$ 340,57</td></tr><tr><td>080016</td><td>Desodorante Aerossol 150ml Suavità</td><td class="n">36</td>
+    <td class="n">36</td>
+    <td class="n">R$ 11,63</td><td class="n">R$ 12,49</td><td class="n">R$ 449,77</td></tr><tr><td>080018</td><td>Desodorante Aerossol 150ml Vale Verde</td><td class="n">36</td>
+    <td class="n">36</td>
+    <td class="n">R$ 10,42</td><td class="n">R$ 11,19</td><td class="n">R$ 402,87</td></tr><tr><td>070001</td><td>Detergente Líquido 500ml Brilhante</td><td class="n">96</td>
+    <td class="n">96</td>
+    <td class="n">R$ 1,86</td><td class="n">R$ 2,00</td><td class="n">R$ 191,98</td></tr><tr><td>070002</td><td>Detergente Líquido 500ml Lar Limpo</td><td class="n">48</td>
+    <td class="n">48</td>
+    <td class="n">R$ 2,15</td><td class="n">R$ 2,31</td><td class="n">R$ 111,02</td></tr><tr><td>070003</td><td>Detergente Líquido 500ml Vale Verde</td><td class="n">48</td>
+    <td class="n">48</td>
+    <td class="n">R$ 1,64</td><td class="n">R$ 1,76</td><td class="n">R$ 84,36</td></tr><tr><td>110007</td><td>Detergente Profissional 5L</td><td class="n">8</td>
+    <td class="n">0 <span class="etq alerta">falta no CD</span></td>
+    <td class="n">R$ 28,62</td><td class="n">R$ 30,75</td><td class="n">R$ 0,00</td></tr><tr><td>020025</td><td>Energético Lata 250ml</td><td class="n">30</td>
+    <td class="n">30</td>
+    <td class="n">R$ 6,33</td><td class="n">R$ 6,80</td><td class="n">R$ 203,92</td></tr><tr><td>070019</td><td>Esponja Multiuso 3un</td><td class="n">20</td>
+    <td class="n">20</td>
+    <td class="n">R$ 2,77</td><td class="n">R$ 2,98</td><td class="n">R$ 59,59</td></tr><tr><td>010031</td><td>Extrato de Tomate 340g Bom Grão</td><td class="n">72</td>
+    <td class="n">72</td>
+    <td class="n">R$ 3,63</td><td class="n">R$ 3,90</td><td class="n">R$ 280,70</td></tr><tr><td>010032</td><td>Extrato de Tomate 340g Tio Nino</td><td class="n">24</td>
+    <td class="n">24</td>
+    <td class="n">R$ 4,12</td><td class="n">R$ 4,42</td><td class="n">R$ 106,17</td></tr><tr><td>010033</td><td>Extrato de Tomate 340g Vale Verde</td><td class="n">24</td>
+    <td class="n">24</td>
+    <td class="n">R$ 3,22</td><td class="n">R$ 3,46</td><td class="n">R$ 83,14</td></tr><tr><td>010025</td><td>Farinha de Trigo 1kg Bom Grão</td><td class="n">40</td>
+    <td class="n">40</td>
+    <td class="n">R$ 4,48</td><td class="n">R$ 4,82</td><td class="n">R$ 192,71</td></tr><tr><td>010026</td><td>Farinha de Trigo 1kg Tio Nino</td><td class="n">40</td>
+    <td class="n">40</td>
+    <td class="n">R$ 5,23</td><td class="n">R$ 5,62</td><td class="n">R$ 224,62</td></tr><tr><td>010027</td><td>Farinha de Trigo 1kg Vale Verde</td><td class="n">30</td>
+    <td class="n">30</td>
+    <td class="n">R$ 3,84</td><td class="n">R$ 4,13</td><td class="n">R$ 123,93</td></tr><tr><td>010064</td><td>Farofa Pronta 400g Bom Grão</td><td class="n">40</td>
+    <td class="n">40</td>
+    <td class="n">R$ 4,15</td><td class="n">R$ 4,45</td><td class="n">R$ 178,16</td></tr><tr><td>010065</td><td>Farofa Pronta 400g Tio Nino</td><td class="n">20</td>
+    <td class="n">20</td>
+    <td class="n">R$ 4,75</td><td class="n">R$ 5,10</td><td class="n">R$ 102,01</td></tr><tr><td>010066</td><td>Farofa Pronta 400g Vale Verde</td><td class="n">20</td>
+    <td class="n">20</td>
+    <td class="n">R$ 3,75</td><td class="n">R$ 4,03</td><td class="n">R$ 80,60</td></tr><tr><td>010004</td><td>Feijão Carioca 1kg Bom Grão</td><td class="n">40</td>
+    <td class="n">40</td>
+    <td class="n">R$ 6,41</td><td class="n">R$ 6,89</td><td class="n">R$ 275,53</td></tr><tr><td>010005</td><td>Feijão Carioca 1kg Tio Nino</td><td class="n">70</td>
+    <td class="n">70</td>
+    <td class="n">R$ 7,30</td><td class="n">R$ 7,85</td><td class="n">R$ 549,34</td></tr><tr><td>010006</td><td>Feijão Carioca 1kg Vale Verde</td><td class="n">150</td>
+    <td class="n">150</td>
+    <td class="n">R$ 5,65</td><td class="n">R$ 6,07</td><td class="n">R$ 910,51</td></tr><tr><td>010007</td><td>Feijão Preto 1kg Bom Grão</td><td class="n">40</td>
+    <td class="n">40</td>
+    <td class="n">R$ 7,05</td><td class="n">R$ 7,58</td><td class="n">R$ 303,00</td></tr><tr><td>010008</td><td>Feijão Preto 1kg Tio Nino</td><td class="n">20</td>
+    <td class="n">20</td>
+    <td class="n">R$ 8,14</td><td class="n">R$ 8,75</td><td class="n">R$ 174,93</td></tr><tr><td>010009</td><td>Feijão Preto 1kg Vale Verde</td><td class="n">10</td>
+    <td class="n">10</td>
+    <td class="n">R$ 6,13</td><td class="n">R$ 6,59</td><td class="n">R$ 65,85</td></tr><tr><td>080019</td><td>Fralda Descartável Pacote</td><td class="n">16</td>
+    <td class="n">16</td>
+    <td class="n">R$ 38,62</td><td class="n">R$ 41,49</td><td class="n">R$ 663,85</td></tr><tr><td>010073</td><td>Fubá Mimoso 1kg Bom Grão</td><td class="n">10</td>
+    <td class="n">10</td>
+    <td class="n">R$ 3,08</td><td class="n">R$ 3,31</td><td class="n">R$ 33,13</td></tr><tr><td>010075</td><td>Fubá Mimoso 1kg Vale Verde</td><td class="n">10</td>
+    <td class="n">10</td>
+    <td class="n">R$ 2,75</td><td class="n">R$ 2,96</td><td class="n">R$ 29,59</td></tr><tr><td>090005</td><td>Hambúrguer Bovino 672g Polar</td><td class="n">16</td>
+    <td class="n">16</td>
+    <td class="n">R$ 13,79</td><td class="n">R$ 14,82</td><td class="n">R$ 237,07</td></tr><tr><td>090006</td><td>Hambúrguer Bovino 672g Sabor de Casa</td><td class="n">24</td>
+    <td class="n">24</td>
+    <td class="n">R$ 16,23</td><td class="n">R$ 17,44</td><td class="n">R$ 418,62</td></tr><tr><td>090004</td><td>Lasanha Congelada Bolonhesa 600g Sabor de Casa</td><td class="n">32</td>
+    <td class="n">32</td>
+    <td class="n">R$ 14,49</td><td class="n">R$ 15,56</td><td class="n">R$ 498,05</td></tr><tr><td>070007</td><td>Lava-Roupas Líquido 3L Brilhante</td><td class="n">18</td>
+    <td class="n">18</td>
+    <td class="n">R$ 26,06</td><td class="n">R$ 28,00</td><td class="n">R$ 503,95</td></tr><tr><td>070008</td><td>Lava-Roupas Líquido 3L Lar Limpo</td><td class="n">12</td>
+    <td class="n">12</td>
+    <td class="n">R$ 30,22</td><td class="n">R$ 32,47</td><td class="n">R$ 389,66</td></tr><tr><td>070009</td><td>Lava-Roupas Líquido 3L Vale Verde</td><td class="n">18</td>
+    <td class="n">18</td>
+    <td class="n">R$ 22,42</td><td class="n">R$ 24,09</td><td class="n">R$ 433,59</td></tr><tr><td>010052</td><td>Leite Condensado 395g Bom Grão</td><td class="n">144</td>
+    <td class="n">144</td>
+    <td class="n">R$ 5,23</td><td class="n">R$ 5,62</td><td class="n">R$ 808,65</td></tr><tr><td>010053</td><td>Leite Condensado 395g Tio Nino</td><td class="n">72</td>
+    <td class="n">72</td>
+    <td class="n">R$ 6,48</td><td class="n">R$ 6,96</td><td class="n">R$ 501,04</td></tr><tr><td>010054</td><td>Leite Condensado 395g Vale Verde</td><td class="n">24</td>
+    <td class="n">24</td>
+    <td class="n">R$ 4,66</td><td class="n">R$ 5,01</td><td class="n">R$ 120,23</td></tr><tr><td>010019</td><td>Macarrão Espaguete 500g Bom Grão</td><td class="n">120</td>
+    <td class="n">120</td>
+    <td class="n">R$ 3,48</td><td class="n">R$ 3,74</td><td class="n">R$ 448,44</td></tr><tr><td>010020</td><td>Macarrão Espaguete 500g Tio Nino</td><td class="n">180</td>
+    <td class="n">180</td>
+    <td class="n">R$ 4,00</td><td class="n">R$ 4,29</td><td class="n">R$ 772,65</td></tr><tr><td>010021</td><td>Macarrão Espaguete 500g Vale Verde</td><td class="n">60</td>
+    <td class="n">60</td>
+    <td class="n">R$ 3,14</td><td class="n">R$ 3,37</td><td class="n">R$ 202,40</td></tr><tr><td>010022</td><td>Macarrão Parafuso 500g Bom Grão</td><td class="n">260</td>
+    <td class="n">260</td>
+    <td class="n">R$ 3,82</td><td class="n">R$ 4,10</td><td class="n">R$ 1.066,16</td></tr><tr><td>010023</td><td>Macarrão Parafuso 500g Tio Nino</td><td class="n">100</td>
+    <td class="n">100</td>
+    <td class="n">R$ 4,31</td><td class="n">R$ 4,63</td><td class="n">R$ 462,58</td></tr><tr><td>010024</td><td>Macarrão Parafuso 500g Vale Verde</td><td class="n">60</td>
+    <td class="n">60</td>
+    <td class="n">R$ 3,19</td><td class="n">R$ 3,42</td><td class="n">R$ 205,43</td></tr><tr><td>010058</td><td>Maionese 500g Bom Grão</td><td class="n">36</td>
+    <td class="n">36</td>
+    <td class="n">R$ 7,89</td><td class="n">R$ 8,47</td><td class="n">R$ 305,06</td></tr><tr><td>010059</td><td>Maionese 500g Tio Nino</td><td class="n">24</td>
+    <td class="n">24</td>
+    <td class="n">R$ 8,97</td><td class="n">R$ 9,64</td><td class="n">R$ 231,25</td></tr><tr><td>010060</td><td>Maionese 500g Vale Verde</td><td class="n">12</td>
+    <td class="n">12</td>
+    <td class="n">R$ 6,99</td><td class="n">R$ 7,51</td><td class="n">R$ 90,17</td></tr><tr><td>010037</td><td>Milho Verde Lata 170g Bom Grão</td><td class="n">48</td>
+    <td class="n">48</td>
+    <td class="n">R$ 2,62</td><td class="n">R$ 2,82</td><td class="n">R$ 135,26</td></tr><tr><td>010039</td><td>Milho Verde Lata 170g Vale Verde</td><td class="n">48</td>
+    <td class="n">48</td>
+    <td class="n">R$ 2,28</td><td class="n">R$ 2,45</td><td class="n">R$ 117,81</td></tr><tr><td>010028</td><td>Molho de Tomate Sachê 300g Bom Grão</td><td class="n">144</td>
+    <td class="n">144</td>
+    <td class="n">R$ 1,97</td><td class="n">R$ 2,12</td><td class="n">R$ 305,42</td></tr><tr><td>010029</td><td>Molho de Tomate Sachê 300g Tio Nino</td><td class="n">120</td>
+    <td class="n">120</td>
+    <td class="n">R$ 2,24</td><td class="n">R$ 2,40</td><td class="n">R$ 288,46</td></tr><tr><td>010030</td><td>Molho de Tomate Sachê 300g Vale Verde</td><td class="n">24</td>
+    <td class="n">24</td>
+    <td class="n">R$ 1,73</td><td class="n">R$ 1,86</td><td class="n">R$ 44,60</td></tr><tr><td>010083</td><td>Panetone Frutas 500g</td><td class="n">30</td>
+    <td class="n">30</td>
+    <td class="n">R$ 14,53</td><td class="n">R$ 15,61</td><td class="n">R$ 468,44</td></tr><tr><td>080002</td><td>Papel Higiênico 12 Rolos Bem-Estar</td><td class="n">40</td>
+    <td class="n">40</td>
+    <td class="n">R$ 18,14</td><td class="n">R$ 19,49</td><td class="n">R$ 779,72</td></tr><tr><td>080001</td><td>Papel Higiênico 12 Rolos Suavità</td><td class="n">12</td>
+    <td class="n">12</td>
+    <td class="n">R$ 16,35</td><td class="n">R$ 17,56</td><td class="n">R$ 210,77</td></tr><tr><td>080003</td><td>Papel Higiênico 12 Rolos Vale Verde</td><td class="n">48</td>
+    <td class="n">48</td>
+    <td class="n">R$ 14,17</td><td class="n">R$ 15,22</td><td class="n">R$ 730,59</td></tr><tr><td>100006</td><td>Pilha Alcalina AA 2un</td><td class="n">24</td>
+    <td class="n">24</td>
+    <td class="n">R$ 7,45</td><td class="n">R$ 8,01</td><td class="n">R$ 192,22</td></tr><tr><td>090001</td><td>Pizza Congelada Mussarela 460g Polar</td><td class="n">32</td>
+    <td class="n">32</td>
+    <td class="n">R$ 12,24</td><td class="n">R$ 13,15</td><td class="n">R$ 420,81</td></tr><tr><td>090002</td><td>Pizza Congelada Mussarela 460g Sabor de Casa</td><td class="n">16</td>
+    <td class="n">16</td>
+    <td class="n">R$ 15,09</td><td class="n">R$ 16,21</td><td class="n">R$ 259,37</td></tr><tr><td>090009</td><td>Pão de Alho Congelado 400g</td><td class="n">20</td>
+    <td class="n">20</td>
+    <td class="n">R$ 9,45</td><td class="n">R$ 10,15</td><td class="n">R$ 203,01</td></tr><tr><td>100001</td><td>Ração para Cães Adultos 10kg Amigo Fiel</td><td class="n">8</td>
+    <td class="n">8</td>
+    <td class="n">R$ 72,98</td><td class="n">R$ 78,42</td><td class="n">R$ 627,33</td></tr><tr><td>100002</td><td>Ração para Cães Adultos 10kg Casa &amp; Cia</td><td class="n">8</td>
+    <td class="n">8</td>
+    <td class="n">R$ 81,70</td><td class="n">R$ 87,78</td><td class="n">R$ 702,23</td></tr><tr><td>100003</td><td>Ração para Gatos 1kg Amigo Fiel</td><td class="n">20</td>
+    <td class="n">20</td>
+    <td class="n">R$ 12,57</td><td class="n">R$ 13,50</td><td class="n">R$ 270,07</td></tr><tr><td>020014</td><td>Refresco em Pó 25g</td><td class="n">15</td>
+    <td class="n">15</td>
+    <td class="n">R$ 0,73</td><td class="n">R$ 0,79</td><td class="n">R$ 11,82</td></tr><tr><td>020001</td><td>Refrigerante Cola 2L Serra Azul</td><td class="n">132</td>
+    <td class="n">132</td>
+    <td class="n">R$ 6,78</td><td class="n">R$ 7,28</td><td class="n">R$ 961,24</td></tr><tr><td>020002</td><td>Refrigerante Cola 2L Tropical</td><td class="n">156</td>
+    <td class="n">156</td>
+    <td class="n">R$ 7,82</td><td class="n">R$ 8,40</td><td class="n">R$ 1.310,90</td></tr><tr><td>020003</td><td>Refrigerante Cola 2L Vale Verde</td><td class="n">126</td>
+    <td class="n">126</td>
+    <td class="n">R$ 5,78</td><td class="n">R$ 6,21</td><td class="n">R$ 782,65</td></tr><tr><td>020004</td><td>Refrigerante Guaraná 2L Serra Azul</td><td class="n">60</td>
+    <td class="n">60</td>
+    <td class="n">R$ 5,25</td><td class="n">R$ 5,65</td><td class="n">R$ 338,75</td></tr><tr><td>020005</td><td>Refrigerante Guaraná 2L Tropical</td><td class="n">78</td>
+    <td class="n">78</td>
+    <td class="n">R$ 6,17</td><td class="n">R$ 6,63</td><td class="n">R$ 516,80</td></tr><tr><td>020006</td><td>Refrigerante Guaraná 2L Vale Verde</td><td class="n">48</td>
+    <td class="n">48</td>
+    <td class="n">R$ 4,63</td><td class="n">R$ 4,98</td><td class="n">R$ 239,01</td></tr><tr><td>080005</td><td>Sabonete em Barra 85g Bem-Estar</td><td class="n">84</td>
+    <td class="n">84</td>
+    <td class="n">R$ 2,09</td><td class="n">R$ 2,24</td><td class="n">R$ 188,34</td></tr><tr><td>080004</td><td>Sabonete em Barra 85g Suavità</td><td class="n">96</td>
+    <td class="n">96</td>
+    <td class="n">R$ 1,88</td><td class="n">R$ 2,02</td><td class="n">R$ 193,92</td></tr><tr><td>080006</td><td>Sabonete em Barra 85g Vale Verde</td><td class="n">132</td>
+    <td class="n">132</td>
+    <td class="n">R$ 1,65</td><td class="n">R$ 1,78</td><td class="n">R$ 234,64</td></tr><tr><td>070004</td><td>Sabão em Pó 1,6kg Brilhante</td><td class="n">54</td>
+    <td class="n">54</td>
+    <td class="n">R$ 15,04</td><td class="n">R$ 16,16</td><td class="n">R$ 872,64</td></tr><tr><td>070005</td><td>Sabão em Pó 1,6kg Lar Limpo</td><td class="n">18</td>
+    <td class="n">18</td>
+    <td class="n">R$ 16,93</td><td class="n">R$ 18,19</td><td class="n">R$ 327,42</td></tr><tr><td>070006</td><td>Sabão em Pó 1,6kg Vale Verde</td><td class="n">27</td>
+    <td class="n">27</td>
+    <td class="n">R$ 12,45</td><td class="n">R$ 13,37</td><td class="n">R$ 361,05</td></tr><tr><td>070020</td><td>Saco de Lixo 50L 10un</td><td class="n">40</td>
+    <td class="n">40</td>
+    <td class="n">R$ 5,59</td><td class="n">R$ 6,01</td><td class="n">R$ 240,38</td></tr><tr><td>110005</td><td>Saco para Pão Kraft (pct 1000un)</td><td class="n">4</td>
+    <td class="n">4</td>
+    <td class="n">R$ 42,84</td><td class="n">R$ 46,03</td><td class="n">R$ 184,10</td></tr><tr><td>110001</td><td>Sacola Plástica Reciclada (pct 1000un)</td><td class="n">5</td>
+    <td class="n">5</td>
+    <td class="n">R$ 90,09</td><td class="n">R$ 96,80</td><td class="n">R$ 483,99</td></tr><tr><td>010034</td><td>Sal Refinado 1kg Bom Grão</td><td class="n">30</td>
+    <td class="n">30</td>
+    <td class="n">R$ 1,62</td><td class="n">R$ 1,74</td><td class="n">R$ 52,12</td></tr><tr><td>010035</td><td>Sal Refinado 1kg Tio Nino</td><td class="n">50</td>
+    <td class="n">50</td>
+    <td class="n">R$ 1,86</td><td class="n">R$ 2,00</td><td class="n">R$ 99,99</td></tr><tr><td>010036</td><td>Sal Refinado 1kg Vale Verde</td><td class="n">20</td>
+    <td class="n">20</td>
+    <td class="n">R$ 1,41</td><td class="n">R$ 1,51</td><td class="n">R$ 30,30</td></tr><tr><td>010040</td><td>Sardinha em Lata 125g Bom Grão</td><td class="n">72</td>
+    <td class="n">72</td>
+    <td class="n">R$ 4,33</td><td class="n">R$ 4,66</td><td class="n">R$ 335,24</td></tr><tr><td>010041</td><td>Sardinha em Lata 125g Tio Nino</td><td class="n">24</td>
+    <td class="n">24</td>
+    <td class="n">R$ 4,95</td><td class="n">R$ 5,32</td><td class="n">R$ 127,74</td></tr><tr><td>080011</td><td>Shampoo 350ml Bem-Estar</td><td class="n">24</td>
+    <td class="n">24</td>
+    <td class="n">R$ 12,20</td><td class="n">R$ 13,11</td><td class="n">R$ 314,64</td></tr><tr><td>080010</td><td>Shampoo 350ml Suavità</td><td class="n">24</td>
+    <td class="n">24</td>
+    <td class="n">R$ 10,39</td><td class="n">R$ 11,16</td><td class="n">R$ 267,85</td></tr><tr><td>080012</td><td>Shampoo 350ml Vale Verde</td><td class="n">24</td>
+    <td class="n">24</td>
+    <td class="n">R$ 9,40</td><td class="n">R$ 10,10</td><td class="n">R$ 242,40</td></tr><tr><td>090008</td><td>Sorvete Napolitano 2L</td><td class="n">54</td>
+    <td class="n">54</td>
+    <td class="n">R$ 15,61</td><td class="n">R$ 16,78</td><td class="n">R$ 905,91</td></tr><tr><td>020011</td><td>Suco Integral Caixinha 1L Serra Azul</td><td class="n">48</td>
+    <td class="n">48</td>
+    <td class="n">R$ 4,87</td><td class="n">R$ 5,23</td><td class="n">R$ 251,13</td></tr><tr><td>020012</td><td>Suco Integral Caixinha 1L Tropical</td><td class="n">84</td>
+    <td class="n">84</td>
+    <td class="n">R$ 5,25</td><td class="n">R$ 5,64</td><td class="n">R$ 473,41</td></tr><tr><td>020013</td><td>Suco Integral Caixinha 1L Vale Verde</td><td class="n">60</td>
+    <td class="n">60</td>
+    <td class="n">R$ 4,15</td><td class="n">R$ 4,45</td><td class="n">R$ 267,25</td></tr><tr><td>010067</td><td>Tempero Completo 300g Bom Grão</td><td class="n">60</td>
+    <td class="n">60</td>
+    <td class="n">R$ 3,42</td><td class="n">R$ 3,68</td><td class="n">R$ 220,58</td></tr><tr><td>010069</td><td>Tempero Completo 300g Vale Verde</td><td class="n">36</td>
+    <td class="n">36</td>
+    <td class="n">R$ 2,98</td><td class="n">R$ 3,20</td><td class="n">R$ 115,26</td></tr><tr><td>020024</td><td>Vinho Tinto Seco 750ml</td><td class="n">18</td>
+    <td class="n">18</td>
+    <td class="n">R$ 22,20</td><td class="n">R$ 23,86</td><td class="n">R$ 429,41</td></tr><tr><td>020007</td><td>Água Mineral sem Gás 1,5L Serra Azul</td><td class="n">156</td>
+    <td class="n">156</td>
+    <td class="n">R$ 1,44</td><td class="n">R$ 1,55</td><td class="n">R$ 241,07</td></tr><tr><td>020008</td><td>Água Mineral sem Gás 1,5L Tropical</td><td class="n">96</td>
+    <td class="n">96</td>
+    <td class="n">R$ 1,66</td><td class="n">R$ 1,79</td><td class="n">R$ 171,62</td></tr><tr><td>020009</td><td>Água Mineral sem Gás 1,5L Vale Verde</td><td class="n">72</td>
+    <td class="n">72</td>
+    <td class="n">R$ 1,27</td><td class="n">R$ 1,36</td><td class="n">R$ 98,17</td></tr><tr><td>020010</td><td>Água Mineral sem Gás 500ml</td><td class="n">108</td>
+    <td class="n">108</td>
+    <td class="n">R$ 0,96</td><td class="n">R$ 1,03</td><td class="n">R$ 111,26</td></tr><tr><td>070013</td><td>Água Sanitária 2L Brilhante</td><td class="n">48</td>
+    <td class="n">48</td>
+    <td class="n">R$ 4,19</td><td class="n">R$ 4,50</td><td class="n">R$ 216,22</td></tr><tr><td>070014</td><td>Água Sanitária 2L Lar Limpo</td><td class="n">66</td>
+    <td class="n">66</td>
+    <td class="n">R$ 4,82</td><td class="n">R$ 5,18</td><td class="n">R$ 341,97</td></tr><tr><td>070015</td><td>Água Sanitária 2L Vale Verde</td><td class="n">42</td>
+    <td class="n">42</td>
+    <td class="n">R$ 3,77</td><td class="n">R$ 4,05</td><td class="n">R$ 170,10</td></tr><tr><td>020026</td><td>Água de Coco 1L</td><td class="n">24</td>
+    <td class="n">24</td>
+    <td class="n">R$ 6,94</td><td class="n">R$ 7,45</td><td class="n">R$ 178,89</td></tr><tr><td>010016</td><td>Óleo de Soja 900ml Bom Grão</td><td class="n">120</td>
+    <td class="n">120</td>
+    <td class="n">R$ 6,13</td><td class="n">R$ 6,59</td><td class="n">R$ 790,22</td></tr><tr><td>010017</td><td>Óleo de Soja 900ml Tio Nino</td><td class="n">40</td>
+    <td class="n">40</td>
+    <td class="n">R$ 7,05</td><td class="n">R$ 7,58</td><td class="n">R$ 303,00</td></tr><tr><td>010018</td><td>Óleo de Soja 900ml Vale Verde</td><td class="n">140</td>
+    <td class="n">140</td>
+    <td class="n">R$ 5,23</td><td class="n">R$ 5,62</td><td class="n">R$ 786,18</td></tr>
+  <tr class="total"><td colspan="6">Total (preço de transferência)</td><td class="n">R$ 68.721,69</td></tr>
+</table></div>
+
+</div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+
+</body>
+</html>

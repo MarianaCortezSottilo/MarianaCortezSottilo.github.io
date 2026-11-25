@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Novo pedido · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="vv01";window.VV_KEY="/compras/novo";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" selected>VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      <a href="unidades_5.html">ficha da unidade</a>
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Novo pedido de compra</h1>
+  <div class="sub">CD → fornecedores nacionais (mercearia, bebidas, limpeza...). Loja → fornecedores regionais de perecíveis da sua região. "Sugerido" completa até o estoque máximo.</div></div>
+  <form class="filtros"><label>Unidade</label><select name="unidade_id" onchange="this.form.submit()"><option value="">— escolha —</option><option value="5" selected>VV01 · Vale Verde Campinas Taquaral</option><option value="6" >VV02 · Vale Verde São Paulo Mooca</option><option value="7" >VV03 · Vale Verde Rio Tijuca</option><option value="8" >VV04 · Vale Verde BH Savassi</option><option value="9" >VV05 · Vale Verde Curitiba Água Verde</option><option value="10" >VV06 · Vale Verde Porto Alegre Menino Deus</option><option value="11" >VV07 · Vale Verde Goiânia Setor Bueno</option><option value="12" >VV08 · Vale Verde Salvador Pituba</option><option value="13" >VV09 · Vale Verde Recife Boa Viagem</option><option value="14" >VV10 · Vale Verde Belém Nazaré</option><option value="2" >CD01 · CD Sudeste/Centro-Oeste</option><option value="3" >CD02 · CD Sul</option><option value="4" >CD03 · CD Nordeste/Norte</option></select></form></div>
+
+<div class="cartao">
+  <div class="form-grade">
+    <div class="campo"><label>Fornecedor</label><select id="forn" onchange="montar()"><option value="11" data-tipo="AVES">Avícola Santa Clara (AVES · paga 14d)</option><option value="10" data-tipo="BOV">Frigorífico Boi Forte (BOV · paga 14d)</option><option value="13" data-tipo="FRIOS">Frios Serra da Mantiqueira (FRIOS · paga 21d)</option><option value="8" data-tipo="HORTI">Hortifruti Irmãos Okada (CEASA) (HORTI · paga 7d)</option><option value="12" data-tipo="LAT">Laticínios Campo Bom (LAT · paga 14d)</option><option value="9" data-tipo="PAD">Massas Congeladas Trigo de Ouro (PAD · paga 14d)</option></select></div>
+    <div class="campo"><label>Data do pedido</label><input type="date" id="data" value="2026-11-25"></div>
+    <div class="campo"><label>Comprador</label><select id="comprador"><option value="4">João Lopes Barbosa</option><option value="5">Camila Nunes Soares</option><option value="37">Diego Carvalho Ramos</option><option value="38">Daniela Silva Andrade</option><option value="39">Larissa Freitas Pereira</option></select></div>
+  </div>
+  <div class="rolagem mt"><table id="tab"></table></div>
+  <p style="font-size:18px;font-weight:650">Total: <span id="total">R$ 0,00</span></p>
+  <button class="btn-primario" onclick="salvar()">Gravar pedido</button> <button onclick="sugerir()">Preencher com sugerido</button>
+  <div id="msg" class="mt"></div>
+</div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+<script>
+const produtos = [{"custo": 3.77, "descricao": "Abobrinha", "emb": 5.0, "estoque": 25.743, "forn_ids": [8], "id": 163, "maximo": 48.5, "minimo": 20.5, "tipo_fornecedor": "HORTI", "unidade": "KG"}, {"custo": 36.6, "descricao": "Ac\u00e9m Bovino", "emb": 5.0, "estoque": 43.267, "forn_ids": [10], "id": 142, "maximo": 58.9, "minimo": 20.6, "tipo_fornecedor": "BOV", "unidade": "KG"}, {"custo": 49.08, "descricao": "Alcatra Bovina", "emb": 5.0, "estoque": 64.126, "forn_ids": [10], "id": 139, "maximo": 74.9, "minimo": 26.2, "tipo_fornecedor": "BOV", "unidade": "KG"}, {"custo": 1.71, "descricao": "Alface Crespa", "emb": 12.0, "estoque": 110.0, "forn_ids": [8], "id": 162, "maximo": 249.9, "minimo": 87.3, "tipo_fornecedor": "HORTI", "unidade": "UN"}, {"custo": 21.49, "descricao": "Alho Nacional", "emb": 2.0, "estoque": 9.572, "forn_ids": [8], "id": 154, "maximo": 17.4, "minimo": 7.4, "tipo_fornecedor": "HORTI", "unidade": "KG"}, {"custo": 4.09, "descricao": "Banana Prata", "emb": 10.0, "estoque": 287.596, "forn_ids": [8], "id": 150, "maximo": 723.8, "minimo": 252.9, "tipo_fornecedor": "HORTI", "unidade": "KG"}, {"custo": 4.61, "descricao": "Batata Lavada", "emb": 10.0, "estoque": 390.023, "forn_ids": [8], "id": 152, "maximo": 940.7, "minimo": 398.0, "tipo_fornecedor": "HORTI", "unidade": "KG"}, {"custo": 6.11, "descricao": "Bebida L\u00e1ctea Morango 900g Campo Bom", "emb": 12.0, "estoque": 74.0, "forn_ids": [12], "id": 119, "maximo": 83.2, "minimo": 35.2, "tipo_fornecedor": "LAT", "unidade": "UN"}, {"custo": 6.91, "descricao": "Bebida L\u00e1ctea Morango 900g Leiteria Mineira", "emb": 12.0, "estoque": 41.0, "forn_ids": [12], "id": 120, "maximo": 52.4, "minimo": 22.2, "tipo_fornecedor": "LAT", "unidade": "UN"}, {"custo": 5.16, "descricao": "Bebida L\u00e1ctea Morango 900g Vale Verde", "emb": 12.0, "estoque": 45.0, "forn_ids": [12], "id": 121, "maximo": 51.8, "minimo": 21.9, "tipo_fornecedor": "LAT", "unidade": "UN"}, {"custo": 22.95, "descricao": "Bisteca Su\u00edna", "emb": 5.0, "estoque": 18.068, "forn_ids": [11], "id": 148, "maximo": 45.2, "minimo": 15.8, "tipo_fornecedor": "AVES", "unidade": "KG"}, {"custo": 8.44, "descricao": "Bolo Caseiro Fub\u00e1", "emb": 6.0, "estoque": 57.0, "forn_ids": [9], "id": 167, "maximo": 134.6, "minimo": 47.0, "tipo_fornecedor": "PAD", "unidade": "UN"}, {"custo": 40.01, "descricao": "Carne Mo\u00edda Patinho", "emb": 5.0, "estoque": 64.095, "forn_ids": [10], "id": 138, "maximo": 87.5, "minimo": 30.6, "tipo_fornecedor": "BOV", "unidade": "KG"}, {"custo": 3.82, "descricao": "Cebola", "emb": 10.0, "estoque": 172.082, "forn_ids": [8], "id": 153, "maximo": 335.3, "minimo": 141.9, "tipo_fornecedor": "HORTI", "unidade": "KG"}, {"custo": 3.67, "descricao": "Cenoura", "emb": 5.0, "estoque": 86.316, "forn_ids": [8], "id": 155, "maximo": 147.9, "minimo": 62.6, "tipo_fornecedor": "HORTI", "unidade": "KG"}, {"custo": 53.93, "descricao": "Contrafil\u00e9 Bovino", "emb": 5.0, "estoque": 66.305, "forn_ids": [10], "id": 141, "maximo": 68.8, "minimo": 24.0, "tipo_fornecedor": "BOV", "unidade": "KG"}, {"custo": 28.07, "descricao": "Costela Bovina", "emb": 5.0, "estoque": 100.093, "forn_ids": [10], "id": 143, "maximo": 102.6, "minimo": 35.8, "tipo_fornecedor": "BOV", "unidade": "KG"}, {"custo": 13.22, "descricao": "Coxa e Sobrecoxa de Frango", "emb": 5.0, "estoque": 43.049, "forn_ids": [11], "id": 145, "maximo": 143.2, "minimo": 50.0, "tipo_fornecedor": "AVES", "unidade": "KG"}, {"custo": 11.54, "descricao": "Frango Inteiro Congelado", "emb": 10.0, "estoque": 506.52, "forn_ids": [11], "id": 146, "maximo": 600.6, "minimo": 369.6, "tipo_fornecedor": "AVES", "unidade": "KG"}, {"custo": 2.6, "descricao": "Iogurte Natural 170g Campo Bom", "emb": 12.0, "estoque": 102.0, "forn_ids": [12], "id": 116, "maximo": 153.4, "minimo": 64.9, "tipo_fornecedor": "LAT", "unidade": "UN"}, {"custo": 2.89, "descricao": "Iogurte Natural 170g Leiteria Mineira", "emb": 12.0, "estoque": 52.0, "forn_ids": [12], "id": 117, "maximo": 77.6, "minimo": 32.8, "tipo_fornecedor": "LAT", "unidade": "UN"}, {"custo": 2.24, "descricao": "Iogurte Natural 170g Vale Verde", "emb": 12.0, "estoque": 59.0, "forn_ids": [12], "id": 118, "maximo": 79.5, "minimo": 33.6, "tipo_fornecedor": "LAT", "unidade": "UN"}, {"custo": 3.36, "descricao": "Laranja Pera", "emb": 20.0, "estoque": 262.445, "forn_ids": [8], "id": 157, "maximo": 512.3, "minimo": 216.7, "tipo_fornecedor": "HORTI", "unidade": "KG"}, {"custo": 5.05, "descricao": "Leite UHT Desnatado 1L Campo Bom", "emb": 12.0, "estoque": 597.0, "forn_ids": [12], "id": 113, "maximo": 575.8, "minimo": 321.0, "tipo_fornecedor": "LAT", "unidade": "UN"}, {"custo": 5.76, "descricao": "Leite UHT Desnatado 1L Leiteria Mineira", "emb": 12.0, "estoque": 261.0, "forn_ids": [12], "id": 114, "maximo": 365.0, "minimo": 203.5, "tipo_fornecedor": "LAT", "unidade": "UN"}, {"custo": 4.4, "descricao": "Leite UHT Desnatado 1L Vale Verde", "emb": 12.0, "estoque": 318.0, "forn_ids": [12], "id": 115, "maximo": 325.2, "minimo": 181.3, "tipo_fornecedor": "LAT", "unidade": "UN"}, {"custo": 4.83, "descricao": "Leite UHT Integral 1L Campo Bom", "emb": 12.0, "estoque": 2023.0, "forn_ids": [12], "id": 110, "maximo": 2611.7, "minimo": 1456.0, "tipo_fornecedor": "LAT", "unidade": "UN"}, {"custo": 5.51, "descricao": "Leite UHT Integral 1L Leiteria Mineira", "emb": 12.0, "estoque": 1026.0, "forn_ids": [12], "id": 111, "maximo": 1271.9, "minimo": 709.1, "tipo_fornecedor": "LAT", "unidade": "UN"}, {"custo": 4.13, "descricao": "Leite UHT Integral 1L Vale Verde", "emb": 12.0, "estoque": 1287.0, "forn_ids": [12], "id": 112, "maximo": 1562.0, "minimo": 870.8, "tipo_fornecedor": "LAT", "unidade": "UN"}, {"custo": 3.85, "descricao": "Lim\u00e3o Tahiti", "emb": 10.0, "estoque": 109.781, "forn_ids": [8], "id": 158, "maximo": 138.2, "minimo": 58.5, "tipo_fornecedor": "HORTI", "unidade": "KG"}, {"custo": 19.75, "descricao": "Lingui\u00e7a Toscana", "emb": 5.0, "estoque": 70.682, "forn_ids": [11], "id": 147, "maximo": 126.4, "minimo": 53.5, "tipo_fornecedor": "AVES", "unidade": "KG"}, {"custo": 4.47, "descricao": "Mam\u00e3o Formosa", "emb": 10.0, "estoque": 117.022, "forn_ids": [8], "id": 159, "maximo": 258.1, "minimo": 90.2, "tipo_fornecedor": "HORTI", "unidade": "KG"}, {"custo": 12.12, "descricao": "Manteiga com Sal 200g Campo Bom", "emb": 12.0, "estoque": 118.0, "forn_ids": [12], "id": 124, "maximo": 142.5, "minimo": 79.4, "tipo_fornecedor": "LAT", "unidade": "UN"}, {"custo": 13.99, "descricao": "Manteiga com Sal 200g Leiteria Mineira", "emb": 12.0, "estoque": 81.0, "forn_ids": [12], "id": 125, "maximo": 87.2, "minimo": 48.6, "tipo_fornecedor": "LAT", "unidade": "UN"}, {"custo": 10.57, "descricao": "Manteiga com Sal 200g Vale Verde", "emb": 12.0, "estoque": 91.0, "forn_ids": [12], "id": 126, "maximo": 78.9, "minimo": 44.0, "tipo_fornecedor": "LAT", "unidade": "UN"}, {"custo": 6.95, "descricao": "Margarina 500g Campo Bom", "emb": 12.0, "estoque": 176.0, "forn_ids": [12], "id": 127, "maximo": 255.3, "minimo": 142.3, "tipo_fornecedor": "LAT", "unidade": "UN"}, {"custo": 7.86, "descricao": "Margarina 500g Leiteria Mineira", "emb": 12.0, "estoque": 124.0, "forn_ids": [12], "id": 128, "maximo": 142.9, "minimo": 79.6, "tipo_fornecedor": "LAT", "unidade": "UN"}, {"custo": 6.25, "descricao": "Margarina 500g Vale Verde", "emb": 12.0, "estoque": 110.0, "forn_ids": [12], "id": 129, "maximo": 130.2, "minimo": 72.6, "tipo_fornecedor": "LAT", "unidade": "UN"}, {"custo": 8.52, "descricao": "Ma\u00e7\u00e3 Gala", "emb": 10.0, "estoque": 163.615, "forn_ids": [8], "id": 156, "maximo": 287.4, "minimo": 121.6, "tipo_fornecedor": "HORTI", "unidade": "KG"}, {"custo": 1.99, "descricao": "Melancia", "emb": 20.0, "estoque": 551.319, "forn_ids": [8], "id": 160, "maximo": 1107.9, "minimo": 468.7, "tipo_fornecedor": "HORTI", "unidade": "KG"}, {"custo": 17.85, "descricao": "Mortadela Fatiada", "emb": 1.0, "estoque": 3.643, "forn_ids": [13], "id": 136, "maximo": 17.5, "minimo": 7.4, "tipo_fornecedor": "FRIOS", "unidade": "KG"}, {"custo": 9.63, "descricao": "Ovos Brancos D\u00fazia", "emb": 30.0, "estoque": 117.0, "forn_ids": [11], "id": 134, "maximo": 209.9, "minimo": 88.8, "tipo_fornecedor": "AVES", "unidade": "UN"}, {"custo": 18.51, "descricao": "Peito de Frango", "emb": 5.0, "estoque": 51.15, "forn_ids": [11], "id": 144, "maximo": 123.0, "minimo": 43.0, "tipo_fornecedor": "AVES", "unidade": "KG"}, {"custo": 55.57, "descricao": "Peito de Peru Defumado Fatiado", "emb": 1.0, "estoque": 5.806, "forn_ids": [13], "id": 137, "maximo": 6.7, "minimo": 2.8, "tipo_fornecedor": "FRIOS", "unidade": "KG"}, {"custo": 21.29, "descricao": "Pernil Su\u00edno", "emb": 5.0, "estoque": 27.54, "forn_ids": [11], "id": 149, "maximo": 73.0, "minimo": 25.5, "tipo_fornecedor": "AVES", "unidade": "KG"}, {"custo": 79.96, "descricao": "Picanha Bovina", "emb": 5.0, "estoque": 31.946, "forn_ids": [10], "id": 140, "maximo": 34.2, "minimo": 11.9, "tipo_fornecedor": "BOV", "unidade": "KG"}, {"custo": 6.85, "descricao": "Piment\u00e3o Verde", "emb": 5.0, "estoque": 22.248, "forn_ids": [8], "id": 164, "maximo": 38.8, "minimo": 16.4, "tipo_fornecedor": "HORTI", "unidade": "KG"}, {"custo": 26.58, "descricao": "Presunto Cozido Fatiado", "emb": 1.0, "estoque": 33.477, "forn_ids": [13], "id": 123, "maximo": 28.8, "minimo": 12.2, "tipo_fornecedor": "FRIOS", "unidade": "KG"}, {"custo": 7.24, "descricao": "P\u00e3o Franc\u00eas", "emb": 10.0, "estoque": 203.596, "forn_ids": [9], "id": 165, "maximo": 480.1, "minimo": 167.7, "tipo_fornecedor": "PAD", "unidade": "KG"}, {"custo": 6.07, "descricao": "P\u00e3o de Forma Tradicional 500g", "emb": 10.0, "estoque": 192.0, "forn_ids": [9], "id": 168, "maximo": 287.5, "minimo": 121.6, "tipo_fornecedor": "PAD", "unidade": "UN"}, {"custo": 20.27, "descricao": "P\u00e3o de Queijo", "emb": 5.0, "estoque": 15.92, "forn_ids": [9], "id": 166, "maximo": 32.6, "minimo": 11.4, "tipo_fornecedor": "PAD", "unidade": "KG"}, {"custo": 34.66, "descricao": "Queijo Minas Frescal", "emb": 1.0, "estoque": 14.306, "forn_ids": [12], "id": 133, "maximo": 16.2, "minimo": 6.9, "tipo_fornecedor": "LAT", "unidade": "KG"}, {"custo": 38.39, "descricao": "Queijo Mussarela Fatiado", "emb": 1.0, "estoque": 26.218, "forn_ids": [13], "id": 122, "maximo": 32.2, "minimo": 13.6, "tipo_fornecedor": "FRIOS", "unidade": "KG"}, {"custo": 6.67, "descricao": "Requeij\u00e3o Cremoso 200g Campo Bom", "emb": 12.0, "estoque": 193.0, "forn_ids": [12], "id": 130, "maximo": 256.1, "minimo": 142.8, "tipo_fornecedor": "LAT", "unidade": "UN"}, {"custo": 7.73, "descricao": "Requeij\u00e3o Cremoso 200g Leiteria Mineira", "emb": 12.0, "estoque": 189.0, "forn_ids": [12], "id": 131, "maximo": 128.3, "minimo": 71.5, "tipo_fornecedor": "LAT", "unidade": "UN"}, {"custo": 5.79, "descricao": "Requeij\u00e3o Cremoso 200g Vale Verde", "emb": 12.0, "estoque": 92.0, "forn_ids": [12], "id": 132, "maximo": 91.2, "minimo": 50.8, "tipo_fornecedor": "LAT", "unidade": "UN"}, {"custo": 5.67, "descricao": "Rosca Doce", "emb": 6.0, "estoque": 58.0, "forn_ids": [9], "id": 169, "maximo": 95.6, "minimo": 33.4, "tipo_fornecedor": "PAD", "unidade": "UN"}, {"custo": 13.98, "descricao": "Salsicha Hot Dog", "emb": 1.0, "estoque": 14.825, "forn_ids": [13], "id": 135, "maximo": 23.6, "minimo": 10.0, "tipo_fornecedor": "FRIOS", "unidade": "KG"}, {"custo": 2.0, "descricao": "Sonho de Creme", "emb": 12.0, "estoque": 63.0, "forn_ids": [9], "id": 170, "maximo": 147.1, "minimo": 51.4, "tipo_fornecedor": "PAD", "unidade": "UN"}, {"custo": 5.43, "descricao": "Tomate Italiano", "emb": 10.0, "estoque": 185.213, "forn_ids": [8], "id": 151, "maximo": 446.4, "minimo": 156.0, "tipo_fornecedor": "HORTI", "unidade": "KG"}, {"custo": 11.1, "descricao": "Uva Ni\u00e1gara", "emb": 5.0, "estoque": 27.418, "forn_ids": [8], "id": 161, "maximo": 63.6, "minimo": 22.2, "tipo_fornecedor": "HORTI", "unidade": "KG"}];
+function montar() {
+  const sel = document.getElementById('forn'); if (!sel.options.length) return;
+  const tipo = sel.options[sel.selectedIndex].dataset.tipo;
+  const ps = produtos.filter(p => p.tipo_fornecedor === tipo);
+  let h = '<tr><th>Produto</th><th class="n">Estoque</th><th class="n">Mín.</th><th class="n">Máx.</th><th class="n">Emb.</th><th class="n">Sugerido</th><th class="n">Custo</th><th class="n">Quantidade</th></tr>';
+  ps.forEach(p => {
+    const sug = p.estoque < p.minimo ? Math.ceil((p.maximo - p.estoque) / p.emb) * p.emb : 0;
+    h += `<tr><td>${p.descricao}</td><td class="n">${VV.fmtNum(1).format(p.estoque)}</td><td class="n">${VV.fmtNum(1).format(p.minimo)}</td><td class="n">${VV.fmtNum(1).format(p.maximo)}</td><td class="n">${p.emb}</td>
+      <td class="n">${sug || ''}</td><td class="n"><input type="number" step="0.01" value="${p.custo}" data-c="${p.id}" style="width:80px" oninput="total()"></td>
+      <td class="n"><input type="number" step="0.001" min="0" data-q="${p.id}" data-sug="${sug}" style="width:90px" oninput="total()"></td></tr>`;
+  });
+  document.getElementById('tab').innerHTML = h; total();
+}
+function sugerir() { document.querySelectorAll('[data-q]').forEach(i => { if (+i.dataset.sug) i.value = i.dataset.sug; }); total(); }
+function linhas() { return [...document.querySelectorAll('[data-q]')].filter(i => +i.value > 0).map(i => ({produto_id: +i.dataset.q, quantidade: +i.value, custo: +document.querySelector(`[data-c="${i.dataset.q}"]`).value})); }
+function total() { document.getElementById('total').textContent = VV.brl(linhas().reduce((a, l) => a + l.quantidade * l.custo, 0)); }
+async function salvar() {
+  const r = await fetch('/compras/novo', {method: 'POST', headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({unidade_id: 5, fornecedor_id: document.getElementById('forn').value, data: document.getElementById('data').value,
+                          comprador_id: document.getElementById('comprador').value, itens: linhas()})});
+  const j = await r.json();
+  if (!r.ok) { document.getElementById('msg').innerHTML = `<div class="flash erro">${j.erro}</div>`; return; }
+  location.href = `/compras/${j.pedido_id}`;
+}
+montar();
+</script>
+</body>
+</html>

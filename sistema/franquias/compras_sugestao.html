@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sugestão de compra · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="franquias";window.VV_KEY="/compras/sugestao";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="ativo">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" selected>Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Sugestão de compra e reposição</h1>
+  <div class="sub">Lojas franqueadas · itens abaixo do estoque mínimo, com quantidade para voltar ao máximo. Nas lojas, itens de CD viram transferência; perecíveis viram pedido ao fornecedor regional. Total: <b>R$ 51.691,09</b></div></div>
+  <div class="filtros">
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a>
+    <form method="post" onsubmit="return confirm('Gerar pedidos e transferências em aberto para a seleção atual?')"><button class="btn-primario" >Gerar pedidos e transferências</button></form></div></div>
+<div class="cartao"><div class="rolagem"><table>
+  <tr><th>Unidade</th><th>Origem</th><th>Produto</th><th class="n">Estoque</th><th class="n">Mínimo</th><th class="n">Máximo</th><th class="n">Saída/dia</th><th class="n">Cobertura</th><th class="n">Sugerido</th><th class="n">Valor</th></tr>
+  <tr><td>VV03</td><td>Fornecedor</td><td><a href="estoque_7_139.html">Alcatra Bovina</a></td><td class="n">17,0</td>
+    <td class="n">27,5</td><td class="n">78,8</td><td class="n">19,6</td><td class="n">0,9 d</td>
+    <td class="n">65,0</td><td class="n">R$ 3.190,20</td></tr>
+  <tr><td>VV03</td><td>Fornecedor</td><td><a href="estoque_7_156.html">Maçã Gala</a></td><td class="n">79,3</td>
+    <td class="n">147,0</td><td class="n">347,4</td><td class="n">66,8</td><td class="n">1,2 d</td>
+    <td class="n">270,0</td><td class="n">R$ 2.300,40</td></tr>
+  <tr><td>VV03</td><td>Fornecedor</td><td><a href="estoque_7_136.html">Mortadela Fatiada</a></td><td class="n">8,1</td>
+    <td class="n">8,5</td><td class="n">20,0</td><td class="n">3,8</td><td class="n">2,1 d</td>
+    <td class="n">12,0</td><td class="n">R$ 214,20</td></tr>
+  <tr><td>VV03</td><td>Fornecedor</td><td><a href="estoque_7_140.html">Picanha Bovina</a></td><td class="n">12,3</td>
+    <td class="n">13,1</td><td class="n">37,6</td><td class="n">9,3</td><td class="n">1,3 d</td>
+    <td class="n">30,0</td><td class="n">R$ 2.398,80</td></tr>
+  <tr><td>VV03</td><td>Fornecedor</td><td><a href="estoque_7_123.html">Presunto Cozido Fatiado</a></td><td class="n">11,7</td>
+    <td class="n">15,4</td><td class="n">36,5</td><td class="n">7,0</td><td class="n">1,7 d</td>
+    <td class="n">25,0</td><td class="n">R$ 664,50</td></tr>
+  <tr><td>VV03</td><td>Fornecedor</td><td><a href="estoque_7_165.html">Pão Francês</a></td><td class="n">139,4</td>
+    <td class="n">192,9</td><td class="n">552,2</td><td class="n">138,3</td><td class="n">1,0 d</td>
+    <td class="n">420,0</td><td class="n">R$ 3.040,80</td></tr>
+  <tr><td>VV03</td><td>Fornecedor</td><td><a href="estoque_7_166.html">Pão de Queijo</a></td><td class="n">10,9</td>
+    <td class="n">13,4</td><td class="n">38,3</td><td class="n">9,5</td><td class="n">1,1 d</td>
+    <td class="n">30,0</td><td class="n">R$ 608,10</td></tr>
+  <tr><td>VV03</td><td>Fornecedor</td><td><a href="estoque_7_169.html">Rosca Doce</a></td><td class="n">31,0</td>
+    <td class="n">43,1</td><td class="n">123,3</td><td class="n">30,7</td><td class="n">1,0 d</td>
+    <td class="n">96,0</td><td class="n">R$ 544,32</td></tr>
+  <tr><td>VV03</td><td>Fornecedor</td><td><a href="#" data-off="1">Uva Niágara</a></td><td class="n">19,7</td>
+    <td class="n">26,7</td><td class="n">76,6</td><td class="n">19,0</td><td class="n">1,0 d</td>
+    <td class="n">60,0</td><td class="n">R$ 666,00</td></tr>
+  <tr><td>VV04</td><td>Fornecedor</td><td><a href="#" data-off="1">Bolo Caseiro Fubá</a></td><td class="n">27,0</td>
+    <td class="n">52,2</td><td class="n">149,4</td><td class="n">37,1</td><td class="n">0,7 d</td>
+    <td class="n">126,0</td><td class="n">R$ 1.063,44</td></tr>
+  <tr><td>VV04</td><td>Fornecedor</td><td><a href="#" data-off="1">Contrafilé Bovino</a></td><td class="n">19,6</td>
+    <td class="n">22,3</td><td class="n">63,7</td><td class="n">15,8</td><td class="n">1,2 d</td>
+    <td class="n">45,0</td><td class="n">R$ 2.426,85</td></tr>
+  <tr><td>VV04</td><td>Fornecedor</td><td><a href="#" data-off="1">Costela Bovina</a></td><td class="n">33,2</td>
+    <td class="n">35,0</td><td class="n">100,1</td><td class="n">24,8</td><td class="n">1,3 d</td>
+    <td class="n">70,0</td><td class="n">R$ 1.964,90</td></tr>
+  <tr><td>VV04</td><td>Fornecedor</td><td><a href="#" data-off="1">Presunto Cozido Fatiado</a></td><td class="n">11,3</td>
+    <td class="n">12,7</td><td class="n">30,1</td><td class="n">5,8</td><td class="n">1,9 d</td>
+    <td class="n">19,0</td><td class="n">R$ 505,02</td></tr>
+  <tr><td>VV04</td><td>Fornecedor</td><td><a href="#" data-off="1">Pão Francês</a></td><td class="n">125,2</td>
+    <td class="n">159,4</td><td class="n">456,3</td><td class="n">114,3</td><td class="n">1,1 d</td>
+    <td class="n">340,0</td><td class="n">R$ 2.461,60</td></tr>
+  <tr><td>VV04</td><td>Fornecedor</td><td><a href="#" data-off="1">Rosca Doce</a></td><td class="n">28,0</td>
+    <td class="n">32,0</td><td class="n">91,5</td><td class="n">22,7</td><td class="n">1,2 d</td>
+    <td class="n">66,0</td><td class="n">R$ 374,22</td></tr>
+  <tr><td>VV05</td><td>CD da rede</td><td><a href="#" data-off="1">Aveia em Flocos 200g Vale Verde</a></td><td class="n">49,0</td>
+    <td class="n">50,4</td><td class="n">86,1</td><td class="n">3,8</td><td class="n">12,8 d</td>
+    <td class="n">48,0</td><td class="n">R$ 180,35</td></tr>
+  <tr><td>VV05</td><td>CD da rede</td><td><a href="#" data-off="1">Shampoo 350ml Bem-Estar</a></td><td class="n">99,0</td>
+    <td class="n">104,7</td><td class="n">178,7</td><td class="n">7,9</td><td class="n">12,5 d</td>
+    <td class="n">84,0</td><td class="n">R$ 1.101,22</td></tr>
+  <tr><td>VV05</td><td>Fornecedor</td><td><a href="#" data-off="1">Linguiça Toscana</a></td><td class="n">9,1</td>
+    <td class="n">45,8</td><td class="n">108,2</td><td class="n">20,8</td><td class="n">0,4 d</td>
+    <td class="n">100,0</td><td class="n">R$ 1.994,75</td></tr>
+  <tr><td>VV06</td><td>CD da rede</td><td><a href="#" data-off="1">Lava-Roupas Líquido 3L Lar Limpo</a></td><td class="n">45,0</td>
+    <td class="n">45,3</td><td class="n">82,5</td><td class="n">3,4</td><td class="n">13,1 d</td>
+    <td class="n">42,0</td><td class="n">R$ 1.363,80</td></tr>
+  <tr><td>VV06</td><td>Fornecedor</td><td><a href="#" data-off="1">Bebida Láctea Morango 900g Leiteria Mineira</a></td><td class="n">15,0</td>
+    <td class="n">15,6</td><td class="n">37,0</td><td class="n">7,1</td><td class="n">2,1 d</td>
+    <td class="n">24,0</td><td class="n">R$ 167,50</td></tr>
+  <tr><td>VV06</td><td>Fornecedor</td><td><a href="#" data-off="1">Picanha Bovina</a></td><td class="n">7,7</td>
+    <td class="n">8,8</td><td class="n">25,3</td><td class="n">6,3</td><td class="n">1,2 d</td>
+    <td class="n">20,0</td><td class="n">R$ 1.615,19</td></tr>
+  <tr><td>VV06</td><td>Fornecedor</td><td><a href="#" data-off="1">Pão Francês</a></td><td class="n">120,9</td>
+    <td class="n">129,3</td><td class="n">370,0</td><td class="n">92,7</td><td class="n">1,3 d</td>
+    <td class="n">250,0</td><td class="n">R$ 1.828,10</td></tr>
+  <tr><td>VV06</td><td>Fornecedor</td><td><a href="#" data-off="1">Pão de Forma Tradicional 500g</a></td><td class="n">99,0</td>
+    <td class="n">102,2</td><td class="n">241,6</td><td class="n">46,5</td><td class="n">2,1 d</td>
+    <td class="n">150,0</td><td class="n">R$ 919,61</td></tr>
+  <tr><td>VV06</td><td>Fornecedor</td><td><a href="#" data-off="1">Rosca Doce</a></td><td class="n">23,0</td>
+    <td class="n">26,7</td><td class="n">76,4</td><td class="n">19,0</td><td class="n">1,2 d</td>
+    <td class="n">54,0</td><td class="n">R$ 309,24</td></tr>
+  <tr><td>VV06</td><td>Fornecedor</td><td><a href="#" data-off="1">Sonho de Creme</a></td><td class="n">34,0</td>
+    <td class="n">41,6</td><td class="n">119,0</td><td class="n">29,5</td><td class="n">1,2 d</td>
+    <td class="n">96,0</td><td class="n">R$ 193,92</td></tr>
+  <tr><td>VV08</td><td>CD da rede</td><td><a href="#" data-off="1">Aveia em Flocos 200g Bom Grão</a></td><td class="n">145,0</td>
+    <td class="n">151,9</td><td class="n">273,4</td><td class="n">10,9</td><td class="n">13,4 d</td>
+    <td class="n">132,0</td><td class="n">R$ 579,94</td></tr>
+  <tr><td>VV08</td><td>CD da rede</td><td><a href="#" data-off="1">Cereal Matinal 300g Tio Nino</a></td><td class="n">55,0</td>
+    <td class="n">59,8</td><td class="n">107,7</td><td class="n">4,2</td><td class="n">12,9 d</td>
+    <td class="n">60,0</td><td class="n">R$ 762,35</td></tr>
+  <tr><td>VV08</td><td>CD da rede</td><td><a href="#" data-off="1">Chocolate em Barra 90g Bom Grão</a></td><td class="n">337,0</td>
+    <td class="n">339,9</td><td class="n">612,0</td><td class="n">24,1</td><td class="n">14,0 d</td>
+    <td class="n">280,0</td><td class="n">R$ 1.561,06</td></tr>
+  <tr><td>VV08</td><td>CD da rede</td><td><a href="#" data-off="1">Detergente Líquido 500ml Brilhante</a></td><td class="n">787,0</td>
+    <td class="n">797,5</td><td class="n">1.435,9</td><td class="n">56,7</td><td class="n">13,9 d</td>
+    <td class="n">672,0</td><td class="n">R$ 1.343,87</td></tr>
+  <tr><td>VV08</td><td>CD da rede</td><td><a href="#" data-off="1">Detergente Líquido 500ml Lar Limpo</a></td><td class="n">475,0</td>
+    <td class="n">475,7</td><td class="n">856,5</td><td class="n">33,8</td><td class="n">14,1 d</td>
+    <td class="n">384,0</td><td class="n">R$ 888,15</td></tr>
+  <tr><td>VV08</td><td>CD da rede</td><td><a href="#" data-off="1">Extrato de Tomate 340g Tio Nino</a></td><td class="n">102,0</td>
+    <td class="n">106,1</td><td class="n">191,0</td><td class="n">7,5</td><td class="n">13,5 d</td>
+    <td class="n">96,0</td><td class="n">R$ 424,68</td></tr>
+  <tr><td>VV08</td><td>CD da rede</td><td><a href="#" data-off="1">Fubá Mimoso 1kg Tio Nino</a></td><td class="n">74,0</td>
+    <td class="n">79,5</td><td class="n">143,0</td><td class="n">5,6</td><td class="n">13,1 d</td>
+    <td class="n">70,0</td><td class="n">R$ 274,32</td></tr>
+  <tr><td>VV08</td><td>CD da rede</td><td><a href="#" data-off="1">Lava-Roupas Líquido 3L Lar Limpo</a></td><td class="n">69,0</td>
+    <td class="n">71,9</td><td class="n">129,5</td><td class="n">5,1</td><td class="n">13,5 d</td>
+    <td class="n">66,0</td><td class="n">R$ 2.143,12</td></tr>
+  <tr><td>VV08</td><td>CD da rede</td><td><a href="#" data-off="1">Maionese 500g Bom Grão</a></td><td class="n">261,0</td>
+    <td class="n">269,5</td><td class="n">485,3</td><td class="n">19,1</td><td class="n">13,6 d</td>
+    <td class="n">228,0</td><td class="n">R$ 1.932,05</td></tr>
+  <tr><td>VV08</td><td>CD da rede</td><td><a href="#" data-off="1">Sabão em Pó 1,6kg Vale Verde</a></td><td class="n">112,0</td>
+    <td class="n">124,7</td><td class="n">224,5</td><td class="n">8,9</td><td class="n">12,6 d</td>
+    <td class="n">117,0</td><td class="n">R$ 1.564,57</td></tr>
+  <tr><td>VV08</td><td>Fornecedor</td><td><a href="#" data-off="1">Alcatra Bovina</a></td><td class="n">24,1</td>
+    <td class="n">24,7</td><td class="n">70,7</td><td class="n">17,6</td><td class="n">1,4 d</td>
+    <td class="n">50,0</td><td class="n">R$ 2.527,62</td></tr>
+  <tr><td>VV08</td><td>Fornecedor</td><td><a href="#" data-off="1">Presunto Cozido Fatiado</a></td><td class="n">9,0</td>
+    <td class="n">10,6</td><td class="n">25,1</td><td class="n">4,8</td><td class="n">1,9 d</td>
+    <td class="n">17,0</td><td class="n">R$ 465,42</td></tr>
+  <tr><td>VV08</td><td>Fornecedor</td><td><a href="#" data-off="1">Pão Francês</a></td><td class="n">147,6</td>
+    <td class="n">151,8</td><td class="n">434,4</td><td class="n">108,7</td><td class="n">1,4 d</td>
+    <td class="n">290,0</td><td class="n">R$ 2.162,59</td></tr>
+  <tr><td>VV08</td><td>Fornecedor</td><td><a href="#" data-off="1">Rosca Doce</a></td><td class="n">26,0</td>
+    <td class="n">33,3</td><td class="n">95,4</td><td class="n">23,7</td><td class="n">1,1 d</td>
+    <td class="n">72,0</td><td class="n">R$ 420,49</td></tr>
+  <tr><td>VV08</td><td>Fornecedor</td><td><a href="#" data-off="1">Sonho de Creme</a></td><td class="n">39,0</td>
+    <td class="n">45,3</td><td class="n">129,7</td><td class="n">32,2</td><td class="n">1,2 d</td>
+    <td class="n">96,0</td><td class="n">R$ 197,76</td></tr>
+  <tr><td>VV10</td><td>Fornecedor</td><td><a href="#" data-off="1">Frango Inteiro Congelado</a></td><td class="n">287,6</td>
+    <td class="n">289,1</td><td class="n">469,8</td><td class="n">21,9</td><td class="n">13,1 d</td>
+    <td class="n">190,0</td><td class="n">R$ 2.346,08</td></tr>
+  
+</table></div></div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Perdas e rupturas · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="vv01";window.VV_KEY="/estoque/perdas";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="ativo">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" selected>VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      <a href="unidades_5.html">ficha da unidade</a>
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Perdas, quebras e rupturas</h1><div class="sub">Perdas = vencimento, avaria, furto e divergência de inventário (a custo). Ruptura = venda perdida por falta de produto.</div></div>
+  <form class="filtros" method="get">
+  <label>De</label>
+  <select name="ini"><option value="2024-11" >nov/24</option><option value="2024-12" >dez/24</option><option value="2025-01" >jan/25</option><option value="2025-02" >fev/25</option><option value="2025-03" >mar/25</option><option value="2025-04" >abr/25</option><option value="2025-05" >mai/25</option><option value="2025-06" >jun/25</option><option value="2025-07" >jul/25</option><option value="2025-08" >ago/25</option><option value="2025-09" >set/25</option><option value="2025-10" >out/25</option><option value="2025-11" selected>nov/25</option><option value="2025-12" >dez/25</option><option value="2026-01" >jan/26</option><option value="2026-02" >fev/26</option><option value="2026-03" >mar/26</option><option value="2026-04" >abr/26</option><option value="2026-05" >mai/26</option><option value="2026-06" >jun/26</option><option value="2026-07" >jul/26</option><option value="2026-08" >ago/26</option><option value="2026-09" >set/26</option><option value="2026-10" >out/26</option></select>
+  <label>até</label>
+  <select name="fim"><option value="2024-11" >nov/24</option><option value="2024-12" >dez/24</option><option value="2025-01" >jan/25</option><option value="2025-02" >fev/25</option><option value="2025-03" >mar/25</option><option value="2025-04" >abr/25</option><option value="2025-05" >mai/25</option><option value="2025-06" >jun/25</option><option value="2025-07" >jul/25</option><option value="2025-08" >ago/25</option><option value="2025-09" >set/25</option><option value="2025-10" >out/25</option><option value="2025-11" >nov/25</option><option value="2025-12" >dez/25</option><option value="2026-01" >jan/26</option><option value="2026-02" >fev/26</option><option value="2026-03" >mar/26</option><option value="2026-04" >abr/26</option><option value="2026-05" >mai/26</option><option value="2026-06" >jun/26</option><option value="2026-07" >jul/26</option><option value="2026-08" >ago/26</option><option value="2026-09" >set/26</option><option value="2026-10" selected>out/26</option></select>
+  
+  <button type="submit">Aplicar</button>
+  
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a>
+</form></div>
+<div class="grade g4">
+  <div class="cartao kpi">
+  <div class="rot">Perdas no período</div>
+  <div class="val">R$ 460 mil</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">% do faturamento</div>
+  <div class="val">1,83%</div>
+  <div class="det">referência do varejo: 1,5% a 2,5%</div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Maior categoria</div>
+  <div class="val">Hortifrúti</div>
+  <div class="det">R$ 105 mil</div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Principal motivo</div>
+  <div class="val">Vencimento/deterioração</div>
+  <div class="det">R$ 349 mil</div>
+</div>
+</div>
+<div class="grade g2 mt">
+  <div class="cartao"><h3>Perdas por mês</h3><div class="grafico"><canvas id="gPerdas"></canvas></div></div>
+  <div class="cartao"><h3>Perdas como % do faturamento</h3><div class="grafico"><canvas id="gPct"></canvas></div></div>
+  
+  <div class="cartao"><h3>Por categoria</h3><table><tr><th>Categoria</th><th class="n">Valor</th><th class="n">%</th></tr>
+    <tr><td>Hortifrúti</td><td class="n">R$ 104.870,62</td><td class="n">22,8%</td></tr><tr><td>Açougue</td><td class="n">R$ 96.549,51</td><td class="n">21,0%</td></tr><tr><td>Laticínios e Frios</td><td class="n">R$ 74.321,87</td><td class="n">16,1%</td></tr><tr><td>Padaria</td><td class="n">R$ 74.289,48</td><td class="n">16,1%</td></tr><tr><td>Mercearia</td><td class="n">R$ 46.987,28</td><td class="n">10,2%</td></tr><tr><td>Bebidas</td><td class="n">R$ 26.776,09</td><td class="n">5,8%</td></tr><tr><td>Higiene e Perfumaria</td><td class="n">R$ 17.433,93</td><td class="n">3,8%</td></tr><tr><td>Limpeza</td><td class="n">R$ 8.563,35</td><td class="n">1,9%</td></tr><tr><td>Congelados</td><td class="n">R$ 6.657,87</td><td class="n">1,4%</td></tr><tr><td>Bazar e Pet</td><td class="n">R$ 3.758,39</td><td class="n">0,8%</td></tr></table></div>
+  <div class="cartao"><h3>Por motivo</h3><table><tr><th>Motivo</th><th class="n">Valor</th><th class="n">%</th></tr>
+    <tr><td>Vencimento/deterioração</td><td class="n">R$ 348.911,89</td><td class="n">75,8%</td></tr><tr><td>Avaria</td><td class="n">R$ 53.615,80</td><td class="n">11,7%</td></tr><tr><td>Furto/desvio</td><td class="n">R$ 32.583,08</td><td class="n">7,1%</td></tr><tr><td>Vencimento</td><td class="n">R$ 21.146,12</td><td class="n">4,6%</td></tr><tr><td>Inventário rotativo</td><td class="n">R$ 3.951,51</td><td class="n">0,9%</td></tr></table></div>
+  <div class="cartao col2"><h3>Top 25 rupturas (venda perdida estimada)</h3>
+    <div class="rolagem"><table><tr><th>Produto</th><th>Categoria</th><th>Unidade</th><th class="n">Dias com falta</th><th class="n">Qtd não atendida</th><th class="n">Venda perdida</th></tr>
+    <tr><td>Peito de Frango</td><td>Açougue</td><td>VV01</td><td class="n">4</td><td class="n">72,0</td><td class="n">R$ 1.873,57</td></tr>
+    <tr><td>Acém Bovino</td><td>Açougue</td><td>VV01</td><td class="n">2</td><td class="n">22,3</td><td class="n">R$ 1.136,02</td></tr>
+    <tr><td>Alcatra Bovina</td><td>Açougue</td><td>VV01</td><td class="n">2</td><td class="n">15,3</td><td class="n">R$ 885,49</td></tr>
+    <tr><td>Contrafilé Bovino</td><td>Açougue</td><td>VV01</td><td class="n">1</td><td class="n">2,4</td><td class="n">R$ 180,08</td></tr>
+    <tr><td>Bisteca Suína</td><td>Açougue</td><td>VV01</td><td class="n">1</td><td class="n">3,3</td><td class="n">R$ 114,11</td></tr>
+    <tr><td>Queijo Minas Frescal</td><td>Laticínios e Frios</td><td>VV01</td><td class="n">1</td><td class="n">1,4</td><td class="n">R$ 69,45</td></tr>
+    <tr><td>Presunto Cozido Fatiado</td><td>Laticínios e Frios</td><td>VV01</td><td class="n">1</td><td class="n">1,5</td><td class="n">R$ 55,44</td></tr>
+    <tr><td>Pão de Queijo</td><td>Padaria</td><td>VV01</td><td class="n">1</td><td class="n">0,4</td><td class="n">R$ 18,03</td></tr>
+    </table></div></div>
+</div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+<script>
+const g = {"meses": ["nov/25", "dez/25", "jan/26", "fev/26", "mar/26", "abr/26", "mai/26", "jun/26", "jul/26", "ago/26", "set/26", "out/26"], "pct": [2.09, 1.37, 2.05, 1.82, 1.55, 1.66, 2.04, 1.78, 1.66, 2.17, 1.8, 2.03], "valor": [41551.27, 35354.3, 40726.42, 31857.03, 31996.93, 33570.1, 43456.31, 35981.2, 35433.18, 49024.93, 36861.07, 44395.64]};
+VV.grafico('gPerdas', g.meses, [{nome: 'Perdas', dados: g.valor, slot: 1}], {fmt: 'brl', legenda: false});
+VV.grafico('gPct', g.meses, [{nome: '% do faturamento', dados: g.pct, slot: 1, pontos: 3}], {tipo: 'line', fmt: 'pct', legenda: false});
+</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Transferências · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="vv03";window.VV_KEY="/transferencias";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="ativo">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" selected>VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      <a href="unidades_7.html">ficha da unidade</a>
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Transferências CD → loja</h1><div class="sub">9 transferências no filtro (as que estão em trânsito aparecem sempre). Lojas próprias: intercompany sem título; franqueadas: título a pagar ao CD.</div></div>
+  <form class="filtros" method="get">
+  <label>De</label>
+  <select name="ini"><option value="2024-11" >nov/24</option><option value="2024-12" >dez/24</option><option value="2025-01" >jan/25</option><option value="2025-02" >fev/25</option><option value="2025-03" >mar/25</option><option value="2025-04" >abr/25</option><option value="2025-05" >mai/25</option><option value="2025-06" >jun/25</option><option value="2025-07" >jul/25</option><option value="2025-08" >ago/25</option><option value="2025-09" >set/25</option><option value="2025-10" >out/25</option><option value="2025-11" >nov/25</option><option value="2025-12" >dez/25</option><option value="2026-01" >jan/26</option><option value="2026-02" >fev/26</option><option value="2026-03" >mar/26</option><option value="2026-04" >abr/26</option><option value="2026-05" >mai/26</option><option value="2026-06" >jun/26</option><option value="2026-07" >jul/26</option><option value="2026-08" >ago/26</option><option value="2026-09" >set/26</option><option value="2026-10" selected>out/26</option></select>
+  <label>até</label>
+  <select name="fim"><option value="2024-11" >nov/24</option><option value="2024-12" >dez/24</option><option value="2025-01" >jan/25</option><option value="2025-02" >fev/25</option><option value="2025-03" >mar/25</option><option value="2025-04" >abr/25</option><option value="2025-05" >mai/25</option><option value="2025-06" >jun/25</option><option value="2025-07" >jul/25</option><option value="2025-08" >ago/25</option><option value="2025-09" >set/25</option><option value="2025-10" >out/25</option><option value="2025-11" >nov/25</option><option value="2025-12" >dez/25</option><option value="2026-01" >jan/26</option><option value="2026-02" >fev/26</option><option value="2026-03" >mar/26</option><option value="2026-04" >abr/26</option><option value="2026-05" >mai/26</option><option value="2026-06" >jun/26</option><option value="2026-07" >jul/26</option><option value="2026-08" >ago/26</option><option value="2026-09" >set/26</option><option value="2026-10" selected>out/26</option></select>
+  
+  <button type="submit">Aplicar</button>
+  
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a>
+</form></div>
+<div class="cartao"><h3>Resumo por rota</h3><table>
+  <tr><th>CD</th><th>Loja</th><th class="n">Distância</th><th class="n">Envios</th><th class="n">Viagens</th><th class="n">Valor</th><th class="n">Frete</th><th class="n">Frete/valor</th></tr>
+  <tr><td>CD01</td><td>VV03</td><td class="n">510 km</td><td class="n">9</td><td class="n">10</td><td class="n">R$ 1.033.279,01</td><td class="n">R$ 23.368,60</td><td class="n">2,26%</td></tr>
+</table></div>
+<div class="cartao mt"><div class="rolagem"><table>
+  <tr><th>Transferência</th><th>CD</th><th>Loja</th><th>Envio</th><th>Recebimento</th><th class="n">Valor</th><th class="n">Custo CD</th><th class="n">Frete</th><th>Status</th></tr>
+  <tr><td><a href="transferencias_2176.html">TR-002176</a></td><td>CD01</td><td>VV03 <span class="muted">Vale Verde Rio Tijuca</span></td>
+    <td>30/10/2026</td><td>31/10/2026</td><td class="n">R$ 156.553,03</td><td class="n">R$ 145.702,82</td><td class="n">R$ 4.673,72</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="transferencias_2165.html">TR-002165</a></td><td>CD01</td><td>VV03 <span class="muted">Vale Verde Rio Tijuca</span></td>
+    <td>27/10/2026</td><td>28/10/2026</td><td class="n">R$ 111.599,85</td><td class="n">R$ 103.865,21</td><td class="n">R$ 2.336,86</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="transferencias_2153.html">TR-002153</a></td><td>CD01</td><td>VV03 <span class="muted">Vale Verde Rio Tijuca</span></td>
+    <td>23/10/2026</td><td>24/10/2026</td><td class="n">R$ 114.625,69</td><td class="n">R$ 106.681,33</td><td class="n">R$ 2.336,86</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="transferencias_2142.html">TR-002142</a></td><td>CD01</td><td>VV03 <span class="muted">Vale Verde Rio Tijuca</span></td>
+    <td>20/10/2026</td><td>21/10/2026</td><td class="n">R$ 108.763,52</td><td class="n">R$ 101.225,45</td><td class="n">R$ 2.336,86</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="transferencias_2130.html">TR-002130</a></td><td>CD01</td><td>VV03 <span class="muted">Vale Verde Rio Tijuca</span></td>
+    <td>16/10/2026</td><td>17/10/2026</td><td class="n">R$ 109.460,28</td><td class="n">R$ 101.873,92</td><td class="n">R$ 2.336,86</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="transferencias_2119.html">TR-002119</a></td><td>CD01</td><td>VV03 <span class="muted">Vale Verde Rio Tijuca</span></td>
+    <td>13/10/2026</td><td>14/10/2026</td><td class="n">R$ 93.764,06</td><td class="n">R$ 87.265,56</td><td class="n">R$ 2.336,86</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="transferencias_2107.html">TR-002107</a></td><td>CD01</td><td>VV03 <span class="muted">Vale Verde Rio Tijuca</span></td>
+    <td>09/10/2026</td><td>10/10/2026</td><td class="n">R$ 101.594,29</td><td class="n">R$ 94.553,11</td><td class="n">R$ 2.336,86</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="transferencias_2096.html">TR-002096</a></td><td>CD01</td><td>VV03 <span class="muted">Vale Verde Rio Tijuca</span></td>
+    <td>06/10/2026</td><td>07/10/2026</td><td class="n">R$ 107.331,04</td><td class="n">R$ 99.892,26</td><td class="n">R$ 2.336,86</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002084</a></td><td>CD01</td><td>VV03 <span class="muted">Vale Verde Rio Tijuca</span></td>
+    <td>02/10/2026</td><td>03/10/2026</td><td class="n">R$ 129.587,25</td><td class="n">R$ 120.605,96</td><td class="n">R$ 2.336,86</td>
+    <td><span class="etq ok">Recebida</span></td></tr>
+</table></div></div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+
+</body>
+</html>

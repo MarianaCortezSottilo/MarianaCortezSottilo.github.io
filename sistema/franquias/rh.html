@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Funcionários · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="franquias";window.VV_KEY="/rh/";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="ativo">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" selected>Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Funcionários</h1><div class="sub">Lojas franqueadas · 247 registros</div></div>
+  <form class="filtros">
+    <select name="situacao"><option value="ativos" selected>Ativos</option><option value="desligados" >Desligados</option><option value="todos" >Todos</option></select>
+    <select name="departamento"><option value="">Todos os departamentos</option><option >Administrativo/Financeiro</option><option >Açougue</option><option >Franqueadora (Sede)</option><option >Frente de Caixa</option><option >Gerência</option><option >Hortifrúti</option><option >Limpeza</option><option >Logística (CD)</option><option >Mercearia/Reposição</option><option >Padaria</option><option >Prevenção de Perdas</option><option >Recebimento/Depósito</option></select>
+    <button>Filtrar</button>
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a><a class="btn btn-primario" href="rh_admitir.html">+ Admitir</a></form></div>
+<div class="grade g2">
+<div class="cartao col2"><div class="rolagem"><table>
+  <tr><th>Unidade</th><th>Matrícula</th><th>Nome</th><th>Cargo</th><th>Departamento</th><th>Contrato</th><th>Turno</th><th>Admissão</th><th>Desligamento</th><th class="n">Salário atual</th></tr>
+  <tr><td>VV03</td><td>VV00878</td><td><a href="rh_funcionario_878.html">Beatriz Cavalcanti Pinto</a></td><td>Assistente Financeiro</td><td>Administrativo/Financeiro</td>
+    <td>Clt</td><td>Comercial</td><td>13/08/2026</td>
+    <td></td><td class="n">R$ 3.206,38</td></tr><tr><td>VV03</td><td>VV00136</td><td><a href="rh_funcionario_136.html">Marcelo Barbosa Santana</a></td><td>Assistente de DP/RH</td><td>Administrativo/Financeiro</td>
+    <td>Clt</td><td>Comercial</td><td>16/04/2021</td>
+    <td></td><td class="n">R$ 3.825,53</td></tr><tr><td>VV03</td><td>VV00134</td><td><a href="rh_funcionario_134.html">Fernando Ribeiro Ferreira</a></td><td>Comprador</td><td>Administrativo/Financeiro</td>
+    <td>Clt</td><td>Comercial</td><td>14/11/2022</td>
+    <td></td><td class="n">R$ 5.225,10</td></tr><tr><td>VV03</td><td>VV00137</td><td><a href="rh_funcionario_137.html">Tatiane Gonçalves Mendes</a></td><td>Jovem Aprendiz</td><td>Administrativo/Financeiro</td>
+    <td>Jovem aprendiz</td><td>Comercial</td><td>11/04/2024</td>
+    <td></td><td class="n">R$ 919,11</td></tr><tr><td>VV03</td><td>VV00166</td><td><a href="rh_funcionario_166.html">Aline Pinto Souza</a></td><td>Auxiliar de Açougue</td><td>Açougue</td>
+    <td>Clt</td><td>Tarde</td><td>12/08/2024</td>
+    <td></td><td class="n">R$ 2.264,24</td></tr><tr><td>VV03</td><td>VV00859</td><td><a href="rh_funcionario_859.html">Marcos Marques Pinto</a></td><td>Auxiliar de Açougue</td><td>Açougue</td>
+    <td>Clt</td><td>Manha</td><td>15/07/2026</td>
+    <td></td><td class="n">R$ 2.266,58</td></tr><tr><td>VV03</td><td>VV00163</td><td><a href="rh_funcionario_163.html">Júlia Souza Rodrigues</a></td><td>Açougueiro</td><td>Açougue</td>
+    <td>Clt</td><td>Manha</td><td>15/10/2023</td>
+    <td></td><td class="n">R$ 3.574,02</td></tr><tr><td>VV03</td><td>VV00164</td><td><a href="rh_funcionario_164.html">Pedro Carvalho Souza</a></td><td>Açougueiro</td><td>Açougue</td>
+    <td>Clt</td><td>Tarde</td><td>07/03/2023</td>
+    <td></td><td class="n">R$ 3.698,13</td></tr><tr><td>VV03</td><td>VV00525</td><td><a href="#" data-off="1">Ana Costa Soares</a></td><td>Empacotador</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>03/07/2025</td>
+    <td></td><td class="n">R$ 1.702,05</td></tr><tr><td>VV03</td><td>VV00891</td><td><a href="#" data-off="1">Paulo Lima Nascimento</a></td><td>Empacotador</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>13/09/2026</td>
+    <td></td><td class="n">R$ 1.702,05</td></tr><tr><td>VV03</td><td>VV00883</td><td><a href="#" data-off="1">Pedro Soares Rodrigues</a></td><td>Empacotador</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>24/08/2026</td>
+    <td></td><td class="n">R$ 1.702,05</td></tr><tr><td>VV03</td><td>VV00138</td><td><a href="#" data-off="1">Francisca Martins Cavalcanti</a></td><td>Fiscal de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>24/06/2021</td>
+    <td></td><td class="n">R$ 2.676,85</td></tr><tr><td>VV03</td><td>VV00524</td><td><a href="#" data-off="1">Luana Gomes Dias</a></td><td>Fiscal de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>02/07/2025</td>
+    <td></td><td class="n">R$ 2.598,28</td></tr><tr><td>VV03</td><td>VV00885</td><td><a href="#" data-off="1">Bruna Ramos Carvalho</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>28/08/2026</td>
+    <td></td><td class="n">R$ 2.189,19</td></tr><tr><td>VV03</td><td>VV00844</td><td><a href="#" data-off="1">Camila Prado Moreira</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>15/06/2026</td>
+    <td></td><td class="n">R$ 2.189,19</td></tr><tr><td>VV03</td><td>VV00821</td><td><a href="#" data-off="1">Carla Oliveira Pereira</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>09/05/2026</td>
+    <td></td><td class="n">R$ 2.189,19</td></tr><tr><td>VV03</td><td>VV00705</td><td><a href="#" data-off="1">Daniela Vieira Souza</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>01/01/2026</td>
+    <td></td><td class="n">R$ 2.189,19</td></tr><tr><td>VV03</td><td>VV00733</td><td><a href="#" data-off="1">Guilherme Marques Silva</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>15/02/2026</td>
+    <td></td><td class="n">R$ 2.189,19</td></tr><tr><td>VV03</td><td>VV00889</td><td><a href="#" data-off="1">Maria Pereira Costa</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>04/09/2026</td>
+    <td></td><td class="n">R$ 2.189,19</td></tr><tr><td>VV03</td><td>VV00835</td><td><a href="#" data-off="1">Mariana Machado Fernandes</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>02/06/2026</td>
+    <td></td><td class="n">R$ 2.189,19</td></tr><tr><td>VV03</td><td>VV00796</td><td><a href="#" data-off="1">Natália Alves Pereira</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>26/03/2026</td>
+    <td></td><td class="n">R$ 2.189,19</td></tr><tr><td>VV03</td><td>VV00852</td><td><a href="#" data-off="1">Otávio Lima Freitas</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>24/06/2026</td>
+    <td></td><td class="n">R$ 2.189,19</td></tr><tr><td>VV03</td><td>VV00143</td><td><a href="#" data-off="1">Raquel Santos Cardoso</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>30/06/2023</td>
+    <td></td><td class="n">R$ 2.288,11</td></tr><tr><td>VV03</td><td>VV00609</td><td><a href="#" data-off="1">Simone Rocha Martins</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>20/10/2025</td>
+    <td></td><td class="n">R$ 2.189,19</td></tr><tr><td>VV03</td><td>VV00681</td><td><a href="#" data-off="1">Vinícius Moreira Teixeira</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>08/12/2025</td>
+    <td></td><td class="n">R$ 2.189,19</td></tr><tr><td>VV03</td><td>VV00132</td><td><a href="#" data-off="1">Patrícia Pereira Gonçalves</a></td><td>Gerente Geral</td><td>Gerência</td>
+    <td>Clt</td><td>Comercial</td><td>21/06/2023</td>
+    <td></td><td class="n">R$ 12.072,01</td></tr><tr><td>VV03</td><td>VV00133</td><td><a href="#" data-off="1">Luana Machado Moraes</a></td><td>Subgerente</td><td>Gerência</td>
+    <td>Clt</td><td>Comercial</td><td>08/05/2024</td>
+    <td></td><td class="n">R$ 6.783,85</td></tr><tr><td>VV03</td><td>VV00763</td><td><a href="#" data-off="1">Beatriz Costa Teixeira</a></td><td>Auxiliar de Hortifrúti</td><td>Hortifrúti</td>
+    <td>Clt</td><td>Tarde</td><td>12/03/2026</td>
+    <td></td><td class="n">R$ 2.100,74</td></tr><tr><td>VV03</td><td>VV00589</td><td><a href="#" data-off="1">Tatiane Gomes Cardoso</a></td><td>Auxiliar de Hortifrúti</td><td>Hortifrúti</td>
+    <td>Clt</td><td>Manha</td><td>26/08/2025</td>
+    <td></td><td class="n">R$ 2.100,74</td></tr><tr><td>VV03</td><td>VV00171</td><td><a href="#" data-off="1">Luana Soares Andrade</a></td><td>Encarregado de Hortifrúti</td><td>Hortifrúti</td>
+    <td>Clt</td><td>Manha</td><td>16/04/2021</td>
+    <td></td><td class="n">R$ 3.490,27</td></tr><tr><td>VV03</td><td>VV00179</td><td><a href="#" data-off="1">Daniela Moraes Alves</a></td><td>Auxiliar de Limpeza</td><td>Limpeza</td>
+    <td>Clt</td><td>Tarde</td><td>06/07/2023</td>
+    <td></td><td class="n">R$ 2.015,07</td></tr><tr><td>VV03</td><td>VV00837</td><td><a href="#" data-off="1">Rodrigo Dias Souza</a></td><td>Auxiliar de Limpeza</td><td>Limpeza</td>
+    <td>Clt</td><td>Tarde</td><td>04/06/2026</td>
+    <td></td><td class="n">R$ 1.968,06</td></tr><tr><td>VV03</td><td>VV00758</td><td><a href="#" data-off="1">Fernanda Oliveira Alves</a></td><td>Encarregado de Mercearia</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Tarde</td><td>11/03/2026</td>
+    <td></td><td class="n">R$ 3.648,65</td></tr><tr><td>VV03</td><td>VV00460</td><td><a href="#" data-off="1">André Nascimento Machado</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Tarde</td><td>27/02/2025</td>
+    <td></td><td class="n">R$ 2.156,02</td></tr><tr><td>VV03</td><td>VV00905</td><td><a href="#" data-off="1">Beatriz Gonçalves Pinto</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>10/10/2026</td>
+    <td></td><td class="n">R$ 2.156,02</td></tr><tr><td>VV03</td><td>VV00398</td><td><a href="#" data-off="1">Elaine Cardoso Pinto</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>21/12/2024</td>
+    <td></td><td class="n">R$ 2.156,02</td></tr><tr><td>VV03</td><td>VV00160</td><td><a href="#" data-off="1">Fábio Barbosa Ferreira</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>01/04/2023</td>
+    <td></td><td class="n">R$ 2.268,64</td></tr><tr><td>VV03</td><td>VV00846</td><td><a href="#" data-off="1">Renata Nunes Fernandes</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>15/06/2026</td>
+    <td></td><td class="n">R$ 2.156,02</td></tr><tr><td>VV03</td><td>VV00162</td><td><a href="#" data-off="1">Ricardo Silva Pinto</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>20/10/2021</td>
+    <td></td><td class="n">R$ 2.351,20</td></tr><tr><td>VV03</td><td>VV00511</td><td><a href="#" data-off="1">Samuel Pereira Lopes</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Tarde</td><td>05/06/2025</td>
+    <td></td><td class="n">R$ 2.156,02</td></tr><tr><td>VV03</td><td>VV00897</td><td><a href="#" data-off="1">Larissa Costa Oliveira</a></td><td>Atendente de Padaria</td><td>Padaria</td>
+    <td>Clt</td><td>Tarde</td><td>25/09/2026</td>
+    <td></td><td class="n">R$ 2.156,02</td></tr><tr><td>VV03</td><td>VV00588</td><td><a href="#" data-off="1">Roberta Gonçalves Lopes</a></td><td>Atendente de Padaria</td><td>Padaria</td>
+    <td>Clt</td><td>Manha</td><td>24/08/2025</td>
+    <td></td><td class="n">R$ 2.156,02</td></tr><tr><td>VV03</td><td>VV00168</td><td><a href="#" data-off="1">Gabriela Santana Martins</a></td><td>Padeiro</td><td>Padaria</td>
+    <td>Clt</td><td>Tarde</td><td>31/07/2024</td>
+    <td></td><td class="n">R$ 3.323,68</td></tr><tr><td>VV03</td><td>VV00167</td><td><a href="#" data-off="1">Murilo Rocha Soares</a></td><td>Padeiro</td><td>Padaria</td>
+    <td>Clt</td><td>Manha</td><td>12/08/2024</td>
+    <td></td><td class="n">R$ 3.123,53</td></tr><tr><td>VV03</td><td>VV00177</td><td><a href="#" data-off="1">João Silva Rocha</a></td><td>Fiscal de Prevenção</td><td>Prevenção de Perdas</td>
+    <td>Clt</td><td>Tarde</td><td>16/04/2021</td>
+    <td></td><td class="n">R$ 2.581,93</td></tr><tr><td>VV03</td><td>VV00407</td><td><a href="#" data-off="1">Pedro Nascimento Pereira</a></td><td>Fiscal de Prevenção</td><td>Prevenção de Perdas</td>
+    <td>Clt</td><td>Manha</td><td>19/01/2025</td>
+    <td></td><td class="n">R$ 2.487,71</td></tr><tr><td>VV03</td><td>VV00869</td><td><a href="#" data-off="1">Samuel Pinto Almeida</a></td><td>Auxiliar de Depósito</td><td>Recebimento/Depósito</td>
+    <td>Clt</td><td>Manha</td><td>02/08/2026</td>
+    <td></td><td class="n">R$ 2.100,74</td></tr><tr><td>VV03</td><td>VV00174</td><td><a href="#" data-off="1">Luis Silva Pinto</a></td><td>Conferente</td><td>Recebimento/Depósito</td>
+    <td>Clt</td><td>Manha</td><td>14/12/2022</td>
+    <td></td><td class="n">R$ 2.878,08</td></tr><tr><td>VV04</td><td>VV00183</td><td><a href="#" data-off="1">Lucas Alves Lima</a></td><td>Assistente Financeiro</td><td>Administrativo/Financeiro</td>
+    <td>Clt</td><td>Comercial</td><td>28/04/2024</td>
+    <td></td><td class="n">R$ 3.021,02</td></tr><tr><td>VV04</td><td>VV00184</td><td><a href="#" data-off="1">Vera Gomes Martins</a></td><td>Assistente de DP/RH</td><td>Administrativo/Financeiro</td>
+    <td>Clt</td><td>Comercial</td><td>16/08/2024</td>
+    <td></td><td class="n">R$ 3.244,49</td></tr><tr><td>VV04</td><td>VV00182</td><td><a href="#" data-off="1">Aline Andrade Marques</a></td><td>Comprador</td><td>Administrativo/Financeiro</td>
+    <td>Clt</td><td>Comercial</td><td>16/06/2024</td>
+    <td></td><td class="n">R$ 4.756,04</td></tr><tr><td>VV04</td><td>VV00185</td><td><a href="#" data-off="1">Fernando Soares Barbosa</a></td><td>Jovem Aprendiz</td><td>Administrativo/Financeiro</td>
+    <td>Jovem aprendiz</td><td>Comercial</td><td>10/11/2023</td>
+    <td></td><td class="n">R$ 919,11</td></tr><tr><td>VV04</td><td>VV00862</td><td><a href="#" data-off="1">Diego Ramos Silva</a></td><td>Auxiliar de Açougue</td><td>Açougue</td>
+    <td>Clt</td><td>Manha</td><td>21/07/2026</td>
+    <td></td><td class="n">R$ 2.107,92</td></tr><tr><td>VV04</td><td>VV00210</td><td><a href="#" data-off="1">Vanessa Silva Pereira</a></td><td>Auxiliar de Açougue</td><td>Açougue</td>
+    <td>Clt</td><td>Manha</td><td>17/10/2021</td>
+    <td></td><td class="n">R$ 2.191,55</td></tr><tr><td>VV04</td><td>VV00501</td><td><a href="#" data-off="1">Luciana Souza Costa</a></td><td>Açougueiro</td><td>Açougue</td>
+    <td>Clt</td><td>Manha</td><td>15/05/2025</td>
+    <td></td><td class="n">R$ 3.187,59</td></tr><tr><td>VV04</td><td>VV00208</td><td><a href="#" data-off="1">Rita Lima Moraes</a></td><td>Açougueiro</td><td>Açougue</td>
+    <td>Clt</td><td>Manha</td><td>05/01/2023</td>
+    <td></td><td class="n">R$ 3.206,43</td></tr><tr><td>VV04</td><td>VV00200</td><td><a href="#" data-off="1">Francisco Santana Costa</a></td><td>Empacotador</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>17/10/2021</td>
+    <td></td><td class="n">R$ 1.702,05</td></tr><tr><td>VV04</td><td>VV00198</td><td><a href="#" data-off="1">Gustavo Dias Machado</a></td><td>Empacotador</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>17/10/2021</td>
+    <td></td><td class="n">R$ 1.702,05</td></tr><tr><td>VV04</td><td>VV00406</td><td><a href="#" data-off="1">Rodrigo Rodrigues Nunes</a></td><td>Empacotador</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>16/01/2025</td>
+    <td></td><td class="n">R$ 1.702,05</td></tr><tr><td>VV04</td><td>VV00853</td><td><a href="#" data-off="1">Carla Almeida Ribeiro</a></td><td>Fiscal de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>26/06/2026</td>
+    <td></td><td class="n">R$ 2.416,40</td></tr><tr><td>VV04</td><td>VV00425</td><td><a href="#" data-off="1">Júlia Nunes Gomes</a></td><td>Fiscal de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>20/02/2025</td>
+    <td></td><td class="n">R$ 2.416,40</td></tr><tr><td>VV04</td><td>VV00627</td><td><a href="#" data-off="1">Amanda Pinto Rocha</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>13/11/2025</td>
+    <td></td><td class="n">R$ 2.035,94</td></tr><tr><td>VV04</td><td>VV00190</td><td><a href="#" data-off="1">Antônia Costa Gomes</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>04/04/2023</td>
+    <td></td><td class="n">R$ 2.108,97</td></tr><tr><td>VV04</td><td>VV00530</td><td><a href="#" data-off="1">Carla Moreira Santos</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>13/07/2025</td>
+    <td></td><td class="n">R$ 2.035,94</td></tr><tr><td>VV04</td><td>VV00851</td><td><a href="#" data-off="1">Daniela Santana Vieira</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>21/06/2026</td>
+    <td></td><td class="n">R$ 2.035,94</td></tr><tr><td>VV04</td><td>VV00792</td><td><a href="#" data-off="1">Francisca Nunes Martins</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>20/03/2026</td>
+    <td></td><td class="n">R$ 2.035,94</td></tr><tr><td>VV04</td><td>VV00683</td><td><a href="#" data-off="1">Júlia Martins Pinto</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>11/12/2025</td>
+    <td></td><td class="n">R$ 2.035,94</td></tr><tr><td>VV04</td><td>VV00689</td><td><a href="#" data-off="1">Márcia Gomes Vieira</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>17/12/2025</td>
+    <td></td><td class="n">R$ 2.035,94</td></tr><tr><td>VV04</td><td>VV00794</td><td><a href="#" data-off="1">Roberta Pinto Cavalcanti</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>25/03/2026</td>
+    <td></td><td class="n">R$ 2.035,94</td></tr><tr><td>VV04</td><td>VV00896</td><td><a href="#" data-off="1">Simone Teixeira Santana</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>24/09/2026</td>
+    <td></td><td class="n">R$ 2.035,94</td></tr><tr><td>VV04</td><td>VV00192</td><td><a href="#" data-off="1">Tiago Pereira Martins</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>14/11/2022</td>
+    <td></td><td class="n">R$ 2.226,63</td></tr><tr><td>VV04</td><td>VV00180</td><td><a href="#" data-off="1">Marcos Rocha Prado</a></td><td>Gerente Geral</td><td>Gerência</td>
+    <td>Clt</td><td>Comercial</td><td>01/04/2023</td>
+    <td></td><td class="n">R$ 11.162,66</td></tr><tr><td>VV04</td><td>VV00181</td><td><a href="#" data-off="1">Marcos Machado Silva</a></td><td>Subgerente</td><td>Gerência</td>
+    <td>Clt</td><td>Comercial</td><td>17/10/2021</td>
+    <td></td><td class="n">R$ 6.058,68</td></tr><tr><td>VV04</td><td>VV00694</td><td><a href="#" data-off="1">Carlos Cavalcanti Soares</a></td><td>Auxiliar de Hortifrúti</td><td>Hortifrúti</td>
+    <td>Clt</td><td>Tarde</td><td>25/12/2025</td>
+    <td></td><td class="n">R$ 1.953,68</td></tr><tr><td>VV04</td><td>VV00605</td><td><a href="#" data-off="1">Marcos Martins Almeida</a></td><td>Auxiliar de Hortifrúti</td><td>Hortifrúti</td>
+    <td>Clt</td><td>Manha</td><td>09/10/2025</td>
+    <td></td><td class="n">R$ 2.031,83</td></tr><tr><td>VV04</td><td>VV00216</td><td><a href="#" data-off="1">Renata Ribeiro Lopes</a></td><td>Encarregado de Hortifrúti</td><td>Hortifrúti</td>
+    <td>Clt</td><td>Manha</td><td>11/07/2024</td>
+    <td></td><td class="n">R$ 3.104,95</td></tr><tr><td>VV04</td><td>VV00223</td><td><a href="#" data-off="1">Bruna Teixeira Lima</a></td><td>Auxiliar de Limpeza</td><td>Limpeza</td>
+    <td>Clt</td><td>Manha</td><td>11/01/2024</td>
+    <td></td><td class="n">R$ 1.913,15</td></tr><tr><td>VV04</td><td>VV00791</td><td><a href="#" data-off="1">Francisca Moraes Mendes</a></td><td>Auxiliar de Limpeza</td><td>Limpeza</td>
+    <td>Clt</td><td>Tarde</td><td>20/03/2026</td>
+    <td></td><td class="n">R$ 1.830,30</td></tr><tr><td>VV04</td><td>VV00201</td><td><a href="#" data-off="1">Gabriela Oliveira Santana</a></td><td>Encarregado de Mercearia</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>21/01/2024</td>
+    <td></td><td class="n">R$ 3.554,78</td></tr><tr><td>VV04</td><td>VV00202</td><td><a href="#" data-off="1">Ana Moraes Machado</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>17/08/2024</td>
+    <td></td><td class="n">R$ 2.030,72</td></tr><tr><td>VV04</td><td>VV00616</td><td><a href="#" data-off="1">Henrique Nunes Carvalho</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>31/10/2025</td>
+    <td></td><td class="n">R$ 2.005,10</td></tr><tr><td>VV04</td><td>VV00204</td><td><a href="#" data-off="1">Juliano Campos Barbosa</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>03/07/2024</td>
+    <td></td><td class="n">R$ 2.027,55</td></tr><tr><td>VV04</td><td>VV00205</td><td><a href="#" data-off="1">Larissa Prado Santana</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Tarde</td><td>17/10/2021</td>
+    <td></td><td class="n">R$ 2.069,47</td></tr><tr><td>VV04</td><td>VV00874</td><td><a href="#" data-off="1">Roberta Marques Gomes</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>09/08/2026</td>
+    <td></td><td class="n">R$ 2.005,10</td></tr><tr><td>VV04</td><td>VV00515</td><td><a href="#" data-off="1">Simone Ferreira Moreira</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Tarde</td><td>16/06/2025</td>
+    <td></td><td class="n">R$ 2.005,10</td></tr><tr><td>VV04</td><td>VV00491</td><td><a href="#" data-off="1">Diego Vieira Moreira</a></td><td>Atendente de Padaria</td><td>Padaria</td>
+    <td>Clt</td><td>Manha</td><td>28/04/2025</td>
+    <td></td><td class="n">R$ 2.005,10</td></tr><tr><td>VV04</td><td>VV00880</td><td><a href="#" data-off="1">Luis Nunes Gonçalves</a></td><td>Atendente de Padaria</td><td>Padaria</td>
+    <td>Clt</td><td>Tarde</td><td>15/08/2026</td>
+    <td></td><td class="n">R$ 2.005,10</td></tr><tr><td>VV04</td><td>VV00719</td><td><a href="#" data-off="1">Maria Carvalho Prado</a></td><td>Padeiro</td><td>Padaria</td>
+    <td>Clt</td><td>Manha</td><td>26/01/2026</td>
+    <td></td><td class="n">R$ 2.879,11</td></tr><tr><td>VV04</td><td>VV00898</td><td><a href="#" data-off="1">Patrícia Rodrigues Gonçalves</a></td><td>Padeiro</td><td>Padaria</td>
+    <td>Clt</td><td>Tarde</td><td>26/09/2026</td>
+    <td></td><td class="n">R$ 2.879,11</td></tr><tr><td>VV04</td><td>VV00221</td><td><a href="#" data-off="1">Marcelo Cardoso Martins</a></td><td>Fiscal de Prevenção</td><td>Prevenção de Perdas</td>
+    <td>Clt</td><td>Manha</td><td>17/10/2021</td>
+    <td></td><td class="n">R$ 2.396,99</td></tr><tr><td>VV04</td><td>VV00693</td><td><a href="#" data-off="1">Patrícia Cavalcanti Martins</a></td><td>Auxiliar de Depósito</td><td>Recebimento/Depósito</td>
+    <td>Clt</td><td>Tarde</td><td>22/12/2025</td>
+    <td></td><td class="n">R$ 1.953,68</td></tr><tr><td>VV04</td><td>VV00219</td><td><a href="#" data-off="1">Renata Cardoso Lima</a></td><td>Conferente</td><td>Recebimento/Depósito</td>
+    <td>Clt</td><td>Manha</td><td>17/10/2021</td>
+    <td></td><td class="n">R$ 2.698,02</td></tr><tr><td>VV05</td><td>VV00529</td><td><a href="#" data-off="1">Luciana Lima Fernandes</a></td><td>Assistente Financeiro</td><td>Administrativo/Financeiro</td>
+    <td>Clt</td><td>Comercial</td><td>07/07/2025</td>
+    <td></td><td class="n">R$ 3.110,19</td></tr><tr><td>VV05</td><td>VV00358</td><td><a href="#" data-off="1">Vitória Soares Alves</a></td><td>Assistente de DP/RH</td><td>Administrativo/Financeiro</td>
+    <td>Clt</td><td>Comercial</td><td>27/11/2024</td>
+    <td></td><td class="n">R$ 3.431,94</td></tr><tr><td>VV05</td><td>VV00227</td><td><a href="#" data-off="1">Gabriela Cavalcanti Gomes</a></td><td>Comprador</td><td>Administrativo/Financeiro</td>
+    <td>Clt</td><td>Comercial</td><td>17/03/2022</td>
+    <td></td><td class="n">R$ 5.301,94</td></tr><tr><td>VV05</td><td>VV00619</td><td><a href="#" data-off="1">Caio Oliveira Prado</a></td><td>Jovem Aprendiz</td><td>Administrativo/Financeiro</td>
+    <td>Jovem aprendiz</td><td>Comercial</td><td>03/11/2025</td>
+    <td></td><td class="n">R$ 919,11</td></tr><tr><td>VV05</td><td>VV00919</td><td><a href="#" data-off="1">Diego Gonçalves Souza</a></td><td>Auxiliar de Açougue</td><td>Açougue</td>
+    <td>Clt</td><td>Manha</td><td>30/10/2026</td>
+    <td></td><td class="n">R$ 2.198,58</td></tr><tr><td>VV05</td><td>VV00254</td><td><a href="#" data-off="1">Rodrigo Campos Gomes</a></td><td>Auxiliar de Açougue</td><td>Açougue</td>
+    <td>Clt</td><td>Tarde</td><td>30/07/2023</td>
+    <td></td><td class="n">R$ 2.211,50</td></tr><tr><td>VV05</td><td>VV00600</td><td><a href="#" data-off="1">Beatriz Dias Santos</a></td><td>Açougueiro</td><td>Açougue</td>
+    <td>Clt</td><td>Tarde</td><td>27/09/2025</td>
+    <td></td><td class="n">R$ 3.324,69</td></tr><tr><td>VV05</td><td>VV00686</td><td><a href="#" data-off="1">Priscila Marques Pinto</a></td><td>Açougueiro</td><td>Açougue</td>
+    <td>Clt</td><td>Manha</td><td>12/12/2025</td>
+    <td></td><td class="n">R$ 3.457,67</td></tr><tr><td>VV05</td><td>VV00242</td><td><a href="#" data-off="1">Camila Pinto Ramos</a></td><td>Empacotador</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>23/01/2024</td>
+    <td></td><td class="n">R$ 1.707,69</td></tr><tr><td>VV05</td><td>VV00746</td><td><a href="#" data-off="1">Elaine Rocha Cardoso</a></td><td>Empacotador</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>04/03/2026</td>
+    <td></td><td class="n">R$ 1.702,05</td></tr><tr><td>VV05</td><td>VV00849</td><td><a href="#" data-off="1">Luciana Nascimento Freitas</a></td><td>Empacotador</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>19/06/2026</td>
+    <td></td><td class="n">R$ 1.702,05</td></tr><tr><td>VV05</td><td>VV00716</td><td><a href="#" data-off="1">Elaine Teixeira Mendes</a></td><td>Fiscal de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>14/01/2026</td>
+    <td></td><td class="n">R$ 2.520,33</td></tr><tr><td>VV05</td><td>VV00231</td><td><a href="#" data-off="1">Márcia Santana Vieira</a></td><td>Fiscal de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>17/03/2022</td>
+    <td></td><td class="n">R$ 2.564,86</td></tr><tr><td>VV05</td><td>VV00240</td><td><a href="#" data-off="1">Débora Vieira Silva</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>17/03/2022</td>
+    <td></td><td class="n">R$ 2.234,69</td></tr><tr><td>VV05</td><td>VV00236</td><td><a href="#" data-off="1">Guilherme Teixeira Cardoso</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>17/03/2022</td>
+    <td></td><td class="n">R$ 2.234,86</td></tr><tr><td>VV05</td><td>VV00901</td><td><a href="#" data-off="1">João Ribeiro Alves</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>01/10/2026</td>
+    <td></td><td class="n">R$ 2.123,51</td></tr><tr><td>VV05</td><td>VV00812</td><td><a href="#" data-off="1">Júlia Martins Ferreira</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>22/04/2026</td>
+    <td></td><td class="n">R$ 2.123,51</td></tr><tr><td>VV05</td><td>VV00597</td><td><a href="#" data-off="1">Larissa Costa Silva</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>23/09/2025</td>
+    <td></td><td class="n">R$ 2.123,51</td></tr><tr><td>VV05</td><td>VV00234</td><td><a href="#" data-off="1">Murilo Gomes Carvalho</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>17/03/2022</td>
+    <td></td><td class="n">R$ 2.231,57</td></tr><tr><td>VV05</td><td>VV00688</td><td><a href="#" data-off="1">Raquel Moraes Gonçalves</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>16/12/2025</td>
+    <td></td><td class="n">R$ 2.123,51</td></tr><tr><td>VV05</td><td>VV00910</td><td><a href="#" data-off="1">Tatiane Gomes Pereira</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>19/10/2026</td>
+    <td></td><td class="n">R$ 2.123,51</td></tr><tr><td>VV05</td><td>VV00909</td><td><a href="#" data-off="1">Simone Ramos Vieira</a></td><td>Gerente Geral</td><td>Gerência</td>
+    <td>Clt</td><td>Comercial</td><td>18/10/2026</td>
+    <td></td><td class="n">R$ 11.261,04</td></tr><tr><td>VV05</td><td>VV00226</td><td><a href="#" data-off="1">Cláudia Cavalcanti Santos</a></td><td>Subgerente</td><td>Gerência</td>
+    <td>Clt</td><td>Comercial</td><td>01/09/2022</td>
+    <td></td><td class="n">R$ 6.537,94</td></tr><tr><td>VV05</td><td>VV00260</td><td><a href="#" data-off="1">Antônio Andrade Martins</a></td><td>Auxiliar de Hortifrúti</td><td>Hortifrúti</td>
+    <td>Clt</td><td>Manha</td><td>11/06/2023</td>
+    <td></td><td class="n">R$ 2.037,53</td></tr><tr><td>VV05</td><td>VV00261</td><td><a href="#" data-off="1">Isabela Costa Prado</a></td><td>Auxiliar de Hortifrúti</td><td>Hortifrúti</td>
+    <td>Clt</td><td>Tarde</td><td>17/12/2023</td>
+    <td></td><td class="n">R$ 2.066,59</td></tr><tr><td>VV05</td><td>VV00259</td><td><a href="#" data-off="1">Murilo Moreira Pinto</a></td><td>Encarregado de Hortifrúti</td><td>Hortifrúti</td>
+    <td>Clt</td><td>Manha</td><td>07/05/2024</td>
+    <td></td><td class="n">R$ 3.337,79</td></tr><tr><td>VV05</td><td>VV00841</td><td><a href="#" data-off="1">Carlos Fernandes Lima</a></td><td>Auxiliar de Limpeza</td><td>Limpeza</td>
+    <td>Clt</td><td>Manha</td><td>12/06/2026</td>
+    <td></td><td class="n">R$ 1.909,02</td></tr><tr><td>VV05</td><td>VV00858</td><td><a href="#" data-off="1">Daniela Carvalho Moraes</a></td><td>Auxiliar de Limpeza</td><td>Limpeza</td>
+    <td>Clt</td><td>Tarde</td><td>15/07/2026</td>
+    <td></td><td class="n">R$ 1.909,02</td></tr><tr><td>VV05</td><td>VV00245</td><td><a href="#" data-off="1">Elaine Souza Andrade</a></td><td>Encarregado de Mercearia</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>27/09/2022</td>
+    <td></td><td class="n">R$ 3.715,37</td></tr><tr><td>VV05</td><td>VV00401</td><td><a href="#" data-off="1">Antônia Ferreira Andrade</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Tarde</td><td>31/12/2024</td>
+    <td></td><td class="n">R$ 2.091,34</td></tr><tr><td>VV05</td><td>VV00249</td><td><a href="#" data-off="1">Fernando Andrade Dias</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Tarde</td><td>20/10/2023</td>
+    <td></td><td class="n">R$ 2.170,91</td></tr><tr><td>VV05</td><td>VV00595</td><td><a href="#" data-off="1">Fernando Freitas Rocha</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Tarde</td><td>12/09/2025</td>
+    <td></td><td class="n">R$ 2.091,34</td></tr><tr><td>VV05</td><td>VV00538</td><td><a href="#" data-off="1">Raquel Ferreira Costa</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>05/08/2025</td>
+    <td></td><td class="n">R$ 2.091,34</td></tr><tr><td>VV05</td><td>VV00915</td><td><a href="#" data-off="1">Vitória Santana Nunes</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Tarde</td><td>24/10/2026</td>
+    <td></td><td class="n">R$ 2.091,34</td></tr><tr><td>VV05</td><td>VV00257</td><td><a href="#" data-off="1">Francisco Rocha Cardoso</a></td><td>Atendente de Padaria</td><td>Padaria</td>
+    <td>Clt</td><td>Manha</td><td>17/03/2022</td>
+    <td></td><td class="n">R$ 2.279,50</td></tr><tr><td>VV05</td><td>VV00258</td><td><a href="#" data-off="1">Isabela Rodrigues Cardoso</a></td><td>Atendente de Padaria</td><td>Padaria</td>
+    <td>Clt</td><td>Tarde</td><td>23/02/2024</td>
+    <td></td><td class="n">R$ 2.123,49</td></tr><tr><td>VV05</td><td>VV00726</td><td><a href="#" data-off="1">Renato Fernandes Pinto</a></td><td>Padeiro</td><td>Padaria</td>
+    <td>Clt</td><td>Manha</td><td>31/01/2026</td>
+    <td></td><td class="n">R$ 3.002,95</td></tr><tr><td>VV05</td><td>VV00255</td><td><a href="#" data-off="1">Vera Pereira Ramos</a></td><td>Padeiro</td><td>Padaria</td>
+    <td>Clt</td><td>Manha</td><td>27/08/2022</td>
+    <td></td><td class="n">R$ 3.300,39</td></tr><tr><td>VV05</td><td>VV00265</td><td><a href="#" data-off="1">Leandro Rodrigues Barbosa</a></td><td>Fiscal de Prevenção</td><td>Prevenção de Perdas</td>
+    <td>Clt</td><td>Tarde</td><td>17/03/2022</td>
+    <td></td><td class="n">R$ 2.576,85</td></tr><tr><td>VV05</td><td>VV00612</td><td><a href="#" data-off="1">Renato Barbosa Martins</a></td><td>Fiscal de Prevenção</td><td>Prevenção de Perdas</td>
+    <td>Clt</td><td>Manha</td><td>22/10/2025</td>
+    <td></td><td class="n">R$ 2.413,08</td></tr><tr><td>VV05</td><td>VV00788</td><td><a href="#" data-off="1">Pedro Soares Cardoso</a></td><td>Auxiliar de Depósito</td><td>Recebimento/Depósito</td>
+    <td>Clt</td><td>Tarde</td><td>17/03/2026</td>
+    <td></td><td class="n">R$ 2.037,71</td></tr><tr><td>VV05</td><td>VV00262</td><td><a href="#" data-off="1">Letícia Moraes Teixeira</a></td><td>Conferente</td><td>Recebimento/Depósito</td>
+    <td>Clt</td><td>Manha</td><td>13/01/2023</td>
+    <td></td><td class="n">R$ 2.772,15</td></tr><tr><td>VV06</td><td>VV00547</td><td><a href="#" data-off="1">Murilo Marques Lima</a></td><td>Assistente Financeiro</td><td>Administrativo/Financeiro</td>
+    <td>Clt</td><td>Comercial</td><td>10/08/2025</td>
+    <td></td><td class="n">R$ 3.110,19</td></tr><tr><td>VV06</td><td>VV00574</td><td><a href="#" data-off="1">Gustavo Cavalcanti Alves</a></td><td>Assistente de DP/RH</td><td>Administrativo/Financeiro</td>
+    <td>Clt</td><td>Comercial</td><td>16/08/2025</td>
+    <td></td><td class="n">R$ 3.431,94</td></tr><tr><td>VV06</td><td>VV00582</td><td><a href="#" data-off="1">Natália Mendes Pereira</a></td><td>Comprador</td><td>Administrativo/Financeiro</td>
+    <td>Clt</td><td>Comercial</td><td>17/08/2025</td>
+    <td></td><td class="n">R$ 4.933,41</td></tr><tr><td>VV06</td><td>VV00779</td><td><a href="#" data-off="1">Aline Andrade Costa</a></td><td>Jovem Aprendiz</td><td>Administrativo/Financeiro</td>
+    <td>Jovem aprendiz</td><td>Comercial</td><td>14/03/2026</td>
+    <td></td><td class="n">R$ 919,11</td></tr><tr><td>VV06</td><td>VV00838</td><td><a href="#" data-off="1">Raimundo Campos Martins</a></td><td>Auxiliar de Açougue</td><td>Açougue</td>
+    <td>Clt</td><td>Manha</td><td>07/06/2026</td>
+    <td></td><td class="n">R$ 2.198,58</td></tr><tr><td>VV06</td><td>VV00554</td><td><a href="#" data-off="1">Roberta Gonçalves Almeida</a></td><td>Auxiliar de Açougue</td><td>Açougue</td>
+    <td>Clt</td><td>Tarde</td><td>11/08/2025</td>
+    <td></td><td class="n">R$ 2.286,53</td></tr><tr><td>VV06</td><td>VV00545</td><td><a href="#" data-off="1">Lucas Almeida Gomes</a></td><td>Açougueiro</td><td>Açougue</td>
+    <td>Clt</td><td>Tarde</td><td>09/08/2025</td>
+    <td></td><td class="n">R$ 3.457,67</td></tr><tr><td>VV06</td><td>VV00541</td><td><a href="#" data-off="1">Priscila Cardoso Fernandes</a></td><td>Açougueiro</td><td>Açougue</td>
+    <td>Clt</td><td>Manha</td><td>08/08/2025</td>
+    <td></td><td class="n">R$ 3.324,69</td></tr><tr><td>VV06</td><td>VV00871</td><td><a href="#" data-off="1">Natália Carvalho Cardoso</a></td><td>Empacotador</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>06/08/2026</td>
+    <td></td><td class="n">R$ 1.702,05</td></tr><tr><td>VV06</td><td>VV00913</td><td><a href="#" data-off="1">Simone Silva Freitas</a></td><td>Empacotador</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>23/10/2026</td>
+    <td></td><td class="n">R$ 1.702,05</td></tr><tr><td>VV06</td><td>VV00575</td><td><a href="#" data-off="1">Fernanda Freitas Dias</a></td><td>Fiscal de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>16/08/2025</td>
+    <td></td><td class="n">R$ 2.520,33</td></tr><tr><td>VV06</td><td>VV00845</td><td><a href="#" data-off="1">Vera Martins Ribeiro</a></td><td>Fiscal de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>15/06/2026</td>
+    <td></td><td class="n">R$ 2.520,33</td></tr><tr><td>VV06</td><td>VV00884</td><td><a href="#" data-off="1">Aline Moraes Campos</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>26/08/2026</td>
+    <td></td><td class="n">R$ 2.123,51</td></tr><tr><td>VV06</td><td>VV00691</td><td><a href="#" data-off="1">André Rocha Ramos</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>20/12/2025</td>
+    <td></td><td class="n">R$ 2.123,51</td></tr><tr><td>VV06</td><td>VV00918</td><td><a href="#" data-off="1">Gabriela Moraes Ferreira</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>30/10/2026</td>
+    <td></td><td class="n">R$ 2.123,51</td></tr><tr><td>VV06</td><td>VV00577</td><td><a href="#" data-off="1">José Cavalcanti Soares</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>16/08/2025</td>
+    <td></td><td class="n">R$ 2.123,51</td></tr><tr><td>VV06</td><td>VV00872</td><td><a href="#" data-off="1">Jéssica Marques Nunes</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>07/08/2026</td>
+    <td></td><td class="n">R$ 2.123,51</td></tr><tr><td>VV06</td><td>VV00811</td><td><a href="#" data-off="1">Mariana Gonçalves Pinto</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>14/04/2026</td>
+    <td></td><td class="n">R$ 2.123,51</td></tr><tr><td>VV06</td><td>VV00576</td><td><a href="#" data-off="1">Rafael Rocha Santos</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>16/08/2025</td>
+    <td></td><td class="n">R$ 2.208,45</td></tr><tr><td>VV06</td><td>VV00563</td><td><a href="#" data-off="1">Luciana Santana Fernandes</a></td><td>Gerente Geral</td><td>Gerência</td>
+    <td>Clt</td><td>Comercial</td><td>13/08/2025</td>
+    <td></td><td class="n">R$ 11.711,48</td></tr><tr><td>VV06</td><td>VV00544</td><td><a href="#" data-off="1">Luiz Soares Moraes</a></td><td>Subgerente</td><td>Gerência</td>
+    <td>Clt</td><td>Comercial</td><td>09/08/2025</td>
+    <td></td><td class="n">R$ 6.220,39</td></tr><tr><td>VV06</td><td>VV00561</td><td><a href="#" data-off="1">Gustavo Campos Prado</a></td><td>Auxiliar de Hortifrúti</td><td>Hortifrúti</td>
+    <td>Clt</td><td>Tarde</td><td>12/08/2025</td>
+    <td></td><td class="n">R$ 2.037,71</td></tr><tr><td>VV06</td><td>VV00555</td><td><a href="#" data-off="1">Márcia Ribeiro Vieira</a></td><td>Auxiliar de Hortifrúti</td><td>Hortifrúti</td>
+    <td>Clt</td><td>Manha</td><td>11/08/2025</td>
+    <td></td><td class="n">R$ 2.037,71</td></tr><tr><td>VV06</td><td>VV00570</td><td><a href="#" data-off="1">Tiago Andrade Dias</a></td><td>Encarregado de Hortifrúti</td><td>Hortifrúti</td>
+    <td>Clt</td><td>Manha</td><td>14/08/2025</td>
+    <td></td><td class="n">R$ 3.217,44</td></tr><tr><td>VV06</td><td>VV00890</td><td><a href="#" data-off="1">Daniel Vieira Freitas</a></td><td>Auxiliar de Limpeza</td><td>Limpeza</td>
+    <td>Clt</td><td>Tarde</td><td>10/09/2026</td>
+    <td></td><td class="n">R$ 1.909,02</td></tr><tr><td>VV06</td><td>VV00790</td><td><a href="#" data-off="1">Márcia Almeida Carvalho</a></td><td>Auxiliar de Limpeza</td><td>Limpeza</td>
+    <td>Clt</td><td>Tarde</td><td>19/03/2026</td>
+    <td></td><td class="n">R$ 1.909,02</td></tr><tr><td>VV06</td><td>VV00594</td><td><a href="#" data-off="1">Larissa Ferreira Almeida</a></td><td>Encarregado de Mercearia</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Tarde</td><td>09/09/2025</td>
+    <td></td><td class="n">R$ 3.539,18</td></tr><tr><td>VV06</td><td>VV00566</td><td><a href="#" data-off="1">Adriana Soares Rocha</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Tarde</td><td>13/08/2025</td>
+    <td></td><td class="n">R$ 2.091,34</td></tr><tr><td>VV06</td><td>VV00855</td><td><a href="#" data-off="1">André Lima Lopes</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>28/06/2026</td>
+    <td></td><td class="n">R$ 2.091,34</td></tr><tr><td>VV06</td><td>VV00618</td><td><a href="#" data-off="1">Débora Soares Prado</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>01/11/2025</td>
+    <td></td><td class="n">R$ 2.091,34</td></tr><tr><td>VV06</td><td>VV00567</td><td><a href="#" data-off="1">Fábio Andrade Soares</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>13/08/2025</td>
+    <td></td><td class="n">R$ 2.091,34</td></tr><tr><td>VV06</td><td>VV00701</td><td><a href="#" data-off="1">Lucas Campos Freitas</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>30/12/2025</td>
+    <td></td><td class="n">R$ 2.091,34</td></tr><tr><td>VV06</td><td>VV00542</td><td><a href="#" data-off="1">Fernando Vieira Pereira</a></td><td>Atendente de Padaria</td><td>Padaria</td>
+    <td>Clt</td><td>Manha</td><td>08/08/2025</td>
+    <td></td><td class="n">R$ 2.091,34</td></tr><tr><td>VV06</td><td>VV00585</td><td><a href="#" data-off="1">Francisca Santos Martins</a></td><td>Atendente de Padaria</td><td>Padaria</td>
+    <td>Clt</td><td>Tarde</td><td>17/08/2025</td>
+    <td></td><td class="n">R$ 2.091,34</td></tr><tr><td>VV06</td><td>VV00911</td><td><a href="#" data-off="1">Igor Ribeiro Lima</a></td><td>Padeiro</td><td>Padaria</td>
+    <td>Clt</td><td>Manha</td><td>20/10/2026</td>
+    <td></td><td class="n">R$ 3.002,95</td></tr><tr><td>VV06</td><td>VV00560</td><td><a href="#" data-off="1">Luis Barbosa Santana</a></td><td>Padeiro</td><td>Padaria</td>
+    <td>Clt</td><td>Manha</td><td>12/08/2025</td>
+    <td></td><td class="n">R$ 3.002,95</td></tr><tr><td>VV06</td><td>VV00894</td><td><a href="#" data-off="1">André Costa Oliveira</a></td><td>Fiscal de Prevenção</td><td>Prevenção de Perdas</td>
+    <td>Clt</td><td>Manha</td><td>19/09/2026</td>
+    <td></td><td class="n">R$ 2.413,08</td></tr><tr><td>VV06</td><td>VV00543</td><td><a href="#" data-off="1">Carla Rocha Moraes</a></td><td>Fiscal de Prevenção</td><td>Prevenção de Perdas</td>
+    <td>Clt</td><td>Manha</td><td>08/08/2025</td>
+    <td></td><td class="n">R$ 2.413,08</td></tr><tr><td>VV06</td><td>VV00634</td><td><a href="#" data-off="1">Felipe Fernandes Rocha</a></td><td>Auxiliar de Depósito</td><td>Recebimento/Depósito</td>
+    <td>Clt</td><td>Tarde</td><td>24/11/2025</td>
+    <td></td><td class="n">R$ 2.037,71</td></tr><tr><td>VV06</td><td>VV00550</td><td><a href="#" data-off="1">Eduardo Nunes Nascimento</a></td><td>Conferente</td><td>Recebimento/Depósito</td>
+    <td>Clt</td><td>Manha</td><td>10/08/2025</td>
+    <td></td><td class="n">R$ 2.627,57</td></tr><tr><td>VV08</td><td>VV00313</td><td><a href="#" data-off="1">Júlia Alves Marques</a></td><td>Assistente Financeiro</td><td>Administrativo/Financeiro</td>
+    <td>Clt</td><td>Comercial</td><td>16/09/2022</td>
+    <td></td><td class="n">R$ 2.824,63</td></tr><tr><td>VV08</td><td>VV00494</td><td><a href="#" data-off="1">Ana Freitas Santos</a></td><td>Assistente de DP/RH</td><td>Administrativo/Financeiro</td>
+    <td>Clt</td><td>Comercial</td><td>07/05/2025</td>
+    <td></td><td class="n">R$ 3.042,75</td></tr><tr><td>VV08</td><td>VV00312</td><td><a href="#" data-off="1">José Ribeiro Barbosa</a></td><td>Comprador</td><td>Administrativo/Financeiro</td>
+    <td>Clt</td><td>Comercial</td><td>09/08/2024</td>
+    <td></td><td class="n">R$ 4.517,11</td></tr><tr><td>VV08</td><td>VV00526</td><td><a href="#" data-off="1">Raimundo Rocha Costa</a></td><td>Jovem Aprendiz</td><td>Administrativo/Financeiro</td>
+    <td>Jovem aprendiz</td><td>Comercial</td><td>05/07/2025</td>
+    <td></td><td class="n">R$ 919,11</td></tr><tr><td>VV08</td><td>VV00338</td><td><a href="#" data-off="1">Felipe Martins Moraes</a></td><td>Auxiliar de Açougue</td><td>Açougue</td>
+    <td>Clt</td><td>Manha</td><td>30/04/2023</td>
+    <td></td><td class="n">R$ 2.060,80</td></tr><tr><td>VV08</td><td>VV00881</td><td><a href="#" data-off="1">Isabela Ramos Soares</a></td><td>Auxiliar de Açougue</td><td>Açougue</td>
+    <td>Clt</td><td>Tarde</td><td>18/08/2026</td>
+    <td></td><td class="n">R$ 1.949,26</td></tr><tr><td>VV08</td><td>VV00336</td><td><a href="#" data-off="1">Antônia Vieira Souza</a></td><td>Açougueiro</td><td>Açougue</td>
+    <td>Clt</td><td>Manha</td><td>16/09/2022</td>
+    <td></td><td class="n">R$ 3.207,60</td></tr><tr><td>VV08</td><td>VV00337</td><td><a href="#" data-off="1">Carlos Nunes Teixeira</a></td><td>Açougueiro</td><td>Açougue</td>
+    <td>Clt</td><td>Tarde</td><td>25/04/2024</td>
+    <td></td><td class="n">R$ 2.958,21</td></tr><tr><td>VV08</td><td>VV00906</td><td><a href="#" data-off="1">Guilherme Martins Oliveira</a></td><td>Empacotador</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>13/10/2026</td>
+    <td></td><td class="n">R$ 1.702,05</td></tr><tr><td>VV08</td><td>VV00677</td><td><a href="#" data-off="1">Guilherme Ramos Freitas</a></td><td>Empacotador</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>04/12/2025</td>
+    <td></td><td class="n">R$ 1.702,05</td></tr><tr><td>VV08</td><td>VV00899</td><td><a href="#" data-off="1">Paulo Moraes Machado</a></td><td>Empacotador</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>30/09/2026</td>
+    <td></td><td class="n">R$ 1.702,05</td></tr><tr><td>VV08</td><td>VV00316</td><td><a href="#" data-off="1">Priscila Carvalho Silva</a></td><td>Fiscal de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>16/09/2022</td>
+    <td></td><td class="n">R$ 2.274,57</td></tr><tr><td>VV08</td><td>VV00904</td><td><a href="#" data-off="1">Camila Dias Moreira</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>09/10/2026</td>
+    <td></td><td class="n">R$ 1.882,70</td></tr><tr><td>VV08</td><td>VV00717</td><td><a href="#" data-off="1">Débora Ferreira Santana</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>23/01/2026</td>
+    <td></td><td class="n">R$ 1.882,70</td></tr><tr><td>VV08</td><td>VV00787</td><td><a href="#" data-off="1">Isabela Andrade Marques</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>17/03/2026</td>
+    <td></td><td class="n">R$ 1.882,70</td></tr><tr><td>VV08</td><td>VV00813</td><td><a href="#" data-off="1">Márcia Barbosa Cardoso</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>02/05/2026</td>
+    <td></td><td class="n">R$ 1.882,70</td></tr><tr><td>VV08</td><td>VV00599</td><td><a href="#" data-off="1">Patrícia Mendes Nascimento</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>24/09/2025</td>
+    <td></td><td class="n">R$ 1.882,70</td></tr><tr><td>VV08</td><td>VV00739</td><td><a href="#" data-off="1">Rita Lopes Nunes</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>20/02/2026</td>
+    <td></td><td class="n">R$ 1.882,70</td></tr><tr><td>VV08</td><td>VV00536</td><td><a href="#" data-off="1">Rita Santos Dias</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>03/08/2025</td>
+    <td></td><td class="n">R$ 1.882,70</td></tr><tr><td>VV08</td><td>VV00405</td><td><a href="#" data-off="1">Tatiane Alves Rocha</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>13/01/2025</td>
+    <td></td><td class="n">R$ 1.882,70</td></tr><tr><td>VV08</td><td>VV00319</td><td><a href="#" data-off="1">Vitória Nascimento Rodrigues</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>06/06/2023</td>
+    <td></td><td class="n">R$ 1.952,72</td></tr><tr><td>VV08</td><td>VV00628</td><td><a href="#" data-off="1">Vanessa Ramos Santos</a></td><td>Gerente Geral</td><td>Gerência</td>
+    <td>Clt</td><td>Comercial</td><td>17/11/2025</td>
+    <td></td><td class="n">R$ 9.984,02</td></tr><tr><td>VV08</td><td>VV00676</td><td><a href="#" data-off="1">Ricardo Martins Ramos</a></td><td>Subgerente</td><td>Gerência</td>
+    <td>Clt</td><td>Comercial</td><td>04/12/2025</td>
+    <td></td><td class="n">R$ 5.514,98</td></tr><tr><td>VV08</td><td>VV00908</td><td><a href="#" data-off="1">André Barbosa Moreira</a></td><td>Auxiliar de Hortifrúti</td><td>Hortifrúti</td>
+    <td>Clt</td><td>Tarde</td><td>17/10/2026</td>
+    <td></td><td class="n">R$ 1.806,63</td></tr><tr><td>VV08</td><td>VV00519</td><td><a href="#" data-off="1">João Ribeiro Freitas</a></td><td>Auxiliar de Hortifrúti</td><td>Hortifrúti</td>
+    <td>Clt</td><td>Tarde</td><td>19/06/2025</td>
+    <td></td><td class="n">R$ 1.806,63</td></tr><tr><td>VV08</td><td>VV00598</td><td><a href="#" data-off="1">Renato Machado Rocha</a></td><td>Encarregado de Hortifrúti</td><td>Hortifrúti</td>
+    <td>Clt</td><td>Tarde</td><td>23/09/2025</td>
+    <td></td><td class="n">R$ 2.852,58</td></tr><tr><td>VV08</td><td>VV00351</td><td><a href="#" data-off="1">Igor Fernandes Andrade</a></td><td>Auxiliar de Limpeza</td><td>Limpeza</td>
+    <td>Clt</td><td>Manha</td><td>16/09/2022</td>
+    <td></td><td class="n">R$ 1.858,41</td></tr><tr><td>VV08</td><td>VV00352</td><td><a href="#" data-off="1">Leandro Cardoso Alves</a></td><td>Auxiliar de Limpeza</td><td>Limpeza</td>
+    <td>Clt</td><td>Tarde</td><td>18/11/2022</td>
+    <td></td><td class="n">R$ 1.754,24</td></tr><tr><td>VV08</td><td>VV00330</td><td><a href="#" data-off="1">Leonardo Pereira Pinto</a></td><td>Encarregado de Mercearia</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>28/06/2024</td>
+    <td></td><td class="n">R$ 3.117,02</td></tr><tr><td>VV08</td><td>VV00333</td><td><a href="#" data-off="1">Gustavo Santos Ferreira</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>04/11/2023</td>
+    <td></td><td class="n">R$ 1.863,88</td></tr><tr><td>VV08</td><td>VV00331</td><td><a href="#" data-off="1">Tiago Ferreira Silva</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>29/11/2022</td>
+    <td></td><td class="n">R$ 1.858,83</td></tr><tr><td>VV08</td><td>VV00335</td><td><a href="#" data-off="1">Vanessa Campos Nunes</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>16/09/2022</td>
+    <td></td><td class="n">R$ 2.080,47</td></tr><tr><td>VV08</td><td>VV00738</td><td><a href="#" data-off="1">Vera Dias Silva</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>19/02/2026</td>
+    <td></td><td class="n">R$ 1.854,17</td></tr><tr><td>VV08</td><td>VV00488</td><td><a href="#" data-off="1">Vitória Silva Freitas</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Tarde</td><td>18/04/2025</td>
+    <td></td><td class="n">R$ 1.854,17</td></tr><tr><td>VV08</td><td>VV00816</td><td><a href="#" data-off="1">Maria Silva Santos</a></td><td>Atendente de Padaria</td><td>Padaria</td>
+    <td>Clt</td><td>Manha</td><td>06/05/2026</td>
+    <td></td><td class="n">R$ 1.854,17</td></tr><tr><td>VV08</td><td>VV00342</td><td><a href="#" data-off="1">Tiago Lima Ribeiro</a></td><td>Atendente de Padaria</td><td>Padaria</td>
+    <td>Clt</td><td>Manha</td><td>16/09/2022</td>
+    <td></td><td class="n">R$ 1.933,17</td></tr><tr><td>VV08</td><td>VV00830</td><td><a href="#" data-off="1">Bruno Cavalcanti Moraes</a></td><td>Padeiro</td><td>Padaria</td>
+    <td>Clt</td><td>Manha</td><td>21/05/2026</td>
+    <td></td><td class="n">R$ 2.662,40</td></tr><tr><td>VV08</td><td>VV00341</td><td><a href="#" data-off="1">Gabriela Costa Andrade</a></td><td>Padeiro</td><td>Padaria</td>
+    <td>Clt</td><td>Tarde</td><td>15/09/2024</td>
+    <td></td><td class="n">R$ 2.758,61</td></tr><tr><td>VV08</td><td>VV00349</td><td><a href="#" data-off="1">Carla Cavalcanti Gomes</a></td><td>Fiscal de Prevenção</td><td>Prevenção de Perdas</td>
+    <td>Clt</td><td>Manha</td><td>19/06/2023</td>
+    <td></td><td class="n">R$ 2.164,65</td></tr><tr><td>VV08</td><td>VV00865</td><td><a href="#" data-off="1">Fernando Fernandes Nunes</a></td><td>Fiscal de Prevenção</td><td>Prevenção de Perdas</td>
+    <td>Clt</td><td>Manha</td><td>25/07/2026</td>
+    <td></td><td class="n">R$ 2.139,43</td></tr><tr><td>VV08</td><td>VV00562</td><td><a href="#" data-off="1">Sandra Martins Machado</a></td><td>Auxiliar de Depósito</td><td>Recebimento/Depósito</td>
+    <td>Clt</td><td>Tarde</td><td>12/08/2025</td>
+    <td></td><td class="n">R$ 1.806,63</td></tr><tr><td>VV08</td><td>VV00861</td><td><a href="#" data-off="1">Amanda Oliveira Santos</a></td><td>Conferente</td><td>Recebimento/Depósito</td>
+    <td>Clt</td><td>Tarde</td><td>17/07/2026</td>
+    <td></td><td class="n">R$ 2.329,60</td></tr><tr><td>VV10</td><td>VV00780</td><td><a href="#" data-off="1">Tiago Pinto Marques</a></td><td>Assistente Financeiro</td><td>Administrativo/Financeiro</td>
+    <td>Clt</td><td>Comercial</td><td>15/03/2026</td>
+    <td></td><td class="n">R$ 2.725,42</td></tr><tr><td>VV10</td><td>VV00785</td><td><a href="#" data-off="1">Aline Santana Cavalcanti</a></td><td>Assistente de DP/RH</td><td>Administrativo/Financeiro</td>
+    <td>Clt</td><td>Comercial</td><td>16/03/2026</td>
+    <td></td><td class="n">R$ 3.007,37</td></tr><tr><td>VV10</td><td>VV00774</td><td><a href="#" data-off="1">Eduardo Santos Silva</a></td><td>Comprador</td><td>Administrativo/Financeiro</td>
+    <td>Clt</td><td>Comercial</td><td>14/03/2026</td>
+    <td></td><td class="n">R$ 4.323,09</td></tr><tr><td>VV10</td><td>VV00840</td><td><a href="#" data-off="1">Rodrigo Freitas Lima</a></td><td>Jovem Aprendiz</td><td>Administrativo/Financeiro</td>
+    <td>Jovem aprendiz</td><td>Comercial</td><td>10/06/2026</td>
+    <td></td><td class="n">R$ 919,11</td></tr><tr><td>VV10</td><td>VV00768</td><td><a href="#" data-off="1">André Pereira Gonçalves</a></td><td>Auxiliar de Açougue</td><td>Açougue</td>
+    <td>Clt</td><td>Manha</td><td>13/03/2026</td>
+    <td></td><td class="n">R$ 1.926,59</td></tr><tr><td>VV10</td><td>VV00767</td><td><a href="#" data-off="1">Fernando Silva Cardoso</a></td><td>Açougueiro</td><td>Açougue</td>
+    <td>Clt</td><td>Manha</td><td>13/03/2026</td>
+    <td></td><td class="n">R$ 2.913,38</td></tr><tr><td>VV10</td><td>VV00814</td><td><a href="#" data-off="1">Eduardo Lima Silva</a></td><td>Empacotador</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>03/05/2026</td>
+    <td></td><td class="n">R$ 1.702,05</td></tr><tr><td>VV10</td><td>VV00839</td><td><a href="#" data-off="1">Guilherme Santos Dias</a></td><td>Empacotador</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>09/06/2026</td>
+    <td></td><td class="n">R$ 1.702,05</td></tr><tr><td>VV10</td><td>VV00759</td><td><a href="#" data-off="1">Camila Cardoso Nunes</a></td><td>Fiscal de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>12/03/2026</td>
+    <td></td><td class="n">R$ 2.208,54</td></tr><tr><td>VV10</td><td>VV00786</td><td><a href="#" data-off="1">Caio Gonçalves Prado</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>16/03/2026</td>
+    <td></td><td class="n">R$ 1.860,81</td></tr><tr><td>VV10</td><td>VV00876</td><td><a href="#" data-off="1">José Vieira Alves</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>12/08/2026</td>
+    <td></td><td class="n">R$ 1.860,81</td></tr><tr><td>VV10</td><td>VV00832</td><td><a href="#" data-off="1">Júlia Moraes Pinto</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>29/05/2026</td>
+    <td></td><td class="n">R$ 1.860,81</td></tr><tr><td>VV10</td><td>VV00757</td><td><a href="#" data-off="1">Leandro Marques Dias</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>11/03/2026</td>
+    <td></td><td class="n">R$ 1.860,81</td></tr><tr><td>VV10</td><td>VV00755</td><td><a href="#" data-off="1">Marcos Mendes Soares</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>11/03/2026</td>
+    <td></td><td class="n">R$ 1.860,81</td></tr><tr><td>VV10</td><td>VV00920</td><td><a href="#" data-off="1">Raquel Martins Ferreira</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Manha</td><td>30/10/2026</td>
+    <td></td><td class="n">R$ 1.860,81</td></tr><tr><td>VV10</td><td>VV00760</td><td><a href="#" data-off="1">Rita Ferreira Pereira</a></td><td>Operador de Caixa</td><td>Frente de Caixa</td>
+    <td>Clt</td><td>Tarde</td><td>12/03/2026</td>
+    <td></td><td class="n">R$ 1.860,81</td></tr><tr><td>VV10</td><td>VV00772</td><td><a href="#" data-off="1">Cláudia Pinto Andrade</a></td><td>Gerente Geral</td><td>Gerência</td>
+    <td>Clt</td><td>Comercial</td><td>14/03/2026</td>
+    <td></td><td class="n">R$ 9.867,92</td></tr><tr><td>VV10</td><td>VV00773</td><td><a href="#" data-off="1">Vitória Moraes Barbosa</a></td><td>Subgerente</td><td>Gerência</td>
+    <td>Clt</td><td>Comercial</td><td>14/03/2026</td>
+    <td></td><td class="n">R$ 5.450,85</td></tr><tr><td>VV10</td><td>VV00769</td><td><a href="#" data-off="1">Vinícius Soares Gomes</a></td><td>Auxiliar de Hortifrúti</td><td>Hortifrúti</td>
+    <td>Clt</td><td>Manha</td><td>13/03/2026</td>
+    <td></td><td class="n">R$ 1.785,62</td></tr><tr><td>VV10</td><td>VV00798</td><td><a href="#" data-off="1">Leonardo Santana Fernandes</a></td><td>Encarregado de Hortifrúti</td><td>Hortifrúti</td>
+    <td>Clt</td><td>Tarde</td><td>28/03/2026</td>
+    <td></td><td class="n">R$ 2.819,41</td></tr><tr><td>VV10</td><td>VV00752</td><td><a href="#" data-off="1">Daniel Cavalcanti Teixeira</a></td><td>Auxiliar de Limpeza</td><td>Limpeza</td>
+    <td>Clt</td><td>Manha</td><td>09/03/2026</td>
+    <td></td><td class="n">R$ 1.702,05</td></tr><tr><td>VV10</td><td>VV00775</td><td><a href="#" data-off="1">Ricardo Santana Moraes</a></td><td>Encarregado de Mercearia</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>14/03/2026</td>
+    <td></td><td class="n">R$ 3.101,34</td></tr><tr><td>VV10</td><td>VV00766</td><td><a href="#" data-off="1">Fernanda Moraes Freitas</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Tarde</td><td>13/03/2026</td>
+    <td></td><td class="n">R$ 1.832,62</td></tr><tr><td>VV10</td><td>VV00903</td><td><a href="#" data-off="1">Leonardo Cardoso Ribeiro</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>08/10/2026</td>
+    <td></td><td class="n">R$ 1.832,62</td></tr><tr><td>VV10</td><td>VV00754</td><td><a href="#" data-off="1">Tiago Costa Mendes</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>10/03/2026</td>
+    <td></td><td class="n">R$ 1.832,62</td></tr><tr><td>VV10</td><td>VV00822</td><td><a href="#" data-off="1">Vitória Ramos Lopes</a></td><td>Repositor</td><td>Mercearia/Reposição</td>
+    <td>Clt</td><td>Manha</td><td>11/05/2026</td>
+    <td></td><td class="n">R$ 1.832,62</td></tr><tr><td>VV10</td><td>VV00807</td><td><a href="#" data-off="1">Larissa Santos Marques</a></td><td>Atendente de Padaria</td><td>Padaria</td>
+    <td>Clt</td><td>Tarde</td><td>04/04/2026</td>
+    <td></td><td class="n">R$ 1.832,62</td></tr><tr><td>VV10</td><td>VV00777</td><td><a href="#" data-off="1">Vitória Alves Machado</a></td><td>Padeiro</td><td>Padaria</td>
+    <td>Clt</td><td>Manha</td><td>14/03/2026</td>
+    <td></td><td class="n">R$ 2.631,45</td></tr><tr><td>VV10</td><td>VV00850</td><td><a href="#" data-off="1">Simone Gonçalves Teixeira</a></td><td>Fiscal de Prevenção</td><td>Prevenção de Perdas</td>
+    <td>Clt</td><td>Tarde</td><td>21/06/2026</td>
+    <td></td><td class="n">R$ 2.114,55</td></tr><tr><td>VV10</td><td>VV00817</td><td><a href="#" data-off="1">Leonardo Gonçalves Soares</a></td><td>Auxiliar de Depósito</td><td>Recebimento/Depósito</td>
+    <td>Clt</td><td>Tarde</td><td>07/05/2026</td>
+    <td></td><td class="n">R$ 1.785,62</td></tr><tr><td>VV10</td><td>VV00751</td><td><a href="#" data-off="1">Fábio Ramos Gonçalves</a></td><td>Conferente</td><td>Recebimento/Depósito</td>
+    <td>Clt</td><td>Manha</td><td>09/03/2026</td>
+    <td></td><td class="n">R$ 2.302,51</td></tr>
+</table></div></div>
+<div class="cartao"><h3>Ativos por unidade</h3><table><tr><th>Unidade</th><th class="n">Ativos</th><th class="n">Salários (mês)</th></tr>
+  <tr><td>VV03</td><td class="n">48</td><td class="n">R$ 132.116,61</td></tr><tr><td>VV04</td><td class="n">44</td><td class="n">R$ 113.766,40</td></tr><tr><td>VV05</td><td class="n">42</td><td class="n">R$ 115.287,96</td></tr><tr><td>VV06</td><td class="n">40</td><td class="n">R$ 109.775,06</td></tr><tr><td>VV08</td><td class="n">42</td><td class="n">R$ 101.729,20</td></tr><tr><td>VV10</td><td class="n">31</td><td class="n">R$ 77.177,69</td></tr></table></div>
+<div class="cartao"><h3>Quadro por cargo</h3><div class="rolagem" style="max-height:420px"><table><tr><th>Unidade</th><th>Departamento</th><th>Cargo</th><th class="n">Ocupadas</th></tr>
+  <tr><td>VV03</td><td>Administrativo/Financeiro</td><td>Assistente Financeiro</td><td class="n">1</td></tr><tr><td>VV03</td><td>Administrativo/Financeiro</td><td>Assistente de DP/RH</td><td class="n">1</td></tr><tr><td>VV03</td><td>Administrativo/Financeiro</td><td>Comprador</td><td class="n">1</td></tr><tr><td>VV03</td><td>Administrativo/Financeiro</td><td>Jovem Aprendiz</td><td class="n">1</td></tr><tr><td>VV03</td><td>Açougue</td><td>Auxiliar de Açougue</td><td class="n">2</td></tr><tr><td>VV03</td><td>Açougue</td><td>Açougueiro</td><td class="n">2</td></tr><tr><td>VV03</td><td>Frente de Caixa</td><td>Empacotador</td><td class="n">3</td></tr><tr><td>VV03</td><td>Frente de Caixa</td><td>Fiscal de Caixa</td><td class="n">2</td></tr><tr><td>VV03</td><td>Frente de Caixa</td><td>Operador de Caixa</td><td class="n">12</td></tr><tr><td>VV03</td><td>Gerência</td><td>Gerente Geral</td><td class="n">1</td></tr><tr><td>VV03</td><td>Gerência</td><td>Subgerente</td><td class="n">1</td></tr><tr><td>VV03</td><td>Hortifrúti</td><td>Auxiliar de Hortifrúti</td><td class="n">2</td></tr><tr><td>VV03</td><td>Hortifrúti</td><td>Encarregado de Hortifrúti</td><td class="n">1</td></tr><tr><td>VV03</td><td>Limpeza</td><td>Auxiliar de Limpeza</td><td class="n">2</td></tr><tr><td>VV03</td><td>Mercearia/Reposição</td><td>Encarregado de Mercearia</td><td class="n">1</td></tr><tr><td>VV03</td><td>Mercearia/Reposição</td><td>Repositor</td><td class="n">7</td></tr><tr><td>VV03</td><td>Padaria</td><td>Atendente de Padaria</td><td class="n">2</td></tr><tr><td>VV03</td><td>Padaria</td><td>Padeiro</td><td class="n">2</td></tr><tr><td>VV03</td><td>Prevenção de Perdas</td><td>Fiscal de Prevenção</td><td class="n">2</td></tr><tr><td>VV03</td><td>Recebimento/Depósito</td><td>Auxiliar de Depósito</td><td class="n">1</td></tr><tr><td>VV03</td><td>Recebimento/Depósito</td><td>Conferente</td><td class="n">1</td></tr><tr><td>VV04</td><td>Administrativo/Financeiro</td><td>Assistente Financeiro</td><td class="n">1</td></tr><tr><td>VV04</td><td>Administrativo/Financeiro</td><td>Assistente de DP/RH</td><td class="n">1</td></tr><tr><td>VV04</td><td>Administrativo/Financeiro</td><td>Comprador</td><td class="n">1</td></tr><tr><td>VV04</td><td>Administrativo/Financeiro</td><td>Jovem Aprendiz</td><td class="n">1</td></tr><tr><td>VV04</td><td>Açougue</td><td>Auxiliar de Açougue</td><td class="n">2</td></tr><tr><td>VV04</td><td>Açougue</td><td>Açougueiro</td><td class="n">2</td></tr><tr><td>VV04</td><td>Frente de Caixa</td><td>Empacotador</td><td class="n">3</td></tr><tr><td>VV04</td><td>Frente de Caixa</td><td>Fiscal de Caixa</td><td class="n">2</td></tr><tr><td>VV04</td><td>Frente de Caixa</td><td>Operador de Caixa</td><td class="n">10</td></tr><tr><td>VV04</td><td>Gerência</td><td>Gerente Geral</td><td class="n">1</td></tr><tr><td>VV04</td><td>Gerência</td><td>Subgerente</td><td class="n">1</td></tr><tr><td>VV04</td><td>Hortifrúti</td><td>Auxiliar de Hortifrúti</td><td class="n">2</td></tr><tr><td>VV04</td><td>Hortifrúti</td><td>Encarregado de Hortifrúti</td><td class="n">1</td></tr><tr><td>VV04</td><td>Limpeza</td><td>Auxiliar de Limpeza</td><td class="n">2</td></tr><tr><td>VV04</td><td>Mercearia/Reposição</td><td>Encarregado de Mercearia</td><td class="n">1</td></tr><tr><td>VV04</td><td>Mercearia/Reposição</td><td>Repositor</td><td class="n">6</td></tr><tr><td>VV04</td><td>Padaria</td><td>Atendente de Padaria</td><td class="n">2</td></tr><tr><td>VV04</td><td>Padaria</td><td>Padeiro</td><td class="n">2</td></tr><tr><td>VV04</td><td>Prevenção de Perdas</td><td>Fiscal de Prevenção</td><td class="n">1</td></tr><tr><td>VV04</td><td>Recebimento/Depósito</td><td>Auxiliar de Depósito</td><td class="n">1</td></tr><tr><td>VV04</td><td>Recebimento/Depósito</td><td>Conferente</td><td class="n">1</td></tr><tr><td>VV05</td><td>Administrativo/Financeiro</td><td>Assistente Financeiro</td><td class="n">1</td></tr><tr><td>VV05</td><td>Administrativo/Financeiro</td><td>Assistente de DP/RH</td><td class="n">1</td></tr><tr><td>VV05</td><td>Administrativo/Financeiro</td><td>Comprador</td><td class="n">1</td></tr><tr><td>VV05</td><td>Administrativo/Financeiro</td><td>Jovem Aprendiz</td><td class="n">1</td></tr><tr><td>VV05</td><td>Açougue</td><td>Auxiliar de Açougue</td><td class="n">2</td></tr><tr><td>VV05</td><td>Açougue</td><td>Açougueiro</td><td class="n">2</td></tr><tr><td>VV05</td><td>Frente de Caixa</td><td>Empacotador</td><td class="n">3</td></tr><tr><td>VV05</td><td>Frente de Caixa</td><td>Fiscal de Caixa</td><td class="n">2</td></tr><tr><td>VV05</td><td>Frente de Caixa</td><td>Operador de Caixa</td><td class="n">8</td></tr><tr><td>VV05</td><td>Gerência</td><td>Gerente Geral</td><td class="n">1</td></tr><tr><td>VV05</td><td>Gerência</td><td>Subgerente</td><td class="n">1</td></tr><tr><td>VV05</td><td>Hortifrúti</td><td>Auxiliar de Hortifrúti</td><td class="n">2</td></tr><tr><td>VV05</td><td>Hortifrúti</td><td>Encarregado de Hortifrúti</td><td class="n">1</td></tr><tr><td>VV05</td><td>Limpeza</td><td>Auxiliar de Limpeza</td><td class="n">2</td></tr><tr><td>VV05</td><td>Mercearia/Reposição</td><td>Encarregado de Mercearia</td><td class="n">1</td></tr><tr><td>VV05</td><td>Mercearia/Reposição</td><td>Repositor</td><td class="n">5</td></tr><tr><td>VV05</td><td>Padaria</td><td>Atendente de Padaria</td><td class="n">2</td></tr><tr><td>VV05</td><td>Padaria</td><td>Padeiro</td><td class="n">2</td></tr><tr><td>VV05</td><td>Prevenção de Perdas</td><td>Fiscal de Prevenção</td><td class="n">2</td></tr><tr><td>VV05</td><td>Recebimento/Depósito</td><td>Auxiliar de Depósito</td><td class="n">1</td></tr><tr><td>VV05</td><td>Recebimento/Depósito</td><td>Conferente</td><td class="n">1</td></tr><tr><td>VV06</td><td>Administrativo/Financeiro</td><td>Assistente Financeiro</td><td class="n">1</td></tr><tr><td>VV06</td><td>Administrativo/Financeiro</td><td>Assistente de DP/RH</td><td class="n">1</td></tr><tr><td>VV06</td><td>Administrativo/Financeiro</td><td>Comprador</td><td class="n">1</td></tr><tr><td>VV06</td><td>Administrativo/Financeiro</td><td>Jovem Aprendiz</td><td class="n">1</td></tr><tr><td>VV06</td><td>Açougue</td><td>Auxiliar de Açougue</td><td class="n">2</td></tr><tr><td>VV06</td><td>Açougue</td><td>Açougueiro</td><td class="n">2</td></tr><tr><td>VV06</td><td>Frente de Caixa</td><td>Empacotador</td><td class="n">2</td></tr><tr><td>VV06</td><td>Frente de Caixa</td><td>Fiscal de Caixa</td><td class="n">2</td></tr><tr><td>VV06</td><td>Frente de Caixa</td><td>Operador de Caixa</td><td class="n">7</td></tr><tr><td>VV06</td><td>Gerência</td><td>Gerente Geral</td><td class="n">1</td></tr><tr><td>VV06</td><td>Gerência</td><td>Subgerente</td><td class="n">1</td></tr><tr><td>VV06</td><td>Hortifrúti</td><td>Auxiliar de Hortifrúti</td><td class="n">2</td></tr><tr><td>VV06</td><td>Hortifrúti</td><td>Encarregado de Hortifrúti</td><td class="n">1</td></tr><tr><td>VV06</td><td>Limpeza</td><td>Auxiliar de Limpeza</td><td class="n">2</td></tr><tr><td>VV06</td><td>Mercearia/Reposição</td><td>Encarregado de Mercearia</td><td class="n">1</td></tr><tr><td>VV06</td><td>Mercearia/Reposição</td><td>Repositor</td><td class="n">5</td></tr><tr><td>VV06</td><td>Padaria</td><td>Atendente de Padaria</td><td class="n">2</td></tr><tr><td>VV06</td><td>Padaria</td><td>Padeiro</td><td class="n">2</td></tr><tr><td>VV06</td><td>Prevenção de Perdas</td><td>Fiscal de Prevenção</td><td class="n">2</td></tr><tr><td>VV06</td><td>Recebimento/Depósito</td><td>Auxiliar de Depósito</td><td class="n">1</td></tr><tr><td>VV06</td><td>Recebimento/Depósito</td><td>Conferente</td><td class="n">1</td></tr><tr><td>VV08</td><td>Administrativo/Financeiro</td><td>Assistente Financeiro</td><td class="n">1</td></tr><tr><td>VV08</td><td>Administrativo/Financeiro</td><td>Assistente de DP/RH</td><td class="n">1</td></tr><tr><td>VV08</td><td>Administrativo/Financeiro</td><td>Comprador</td><td class="n">1</td></tr><tr><td>VV08</td><td>Administrativo/Financeiro</td><td>Jovem Aprendiz</td><td class="n">1</td></tr><tr><td>VV08</td><td>Açougue</td><td>Auxiliar de Açougue</td><td class="n">2</td></tr><tr><td>VV08</td><td>Açougue</td><td>Açougueiro</td><td class="n">2</td></tr><tr><td>VV08</td><td>Frente de Caixa</td><td>Empacotador</td><td class="n">3</td></tr><tr><td>VV08</td><td>Frente de Caixa</td><td>Fiscal de Caixa</td><td class="n">1</td></tr><tr><td>VV08</td><td>Frente de Caixa</td><td>Operador de Caixa</td><td class="n">9</td></tr><tr><td>VV08</td><td>Gerência</td><td>Gerente Geral</td><td class="n">1</td></tr><tr><td>VV08</td><td>Gerência</td><td>Subgerente</td><td class="n">1</td></tr><tr><td>VV08</td><td>Hortifrúti</td><td>Auxiliar de Hortifrúti</td><td class="n">2</td></tr><tr><td>VV08</td><td>Hortifrúti</td><td>Encarregado de Hortifrúti</td><td class="n">1</td></tr><tr><td>VV08</td><td>Limpeza</td><td>Auxiliar de Limpeza</td><td class="n">2</td></tr><tr><td>VV08</td><td>Mercearia/Reposição</td><td>Encarregado de Mercearia</td><td class="n">1</td></tr><tr><td>VV08</td><td>Mercearia/Reposição</td><td>Repositor</td><td class="n">5</td></tr><tr><td>VV08</td><td>Padaria</td><td>Atendente de Padaria</td><td class="n">2</td></tr><tr><td>VV08</td><td>Padaria</td><td>Padeiro</td><td class="n">2</td></tr><tr><td>VV08</td><td>Prevenção de Perdas</td><td>Fiscal de Prevenção</td><td class="n">2</td></tr><tr><td>VV08</td><td>Recebimento/Depósito</td><td>Auxiliar de Depósito</td><td class="n">1</td></tr><tr><td>VV08</td><td>Recebimento/Depósito</td><td>Conferente</td><td class="n">1</td></tr><tr><td>VV10</td><td>Administrativo/Financeiro</td><td>Assistente Financeiro</td><td class="n">1</td></tr><tr><td>VV10</td><td>Administrativo/Financeiro</td><td>Assistente de DP/RH</td><td class="n">1</td></tr><tr><td>VV10</td><td>Administrativo/Financeiro</td><td>Comprador</td><td class="n">1</td></tr><tr><td>VV10</td><td>Administrativo/Financeiro</td><td>Jovem Aprendiz</td><td class="n">1</td></tr><tr><td>VV10</td><td>Açougue</td><td>Auxiliar de Açougue</td><td class="n">1</td></tr><tr><td>VV10</td><td>Açougue</td><td>Açougueiro</td><td class="n">1</td></tr><tr><td>VV10</td><td>Frente de Caixa</td><td>Empacotador</td><td class="n">2</td></tr><tr><td>VV10</td><td>Frente de Caixa</td><td>Fiscal de Caixa</td><td class="n">1</td></tr><tr><td>VV10</td><td>Frente de Caixa</td><td>Operador de Caixa</td><td class="n">7</td></tr><tr><td>VV10</td><td>Gerência</td><td>Gerente Geral</td><td class="n">1</td></tr><tr><td>VV10</td><td>Gerência</td><td>Subgerente</td><td class="n">1</td></tr><tr><td>VV10</td><td>Hortifrúti</td><td>Auxiliar de Hortifrúti</td><td class="n">1</td></tr><tr><td>VV10</td><td>Hortifrúti</td><td>Encarregado de Hortifrúti</td><td class="n">1</td></tr><tr><td>VV10</td><td>Limpeza</td><td>Auxiliar de Limpeza</td><td class="n">1</td></tr><tr><td>VV10</td><td>Mercearia/Reposição</td><td>Encarregado de Mercearia</td><td class="n">1</td></tr><tr><td>VV10</td><td>Mercearia/Reposição</td><td>Repositor</td><td class="n">4</td></tr><tr><td>VV10</td><td>Padaria</td><td>Atendente de Padaria</td><td class="n">1</td></tr><tr><td>VV10</td><td>Padaria</td><td>Padeiro</td><td class="n">1</td></tr><tr><td>VV10</td><td>Prevenção de Perdas</td><td>Fiscal de Prevenção</td><td class="n">1</td></tr><tr><td>VV10</td><td>Recebimento/Depósito</td><td>Auxiliar de Depósito</td><td class="n">1</td></tr><tr><td>VV10</td><td>Recebimento/Depósito</td><td>Conferente</td><td class="n">1</td></tr></table></div></div>
+</div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+
+</body>
+</html>

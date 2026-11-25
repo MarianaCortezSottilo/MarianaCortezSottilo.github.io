@@ -203,6 +203,7 @@ window.CASOS = [
     id: "sistema",
     numero: "06",
     pagina: "",
+    site: "sistema/rede/index.html",
     matriz: true,
     imagens: ["img/arquitetura-{lang}.svg"],
     titulo: { pt: "O sistema por trás dos dados", en: "The system behind the data" },

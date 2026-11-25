@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clientes · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="vv03";window.VV_KEY="/cadastros/clientes";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="ativo">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" selected>VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      <a href="unidades_7.html">ficha da unidade</a>
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Clientes do programa de fidelidade</h1>
+  <div class="sub">VV03 · Vale Verde Rio Tijuca · 4.140 clientes (fictícios). RFM (Recência, Frequência, Valor em quintis) sobre os cupons de 01/05/2026 a 31/10/2026. <a href="mapas_clientes.html">Ver no mapa ›</a></div></div><div class="filtros">
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a></div></div>
+<div class="grade g2">
+  <div class="cartao"><h3>Segmentos RFM</h3><table><tr><th>Segmento</th><th class="n">Clientes</th><th class="n">Valor comprado</th><th class="n">Ticket médio</th></tr>
+    <tr><td>Campeões</td><td class="n">1.000</td><td class="n">R$ 4.539.114,42</td><td class="n">R$ 113,49</td></tr><tr><td>Leais</td><td class="n">711</td><td class="n">R$ 573.163,40</td><td class="n">R$ 115,51</td></tr><tr><td>Em risco</td><td class="n">449</td><td class="n">R$ 259.256,56</td><td class="n">R$ 112,14</td></tr><tr><td>Hibernando</td><td class="n">1.229</td><td class="n">R$ 227.025,57</td><td class="n">R$ 113,00</td></tr><tr><td>Novos/recentes</td><td class="n">211</td><td class="n">R$ 44.367,95</td><td class="n">R$ 111,20</td></tr><tr><td>Sem compras no período</td><td class="n">540</td><td class="n">R$ 0,00</td><td class="n">–</td></tr></table></div>
+  <div class="cartao"><h3>Por bairro (60 maiores)</h3><div class="rolagem" style="max-height:300px"><table><tr><th>Loja</th><th>Bairro</th><th class="n">Clientes</th><th class="n">Valor comprado</th></tr>
+    <tr><td>VV03</td><td>Residencial Bela Vista (Sudeste)</td><td class="n">305</td><td class="n">R$ 811.508,96</td></tr><tr><td>VV03</td><td>Vila Nova (Nordeste)</td><td class="n">341</td><td class="n">R$ 704.772,85</td></tr><tr><td>VV03</td><td>Jardim Alvorada (Sudoeste)</td><td class="n">346</td><td class="n">R$ 542.615,76</td></tr><tr><td>VV03</td><td>Centro (Noroeste)</td><td class="n">325</td><td class="n">R$ 529.793,93</td></tr><tr><td>VV03</td><td>Jardim Primavera (Leste)</td><td class="n">345</td><td class="n">R$ 505.761,35</td></tr><tr><td>VV03</td><td>Centro (Norte)</td><td class="n">337</td><td class="n">R$ 484.780,53</td></tr><tr><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td class="n">340</td><td class="n">R$ 434.032,82</td></tr><tr><td>VV03</td><td>Vila Operária (Sul)</td><td class="n">315</td><td class="n">R$ 395.040,53</td></tr><tr><td>VV03</td><td>Jardim São Bento (Sudeste)</td><td class="n">215</td><td class="n">R$ 249.430,09</td></tr><tr><td>VV03</td><td>Jardim das Flores (Norte)</td><td class="n">180</td><td class="n">R$ 220.695,04</td></tr><tr><td>VV03</td><td>Loteamento Boa Vista (Oeste)</td><td class="n">183</td><td class="n">R$ 171.787,72</td></tr><tr><td>VV03</td><td>Parque dos Ipês (Sudoeste)</td><td class="n">176</td><td class="n">R$ 161.191,14</td></tr><tr><td>VV03</td><td>Jardim das Flores (Noroeste)</td><td class="n">196</td><td class="n">R$ 140.742,10</td></tr><tr><td>VV03</td><td>Parque Industrial (Nordeste)</td><td class="n">181</td><td class="n">R$ 106.683,68</td></tr><tr><td>VV03</td><td>Vila Esperança (Leste)</td><td class="n">174</td><td class="n">R$ 102.879,43</td></tr><tr><td>VV03</td><td>Chácara Recreio (Sul)</td><td class="n">181</td><td class="n">R$ 81.211,97</td></tr></table></div></div>
+</div>
+<div class="cartao mt"><h3>Top 200 clientes por valor</h3><div class="rolagem"><table>
+  <tr><th>Cliente</th><th>Loja</th><th>Bairro</th><th>Cadastro</th><th class="n">Compras</th><th class="n">Valor</th><th>Última compra</th><th class="n">Dias sem comprar</th><th>R F M</th><th>Segmento</th></tr>
+  <tr><td>Luana Soares Lima</td><td>VV03</td><td>Residencial Bela Vista (Sudeste)</td><td>10/11/2024</td><td class="n">3058</td><td class="n">R$ 346.561,16</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Márcia Andrade Santana</td><td>VV03</td><td>Vila Nova (Nordeste)</td><td>20/05/2021</td><td class="n">2093</td><td class="n">R$ 242.228,28</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Matheus Souza Rodrigues</td><td>VV03</td><td>Centro (Noroeste)</td><td>23/07/2025</td><td class="n">673</td><td class="n">R$ 78.568,43</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Camila Soares Costa</td><td>VV03</td><td>Centro (Noroeste)</td><td>08/03/2024</td><td class="n">571</td><td class="n">R$ 69.612,49</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Aline Cardoso Machado</td><td>VV03</td><td>Jardim das Flores (Norte)</td><td>03/12/2025</td><td class="n">594</td><td class="n">R$ 68.084,67</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Beatriz Moreira Marques</td><td>VV03</td><td>Centro (Norte)</td><td>24/09/2022</td><td class="n">596</td><td class="n">R$ 67.751,65</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Débora Nascimento Vieira</td><td>VV03</td><td>Jardim São Bento (Sudeste)</td><td>16/10/2021</td><td class="n">534</td><td class="n">R$ 66.737,02</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Sandra Silva Andrade</td><td>VV03</td><td>Parque dos Ipês (Sudoeste)</td><td>07/06/2025</td><td class="n">565</td><td class="n">R$ 62.401,92</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Camila Nunes Nascimento</td><td>VV03</td><td>Residencial Bela Vista (Sudeste)</td><td>20/07/2024</td><td class="n">529</td><td class="n">R$ 60.100,00</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>José Lopes Carvalho</td><td>VV03</td><td>Jardim São Bento (Sudeste)</td><td>16/10/2025</td><td class="n">474</td><td class="n">R$ 56.734,42</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Eduardo Souza Teixeira</td><td>VV03</td><td>Jardim Alvorada (Sudoeste)</td><td>18/05/2023</td><td class="n">450</td><td class="n">R$ 47.718,15</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Luciana Nascimento Andrade</td><td>VV03</td><td>Vila Operária (Sul)</td><td>08/04/2025</td><td class="n">397</td><td class="n">R$ 46.443,72</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Antônio Carvalho Machado</td><td>VV03</td><td>Jardim Alvorada (Sudoeste)</td><td>16/11/2022</td><td class="n">406</td><td class="n">R$ 46.134,60</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Luiz Almeida Ferreira</td><td>VV03</td><td>Vila Nova (Nordeste)</td><td>31/05/2022</td><td class="n">409</td><td class="n">R$ 43.930,54</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Vitória Soares Teixeira</td><td>VV03</td><td>Jardim Alvorada (Sudoeste)</td><td>18/11/2024</td><td class="n">442</td><td class="n">R$ 43.910,61</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Carla Dias Campos</td><td>VV03</td><td>Vila Nova (Nordeste)</td><td>09/05/2024</td><td class="n">396</td><td class="n">R$ 43.568,82</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Vera Ribeiro Andrade</td><td>VV03</td><td>Residencial Bela Vista (Sudeste)</td><td>10/12/2020</td><td class="n">355</td><td class="n">R$ 41.942,44</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Camila Cardoso Soares</td><td>VV03</td><td>Jardim das Flores (Noroeste)</td><td>02/09/2023</td><td class="n">356</td><td class="n">R$ 41.126,66</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Luciana Dias Costa</td><td>VV03</td><td>Residencial Bela Vista (Sudeste)</td><td>20/11/2021</td><td class="n">312</td><td class="n">R$ 37.253,44</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Daniela Soares Dias</td><td>VV03</td><td>Jardim Alvorada (Sudoeste)</td><td>03/05/2022</td><td class="n">317</td><td class="n">R$ 35.359,35</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Sandra Ferreira Ribeiro</td><td>VV03</td><td>Centro (Noroeste)</td><td>06/05/2025</td><td class="n">269</td><td class="n">R$ 32.581,49</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Rita Fernandes Alves</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>24/03/2021</td><td class="n">296</td><td class="n">R$ 32.123,92</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Rodrigo Moreira Ribeiro</td><td>VV03</td><td>Centro (Norte)</td><td>18/02/2024</td><td class="n">245</td><td class="n">R$ 30.329,27</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Raquel Almeida Nascimento</td><td>VV03</td><td>Jardim das Flores (Norte)</td><td>07/04/2024</td><td class="n">255</td><td class="n">R$ 28.969,87</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Rodrigo Oliveira Alves</td><td>VV03</td><td>Vila Nova (Nordeste)</td><td>14/06/2022</td><td class="n">241</td><td class="n">R$ 26.590,32</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Francisca Machado Carvalho</td><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td>13/12/2020</td><td class="n">222</td><td class="n">R$ 25.861,35</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Maria Gonçalves Pereira</td><td>VV03</td><td>Centro (Norte)</td><td>04/08/2025</td><td class="n">229</td><td class="n">R$ 25.389,49</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Daniela Nunes Andrade</td><td>VV03</td><td>Vila Operária (Sul)</td><td>02/01/2026</td><td class="n">221</td><td class="n">R$ 24.389,35</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Renato Cardoso Barbosa</td><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td>27/12/2024</td><td class="n">234</td><td class="n">R$ 24.141,19</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Maria Almeida Lopes</td><td>VV03</td><td>Loteamento Boa Vista (Oeste)</td><td>08/12/2024</td><td class="n">203</td><td class="n">R$ 23.005,20</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Ana Mendes Ferreira</td><td>VV03</td><td>Jardim Alvorada (Sudoeste)</td><td>21/05/2023</td><td class="n">211</td><td class="n">R$ 22.878,55</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Débora Souza Soares</td><td>VV03</td><td>Jardim das Flores (Norte)</td><td>17/08/2024</td><td class="n">198</td><td class="n">R$ 22.529,28</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Antônio Martins Cardoso</td><td>VV03</td><td>Loteamento Boa Vista (Oeste)</td><td>13/03/2021</td><td class="n">217</td><td class="n">R$ 22.213,97</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Guilherme Almeida Marques</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>08/08/2025</td><td class="n">193</td><td class="n">R$ 21.802,63</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Patrícia Gonçalves Silva</td><td>VV03</td><td>Vila Nova (Nordeste)</td><td>25/11/2024</td><td class="n">178</td><td class="n">R$ 20.793,83</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Rita Santana Ferreira</td><td>VV03</td><td>Centro (Norte)</td><td>06/06/2023</td><td class="n">182</td><td class="n">R$ 19.666,36</td><td>29/10/2026</td>
+    <td class="n">2</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Raquel Ribeiro Teixeira</td><td>VV03</td><td>Loteamento Boa Vista (Oeste)</td><td>24/06/2023</td><td class="n">173</td><td class="n">R$ 18.706,99</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Caio Martins Barbosa</td><td>VV03</td><td>Centro (Noroeste)</td><td>04/09/2025</td><td class="n">166</td><td class="n">R$ 18.044,96</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Fernanda Nunes Carvalho</td><td>VV03</td><td>Vila Operária (Sul)</td><td>13/09/2022</td><td class="n">139</td><td class="n">R$ 17.735,23</td><td>29/10/2026</td>
+    <td class="n">2</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Pedro Nascimento Martins</td><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td>09/04/2025</td><td class="n">174</td><td class="n">R$ 17.652,34</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Gabriela Pereira Almeida</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>24/04/2022</td><td class="n">151</td><td class="n">R$ 17.488,98</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Renato Almeida Gomes</td><td>VV03</td><td>Jardim Alvorada (Sudoeste)</td><td>09/12/2025</td><td class="n">143</td><td class="n">R$ 17.043,83</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Paulo Alves Moraes</td><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td>27/05/2024</td><td class="n">153</td><td class="n">R$ 16.304,13</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Francisca Nascimento Silva</td><td>VV03</td><td>Centro (Noroeste)</td><td>21/10/2021</td><td class="n">127</td><td class="n">R$ 15.835,60</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Luciana Machado Marques</td><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td>18/05/2024</td><td class="n">132</td><td class="n">R$ 15.817,66</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Gustavo Lima Soares</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>10/03/2024</td><td class="n">159</td><td class="n">R$ 15.800,59</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Matheus Santos Ramos</td><td>VV03</td><td>Loteamento Boa Vista (Oeste)</td><td>15/01/2021</td><td class="n">144</td><td class="n">R$ 15.537,26</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Luana Campos Ramos</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>08/05/2025</td><td class="n">116</td><td class="n">R$ 15.198,71</td><td>29/10/2026</td>
+    <td class="n">2</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Felipe Lima Pinto</td><td>VV03</td><td>Vila Operária (Sul)</td><td>18/12/2025</td><td class="n">124</td><td class="n">R$ 15.129,00</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Ana Silva Machado</td><td>VV03</td><td>Centro (Norte)</td><td>27/05/2021</td><td class="n">127</td><td class="n">R$ 15.065,90</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Larissa Vieira Moreira</td><td>VV03</td><td>Centro (Noroeste)</td><td>24/02/2022</td><td class="n">138</td><td class="n">R$ 14.861,99</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Otávio Alves Lopes</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>29/09/2025</td><td class="n">129</td><td class="n">R$ 14.111,71</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Luana Andrade Moreira</td><td>VV03</td><td>Jardim Alvorada (Sudoeste)</td><td>13/10/2024</td><td class="n">125</td><td class="n">R$ 13.955,66</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Luis Santana Alves</td><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td>05/10/2023</td><td class="n">94</td><td class="n">R$ 13.471,29</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Paulo Ferreira Costa</td><td>VV03</td><td>Vila Nova (Nordeste)</td><td>04/08/2026</td><td class="n">109</td><td class="n">R$ 13.272,43</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Fernanda Almeida Pinto</td><td>VV03</td><td>Vila Operária (Sul)</td><td>15/12/2021</td><td class="n">117</td><td class="n">R$ 13.186,95</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Roberta Moreira Costa</td><td>VV03</td><td>Jardim São Bento (Sudeste)</td><td>02/03/2021</td><td class="n">107</td><td class="n">R$ 13.098,44</td><td>29/10/2026</td>
+    <td class="n">2</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>João Costa Rodrigues</td><td>VV03</td><td>Centro (Norte)</td><td>01/10/2021</td><td class="n">111</td><td class="n">R$ 12.952,52</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Márcia Moreira Nunes</td><td>VV03</td><td>Centro (Noroeste)</td><td>09/01/2024</td><td class="n">106</td><td class="n">R$ 12.726,20</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Marcos Silva Santana</td><td>VV03</td><td>Residencial Bela Vista (Sudeste)</td><td>21/08/2025</td><td class="n">101</td><td class="n">R$ 12.354,34</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Rafael Souza Dias</td><td>VV03</td><td>Centro (Noroeste)</td><td>02/09/2025</td><td class="n">107</td><td class="n">R$ 11.851,28</td><td>26/10/2026</td>
+    <td class="n">5</td><td>4 5 5</td><td>Campeões</td></tr><tr><td>Francisco Silva Andrade</td><td>VV03</td><td>Vila Nova (Nordeste)</td><td>02/12/2022</td><td class="n">104</td><td class="n">R$ 11.692,35</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>João Martins Gomes</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>01/11/2023</td><td class="n">103</td><td class="n">R$ 11.161,27</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Sandra Marques Andrade</td><td>VV03</td><td>Vila Nova (Nordeste)</td><td>16/03/2023</td><td class="n">91</td><td class="n">R$ 11.102,42</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Larissa Costa Moraes</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>21/05/2025</td><td class="n">96</td><td class="n">R$ 11.028,68</td><td>29/10/2026</td>
+    <td class="n">2</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Débora Vieira Cavalcanti</td><td>VV03</td><td>Centro (Norte)</td><td>16/12/2022</td><td class="n">103</td><td class="n">R$ 10.905,65</td><td>29/10/2026</td>
+    <td class="n">2</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Rodrigo Lima Soares</td><td>VV03</td><td>Parque Industrial (Nordeste)</td><td>04/01/2024</td><td class="n">94</td><td class="n">R$ 10.902,38</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Mariana Machado Souza</td><td>VV03</td><td>Jardim das Flores (Norte)</td><td>18/11/2021</td><td class="n">88</td><td class="n">R$ 10.865,55</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Carlos Santos Prado</td><td>VV03</td><td>Jardim das Flores (Noroeste)</td><td>08/02/2024</td><td class="n">79</td><td class="n">R$ 10.728,69</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Luciana Nascimento Andrade</td><td>VV03</td><td>Jardim das Flores (Norte)</td><td>07/12/2023</td><td class="n">82</td><td class="n">R$ 10.620,31</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Renata Gonçalves Prado</td><td>VV03</td><td>Residencial Bela Vista (Sudeste)</td><td>13/07/2021</td><td class="n">77</td><td class="n">R$ 10.443,72</td><td>24/10/2026</td>
+    <td class="n">7</td><td>4 5 5</td><td>Campeões</td></tr><tr><td>Márcia Alves Andrade</td><td>VV03</td><td>Centro (Noroeste)</td><td>17/04/2023</td><td class="n">87</td><td class="n">R$ 10.422,36</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Amanda Ferreira Fernandes</td><td>VV03</td><td>Centro (Noroeste)</td><td>08/05/2025</td><td class="n">101</td><td class="n">R$ 10.356,65</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Fernando Pereira Cardoso</td><td>VV03</td><td>Residencial Bela Vista (Sudeste)</td><td>02/03/2025</td><td class="n">95</td><td class="n">R$ 10.127,44</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Rodrigo Ribeiro Cavalcanti</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>22/12/2023</td><td class="n">83</td><td class="n">R$ 10.123,40</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>André Rodrigues Martins</td><td>VV03</td><td>Jardim das Flores (Norte)</td><td>20/01/2026</td><td class="n">83</td><td class="n">R$ 10.001,27</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Bruna Carvalho Cavalcanti</td><td>VV03</td><td>Centro (Norte)</td><td>04/09/2022</td><td class="n">93</td><td class="n">R$ 9.925,51</td><td>29/10/2026</td>
+    <td class="n">2</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Igor Nunes Almeida</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>02/04/2023</td><td class="n">81</td><td class="n">R$ 9.514,30</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Patrícia Santana Oliveira</td><td>VV03</td><td>Vila Operária (Sul)</td><td>16/02/2021</td><td class="n">81</td><td class="n">R$ 9.350,66</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Aline Costa Campos</td><td>VV03</td><td>Jardim Alvorada (Sudoeste)</td><td>13/04/2023</td><td class="n">71</td><td class="n">R$ 8.911,73</td><td>29/10/2026</td>
+    <td class="n">2</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Leonardo Pereira Carvalho</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>25/01/2023</td><td class="n">78</td><td class="n">R$ 8.888,27</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Lucas Lopes Ribeiro</td><td>VV03</td><td>Jardim Alvorada (Sudoeste)</td><td>10/07/2025</td><td class="n">67</td><td class="n">R$ 8.863,88</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Gustavo Almeida Andrade</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>26/02/2024</td><td class="n">76</td><td class="n">R$ 8.713,83</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Leandro Nascimento Santana</td><td>VV03</td><td>Vila Nova (Nordeste)</td><td>22/09/2021</td><td class="n">60</td><td class="n">R$ 8.624,61</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Henrique Gonçalves Mendes</td><td>VV03</td><td>Jardim Alvorada (Sudoeste)</td><td>31/07/2024</td><td class="n">92</td><td class="n">R$ 8.600,49</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Marcelo Barbosa Costa</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>29/01/2024</td><td class="n">69</td><td class="n">R$ 8.553,29</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Isabela Moraes Teixeira</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>18/10/2022</td><td class="n">94</td><td class="n">R$ 8.498,90</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Bruna Oliveira Nascimento</td><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td>22/06/2025</td><td class="n">97</td><td class="n">R$ 8.443,67</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Leonardo Fernandes Nunes</td><td>VV03</td><td>Centro (Norte)</td><td>30/07/2022</td><td class="n">77</td><td class="n">R$ 8.264,01</td><td>29/10/2026</td>
+    <td class="n">2</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Guilherme Dias Machado</td><td>VV03</td><td>Residencial Bela Vista (Sudeste)</td><td>08/12/2021</td><td class="n">63</td><td class="n">R$ 8.235,22</td><td>27/10/2026</td>
+    <td class="n">4</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Tatiane Soares Alves</td><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td>19/03/2024</td><td class="n">57</td><td class="n">R$ 8.088,28</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Fernanda Ramos Freitas</td><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td>05/01/2023</td><td class="n">83</td><td class="n">R$ 8.035,16</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Júlia Martins Almeida</td><td>VV03</td><td>Centro (Norte)</td><td>29/10/2023</td><td class="n">63</td><td class="n">R$ 7.903,43</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Patrícia Teixeira Campos</td><td>VV03</td><td>Residencial Bela Vista (Sudeste)</td><td>15/01/2024</td><td class="n">79</td><td class="n">R$ 7.696,56</td><td>28/10/2026</td>
+    <td class="n">3</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Francisca Ramos Carvalho</td><td>VV03</td><td>Loteamento Boa Vista (Oeste)</td><td>10/06/2022</td><td class="n">64</td><td class="n">R$ 7.421,13</td><td>27/10/2026</td>
+    <td class="n">4</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Vitória Cardoso Barbosa</td><td>VV03</td><td>Vila Nova (Nordeste)</td><td>06/09/2023</td><td class="n">71</td><td class="n">R$ 7.406,46</td><td>29/10/2026</td>
+    <td class="n">2</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Elaine Pereira Lopes</td><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td>20/02/2023</td><td class="n">66</td><td class="n">R$ 7.255,05</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Carla Lopes Gonçalves</td><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td>13/08/2023</td><td class="n">62</td><td class="n">R$ 7.168,45</td><td>29/10/2026</td>
+    <td class="n">2</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Patrícia Alves Pinto</td><td>VV03</td><td>Centro (Norte)</td><td>13/04/2023</td><td class="n">55</td><td class="n">R$ 7.124,86</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Marcelo Machado Andrade</td><td>VV03</td><td>Jardim Alvorada (Sudoeste)</td><td>27/03/2024</td><td class="n">65</td><td class="n">R$ 7.080,45</td><td>29/10/2026</td>
+    <td class="n">2</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Pedro Machado Campos</td><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td>11/01/2024</td><td class="n">56</td><td class="n">R$ 7.053,76</td><td>28/10/2026</td>
+    <td class="n">3</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Isabela Machado Teixeira</td><td>VV03</td><td>Jardim Alvorada (Sudoeste)</td><td>10/01/2022</td><td class="n">65</td><td class="n">R$ 7.013,08</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Bruno Carvalho Cavalcanti</td><td>VV03</td><td>Vila Operária (Sul)</td><td>25/03/2024</td><td class="n">61</td><td class="n">R$ 7.012,31</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Juliana Rocha Moraes</td><td>VV03</td><td>Chácara Recreio (Sul)</td><td>24/11/2025</td><td class="n">44</td><td class="n">R$ 6.889,00</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Fernando Almeida Andrade</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>15/05/2021</td><td class="n">63</td><td class="n">R$ 6.874,41</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Jéssica Campos Pinto</td><td>VV03</td><td>Parque dos Ipês (Sudoeste)</td><td>18/03/2025</td><td class="n">59</td><td class="n">R$ 6.850,47</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Daniela Teixeira Ribeiro</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>20/09/2025</td><td class="n">64</td><td class="n">R$ 6.846,62</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Diego Martins Santos</td><td>VV03</td><td>Jardim Alvorada (Sudoeste)</td><td>07/05/2023</td><td class="n">65</td><td class="n">R$ 6.804,83</td><td>25/10/2026</td>
+    <td class="n">6</td><td>4 5 5</td><td>Campeões</td></tr><tr><td>Otávio Andrade Santana</td><td>VV03</td><td>Vila Operária (Sul)</td><td>29/05/2024</td><td class="n">61</td><td class="n">R$ 6.648,98</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Jéssica Silva Rodrigues</td><td>VV03</td><td>Vila Operária (Sul)</td><td>08/04/2025</td><td class="n">53</td><td class="n">R$ 6.585,66</td><td>27/10/2026</td>
+    <td class="n">4</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Natália Costa Machado</td><td>VV03</td><td>Vila Operária (Sul)</td><td>20/08/2021</td><td class="n">67</td><td class="n">R$ 6.564,58</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Francisca Pereira Andrade</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>09/12/2024</td><td class="n">50</td><td class="n">R$ 6.495,25</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Maria Nunes Fernandes</td><td>VV03</td><td>Jardim das Flores (Norte)</td><td>25/02/2021</td><td class="n">56</td><td class="n">R$ 6.463,81</td><td>29/10/2026</td>
+    <td class="n">2</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Otávio Gomes Costa</td><td>VV03</td><td>Jardim São Bento (Sudeste)</td><td>08/01/2026</td><td class="n">55</td><td class="n">R$ 6.409,26</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Samuel Cavalcanti Gomes</td><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td>19/03/2022</td><td class="n">58</td><td class="n">R$ 6.400,45</td><td>29/10/2026</td>
+    <td class="n">2</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Daniel Lopes Soares</td><td>VV03</td><td>Vila Operária (Sul)</td><td>06/10/2023</td><td class="n">51</td><td class="n">R$ 6.385,03</td><td>29/10/2026</td>
+    <td class="n">2</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Luciana Nascimento Ferreira</td><td>VV03</td><td>Centro (Norte)</td><td>10/03/2025</td><td class="n">62</td><td class="n">R$ 6.382,94</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Larissa Ferreira Ramos</td><td>VV03</td><td>Vila Nova (Nordeste)</td><td>27/10/2022</td><td class="n">48</td><td class="n">R$ 6.362,05</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Marcos Fernandes Martins</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>02/03/2021</td><td class="n">58</td><td class="n">R$ 6.229,88</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Fernanda Pereira Lopes</td><td>VV03</td><td>Residencial Bela Vista (Sudeste)</td><td>27/05/2025</td><td class="n">48</td><td class="n">R$ 6.216,02</td><td>20/10/2026</td>
+    <td class="n">11</td><td>4 5 5</td><td>Campeões</td></tr><tr><td>João Rodrigues Fernandes</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>26/09/2022</td><td class="n">50</td><td class="n">R$ 6.159,81</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Daniel Cavalcanti Prado</td><td>VV03</td><td>Jardim Alvorada (Sudoeste)</td><td>01/12/2020</td><td class="n">59</td><td class="n">R$ 6.120,07</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Beatriz Marques Soares</td><td>VV03</td><td>Centro (Noroeste)</td><td>14/09/2021</td><td class="n">55</td><td class="n">R$ 6.069,42</td><td>27/10/2026</td>
+    <td class="n">4</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Renata Silva Nascimento</td><td>VV03</td><td>Vila Nova (Nordeste)</td><td>06/02/2025</td><td class="n">44</td><td class="n">R$ 5.989,60</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Otávio Nascimento Almeida</td><td>VV03</td><td>Centro (Norte)</td><td>12/03/2025</td><td class="n">52</td><td class="n">R$ 5.955,71</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Gabriel Pinto Ferreira</td><td>VV03</td><td>Centro (Noroeste)</td><td>29/12/2024</td><td class="n">52</td><td class="n">R$ 5.857,53</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Caio Dias Cardoso</td><td>VV03</td><td>Vila Esperança (Leste)</td><td>07/01/2024</td><td class="n">68</td><td class="n">R$ 5.846,71</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Raquel Fernandes Moreira</td><td>VV03</td><td>Centro (Norte)</td><td>18/02/2022</td><td class="n">36</td><td class="n">R$ 5.840,03</td><td>05/10/2026</td>
+    <td class="n">26</td><td>3 5 5</td><td>Leais</td></tr><tr><td>Bruna Oliveira Andrade</td><td>VV03</td><td>Residencial Bela Vista (Sudeste)</td><td>26/06/2023</td><td class="n">59</td><td class="n">R$ 5.784,57</td><td>29/10/2026</td>
+    <td class="n">2</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Roberta Soares Soares</td><td>VV03</td><td>Vila Esperança (Leste)</td><td>12/11/2024</td><td class="n">66</td><td class="n">R$ 5.755,93</td><td>27/10/2026</td>
+    <td class="n">4</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Luciana Vieira Rocha</td><td>VV03</td><td>Vila Nova (Nordeste)</td><td>22/08/2021</td><td class="n">34</td><td class="n">R$ 5.707,20</td><td>28/10/2026</td>
+    <td class="n">3</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>João Ramos Carvalho</td><td>VV03</td><td>Vila Operária (Sul)</td><td>16/09/2022</td><td class="n">42</td><td class="n">R$ 5.702,58</td><td>23/10/2026</td>
+    <td class="n">8</td><td>4 5 5</td><td>Campeões</td></tr><tr><td>Daniela Prado Rocha</td><td>VV03</td><td>Jardim São Bento (Sudeste)</td><td>05/04/2024</td><td class="n">47</td><td class="n">R$ 5.671,69</td><td>27/10/2026</td>
+    <td class="n">4</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Vitória Cardoso Santana</td><td>VV03</td><td>Vila Esperança (Leste)</td><td>13/12/2024</td><td class="n">38</td><td class="n">R$ 5.660,92</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Antônia Carvalho Gomes</td><td>VV03</td><td>Residencial Bela Vista (Sudeste)</td><td>05/12/2025</td><td class="n">46</td><td class="n">R$ 5.644,08</td><td>24/10/2026</td>
+    <td class="n">7</td><td>4 5 5</td><td>Campeões</td></tr><tr><td>Bruna Cavalcanti Cardoso</td><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td>17/03/2026</td><td class="n">52</td><td class="n">R$ 5.643,46</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Vera Costa Freitas</td><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td>19/10/2023</td><td class="n">54</td><td class="n">R$ 5.602,69</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Adriana Soares Souza</td><td>VV03</td><td>Residencial Bela Vista (Sudeste)</td><td>24/02/2023</td><td class="n">38</td><td class="n">R$ 5.591,04</td><td>23/10/2026</td>
+    <td class="n">8</td><td>4 5 5</td><td>Campeões</td></tr><tr><td>Juliana Marques Pereira</td><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td>26/01/2022</td><td class="n">53</td><td class="n">R$ 5.526,19</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Lucas Santos Nunes</td><td>VV03</td><td>Jardim São Bento (Sudeste)</td><td>29/03/2021</td><td class="n">60</td><td class="n">R$ 5.449,84</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Ricardo Andrade Gonçalves</td><td>VV03</td><td>Vila Operária (Sul)</td><td>14/07/2023</td><td class="n">36</td><td class="n">R$ 5.446,07</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Antônio Teixeira Carvalho</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>07/03/2024</td><td class="n">48</td><td class="n">R$ 5.431,21</td><td>29/10/2026</td>
+    <td class="n">2</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Antônia Barbosa Prado</td><td>VV03</td><td>Vila Operária (Sul)</td><td>22/05/2025</td><td class="n">40</td><td class="n">R$ 5.374,27</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Renata Freitas Costa</td><td>VV03</td><td>Jardim Alvorada (Sudoeste)</td><td>06/08/2023</td><td class="n">41</td><td class="n">R$ 5.374,11</td><td>27/10/2026</td>
+    <td class="n">4</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Gabriel Ribeiro Silva</td><td>VV03</td><td>Vila Operária (Sul)</td><td>13/07/2023</td><td class="n">40</td><td class="n">R$ 5.371,10</td><td>29/10/2026</td>
+    <td class="n">2</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Simone Ramos Ferreira</td><td>VV03</td><td>Centro (Norte)</td><td>25/09/2025</td><td class="n">32</td><td class="n">R$ 5.299,76</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>João Moreira Ramos</td><td>VV03</td><td>Vila Esperança (Leste)</td><td>25/03/2025</td><td class="n">48</td><td class="n">R$ 5.252,26</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Cláudia Nascimento Cavalcanti</td><td>VV03</td><td>Jardim Alvorada (Sudoeste)</td><td>14/03/2022</td><td class="n">49</td><td class="n">R$ 5.237,03</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Márcia Pereira Lima</td><td>VV03</td><td>Vila Operária (Sul)</td><td>04/04/2025</td><td class="n">47</td><td class="n">R$ 5.138,33</td><td>26/10/2026</td>
+    <td class="n">5</td><td>4 5 5</td><td>Campeões</td></tr><tr><td>Luana Cavalcanti Gomes</td><td>VV03</td><td>Residencial Bela Vista (Sudeste)</td><td>28/03/2024</td><td class="n">53</td><td class="n">R$ 5.105,38</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Renato Ferreira Pinto</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>05/02/2024</td><td class="n">48</td><td class="n">R$ 5.093,45</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Ana Carvalho Andrade</td><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td>26/09/2021</td><td class="n">50</td><td class="n">R$ 5.043,28</td><td>25/10/2026</td>
+    <td class="n">6</td><td>4 5 5</td><td>Campeões</td></tr><tr><td>Amanda Gomes Gonçalves</td><td>VV03</td><td>Vila Nova (Nordeste)</td><td>04/07/2023</td><td class="n">46</td><td class="n">R$ 5.031,65</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Marcelo Gomes Cavalcanti</td><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td>10/09/2025</td><td class="n">42</td><td class="n">R$ 5.030,73</td><td>27/10/2026</td>
+    <td class="n">4</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Maria Santana Ribeiro</td><td>VV03</td><td>Vila Esperança (Leste)</td><td>05/11/2020</td><td class="n">39</td><td class="n">R$ 4.996,11</td><td>13/10/2026</td>
+    <td class="n">18</td><td>3 5 5</td><td>Leais</td></tr><tr><td>Tatiane Nascimento Lopes</td><td>VV03</td><td>Parque dos Ipês (Sudoeste)</td><td>23/07/2022</td><td class="n">47</td><td class="n">R$ 4.904,86</td><td>28/10/2026</td>
+    <td class="n">3</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Elaine Ribeiro Prado</td><td>VV03</td><td>Jardim Alvorada (Sudoeste)</td><td>16/05/2022</td><td class="n">37</td><td class="n">R$ 4.898,15</td><td>26/10/2026</td>
+    <td class="n">5</td><td>4 5 5</td><td>Campeões</td></tr><tr><td>Cláudia Costa Vieira</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>24/10/2024</td><td class="n">45</td><td class="n">R$ 4.863,23</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Adriana Prado Costa</td><td>VV03</td><td>Centro (Noroeste)</td><td>06/04/2022</td><td class="n">37</td><td class="n">R$ 4.853,44</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Diego Soares Nascimento</td><td>VV03</td><td>Centro (Noroeste)</td><td>14/03/2025</td><td class="n">38</td><td class="n">R$ 4.851,64</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Maria Andrade Ramos</td><td>VV03</td><td>Jardim das Flores (Noroeste)</td><td>29/07/2021</td><td class="n">44</td><td class="n">R$ 4.844,28</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Aline Lopes Machado</td><td>VV03</td><td>Parque dos Ipês (Sudoeste)</td><td>06/10/2021</td><td class="n">45</td><td class="n">R$ 4.843,42</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Henrique Carvalho Machado</td><td>VV03</td><td>Centro (Noroeste)</td><td>16/12/2021</td><td class="n">35</td><td class="n">R$ 4.811,95</td><td>27/10/2026</td>
+    <td class="n">4</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Rita Cardoso Cardoso</td><td>VV03</td><td>Residencial Bela Vista (Sudeste)</td><td>23/06/2024</td><td class="n">36</td><td class="n">R$ 4.752,28</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Luiz Silva Freitas</td><td>VV03</td><td>Residencial Bela Vista (Sudeste)</td><td>21/04/2023</td><td class="n">47</td><td class="n">R$ 4.740,13</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Priscila Teixeira Santana</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>28/04/2022</td><td class="n">31</td><td class="n">R$ 4.733,09</td><td>28/10/2026</td>
+    <td class="n">3</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Mariana Cardoso Campos</td><td>VV03</td><td>Jardim Alvorada (Sudoeste)</td><td>16/08/2025</td><td class="n">42</td><td class="n">R$ 4.717,76</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Isabela Campos Andrade</td><td>VV03</td><td>Vila Nova (Nordeste)</td><td>18/01/2025</td><td class="n">37</td><td class="n">R$ 4.705,50</td><td>26/10/2026</td>
+    <td class="n">5</td><td>4 5 5</td><td>Campeões</td></tr><tr><td>Lucas Teixeira Oliveira</td><td>VV03</td><td>Centro (Norte)</td><td>19/04/2023</td><td class="n">53</td><td class="n">R$ 4.690,40</td><td>24/10/2026</td>
+    <td class="n">7</td><td>4 5 5</td><td>Campeões</td></tr><tr><td>Luciana Cardoso Nascimento</td><td>VV03</td><td>Jardim das Flores (Noroeste)</td><td>30/04/2022</td><td class="n">43</td><td class="n">R$ 4.686,78</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Marcelo Barbosa Teixeira</td><td>VV03</td><td>Jardim São Bento (Sudeste)</td><td>02/05/2024</td><td class="n">44</td><td class="n">R$ 4.675,18</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Carla Teixeira Ramos</td><td>VV03</td><td>Vila Esperança (Leste)</td><td>31/05/2026</td><td class="n">36</td><td class="n">R$ 4.663,04</td><td>29/10/2026</td>
+    <td class="n">2</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Cláudia Lima Nunes</td><td>VV03</td><td>Parque dos Ipês (Sudoeste)</td><td>12/09/2025</td><td class="n">44</td><td class="n">R$ 4.635,57</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Luciana Martins Pereira</td><td>VV03</td><td>Residencial Bela Vista (Sudeste)</td><td>20/09/2021</td><td class="n">30</td><td class="n">R$ 4.634,55</td><td>28/10/2026</td>
+    <td class="n">3</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Sandra Pinto Lopes</td><td>VV03</td><td>Parque Industrial (Nordeste)</td><td>22/09/2024</td><td class="n">37</td><td class="n">R$ 4.631,52</td><td>28/10/2026</td>
+    <td class="n">3</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Matheus Moreira Almeida</td><td>VV03</td><td>Jardim Alvorada (Sudoeste)</td><td>11/03/2021</td><td class="n">49</td><td class="n">R$ 4.599,53</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Guilherme Teixeira Rodrigues</td><td>VV03</td><td>Loteamento Boa Vista (Oeste)</td><td>19/12/2021</td><td class="n">32</td><td class="n">R$ 4.590,99</td><td>27/10/2026</td>
+    <td class="n">4</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Gabriel Barbosa Nascimento</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>04/11/2020</td><td class="n">36</td><td class="n">R$ 4.577,77</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Bruna Cavalcanti Teixeira</td><td>VV03</td><td>Vila Nova (Nordeste)</td><td>03/08/2021</td><td class="n">37</td><td class="n">R$ 4.545,39</td><td>28/10/2026</td>
+    <td class="n">3</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Aline Silva Cardoso</td><td>VV03</td><td>Residencial Bela Vista (Sudeste)</td><td>24/11/2023</td><td class="n">41</td><td class="n">R$ 4.536,40</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Beatriz Martins Lima</td><td>VV03</td><td>Centro (Norte)</td><td>15/09/2025</td><td class="n">45</td><td class="n">R$ 4.534,12</td><td>26/10/2026</td>
+    <td class="n">5</td><td>4 5 5</td><td>Campeões</td></tr><tr><td>Pedro Barbosa Gomes</td><td>VV03</td><td>Centro (Noroeste)</td><td>31/05/2025</td><td class="n">29</td><td class="n">R$ 4.516,93</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Daniela Almeida Rodrigues</td><td>VV03</td><td>Residencial Bela Vista (Sudeste)</td><td>06/12/2023</td><td class="n">43</td><td class="n">R$ 4.481,13</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Guilherme Ribeiro Silva</td><td>VV03</td><td>Vila Nova (Nordeste)</td><td>08/12/2020</td><td class="n">34</td><td class="n">R$ 4.467,05</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Raquel Ribeiro Lima</td><td>VV03</td><td>Vila Nova (Nordeste)</td><td>12/02/2023</td><td class="n">38</td><td class="n">R$ 4.452,68</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Otávio Ramos Dias</td><td>VV03</td><td>Jardim Primavera (Leste)</td><td>20/02/2022</td><td class="n">40</td><td class="n">R$ 4.398,88</td><td>28/10/2026</td>
+    <td class="n">3</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Vitória Barbosa Moraes</td><td>VV03</td><td>Centro (Noroeste)</td><td>11/01/2025</td><td class="n">42</td><td class="n">R$ 4.372,07</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Luiz Ramos Moraes</td><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td>08/04/2025</td><td class="n">19</td><td class="n">R$ 4.335,72</td><td>08/10/2026</td>
+    <td class="n">23</td><td>3 5 5</td><td>Leais</td></tr><tr><td>Tatiane Marques Cavalcanti</td><td>VV03</td><td>Vila Nova (Nordeste)</td><td>28/10/2022</td><td class="n">34</td><td class="n">R$ 4.316,47</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Caio Prado Nascimento</td><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td>13/03/2026</td><td class="n">39</td><td class="n">R$ 4.311,33</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Ana Marques Rocha</td><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td>30/03/2022</td><td class="n">35</td><td class="n">R$ 4.306,04</td><td>23/10/2026</td>
+    <td class="n">8</td><td>4 5 5</td><td>Campeões</td></tr><tr><td>Raquel Rocha Carvalho</td><td>VV03</td><td>Centro (Norte)</td><td>25/09/2020</td><td class="n">34</td><td class="n">R$ 4.280,59</td><td>20/10/2026</td>
+    <td class="n">11</td><td>4 5 5</td><td>Campeões</td></tr><tr><td>Larissa Martins Costa</td><td>VV03</td><td>Vila Nova (Nordeste)</td><td>14/09/2025</td><td class="n">39</td><td class="n">R$ 4.268,19</td><td>15/10/2026</td>
+    <td class="n">16</td><td>3 5 5</td><td>Leais</td></tr><tr><td>Luis Lima Ribeiro</td><td>VV03</td><td>Centro (Noroeste)</td><td>12/01/2024</td><td class="n">39</td><td class="n">R$ 4.265,83</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Vitória Moraes Ferreira</td><td>VV03</td><td>Jardim São Bento (Sudeste)</td><td>03/07/2023</td><td class="n">39</td><td class="n">R$ 4.249,40</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Igor Nascimento Alves</td><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td>25/08/2021</td><td class="n">33</td><td class="n">R$ 4.248,44</td><td>27/10/2026</td>
+    <td class="n">4</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Raimundo Gomes Prado</td><td>VV03</td><td>Residencial Bela Vista (Sudeste)</td><td>02/01/2024</td><td class="n">29</td><td class="n">R$ 4.240,19</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Débora Campos Lima</td><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td>11/11/2024</td><td class="n">36</td><td class="n">R$ 4.231,23</td><td>30/10/2026</td>
+    <td class="n">1</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Vanessa Ferreira Carvalho</td><td>VV03</td><td>Vila Santa Rita (Oeste)</td><td>25/11/2025</td><td class="n">52</td><td class="n">R$ 4.226,04</td><td>31/10/2026</td>
+    <td class="n">0</td><td>5 5 5</td><td>Campeões</td></tr><tr><td>Paulo Fernandes Souza</td><td>VV03</td><td>Residencial Bela Vista (Sudeste)</td><td>17/04/2025</td><td class="n">36</td><td class="n">R$ 4.208,25</td><td>27/10/2026</td>
+    <td class="n">4</td><td>5 5 5</td><td>Campeões</td></tr>
+</table></div></div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+
+</body>
+</html>

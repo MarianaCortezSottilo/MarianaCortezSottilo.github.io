@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Expansão · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+<script src="../static/vv_mapa.js"></script>
+<script>window.VV_DIR="proprias";window.VV_KEY="/mapas/expansao";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="ativo">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" selected>Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Expansão: onde abrir as próximas lojas</h1>
+  <div class="sub">28 cidades candidatas. População aproximada (Censo 2022); renda e concorrência são estimativas ilustrativas — troque pelos dados do IBGE na tabela <code>cidades</code> para uma análise real.</div></div>
+  <div class="filtros">
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a></div></div>
+<div class="grade g2">
+  <div class="cartao">
+    <h3>Pesos do índice de atratividade</h3>
+    <div class="nota">Cada critério é normalizado de 0 a 100 entre as candidatas; o índice é a média ponderada.</div>
+    <div class="form-grade" style="grid-template-columns:1fr">
+      <div class="campo"><label>População</label><div class="slider"><input type="range" id="wPop" min="0" max="10" value="4"><output id="oPop"></output></div></div>
+      <div class="campo"><label>Renda per capita</label><div class="slider"><input type="range" id="wRen" min="0" max="10" value="5"><output id="oRen"></output></div></div>
+      <div class="campo"><label>Pouca concorrência (habitantes por supermercado)</label><div class="slider"><input type="range" id="wCon" min="0" max="10" value="3"><output id="oCon"></output></div></div>
+      <div class="campo"><label>Perto de um CD (custo logístico)</label><div class="slider"><input type="range" id="wDis" min="0" max="10" value="4"><output id="oDis"></output></div></div>
+      <div class="campo"><label>Investimento por loja (R$ mi)</label><div class="slider"><input type="range" id="inv" min="2" max="8" step="0.5" value="4.5"><output id="oInv"></output></div></div>
+    </div>
+  </div>
+  <div class="cartao">
+    <h3>Como o faturamento potencial é estimado</h3>
+    <div class="nota">Lojas da rede com 18+ meses: faturamento por m²/ano × renda per capita da cidade (escala log-log). Ajuste: elasticidade 0,17 com 8 lojas.</div>
+    <div class="grafico baixo"><canvas id="gCalib"></canvas></div>
+    <p class="muted" style="margin:6px 0 0">Potencial = loja de 1.300 m² × curva acima × fator de concorrência. Lucro = potencial × margem antes do IR mediana das lojas maduras (5,3%) − frete extra pela distância ao CD.</p>
+  </div>
+</div>
+<div class="cartao mt">
+  <div class="controles-mapa"><b>Mapa de oportunidades</b><span class="muted">Bolha = população · cor = índice de atratividade · círculos verdes = 700 km de cada CD (até 2 dias de entrega)</span></div>
+  <div id="mapa" class="mapa"></div>
+</div>
+<div class="cartao mt"><h3>Ranking das candidatas</h3><div class="rolagem"><table id="tab"></table></div></div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+
+<script>
+const cand = [{"cd": "CD03", "cd_nome": "CD Nordeste/Norte", "concorrentes": 240, "frete_est": 428726.6749300765, "frete_pct": 0.019276886730201805, "hab_por_super": 10116.666666666666, "id": 14, "km_cd": 800.6055794267768, "lat": -3.7319, "lon": -38.5267, "lucro_est": 902101.9322996938, "nome": "Fortaleza", "payback_anos": 4.988349807131355, "populacao": 2428000, "receita_est": 22240452.046562824, "regiao": "Nordeste", "renda": 1400.0, "uf": "CE"}, {"cd": "CD01", "cd_nome": "CD Sudeste/Centro-Oeste", "concorrentes": 190, "frete_est": 1570377.7247427977, "frete_pct": 0.07125295204698141, "hab_por_super": 10857.894736842105, "id": 15, "km_cd": 3243.0898518318336, "lat": -3.119, "lon": -60.0217, "lucro_est": -250127.8763449574, "nome": "Manaus", "payback_anos": null, "populacao": 2063000, "receita_est": 22039475.9743758, "regiao": "Norte", "renda": 1200.0, "uf": "AM"}, {"cd": "CD01", "cd_nome": "CD Sudeste/Centro-Oeste", "concorrentes": 330, "frete_est": 572331.7287858049, "frete_pct": 0.02326124308259526, "hab_por_super": 8536.363636363636, "id": 16, "km_cd": 987.8403704227101, "lat": -15.7939, "lon": -47.8828, "lucro_est": 882934.1219889403, "nome": "Bras\u00edlia", "payback_anos": 5.0966429860736175, "populacao": 2817000, "receita_est": 24604520.349733166, "regiao": "Centro-Oeste", "renda": 3200.0, "uf": "DF"}, {"cd": "CD03", "cd_nome": "CD Nordeste/Norte", "concorrentes": 95, "frete_est": 772433.2080553055, "frete_pct": 0.03451826226353524, "hab_por_super": 10915.78947368421, "id": 17, "km_cd": 1516.8356326849268, "lat": -2.5307, "lon": -44.3068, "lucro_est": 565610.390718251, "nome": "S\u00e3o Lu\u00eds", "payback_anos": 7.956006597201283, "populacao": 1037000, "receita_est": 22377523.00964746, "regiao": "Nordeste", "renda": 1300.0, "uf": "MA"}, {"cd": "CD03", "cd_nome": "CD Nordeste/Norte", "concorrentes": 90, "frete_est": 151554.31423384813, "frete_pct": 0.006817147991714668, "hab_por_super": 10633.333333333334, "id": 18, "km_cd": 215.09154096403523, "lat": -9.6658, "lon": -35.735, "lucro_est": 1178794.503988012, "nome": "Macei\u00f3", "payback_anos": 3.817459264338209, "populacao": 957000, "receita_est": 22231336.978167724, "regiao": "Nordeste", "renda": 1300.0, "uf": "AL"}, {"cd": "CD03", "cd_nome": "CD Nordeste/Norte", "concorrentes": 80, "frete_est": 213793.45564604574, "frete_pct": 0.00967770109122971, "hab_por_super": 9387.5, "id": 19, "km_cd": 349.51602872320063, "lat": -5.7945, "lon": -35.211, "lucro_est": 1109186.7376688197, "nome": "Natal", "payback_anos": 4.057026510664616, "populacao": 751000, "receita_est": 22091347.27665781, "regiao": "Nordeste", "renda": 1500.0, "uf": "RN"}, {"cd": "CD03", "cd_nome": "CD Nordeste/Norte", "concorrentes": 85, "frete_est": 595033.9497678909, "frete_pct": 0.02705320846055685, "hab_por_super": 10188.235294117647, "id": 20, "km_cd": 1166.034232169025, "lat": -5.092, "lon": -42.8038, "lucro_est": 722872.1546913085, "nome": "Teresina", "payback_anos": 6.225167162403228, "populacao": 866000, "receita_est": 21994949.347151965, "regiao": "Nordeste", "renda": 1300.0, "uf": "PI"}, {"cd": "CD03", "cd_nome": "CD Nordeste/Norte", "concorrentes": 85, "frete_est": 128643.42036740643, "frete_pct": 0.005760979692182529, "hab_por_super": 9800.0, "id": 21, "km_cd": 165.45957200105872, "lat": -7.1195, "lon": -34.845, "lucro_est": 1206905.5104889816, "nome": "Jo\u00e3o Pessoa", "payback_anos": 3.7285437516784645, "populacao": 833000, "receita_est": 22330129.11709645, "regiao": "Nordeste", "renda": 1500.0, "uf": "PB"}, {"cd": "CD03", "cd_nome": "CD Nordeste/Norte", "concorrentes": 60, "frete_est": 272571.6419747623, "frete_pct": 0.012134856495819805, "hab_por_super": 10033.333333333334, "id": 22, "km_cd": 464.983857886269, "lat": -10.9472, "lon": -37.0731, "lucro_est": 1069912.0376928898, "nome": "Aracaju", "payback_anos": 4.205953238645298, "populacao": 602000, "receita_est": 22461876.007240575, "regiao": "Nordeste", "renda": 1500.0, "uf": "SE"}, {"cd": "CD03", "cd_nome": "CD Nordeste/Norte", "concorrentes": 55, "frete_est": 409124.01818816684, "frete_pct": 0.018700114100325845, "hab_por_super": 11200.0, "id": 23, "km_cd": 773.5016024589215, "lat": -12.2664, "lon": -38.9663, "lucro_est": 902634.4588952842, "nome": "Feira de Santana", "payback_anos": 4.985406834021668, "populacao": 616000, "receita_est": 21878156.25044972, "regiao": "Nordeste", "renda": 1100.0, "uf": "BA"}, {"cd": "CD02", "cd_nome": "CD Sul", "concorrentes": 95, "frete_est": 528847.1863660068, "frete_pct": 0.02293712908020186, "hab_por_super": 9452.631578947368, "id": 24, "km_cd": 972.6094492576061, "lat": -20.4697, "lon": -54.6201, "lucro_est": 844929.3956203727, "nome": "Campo Grande", "payback_anos": 5.325888794170742, "populacao": 898000, "receita_est": 23056380.967157755, "regiao": "Centro-Oeste", "renda": 1900.0, "uf": "MS"}, {"cd": "CD01", "cd_nome": "CD Sudeste/Centro-Oeste", "concorrentes": 70, "frete_est": 805256.823322726, "frete_pct": 0.03508145744654383, "hab_por_super": 9285.714285714286, "id": 25, "km_cd": 1543.3015717360827, "lat": -15.6014, "lon": -56.0979, "lucro_est": 563126.3136150781, "nome": "Cuiab\u00e1", "payback_anos": 7.991102335658124, "populacao": 650000, "receita_est": 22953915.884189084, "regiao": "Centro-Oeste", "renda": 1900.0, "uf": "MT"}, {"cd": "CD01", "cd_nome": "CD Sudeste/Centro-Oeste", "concorrentes": 75, "frete_est": 330295.7066526379, "frete_pct": 0.014305166114349503, "hab_por_super": 9506.666666666666, "id": 26, "km_cd": 566.9720918397323, "lat": -18.9186, "lon": -48.2772, "lucro_est": 1045211.5513010212, "nome": "Uberl\u00e2ndia", "payback_anos": 4.305348514756319, "populacao": 713000, "receita_est": 23089260.48200996, "regiao": "Sudeste", "renda": 1900.0, "uf": "MG"}, {"cd": "CD01", "cd_nome": "CD Sudeste/Centro-Oeste", "concorrentes": 60, "frete_est": 299490.75249308173, "frete_pct": 0.01327379939149163, "hab_por_super": 9000.0, "id": 27, "km_cd": 518.5056105024263, "lat": -21.7642, "lon": -43.3496, "lucro_est": 1048292.0552487386, "nome": "Juiz de Fora", "payback_anos": 4.2926968467124755, "populacao": 540000, "receita_est": 22562549.249090824, "regiao": "Sudeste", "renda": 1800.0, "uf": "MG"}, {"cd": "CD01", "cd_nome": "CD Sudeste/Centro-Oeste", "concorrentes": 80, "frete_est": 173451.98366738667, "frete_pct": 0.007542945670290935, "hab_por_super": 8725.0, "id": 28, "km_cd": 249.19857473171697, "lat": -21.1704, "lon": -47.8103, "lucro_est": 1197107.28763003, "nome": "Ribeir\u00e3o Preto", "payback_anos": 3.759061569918986, "populacao": 698000, "receita_est": 22995258.25176685, "regiao": "Sudeste", "renda": 2100.0, "uf": "SP"}, {"cd": "CD01", "cd_nome": "CD Sudeste/Centro-Oeste", "concorrentes": 80, "frete_est": 96317.55052933683, "frete_pct": 0.0042246466970456325, "hab_por_super": 9037.5, "id": 29, "km_cd": 93.26347260552785, "lat": -23.5015, "lon": -47.4526, "lucro_est": 1263909.1813220968, "nome": "Sorocaba", "payback_anos": 3.560382396536458, "populacao": 723000, "receita_est": 22798959.874370877, "regiao": "Sudeste", "renda": 1900.0, "uf": "SP"}, {"cd": "CD01", "cd_nome": "CD Sudeste/Centro-Oeste", "concorrentes": 75, "frete_est": 139991.33431886774, "frete_pct": 0.0059443559835159745, "hab_por_super": 9293.333333333334, "id": 30, "km_cd": 174.07687892462286, "lat": -23.1896, "lon": -45.8841, "lucro_est": 1259783.3309941783, "nome": "S\u00e3o Jos\u00e9 dos Campos", "payback_anos": 3.5720428182271253, "populacao": 697000, "receita_est": 23550294.54949727, "regiao": "Sudeste", "renda": 2200.0, "uf": "SP"}, {"cd": "CD01", "cd_nome": "CD Sudeste/Centro-Oeste", "concorrentes": 55, "frete_est": 144541.95591045448, "frete_pct": 0.006228741490703364, "hab_por_super": 7600.0, "id": 31, "km_cd": 187.44085952553408, "lat": -23.9608, "lon": -46.3336, "lucro_est": 1237091.3561736767, "nome": "Santos", "payback_anos": 3.637564822955759, "populacao": 418000, "receita_est": 23205643.72854274, "regiao": "Sudeste", "renda": 2700.0, "uf": "SP"}, {"cd": "CD01", "cd_nome": "CD Sudeste/Centro-Oeste", "concorrentes": 60, "frete_est": 321226.11858114996, "frete_pct": 0.013404633279332015, "hab_por_super": 8033.333333333333, "id": 32, "km_cd": 524.653819517482, "lat": -22.8832, "lon": -43.1034, "lucro_est": 1100314.8528306535, "nome": "Niter\u00f3i", "payback_anos": 4.089738485691952, "populacao": 482000, "receita_est": 23963812.503280763, "regiao": "Sudeste", "renda": 3000.0, "uf": "RJ"}, {"cd": "CD01", "cd_nome": "CD Sudeste/Centro-Oeste", "concorrentes": 45, "frete_est": 527295.7048471994, "frete_pct": 0.02263209542685858, "hab_por_super": 7177.777777777777, "id": 33, "km_cd": 958.2751610365875, "lat": -20.3155, "lon": -40.3128, "lucro_est": 859229.5292554267, "nome": "Vit\u00f3ria", "payback_anos": 5.237250172139121, "populacao": 323000, "receita_est": 23298580.838495076, "regiao": "Sudeste", "renda": 3000.0, "uf": "ES"}, {"cd": "CD01", "cd_nome": "CD Sudeste/Centro-Oeste", "concorrentes": 50, "frete_est": 530199.2620321591, "frete_pct": 0.02266759619433987, "hab_por_super": 9340.0, "id": 34, "km_cd": 959.9434301851442, "lat": -20.3297, "lon": -40.2925, "lucro_est": 861147.7168074346, "nome": "Vila Velha", "payback_anos": 5.225584312855197, "populacao": 467000, "receita_est": 23390184.71506699, "regiao": "Sudeste", "renda": 2100.0, "uf": "ES"}, {"cd": "CD02", "cd_nome": "CD Sul", "concorrentes": 70, "frete_est": 203473.53324641325, "frete_pct": 0.00863997112936512, "hab_por_super": 7671.428571428572, "id": 35, "km_cd": 300.7505229964813, "lat": -27.5954, "lon": -48.548, "lucro_est": 1196299.1109653844, "nome": "Florian\u00f3polis", "payback_anos": 3.761601056752946, "populacao": 537000, "receita_est": 23550256.152460642, "regiao": "Sul", "renda": 2900.0, "uf": "SC"}, {"cd": "CD02", "cd_nome": "CD Sul", "concorrentes": 65, "frete_est": 114419.24183564576, "frete_pct": 0.004873997413698912, "hab_por_super": 9476.923076923076, "id": 36, "km_cd": 123.77807395201656, "lat": -26.3045, "lon": -48.8487, "lucro_est": 1281415.397803356, "nome": "Joinville", "payback_anos": 3.511741787802805, "populacao": 616000, "receita_est": 23475441.6393529, "regiao": "Sul", "renda": 2100.0, "uf": "SC"}, {"cd": "CD02", "cd_nome": "CD Sul", "concorrentes": 60, "frete_est": 239702.8330459663, "frete_pct": 0.01044814822116425, "hab_por_super": 9266.666666666666, "id": 37, "km_cd": 385.7212509945607, "lat": -23.3045, "lon": -51.1696, "lucro_est": 1128060.2250954134, "nome": "Londrina", "payback_anos": 3.9891487173208167, "populacao": 556000, "receita_est": 22942135.57962484, "regiao": "Sul", "renda": 1900.0, "uf": "PR"}, {"cd": "CD02", "cd_nome": "CD Sul", "concorrentes": 50, "frete_est": 263177.56589675235, "frete_pct": 0.011537376767390068, "hab_por_super": 8180.0, "id": 38, "km_cd": 436.90680297885655, "lat": -23.4205, "lon": -51.9333, "lucro_est": 1097675.9153240381, "nome": "Maring\u00e1", "payback_anos": 4.099570681271241, "populacao": 409000, "receita_est": 22810866.906991646, "regiao": "Sul", "renda": 2200.0, "uf": "PR"}, {"cd": "CD02", "cd_nome": "CD Sul", "concorrentes": 55, "frete_est": 317578.9494618776, "frete_pct": 0.01382272499361186, "hab_por_super": 8418.181818181818, "id": 39, "km_cd": 544.3009865419108, "lat": -29.1678, "lon": -51.1794, "lucro_est": 1051921.007245955, "nome": "Caxias do Sul", "payback_anos": 4.2778877586839865, "populacao": 463000, "receita_est": 22975133.31189371, "regiao": "Sul", "renda": 2200.0, "uf": "RS"}, {"cd": "CD01", "cd_nome": "CD Sudeste/Centro-Oeste", "concorrentes": 45, "frete_est": 1457583.1280169003, "frete_pct": 0.06536763207374784, "hab_por_super": 10222.222222222223, "id": 40, "km_cd": 2966.5240636159697, "lat": -8.7612, "lon": -63.9004, "lucro_est": -123712.75791526423, "nome": "Porto Velho", "payback_anos": null, "populacao": 460000, "receita_est": 22298239.69105158, "regiao": "Norte", "renda": 1400.0, "uf": "RO"}, {"cd": "CD01", "cd_nome": "CD Sudeste/Centro-Oeste", "concorrentes": 35, "frete_est": 882114.2857579137, "frete_pct": 0.039904420854192386, "hab_por_super": 8628.57142857143, "id": 41, "km_cd": 1769.9445890128006, "lat": -10.184, "lon": -48.3336, "lucro_est": 441620.2425063485, "nome": "Palmas", "payback_anos": 10.189750303249086, "populacao": 302000, "receita_est": 22105678.189920105, "regiao": "Norte", "renda": 1700.0, "uf": "TO"}], lojas = [{"cidade": "Campinas", "codigo": "VV01", "lat": -22.886477, "lon": -47.041083, "modelo": "PROPRIA", "nome": "Vale Verde Campinas Taquaral", "receita": 25172012.67, "receita_m2_ano": 18079.072460743802, "renda_per_capita": 2300.0}, {"cidade": "S\u00e3o Paulo", "codigo": "VV02", "lat": -23.561311, "lon": -46.589076, "modelo": "PROPRIA", "nome": "Vale Verde S\u00e3o Paulo Mooca", "receita": 32558323.98, "receita_m2_ano": 18187.61593617998, "renda_per_capita": 2400.0}, {"cidade": "Rio de Janeiro", "codigo": "VV03", "lat": -22.915809, "lon": -43.219845, "modelo": "FRANQUIA", "nome": "Vale Verde Rio Tijuca", "receita": 29507600.51, "receita_m2_ano": 18543.860513343665, "renda_per_capita": 2300.0}, {"cidade": "Belo Horizonte", "codigo": "VV04", "lat": -19.929313, "lon": -43.926834, "modelo": "FRANQUIA", "nome": "Vale Verde BH Savassi", "receita": 23644375.73, "receita_m2_ano": 18288.190594299638, "renda_per_capita": 2200.0}, {"cidade": "Curitiba", "codigo": "VV05", "lat": -25.446418, "lon": -49.283275, "modelo": "FRANQUIA", "nome": "Vale Verde Curitiba \u00c1gua Verde", "receita": 22785066.57, "receita_m2_ano": 17623.541636045775, "renda_per_capita": 2300.0}, {"cidade": "Porto Alegre", "codigo": "VV06", "lat": -30.056222, "lon": -51.211456, "modelo": "FRANQUIA", "nome": "Vale Verde Porto Alegre Menino Deus", "receita": 18679935.05, "receita_m2_ano": 15652.379001951333, "renda_per_capita": 2500.0}, {"cidade": "Goi\u00e2nia", "codigo": "VV07", "lat": -16.701314, "lon": -49.281729, "modelo": "PROPRIA", "nome": "Vale Verde Goi\u00e2nia Setor Bueno", "receita": 20864508.64, "receita_m2_ano": 17482.887175390268, "renda_per_capita": 1900.0}, {"cidade": "Salvador", "codigo": "VV08", "lat": -12.964186, "lon": -38.464619, "modelo": "FRANQUIA", "nome": "Vale Verde Salvador Pituba", "receita": 22435595.78, "receita_m2_ano": 17353.236829201105, "renda_per_capita": 1500.0}, {"cidade": "Recife", "codigo": "VV09", "lat": -8.09715, "lon": -34.867901, "modelo": "PROPRIA", "nome": "Vale Verde Recife Boa Viagem", "receita": 19527134.79, "receita_m2_ano": 16362.268591253443, "renda_per_capita": 1600.0}, {"cidade": "Bel\u00e9m", "codigo": "VV10", "lat": -1.461205, "lon": -48.479386, "modelo": "FRANQUIA", "nome": "Vale Verde Bel\u00e9m Nazar\u00e9", "receita": 8982991.73, "receita_m2_ano": 13928.598052039084, "renda_per_capita": 1400.0}], cds = [{"cidade": "Hortol\u00e2ndia", "codigo": "CD01", "lat": -22.871814, "lon": -47.200446, "nome": "CD Sudeste/Centro-Oeste"}, {"cidade": "Arauc\u00e1ria", "codigo": "CD02", "lat": -25.576891, "lon": -49.419683, "nome": "CD Sul"}, {"cidade": "Cabo de Santo Agostinho", "codigo": "CD03", "lat": -8.300218, "lon": -34.997988, "nome": "CD Nordeste/Norte"}], calib = {"a": 8.460744107217202, "b": 0.1735616098092559, "margem": 0.05263690705471487, "n": 8, "pontos": [{"nome": "VV01 Campinas", "x": 2300.0, "y": 18079.072460743802}, {"nome": "VV02 S\u00e3o Paulo", "x": 2400.0, "y": 18187.61593617998}, {"nome": "VV03 Rio de Janeiro", "x": 2300.0, "y": 18543.860513343665}, {"nome": "VV04 Belo Horizonte", "x": 2200.0, "y": 18288.190594299638}, {"nome": "VV05 Curitiba", "x": 2300.0, "y": 17623.541636045775}, {"nome": "VV07 Goi\u00e2nia", "x": 1900.0, "y": 17482.887175390268}, {"nome": "VV08 Salvador", "x": 1500.0, "y": 17353.236829201105}, {"nome": "VV09 Recife", "x": 1600.0, "y": 16362.268591253443}]};
+new Chart(document.getElementById('gCalib'), {type: 'scatter', data: {datasets: [
+  {label: 'Lojas maduras', data: calib.pontos.map(p => ({x: p.x, y: p.y, n: p.nome})), backgroundColor: VV.cores[0], pointRadius: 6},
+  {label: 'Curva ajustada', type: 'line', data: [1200, 1500, 1800, 2100, 2400, 2700, 3000, 3300].map(x => ({x, y: Math.exp(calib.a + calib.b * Math.log(x))})), borderColor: '#898781', borderDash: [5, 4], pointRadius: 0, borderWidth: 2}]},
+  options: {plugins: {tooltip: {callbacks: {label: c => c.raw.n ? `${c.raw.n}: renda ${VV.brl(c.raw.x)} · ${VV.brl(c.raw.y)}/m²/ano` : `${VV.brl(c.raw.y)}/m²`}}},
+    scales: {x: {title: {display: true, text: 'Renda per capita (R$/mês)'}, grid: {display: false}}, y: {title: {display: true, text: 'Faturamento por m²/ano'}, ticks: {callback: v => VV.compacto(v)}}}}});
+const ids = ['wPop', 'wRen', 'wCon', 'wDis'];
+function norm(arr, inv = false, log = false) {
+  const v = arr.map(x => log ? Math.log(x) : x); const mn = Math.min(...v), mx = Math.max(...v);
+  return v.map(x => (mx === mn ? 50 : (inv ? (mx - x) : (x - mn)) / (mx - mn) * 100));
+}
+const nPop = norm(cand.map(c => c.populacao), false, true), nRen = norm(cand.map(c => c.renda)), nCon = norm(cand.map(c => c.hab_por_super)), nDis = norm(cand.map(c => c.km_cd), true);
+const mapa = VVMapa.criar('mapa');
+let camada = null, leg = null;
+if (mapa) {
+  cds.forEach(c => { L.circle([c.lat, c.lon], {radius: 700000 / 1.25, color: VVMapa.cores.cd, weight: 1, fillOpacity: .04}).addTo(mapa);
+    L.marker([c.lat, c.lon], {icon: L.divIcon({className: '', html: `<div style="background:${VVMapa.cores.cd};color:#fff;font:600 10.5px system-ui;padding:2px 4px;border-radius:4px;border:2px solid #fff">${c.codigo}</div>`})}).bindTooltip(c.nome).addTo(mapa); });
+  lojas.forEach(l => L.circleMarker([l.lat, l.lon], {radius: 6, color: '#fff', weight: 2, fillColor: l.modelo === 'PROPRIA' ? VVMapa.cores.loja : VVMapa.cores.franquia, fillOpacity: 1})
+    .bindTooltip(`${l.codigo} ${l.cidade} (loja atual): ${VV.compacto(l.receita)} em 12m`).addTo(mapa));
+}
+function calc() {
+  const w = ids.map(i => +document.getElementById(i).value); const sw = w.reduce((a, b) => a + b, 0) || 1;
+  ids.forEach((i, k) => document.getElementById('o' + i.slice(1)).textContent = w[k]);
+  const inv = +document.getElementById('inv').value * 1e6; document.getElementById('oInv').textContent = VV.fmtNum(1).format(inv / 1e6);
+  const linhas = cand.map((c, k) => Object.assign({}, c, {score: (w[0] * nPop[k] + w[1] * nRen[k] + w[2] * nCon[k] + w[3] * nDis[k]) / sw,
+                                                          payback: c.lucro_est > 0 ? inv / c.lucro_est : null}))
+    .sort((a, b) => b.score - a.score);
+  let h = '<tr><th>#</th><th>Cidade</th><th>Região</th><th class="n">Índice</th><th class="n">População</th><th class="n">Renda</th><th class="n">Hab./super</th><th>CD mais próximo</th><th class="n">Fat. potencial/ano</th><th class="n">Frete/fat.</th><th class="n">Payback</th></tr>';
+  linhas.forEach((c, i) => h += `<tr><td>${i + 1}</td><td><b>${c.nome}</b>/${c.uf}</td><td>${c.regiao}</td><td class="n"><b>${VV.fmtNum(0).format(c.score)}</b></td><td class="n">${VV.fmtNum(0).format(c.populacao)}</td>
+    <td class="n">${VV.brl(c.renda)}</td><td class="n">${VV.fmtNum(0).format(c.hab_por_super)}</td><td>${c.cd} · ${VV.fmtNum(0).format(c.km_cd)} km</td><td class="n">${VV.compacto(c.receita_est)}</td>
+    <td class="n">${VV.fmtNum(2).format(c.frete_pct * 100)}%</td><td class="n">${c.payback ? VV.fmtNum(1).format(c.payback) + ' anos' : 'não paga'}</td></tr>`);
+  document.getElementById('tab').innerHTML = h;
+  if (!mapa) return;
+  if (camada) camada.remove(); if (leg) leg.remove();
+  camada = L.layerGroup().addTo(mapa);
+  const esc = VVMapa.escalaDiv(0, 50, 100);
+  const pmax = Math.max(...linhas.map(c => c.populacao));
+  linhas.forEach((c, i) => L.circleMarker([c.lat, c.lon], {radius: VVMapa.raioBolha(c.populacao, pmax, 5, 26), color: '#fcfcfb', weight: 1.5, fillColor: esc(c.score), fillOpacity: .88})
+    .bindPopup(`<b>${i + 1}º · ${c.nome}/${c.uf}</b> — índice ${VV.fmtNum(0).format(c.score)}<br>População ${VV.fmtNum(0).format(c.populacao)} · renda ${VV.brl(c.renda)}<br>
+      ${c.concorrentes} supermercados (${VV.fmtNum(0).format(c.hab_por_super)} hab./super)<br>${c.cd} a ${VV.fmtNum(0).format(c.km_cd)} km<br>
+      Potencial ${VV.compacto(c.receita_est)}/ano · frete ${VV.fmtNum(2).format(c.frete_pct * 100)}% · payback ${c.payback ? VV.fmtNum(1).format(c.payback) + ' anos' : '—'}`)
+    .bindTooltip(`${i + 1}º ${c.nome}: ${VV.fmtNum(0).format(c.score)}`).addTo(camada));
+  leg = VVMapa.legenda(mapa, `<b>Índice de atratividade</b><br><i style="background:#1c5cab"></i>alto (75+)<br><i style="background:#cde2fb"></i>médio (50)<br><i style="background:#d03b3b"></i>baixo<br>
+    <i style="background:${VVMapa.cores.loja}"></i>loja própria <i style="background:${VVMapa.cores.franquia}"></i>franquia`);
+}
+[...ids, 'inv'].forEach(i => document.getElementById(i).addEventListener('input', calc));
+calc();
+</script>
+
+</body>
+</html>

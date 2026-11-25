@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PC-023832 · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="vv03";window.VV_KEY="/compras/23832";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" selected>VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      <a href="unidades_7.html">ficha da unidade</a>
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Pedido PC-023832 <span class="etq alerta">Aberto</span></h1>
+  <div class="sub">VV03 · Vale Verde Rio Tijuca · Hortifruti Irmãos Okada (CEASA) Ltda. (507 km) · pedido em 30/10/2026 · previsto 01/11/2026
+   · prazo de pagamento 7 dias · comprador Fernando Ribeiro Ferreira</div></div>
+  <a class="btn" href="compras.html">‹ Pedidos</a></div>
+<form method="post" action="/compras/23832/receber">
+<div class="cartao">
+  <table>
+    <tr><th>SKU</th><th>Produto</th><th class="n">Pedido</th><th class="n">Recebido</th><th class="n">Custo unit.</th><th class="n">Total</th></tr>
+    <tr><td>050014</td><td>Abobrinha</td><td class="n">15,000</td>
+      <td class="n"><input type="number" step="0.001" name="rec_277109" value="15.0" style="width:90px"></td>
+      <td class="n">R$ 3,80</td><td class="n">R$ 57,00</td></tr><tr><td>050013</td><td>Alface Crespa</td><td class="n">120</td>
+      <td class="n"><input type="number" step="0.001" name="rec_277108" value="120.0" style="width:90px"></td>
+      <td class="n">R$ 1,71</td><td class="n">R$ 205,20</td></tr><tr><td>050005</td><td>Alho Nacional</td><td class="n">6,000</td>
+      <td class="n"><input type="number" step="0.001" name="rec_277100" value="6.0" style="width:90px"></td>
+      <td class="n">R$ 21,77</td><td class="n">R$ 130,62</td></tr><tr><td>050001</td><td>Banana Prata</td><td class="n">180,000</td>
+      <td class="n"><input type="number" step="0.001" name="rec_277096" value="180.0" style="width:90px"></td>
+      <td class="n">R$ 4,12</td><td class="n">R$ 741,60</td></tr><tr><td>050003</td><td>Batata Lavada</td><td class="n">180,000</td>
+      <td class="n"><input type="number" step="0.001" name="rec_277098" value="180.0" style="width:90px"></td>
+      <td class="n">R$ 4,67</td><td class="n">R$ 840,60</td></tr><tr><td>050004</td><td>Cebola</td><td class="n">80,000</td>
+      <td class="n"><input type="number" step="0.001" name="rec_277099" value="80.0" style="width:90px"></td>
+      <td class="n">R$ 3,82</td><td class="n">R$ 305,60</td></tr><tr><td>050006</td><td>Cenoura</td><td class="n">35,000</td>
+      <td class="n"><input type="number" step="0.001" name="rec_277101" value="35.0" style="width:90px"></td>
+      <td class="n">R$ 3,73</td><td class="n">R$ 130,55</td></tr><tr><td>050008</td><td>Laranja Pera</td><td class="n">220,000</td>
+      <td class="n"><input type="number" step="0.001" name="rec_277103" value="220.0" style="width:90px"></td>
+      <td class="n">R$ 3,39</td><td class="n">R$ 745,80</td></tr><tr><td>050009</td><td>Limão Tahiti</td><td class="n">60,000</td>
+      <td class="n"><input type="number" step="0.001" name="rec_277104" value="60.0" style="width:90px"></td>
+      <td class="n">R$ 3,85</td><td class="n">R$ 231,00</td></tr><tr><td>050010</td><td>Mamão Formosa</td><td class="n">70,000</td>
+      <td class="n"><input type="number" step="0.001" name="rec_277105" value="70.0" style="width:90px"></td>
+      <td class="n">R$ 4,44</td><td class="n">R$ 310,80</td></tr><tr><td>050007</td><td>Maçã Gala</td><td class="n">200,000</td>
+      <td class="n"><input type="number" step="0.001" name="rec_277102" value="200.0" style="width:90px"></td>
+      <td class="n">R$ 8,67</td><td class="n">R$ 1.734,00</td></tr><tr><td>050011</td><td>Melancia</td><td class="n">300,000</td>
+      <td class="n"><input type="number" step="0.001" name="rec_277106" value="300.0" style="width:90px"></td>
+      <td class="n">R$ 2,01</td><td class="n">R$ 603,00</td></tr><tr><td>050015</td><td>Pimentão Verde</td><td class="n">10,000</td>
+      <td class="n"><input type="number" step="0.001" name="rec_277110" value="10.0" style="width:90px"></td>
+      <td class="n">R$ 6,81</td><td class="n">R$ 68,10</td></tr><tr><td>050002</td><td>Tomate Italiano</td><td class="n">130,000</td>
+      <td class="n"><input type="number" step="0.001" name="rec_277097" value="130.0" style="width:90px"></td>
+      <td class="n">R$ 5,42</td><td class="n">R$ 704,60</td></tr><tr><td>050012</td><td>Uva Niágara</td><td class="n">20,000</td>
+      <td class="n"><input type="number" step="0.001" name="rec_277107" value="20.0" style="width:90px"></td>
+      <td class="n">R$ 11,07</td><td class="n">R$ 221,40</td></tr>
+    <tr class="total"><td colspan="5">Total</td><td class="n">R$ 7.029,87</td></tr>
+  </table>
+  
+  <div class="form-grade mt" style="max-width:700px">
+    <div class="campo"><label>Data do recebimento</label><input type="date" name="data" value="2026-11-25"></div>
+    <div class="campo"><label>Nota fiscal</label><input type="text" name="nota_fiscal"></div>
+    <div class="campo"><label>&nbsp;</label><button class="btn-primario">Confirmar recebimento</button></div>
+  </div>
+  <p class="muted">Ao confirmar: entra no estoque (custo médio ponderado), gera a movimentação e o título no contas a pagar.</p>
+  
+</div>
+</form>
+
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+
+</body>
+</html>

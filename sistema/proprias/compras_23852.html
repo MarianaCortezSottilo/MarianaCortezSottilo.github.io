@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PC-023852 · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="proprias";window.VV_KEY="/compras/23852";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" selected>Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Pedido PC-023852 <span class="etq ok">Recebido</span></h1>
+  <div class="sub">VV07 · Vale Verde Goiânia Setor Bueno · Hortifruti Planalto Central Ltda. (50 km) · pedido em 30/10/2026 · previsto 31/10/2026
+  · recebido 31/10/2026 (NF 184520) · prazo de pagamento 7 dias · comprador Lucas Lopes Oliveira</div></div>
+  <a class="btn" href="compras.html">‹ Pedidos</a></div>
+<form method="post" action="/compras/23852/receber">
+<div class="cartao">
+  <table>
+    <tr><th>SKU</th><th>Produto</th><th class="n">Pedido</th><th class="n">Recebido</th><th class="n">Custo unit.</th><th class="n">Total</th></tr>
+    <tr><td>050014</td><td>Abobrinha</td><td class="n">10,000</td>
+      <td class="n">
+        10,000</td>
+      <td class="n">R$ 3,85</td><td class="n">R$ 38,50</td></tr><tr><td>050013</td><td>Alface Crespa</td><td class="n">48</td>
+      <td class="n">
+        48</td>
+      <td class="n">R$ 1,75</td><td class="n">R$ 84,00</td></tr><tr><td>050005</td><td>Alho Nacional</td><td class="n">4,000</td>
+      <td class="n">
+        4,000</td>
+      <td class="n">R$ 21,60</td><td class="n">R$ 86,40</td></tr><tr><td>050001</td><td>Banana Prata</td><td class="n">120,000</td>
+      <td class="n">
+        120,000</td>
+      <td class="n">R$ 4,19</td><td class="n">R$ 502,80</td></tr><tr><td>050003</td><td>Batata Lavada</td><td class="n">120,000</td>
+      <td class="n">
+        120,000</td>
+      <td class="n">R$ 4,68</td><td class="n">R$ 561,60</td></tr><tr><td>050004</td><td>Cebola</td><td class="n">60,000</td>
+      <td class="n">
+        60,000</td>
+      <td class="n">R$ 3,90</td><td class="n">R$ 234,00</td></tr><tr><td>050006</td><td>Cenoura</td><td class="n">30,000</td>
+      <td class="n">
+        30,000</td>
+      <td class="n">R$ 3,73</td><td class="n">R$ 111,90</td></tr><tr><td>050008</td><td>Laranja Pera</td><td class="n">100,000</td>
+      <td class="n">
+        100,000</td>
+      <td class="n">R$ 3,40</td><td class="n">R$ 340,00</td></tr><tr><td>050009</td><td>Limão Tahiti</td><td class="n">30,000</td>
+      <td class="n">
+        30,000</td>
+      <td class="n">R$ 3,83</td><td class="n">R$ 114,90</td></tr><tr><td>050010</td><td>Mamão Formosa</td><td class="n">60,000</td>
+      <td class="n">
+        60,000</td>
+      <td class="n">R$ 4,56</td><td class="n">R$ 273,60</td></tr><tr><td>050007</td><td>Maçã Gala</td><td class="n">60,000</td>
+      <td class="n">
+        60,000</td>
+      <td class="n">R$ 8,68</td><td class="n">R$ 520,80</td></tr><tr><td>050011</td><td>Melancia</td><td class="n">160,000</td>
+      <td class="n">
+        160,000</td>
+      <td class="n">R$ 2,02</td><td class="n">R$ 323,20</td></tr><tr><td>050015</td><td>Pimentão Verde</td><td class="n">5,000</td>
+      <td class="n">
+        5,000</td>
+      <td class="n">R$ 6,95</td><td class="n">R$ 34,75</td></tr><tr><td>050002</td><td>Tomate Italiano</td><td class="n">70,000</td>
+      <td class="n">
+        70,000</td>
+      <td class="n">R$ 5,61</td><td class="n">R$ 392,70</td></tr><tr><td>050012</td><td>Uva Niágara</td><td class="n">15,000</td>
+      <td class="n">
+        15,000</td>
+      <td class="n">R$ 11,28</td><td class="n">R$ 169,20</td></tr>
+    <tr class="total"><td colspan="5">Total</td><td class="n">R$ 3.788,35</td></tr>
+  </table>
+  
+</div>
+</form>
+<div class="cartao mt"><h3>Financeiro</h3><table>
+  <tr><th>Favorecido</th><th>Vencimento</th><th class="n">Valor</th><th>Pagamento</th><th>Status</th></tr>
+  <tr><td>Hortifruti Planalto Central</td><td>07/11/2026</td><td class="n">R$ 3.788,35</td><td>–</td><td><span class="etq alerta">Aberto</span></td></tr>
+</table></div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+
+</body>
+</html>

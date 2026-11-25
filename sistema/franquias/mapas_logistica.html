@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Logística · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+<script src="../static/vv_mapa.js"></script>
+<script>window.VV_DIR="franquias";window.VV_KEY="/mapas/logistica";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="ativo">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" selected>Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Logística: CDs, rotas e fornecedores</h1>
+  <div class="sub">Últimos 12 meses (nov/25 a out/26). Frete por viagem = R$ 400 + R$ 3,80/km; até R$ 150 mil de mercadoria por viagem; distância rodoviária = linha reta × 1,25.</div></div>
+  <div class="filtros">
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a></div></div>
+<div class="grade g4">
+  <div class="cartao kpi">
+  <div class="rot">Transferido CD → lojas</div>
+  <div class="val">R$ 89,46 mi</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Frete de transferência</div>
+  <div class="val">R$ 2,23 mi</div>
+  <div class="det">2,49% do valor transferido</div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Rota mais cara</div>
+  <div class="val">VV10</div>
+  <div class="det">7,80% do valor</div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Fornecedores</div>
+  <div class="val">37</div>
+  <div class="det">7 nacionais (abastecem CDs) · 30 regionais (perecíveis)</div>
+</div>
+</div>
+<div class="cartao mt">
+  <div class="controles-mapa">
+    <label><input type="checkbox" id="cRotas" checked> rotas CD → loja (espessura = valor, cor = frete/valor)</label>
+    <label><input type="checkbox" id="cNac"> fornecedores nacionais → CDs</label>
+    <label><input type="checkbox" id="cReg"> fornecedores regionais → lojas</label>
+  </div>
+  <div id="mapa" class="mapa"></div>
+</div>
+<div class="grade g2 mt">
+  <div class="cartao col2"><h3>Rotas CD → loja</h3><div class="tabela-wrap"><table>
+    <tr><th>CD</th><th>Loja</th><th class="n">Distância</th><th>Dias de pedido</th><th class="n">Lead time</th><th class="n">Envios</th><th class="n">Viagens</th><th class="n">Valor transferido</th>
+        <th class="n">Frete</th><th class="n">Frete/valor</th><th class="n">Frete/faturamento loja</th><th class="n">R$/viagem</th><th class="n">% parciais</th></tr>
+    <tr><td>CD01</td><td>VV01 <span class="muted">Vale Verde Campinas Taquaral</span></td><td class="n">20 km</td><td>seg, qua, sex</td>
+      <td class="n">1,0 d</td><td class="n">156</td><td class="n">156</td><td class="n">R$ 10,11 mi</td><td class="n">R$ 75 mil</td>
+      <td class="n">0,74%</td><td class="n">0,30%</td><td class="n">R$ 478</td><td class="n">3,2%</td></tr><tr><td>CD01</td><td>VV02 <span class="muted">Vale Verde São Paulo Mooca</span></td><td class="n">124 km</td><td>seg, qua, sex</td>
+      <td class="n">1,0 d</td><td class="n">156</td><td class="n">156</td><td class="n">R$ 12,59 mi</td><td class="n">R$ 136 mil</td>
+      <td class="n">1,08%</td><td class="n">0,42%</td><td class="n">R$ 870</td><td class="n">3,2%</td></tr><tr><td>CD01</td><td>VV03 <span class="muted">Vale Verde Rio Tijuca</span></td><td class="n">510 km</td><td>ter, sex</td>
+      <td class="n">1,0 d</td><td class="n">104</td><td class="n">110</td><td class="n">R$ 11,55 mi</td><td class="n">R$ 257 mil</td>
+      <td class="n">2,23%</td><td class="n">0,87%</td><td class="n">R$ 2.337</td><td class="n">2,9%</td></tr><tr><td>CD01</td><td>VV04 <span class="muted">Vale Verde BH Savassi</span></td><td class="n">589 km</td><td>ter, sex</td>
+      <td class="n">1,0 d</td><td class="n">104</td><td class="n">104</td><td class="n">R$ 9,51 mi</td><td class="n">R$ 274 mil</td>
+      <td class="n">2,89%</td><td class="n">1,16%</td><td class="n">R$ 2.637</td><td class="n">3,8%</td></tr><tr><td>CD01</td><td>VV07 <span class="muted">Vale Verde Goiânia Setor Bueno</span></td><td class="n">900 km</td><td>ter, sex</td>
+      <td class="n">2,5 d</td><td class="n">104</td><td class="n">104</td><td class="n">R$ 8,55 mi</td><td class="n">R$ 397 mil</td>
+      <td class="n">4,64%</td><td class="n">1,90%</td><td class="n">R$ 3.819</td><td class="n">1,9%</td></tr><tr><td>CD02</td><td>VV05 <span class="muted">Vale Verde Curitiba Água Verde</span></td><td class="n">25 km</td><td>seg, qua, sex</td>
+      <td class="n">1,0 d</td><td class="n">156</td><td class="n">156</td><td class="n">R$ 9,11 mi</td><td class="n">R$ 77 mil</td>
+      <td class="n">0,85%</td><td class="n">0,34%</td><td class="n">R$ 495</td><td class="n">100,0%</td></tr><tr><td>CD02</td><td>VV06 <span class="muted">Vale Verde Porto Alegre Menino Deus</span></td><td class="n">660 km</td><td>ter, sex</td>
+      <td class="n">1,0 d</td><td class="n">104</td><td class="n">104</td><td class="n">R$ 7,43 mi</td><td class="n">R$ 303 mil</td>
+      <td class="n">4,07%</td><td class="n">1,62%</td><td class="n">R$ 2.910</td><td class="n">100,0%</td></tr><tr><td>CD03</td><td>VV08 <span class="muted">Vale Verde Salvador Pituba</span></td><td class="n">803 km</td><td>ter, sex</td>
+      <td class="n">2,5 d</td><td class="n">104</td><td class="n">104</td><td class="n">R$ 9,17 mi</td><td class="n">R$ 359 mil</td>
+      <td class="n">3,91%</td><td class="n">1,60%</td><td class="n">R$ 3.450</td><td class="n">99,0%</td></tr><tr><td>CD03</td><td>VV09 <span class="muted">Vale Verde Recife Boa Viagem</span></td><td class="n">33 km</td><td>seg, qua, sex</td>
+      <td class="n">1,0 d</td><td class="n">156</td><td class="n">156</td><td class="n">R$ 8,03 mi</td><td class="n">R$ 82 mil</td>
+      <td class="n">1,02%</td><td class="n">0,42%</td><td class="n">R$ 527</td><td class="n">100,0%</td></tr><tr><td>CD03</td><td>VV10 <span class="muted">Vale Verde Belém Nazaré</span></td><td class="n">2.094 km</td><td>seg</td>
+      <td class="n">3,0 d</td><td class="n">30</td><td class="n">32</td><td class="n">R$ 3,43 mi</td><td class="n">R$ 267 mil</td>
+      <td class="n">7,80%</td><td class="n">2,98%</td><td class="n">R$ 8.358</td><td class="n">100,0%</td></tr>
+  </table></div></div>
+  <div class="cartao"><h3>Resultado dos CDs</h3><table><tr><th>CD</th><th class="n">Lojas</th><th class="n">Transferido</th><th class="n">Margem distrib.</th><th class="n">Frete</th><th class="n">EBITDA</th></tr>
+    <tr><td><a href="#" data-off="1">CD01</a></td><td class="n">5</td><td class="n">R$ 52,29 mi</td><td class="n">R$ 3,62 mi</td><td class="n">R$ 1,14 mi</td><td class="n neg">-R$ 127 mil</td></tr><tr><td><a href="#" data-off="1">CD02</a></td><td class="n">2</td><td class="n">R$ 16,54 mi</td><td class="n">R$ 1,15 mi</td><td class="n">R$ 380 mil</td><td class="n neg">-R$ 743 mil</td></tr><tr><td><a href="#" data-off="1">CD03</a></td><td class="n">3</td><td class="n">R$ 20,63 mi</td><td class="n">R$ 1,43 mi</td><td class="n">R$ 708 mil</td><td class="n neg">-R$ 1,07 mi</td></tr></table>
+    <p class="muted">Margem de distribuição = preço de transferência − custo de compra do CD (compra centralizada com desconto).</p></div>
+  <div class="cartao"><h3>Simulador de frete</h3>
+    <div class="form-grade" style="grid-template-columns:1fr 1fr">
+      <div class="campo"><label>Distância rodoviária (km)</label><input type="number" id="sKm" value="800"></div>
+      <div class="campo"><label>Valor por envio (R$)</label><input type="number" id="sValor" value="120000"></div>
+      <div class="campo"><label>Envios por semana</label><input type="number" id="sEnv" value="2"></div>
+      <div class="campo"><label>Faturamento mensal da loja (R$)</label><input type="number" id="sFat" value="1800000"></div>
+    </div>
+    <p id="sRes" style="font-size:15px;margin-top:12px"></p></div>
+</div>
+<div class="cartao mt"><h3>Fornecedores</h3><div class="rolagem"><table>
+  <tr><th>Fornecedor</th><th>Abrangência</th><th>Tipo</th><th>Base</th><th class="n">Compras 12m</th><th class="n">Unidades atendidas</th><th class="n">Distância média</th></tr>
+  <tr><td>Dist. Paulista</td><td>Nacional</td><td>MERC1</td>
+    <td>Campinas/SP</td><td class="n">R$ 24,76 mi</td><td class="n">3</td><td class="n">1.029 km</td></tr><tr><td>Serra Azul Bebidas</td><td>Nacional</td><td>BEB</td>
+    <td>Limeira/SP</td><td class="n">R$ 22,57 mi</td><td class="n">3</td><td class="n">1.042 km</td></tr><tr><td>Nova Era</td><td>Nacional</td><td>LIMP</td>
+    <td>São Paulo/SP</td><td class="n">R$ 15,59 mi</td><td class="n">3</td><td class="n">1.065 km</td></tr><tr><td>Atacado Real</td><td>Nacional</td><td>MERC2</td>
+    <td>Jundiaí/SP</td><td class="n">R$ 13,13 mi</td><td class="n">3</td><td class="n">1.043 km</td></tr><tr><td>Laticínios Campo Bom</td><td>Regional · Sudeste</td><td>LAT</td>
+    <td>Campinas/SP</td><td class="n">R$ 7,59 mi</td><td class="n">4</td><td class="n">308 km</td></tr><tr><td>Frigorífico Boi Forte</td><td>Regional · Sudeste</td><td>BOV</td>
+    <td>Campinas/SP</td><td class="n">R$ 7,16 mi</td><td class="n">4</td><td class="n">290 km</td></tr><tr><td>Hortifruti Irmãos Okada (CEASA)</td><td>Regional · Sudeste</td><td>HORTI</td>
+    <td>Campinas/SP</td><td class="n">R$ 6,84 mi</td><td class="n">4</td><td class="n">308 km</td></tr><tr><td>Avícola Santa Clara</td><td>Regional · Sudeste</td><td>AVES</td>
+    <td>Campinas/SP</td><td class="n">R$ 4,95 mi</td><td class="n">4</td><td class="n">305 km</td></tr><tr><td>Polar Congelados</td><td>Nacional</td><td>FRIOS</td>
+    <td>Sumaré/SP</td><td class="n">R$ 4,19 mi</td><td class="n">3</td><td class="n">1.027 km</td></tr><tr><td>Massas Congeladas Trigo de Ouro</td><td>Regional · Sudeste</td><td>PAD</td>
+    <td>Campinas/SP</td><td class="n">R$ 3,23 mi</td><td class="n">4</td><td class="n">291 km</td></tr><tr><td>Laticínios Bacia Leiteira</td><td>Regional · Nordeste</td><td>LAT</td>
+    <td>Caruaru/PE</td><td class="n">R$ 3,07 mi</td><td class="n">2</td><td class="n">434 km</td></tr><tr><td>Laticínios Colônia Holandesa</td><td>Regional · Sul</td><td>LAT</td>
+    <td>Ponta Grossa/PR</td><td class="n">R$ 2,87 mi</td><td class="n">2</td><td class="n">407 km</td></tr><tr><td>Frigorífico Sertão Carnes</td><td>Regional · Nordeste</td><td>BOV</td>
+    <td>Caruaru/PE</td><td class="n">R$ 2,84 mi</td><td class="n">2</td><td class="n">448 km</td></tr><tr><td>Frigorífico Pampa Carnes</td><td>Regional · Sul</td><td>BOV</td>
+    <td>Ponta Grossa/PR</td><td class="n">R$ 2,79 mi</td><td class="n">2</td><td class="n">412 km</td></tr><tr><td>Hortifruti Vale do São Francisco</td><td>Regional · Nordeste</td><td>HORTI</td>
+    <td>Caruaru/PE</td><td class="n">R$ 2,73 mi</td><td class="n">2</td><td class="n">454 km</td></tr><tr><td>Hortifruti Serra Gaúcha</td><td>Regional · Sul</td><td>HORTI</td>
+    <td>Ponta Grossa/PR</td><td class="n">R$ 2,64 mi</td><td class="n">2</td><td class="n">403 km</td></tr><tr><td>Andrade Bazar &amp; Pet</td><td>Nacional</td><td>BAZAR</td>
+    <td>Piracicaba/SP</td><td class="n">R$ 2,60 mi</td><td class="n">3</td><td class="n">1.046 km</td></tr><tr><td>Avícola Agreste</td><td>Regional · Nordeste</td><td>AVES</td>
+    <td>Caruaru/PE</td><td class="n">R$ 1,99 mi</td><td class="n">2</td><td class="n">457 km</td></tr><tr><td>Avícola Vale do Itajaí</td><td>Regional · Sul</td><td>AVES</td>
+    <td>Ponta Grossa/PR</td><td class="n">R$ 1,86 mi</td><td class="n">2</td><td class="n">414 km</td></tr><tr><td>Laticínios Leite do Goiás</td><td>Regional · Centro-Oeste</td><td>LAT</td>
+    <td>Anápolis/GO</td><td class="n">R$ 1,52 mi</td><td class="n">1</td><td class="n">102 km</td></tr><tr><td>Frigorífico Boi do Cerrado</td><td>Regional · Centro-Oeste</td><td>BOV</td>
+    <td>Anápolis/GO</td><td class="n">R$ 1,44 mi</td><td class="n">1</td><td class="n">78 km</td></tr><tr><td>Hortifruti Planalto Central</td><td>Regional · Centro-Oeste</td><td>HORTI</td>
+    <td>Anápolis/GO</td><td class="n">R$ 1,36 mi</td><td class="n">1</td><td class="n">50 km</td></tr><tr><td>Massas Congeladas Massas Nordeste</td><td>Regional · Nordeste</td><td>PAD</td>
+    <td>Caruaru/PE</td><td class="n">R$ 1,27 mi</td><td class="n">2</td><td class="n">442 km</td></tr><tr><td>Massas Congeladas Pão do Sul</td><td>Regional · Sul</td><td>PAD</td>
+    <td>Ponta Grossa/PR</td><td class="n">R$ 1,27 mi</td><td class="n">2</td><td class="n">391 km</td></tr><tr><td>Frios Serra da Mantiqueira</td><td>Regional · Sudeste</td><td>FRIOS</td>
+    <td>Campinas/SP</td><td class="n">R$ 1,01 mi</td><td class="n">4</td><td class="n">317 km</td></tr><tr><td>Avícola Rio Verde</td><td>Regional · Centro-Oeste</td><td>AVES</td>
+    <td>Anápolis/GO</td><td class="n">R$ 986 mil</td><td class="n">1</td><td class="n">74 km</td></tr><tr><td>Vale Pack</td><td>Nacional</td><td>EMB</td>
+    <td>Indaiatuba/SP</td><td class="n">R$ 733 mil</td><td class="n">3</td><td class="n">1.040 km</td></tr><tr><td>Laticínios Laticínios do Pará</td><td>Regional · Norte</td><td>LAT</td>
+    <td>Castanhal/PA</td><td class="n">R$ 684 mil</td><td class="n">1</td><td class="n">92 km</td></tr><tr><td>Massas Congeladas Cerrado Massas</td><td>Regional · Centro-Oeste</td><td>PAD</td>
+    <td>Anápolis/GO</td><td class="n">R$ 636 mil</td><td class="n">1</td><td class="n">74 km</td></tr><tr><td>Frigorífico Marajó Carnes</td><td>Regional · Norte</td><td>BOV</td>
+    <td>Castanhal/PA</td><td class="n">R$ 619 mil</td><td class="n">1</td><td class="n">94 km</td></tr><tr><td>Hortifruti Ver-o-Peso</td><td>Regional · Norte</td><td>HORTI</td>
+    <td>Castanhal/PA</td><td class="n">R$ 580 mil</td><td class="n">1</td><td class="n">83 km</td></tr><tr><td>Avícola Castanhal</td><td>Regional · Norte</td><td>AVES</td>
+    <td>Castanhal/PA</td><td class="n">R$ 424 mil</td><td class="n">1</td><td class="n">109 km</td></tr><tr><td>Frios Atlântico</td><td>Regional · Nordeste</td><td>FRIOS</td>
+    <td>Caruaru/PE</td><td class="n">R$ 407 mil</td><td class="n">2</td><td class="n">435 km</td></tr><tr><td>Frios Campos Gerais</td><td>Regional · Sul</td><td>FRIOS</td>
+    <td>Ponta Grossa/PR</td><td class="n">R$ 384 mil</td><td class="n">2</td><td class="n">419 km</td></tr><tr><td>Massas Congeladas Massas Amazônia</td><td>Regional · Norte</td><td>PAD</td>
+    <td>Castanhal/PA</td><td class="n">R$ 279 mil</td><td class="n">1</td><td class="n">108 km</td></tr><tr><td>Frios Planalto</td><td>Regional · Centro-Oeste</td><td>FRIOS</td>
+    <td>Anápolis/GO</td><td class="n">R$ 203 mil</td><td class="n">1</td><td class="n">59 km</td></tr><tr><td>Frios Amazônia Frios</td><td>Regional · Norte</td><td>FRIOS</td>
+    <td>Castanhal/PA</td><td class="n">R$ 88 mil</td><td class="n">1</td><td class="n">74 km</td></tr>
+</table></div></div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+
+<script>
+const rotas = [{"cd": "CD01", "cd_id": 2, "cd_lat": -22.871814, "cd_lon": -47.200446, "custo_por_viagem": 477.9, "dias_pedido_cd": "SEG,QUA,SEX", "envios": 156, "frete": 74552.4, "frete_pct_receita": 0.002961717879987067, "frete_pct_valor": 0.00737656320705403, "km": 20.5, "lead": 1, "lead_real": 1.0128205128205128, "loja": "VV01", "loja_id": 5, "loja_lat": -22.886477, "loja_lon": -47.041083, "loja_nome": "Vale Verde Campinas Taquaral", "pct_parcial": 0.03205128205128205, "receita": 25172012.67, "valor": 10106657.79, "viagens": 156}, {"cd": "CD01", "cd_id": 2, "cd_lat": -22.871814, "cd_lon": -47.200446, "custo_por_viagem": 869.68, "dias_pedido_cd": "SEG,QUA,SEX", "envios": 156, "frete": 135670.08, "frete_pct_receita": 0.004166985993607647, "frete_pct_valor": 0.010779927501418983, "km": 123.6, "lead": 1, "lead_real": 1.0128205128205128, "loja": "VV02", "loja_id": 6, "loja_lat": -23.561311, "loja_lon": -46.589076, "loja_nome": "Vale Verde S\u00e3o Paulo Mooca", "pct_parcial": 0.03205128205128205, "receita": 32558323.98, "valor": 12585435.29, "viagens": 156}, {"cd": "CD01", "cd_id": 2, "cd_lat": -22.871814, "cd_lon": -47.200446, "custo_por_viagem": 2336.86, "dias_pedido_cd": "TER,SEX", "envios": 104, "frete": 257054.6, "frete_pct_receita": 0.008711470792512773, "frete_pct_valor": 0.02226319562327108, "km": 509.7, "lead": 1, "lead_real": 1.0, "loja": "VV03", "loja_id": 7, "loja_lat": -22.915809, "loja_lon": -43.219845, "loja_nome": "Vale Verde Rio Tijuca", "pct_parcial": 0.028846153846153848, "receita": 29507600.51, "valor": 11546168.14, "viagens": 110}, {"cd": "CD01", "cd_id": 2, "cd_lat": -22.871814, "cd_lon": -47.200446, "custo_por_viagem": 2637.44, "dias_pedido_cd": "TER,SEX", "envios": 104, "frete": 274293.76, "frete_pct_receita": 0.011600803638557304, "frete_pct_valor": 0.02885714357644618, "km": 588.8, "lead": 1, "lead_real": 1.0, "loja": "VV04", "loja_id": 8, "loja_lat": -19.929313, "loja_lon": -43.926834, "loja_nome": "Vale Verde BH Savassi", "pct_parcial": 0.038461538461538464, "receita": 23644375.73, "valor": 9505229.07, "viagens": 104}, {"cd": "CD01", "cd_id": 2, "cd_lat": -22.871814, "cd_lon": -47.200446, "custo_por_viagem": 3819.24, "dias_pedido_cd": "TER,SEX", "envios": 104, "frete": 397200.95999999996, "frete_pct_receita": 0.019037158595650493, "frete_pct_valor": 0.04644844804281733, "km": 899.8, "lead": 2, "lead_real": 2.5145631067961167, "loja": "VV07", "loja_id": 11, "loja_lat": -16.701314, "loja_lon": -49.281729, "loja_nome": "Vale Verde Goi\u00e2nia Setor Bueno", "pct_parcial": 0.019230769230769232, "receita": 20864508.64, "valor": 8551436.63, "viagens": 104}, {"cd": "CD02", "cd_id": 3, "cd_lat": -25.576891, "cd_lon": -49.419683, "custo_por_viagem": 494.62, "dias_pedido_cd": "SEG,QUA,SEX", "envios": 156, "frete": 77160.72, "frete_pct_receita": 0.003386460152001215, "frete_pct_valor": 0.008466336666733566, "km": 24.9, "lead": 1, "lead_real": 1.0128205128205128, "loja": "VV05", "loja_id": 9, "loja_lat": -25.446418, "loja_lon": -49.283275, "loja_nome": "Vale Verde Curitiba \u00c1gua Verde", "pct_parcial": 1.0, "receita": 22785066.57, "valor": 9113826.09, "viagens": 156}, {"cd": "CD02", "cd_id": 3, "cd_lat": -25.576891, "cd_lon": -49.419683, "custo_por_viagem": 2909.52, "dias_pedido_cd": "TER,SEX", "envios": 104, "frete": 302590.08, "frete_pct_receita": 0.01619866874215925, "frete_pct_valor": 0.04074285086392063, "km": 660.4, "lead": 1, "lead_real": 1.0, "loja": "VV06", "loja_id": 10, "loja_lat": -30.056222, "loja_lon": -51.211456, "loja_nome": "Vale Verde Porto Alegre Menino Deus", "pct_parcial": 1.0, "receita": 18679935.05, "valor": 7426826.39, "viagens": 104}, {"cd": "CD03", "cd_id": 4, "cd_lat": -8.300218, "cd_lon": -34.997988, "custo_por_viagem": 3450.26, "dias_pedido_cd": "TER,SEX", "envios": 104, "frete": 358827.04000000004, "frete_pct_receita": 0.01599364882121263, "frete_pct_valor": 0.03912439716415028, "km": 802.7, "lead": 2, "lead_real": 2.5145631067961167, "loja": "VV08", "loja_id": 12, "loja_lat": -12.964186, "loja_lon": -38.464619, "loja_nome": "Vale Verde Salvador Pituba", "pct_parcial": 0.9903846153846154, "receita": 22435595.78, "valor": 9171439.46, "viagens": 104}, {"cd": "CD03", "cd_id": 4, "cd_lat": -8.300218, "cd_lon": -34.997988, "custo_por_viagem": 526.92, "dias_pedido_cd": "SEG,QUA,SEX", "envios": 156, "frete": 82199.51999999999, "frete_pct_receita": 0.004209502360893981, "frete_pct_valor": 0.01023783533333375, "km": 33.4, "lead": 1, "lead_real": 1.0128205128205128, "loja": "VV09", "loja_id": 13, "loja_lat": -8.09715, "loja_lon": -34.867901, "loja_nome": "Vale Verde Recife Boa Viagem", "pct_parcial": 1.0, "receita": 19527134.79, "valor": 8028994.15, "viagens": 156}, {"cd": "CD03", "cd_id": 4, "cd_lat": -8.300218, "cd_lon": -34.997988, "custo_por_viagem": 8357.58, "dias_pedido_cd": "SEG", "envios": 30, "frete": 267442.56, "frete_pct_receita": 0.02977210355285499, "frete_pct_valor": 0.07799680094855148, "km": 2094.1, "lead": 3, "lead_real": 3.0, "loja": "VV10", "loja_id": 14, "loja_lat": -1.461205, "loja_lon": -48.479386, "loja_nome": "Vale Verde Bel\u00e9m Nazar\u00e9", "pct_parcial": 1.0, "receita": 8982991.73, "valor": 3428891.4, "viagens": 32}], unid = [{"cidade": "Campinas", "codigo": "SEDE", "id": 1, "lat": -22.902693, "lon": -47.050863, "modelo": null, "nome": "Sede Vale Verde Franquias", "tipo": "SEDE"}, {"cidade": "Campinas", "codigo": "VV01", "id": 5, "lat": -22.886477, "lon": -47.041083, "modelo": "PROPRIA", "nome": "Vale Verde Campinas Taquaral", "tipo": "LOJA"}, {"cidade": "S\u00e3o Paulo", "codigo": "VV02", "id": 6, "lat": -23.561311, "lon": -46.589076, "modelo": "PROPRIA", "nome": "Vale Verde S\u00e3o Paulo Mooca", "tipo": "LOJA"}, {"cidade": "Rio de Janeiro", "codigo": "VV03", "id": 7, "lat": -22.915809, "lon": -43.219845, "modelo": "FRANQUIA", "nome": "Vale Verde Rio Tijuca", "tipo": "LOJA"}, {"cidade": "Belo Horizonte", "codigo": "VV04", "id": 8, "lat": -19.929313, "lon": -43.926834, "modelo": "FRANQUIA", "nome": "Vale Verde BH Savassi", "tipo": "LOJA"}, {"cidade": "Curitiba", "codigo": "VV05", "id": 9, "lat": -25.446418, "lon": -49.283275, "modelo": "FRANQUIA", "nome": "Vale Verde Curitiba \u00c1gua Verde", "tipo": "LOJA"}, {"cidade": "Porto Alegre", "codigo": "VV06", "id": 10, "lat": -30.056222, "lon": -51.211456, "modelo": "FRANQUIA", "nome": "Vale Verde Porto Alegre Menino Deus", "tipo": "LOJA"}, {"cidade": "Goi\u00e2nia", "codigo": "VV07", "id": 11, "lat": -16.701314, "lon": -49.281729, "modelo": "PROPRIA", "nome": "Vale Verde Goi\u00e2nia Setor Bueno", "tipo": "LOJA"}, {"cidade": "Salvador", "codigo": "VV08", "id": 12, "lat": -12.964186, "lon": -38.464619, "modelo": "FRANQUIA", "nome": "Vale Verde Salvador Pituba", "tipo": "LOJA"}, {"cidade": "Recife", "codigo": "VV09", "id": 13, "lat": -8.09715, "lon": -34.867901, "modelo": "PROPRIA", "nome": "Vale Verde Recife Boa Viagem", "tipo": "LOJA"}, {"cidade": "Bel\u00e9m", "codigo": "VV10", "id": 14, "lat": -1.461205, "lon": -48.479386, "modelo": "FRANQUIA", "nome": "Vale Verde Bel\u00e9m Nazar\u00e9", "tipo": "LOJA"}, {"cidade": "Hortol\u00e2ndia", "codigo": "CD01", "id": 2, "lat": -22.871814, "lon": -47.200446, "modelo": null, "nome": "CD Sudeste/Centro-Oeste", "tipo": "CD"}, {"cidade": "Arauc\u00e1ria", "codigo": "CD02", "id": 3, "lat": -25.576891, "lon": -49.419683, "modelo": null, "nome": "CD Sul", "tipo": "CD"}, {"cidade": "Cabo de Santo Agostinho", "codigo": "CD03", "id": 4, "lat": -8.300218, "lon": -34.997988, "modelo": null, "nome": "CD Nordeste/Norte", "tipo": "CD"}], forn = [{"abrangencia": "NACIONAL", "cidade": "Campinas", "compras": 24762898.04, "destinos": "2,3,4", "id": 1, "km": 1028.5333333333333, "lat": -22.9, "lon": -47.06, "nome_fantasia": "Dist. Paulista", "regiao_atendida": null, "tipo": "MERC1", "uf": "SP", "unidades": 3}, {"abrangencia": "NACIONAL", "cidade": "Jundia\u00ed", "compras": 13129850.66, "destinos": "2,3,4", "id": 2, "km": 1042.8, "lat": -23.19, "lon": -46.88, "nome_fantasia": "Atacado Real", "regiao_atendida": null, "tipo": "MERC2", "uf": "SP", "unidades": 3}, {"abrangencia": "NACIONAL", "cidade": "Limeira", "compras": 22566645.94, "destinos": "2,3,4", "id": 3, "km": 1041.5333333333333, "lat": -22.56, "lon": -47.4, "nome_fantasia": "Serra Azul Bebidas", "regiao_atendida": null, "tipo": "BEB", "uf": "SP", "unidades": 3}, {"abrangencia": "NACIONAL", "cidade": "Sumar\u00e9", "compras": 4186281.92, "destinos": "2,3,4", "id": 4, "km": 1026.8666666666668, "lat": -22.82, "lon": -47.27, "nome_fantasia": "Polar Congelados", "regiao_atendida": null, "tipo": "FRIOS", "uf": "SP", "unidades": 3}, {"abrangencia": "NACIONAL", "cidade": "S\u00e3o Paulo", "compras": 15586553.63, "destinos": "2,3,4", "id": 5, "km": 1065.1999999999998, "lat": -23.55, "lon": -46.63, "nome_fantasia": "Nova Era", "regiao_atendida": null, "tipo": "LIMP", "uf": "SP", "unidades": 3}, {"abrangencia": "NACIONAL", "cidade": "Piracicaba", "compras": 2596303.12, "destinos": "2,3,4", "id": 6, "km": 1045.8999999999999, "lat": -22.73, "lon": -47.65, "nome_fantasia": "Andrade Bazar \u0026 Pet", "regiao_atendida": null, "tipo": "BAZAR", "uf": "SP", "unidades": 3}, {"abrangencia": "NACIONAL", "cidade": "Indaiatuba", "compras": 732707.14, "destinos": "2,3,4", "id": 7, "km": 1040.1441558441556, "lat": -23.09, "lon": -47.22, "nome_fantasia": "Vale Pack", "regiao_atendida": null, "tipo": "EMB", "uf": "SP", "unidades": 3}, {"abrangencia": "REGIONAL", "cidade": "Campinas", "compras": 6840587.85, "destinos": "5,6,7,8", "id": 8, "km": 308.5, "lat": -22.8351, "lon": -47.1755, "nome_fantasia": "Hortifruti Irm\u00e3os Okada (CEASA)", "regiao_atendida": "Sudeste", "tipo": "HORTI", "uf": "SP", "unidades": 4}, {"abrangencia": "REGIONAL", "cidade": "Campinas", "compras": 3227534.31, "destinos": "5,6,7,8", "id": 9, "km": 291.25, "lat": -23.0502, "lon": -46.9183, "nome_fantasia": "Massas Congeladas Trigo de Ouro", "regiao_atendida": "Sudeste", "tipo": "PAD", "uf": "SP", "unidades": 4}, {"abrangencia": "REGIONAL", "cidade": "Campinas", "compras": 7157403.75, "destinos": "5,6,7,8", "id": 10, "km": 290.25, "lat": -22.9728, "lon": -46.9325, "nome_fantasia": "Frigor\u00edfico Boi Forte", "regiao_atendida": "Sudeste", "tipo": "BOV", "uf": "SP", "unidades": 4}, {"abrangencia": "REGIONAL", "cidade": "Campinas", "compras": 4949757.45, "destinos": "5,6,7,8", "id": 11, "km": 305.26096, "lat": -22.9304, "lon": -47.1538, "nome_fantasia": "Av\u00edcola Santa Clara", "regiao_atendida": "Sudeste", "tipo": "AVES", "uf": "SP", "unidades": 4}, {"abrangencia": "REGIONAL", "cidade": "Campinas", "compras": 7594215.79, "destinos": "5,6,7,8", "id": 12, "km": 308.09999999999997, "lat": -22.9923, "lon": -47.1665, "nome_fantasia": "Latic\u00ednios Campo Bom", "regiao_atendida": "Sudeste", "tipo": "LAT", "uf": "SP", "unidades": 4}, {"abrangencia": "REGIONAL", "cidade": "Campinas", "compras": 1013424.4, "destinos": "5,6,7,8", "id": 13, "km": 316.82500000000005, "lat": -22.733, "lon": -47.2322, "nome_fantasia": "Frios Serra da Mantiqueira", "regiao_atendida": "Sudeste", "tipo": "FRIOS", "uf": "SP", "unidades": 4}, {"abrangencia": "REGIONAL", "cidade": "Ponta Grossa", "compras": 2644855.04, "destinos": "9,10", "id": 14, "km": 402.7, "lat": -25.2318, "lon": -50.2448, "nome_fantasia": "Hortifruti Serra Ga\u00facha", "regiao_atendida": "Sul", "tipo": "HORTI", "uf": "PR", "unidades": 2}, {"abrangencia": "REGIONAL", "cidade": "Ponta Grossa", "compras": 1265840.39, "destinos": "9,10", "id": 15, "km": 391.19999999999993, "lat": -25.1953, "lon": -49.9311, "nome_fantasia": "Massas Congeladas P\u00e3o do Sul", "regiao_atendida": "Sul", "tipo": "PAD", "uf": "PR", "unidades": 2}, {"abrangencia": "REGIONAL", "cidade": "Ponta Grossa", "compras": 2788524.9, "destinos": "9,10", "id": 16, "km": 412.04999999999995, "lat": -25.1669, "lon": -50.3182, "nome_fantasia": "Frigor\u00edfico Pampa Carnes", "regiao_atendida": "Sul", "tipo": "BOV", "uf": "PR", "unidades": 2}, {"abrangencia": "REGIONAL", "cidade": "Ponta Grossa", "compras": 1863303.9, "destinos": "9,10", "id": 17, "km": 414.27603833865817, "lat": -25.1583, "lon": -50.3642, "nome_fantasia": "Av\u00edcola Vale do Itaja\u00ed", "regiao_atendida": "Sul", "tipo": "AVES", "uf": "PR", "unidades": 2}, {"abrangencia": "REGIONAL", "cidade": "Ponta Grossa", "compras": 2866520.23, "destinos": "9,10", "id": 18, "km": 407.0, "lat": -25.1577, "lon": -50.1984, "nome_fantasia": "Latic\u00ednios Col\u00f4nia Holandesa", "regiao_atendida": "Sul", "tipo": "LAT", "uf": "PR", "unidades": 2}, {"abrangencia": "REGIONAL", "cidade": "Ponta Grossa", "compras": 384173.8, "destinos": "9,10", "id": 19, "km": 419.29999999999995, "lat": -24.973, "lon": -50.0636, "nome_fantasia": "Frios Campos Gerais", "regiao_atendida": "Sul", "tipo": "FRIOS", "uf": "PR", "unidades": 2}, {"abrangencia": "REGIONAL", "cidade": "An\u00e1polis", "compras": 1358215.88, "destinos": "11", "id": 20, "km": 50.4, "lat": -16.4189, "lon": -49.0441, "nome_fantasia": "Hortifruti Planalto Central", "regiao_atendida": "Centro-Oeste", "tipo": "HORTI", "uf": "GO", "unidades": 1}, {"abrangencia": "REGIONAL", "cidade": "An\u00e1polis", "compras": 635637.54, "destinos": "11", "id": 21, "km": 73.5, "lat": -16.4934, "lon": -48.774, "nome_fantasia": "Massas Congeladas Cerrado Massas", "regiao_atendida": "Centro-Oeste", "tipo": "PAD", "uf": "GO", "unidades": 1}, {"abrangencia": "REGIONAL", "cidade": "An\u00e1polis", "compras": 1439523.6, "destinos": "11", "id": 22, "km": 77.6, "lat": -16.558, "lon": -48.7184, "nome_fantasia": "Frigor\u00edfico Boi do Cerrado", "regiao_atendida": "Centro-Oeste", "tipo": "BOV", "uf": "GO", "unidades": 1}, {"abrangencia": "REGIONAL", "cidade": "An\u00e1polis", "compras": 985921.05, "destinos": "11", "id": 23, "km": 74.4, "lat": -16.4124, "lon": -48.8113, "nome_fantasia": "Av\u00edcola Rio Verde", "regiao_atendida": "Centro-Oeste", "tipo": "AVES", "uf": "GO", "unidades": 1}, {"abrangencia": "REGIONAL", "cidade": "An\u00e1polis", "compras": 1520646.42, "destinos": "11", "id": 24, "km": 101.5, "lat": -16.0975, "lon": -48.854, "nome_fantasia": "Latic\u00ednios Leite do Goi\u00e1s", "regiao_atendida": "Centro-Oeste", "tipo": "LAT", "uf": "GO", "unidades": 1}, {"abrangencia": "REGIONAL", "cidade": "An\u00e1polis", "compras": 202959.65, "destinos": "11", "id": 25, "km": 59.0, "lat": -16.4742, "lon": -48.9076, "nome_fantasia": "Frios Planalto", "regiao_atendida": "Centro-Oeste", "tipo": "FRIOS", "uf": "GO", "unidades": 1}, {"abrangencia": "REGIONAL", "cidade": "Caruaru", "compras": 2734874.68, "destinos": "12,13", "id": 26, "km": 454.15, "lat": -8.1576, "lon": -36.0555, "nome_fantasia": "Hortifruti Vale do S\u00e3o Francisco", "regiao_atendida": "Nordeste", "tipo": "HORTI", "uf": "PE", "unidades": 2}, {"abrangencia": "REGIONAL", "cidade": "Caruaru", "compras": 1269891.59, "destinos": "12,13", "id": 27, "km": 441.95, "lat": -8.5211, "lon": -36.2107, "nome_fantasia": "Massas Congeladas Massas Nordeste", "regiao_atendida": "Nordeste", "tipo": "PAD", "uf": "PE", "unidades": 2}, {"abrangencia": "REGIONAL", "cidade": "Caruaru", "compras": 2842294.1, "destinos": "12,13", "id": 28, "km": 447.65, "lat": -8.1456, "lon": -35.862, "nome_fantasia": "Frigor\u00edfico Sert\u00e3o Carnes", "regiao_atendida": "Nordeste", "tipo": "BOV", "uf": "PE", "unidades": 2}, {"abrangencia": "REGIONAL", "cidade": "Caruaru", "compras": 1985871.2, "destinos": "12,13", "id": 29, "km": 457.2, "lat": -8.1786, "lon": -36.1641, "nome_fantasia": "Av\u00edcola Agreste", "regiao_atendida": "Nordeste", "tipo": "AVES", "uf": "PE", "unidades": 2}, {"abrangencia": "REGIONAL", "cidade": "Caruaru", "compras": 3068984.98, "destinos": "12,13", "id": 30, "km": 433.8, "lat": -8.3833, "lon": -35.8015, "nome_fantasia": "Latic\u00ednios Bacia Leiteira", "regiao_atendida": "Nordeste", "tipo": "LAT", "uf": "PE", "unidades": 2}, {"abrangencia": "REGIONAL", "cidade": "Caruaru", "compras": 406972.26, "destinos": "12,13", "id": 31, "km": 435.44999999999993, "lat": -8.3255, "lon": -35.777, "nome_fantasia": "Frios Atl\u00e2ntico", "regiao_atendida": "Nordeste", "tipo": "FRIOS", "uf": "PE", "unidades": 2}, {"abrangencia": "REGIONAL", "cidade": "Castanhal", "compras": 579685.39, "destinos": "14", "id": 32, "km": 83.2, "lat": -1.1518, "lon": -47.967, "nome_fantasia": "Hortifruti Ver-o-Peso", "regiao_atendida": "Norte", "tipo": "HORTI", "uf": "PA", "unidades": 1}, {"abrangencia": "REGIONAL", "cidade": "Castanhal", "compras": 279305.28, "destinos": "14", "id": 33, "km": 108.1, "lat": -1.2671, "lon": -47.7264, "nome_fantasia": "Massas Congeladas Massas Amaz\u00f4nia", "regiao_atendida": "Norte", "tipo": "PAD", "uf": "PA", "unidades": 1}, {"abrangencia": "REGIONAL", "cidade": "Castanhal", "compras": 618675.35, "destinos": "14", "id": 34, "km": 93.7, "lat": -1.1654, "lon": -47.8737, "nome_fantasia": "Frigor\u00edfico Maraj\u00f3 Carnes", "regiao_atendida": "Norte", "tipo": "BOV", "uf": "PA", "unidades": 1}, {"abrangencia": "REGIONAL", "cidade": "Castanhal", "compras": 423987.3, "destinos": "14", "id": 35, "km": 109.2, "lat": -1.3868, "lon": -47.6967, "nome_fantasia": "Av\u00edcola Castanhal", "regiao_atendida": "Norte", "tipo": "AVES", "uf": "PA", "unidades": 1}, {"abrangencia": "REGIONAL", "cidade": "Castanhal", "compras": 683857.84, "destinos": "14", "id": 36, "km": 91.7, "lat": -1.3664, "lon": -47.826, "nome_fantasia": "Latic\u00ednios Latic\u00ednios do Par\u00e1", "regiao_atendida": "Norte", "tipo": "LAT", "uf": "PA", "unidades": 1}, {"abrangencia": "REGIONAL", "cidade": "Castanhal", "compras": 88115.87, "destinos": "14", "id": 37, "km": 73.9, "lat": -1.2672, "lon": -47.984, "nome_fantasia": "Frios Amaz\u00f4nia Frios", "regiao_atendida": "Norte", "tipo": "FRIOS", "uf": "PA", "unidades": 1}];
+const P = {"cap": 150000.0, "estrada": 1.25, "fixo": 400.0, "km": 3.8};
+function simular() {
+  const km = +sKm.value, v = +sValor.value, e = +sEnv.value, fat = +sFat.value;
+  const viag = Math.max(1, Math.ceil(v / P.cap)), custo = viag * (P.fixo + P.km * km), mes = custo * e * 4.33;
+  sRes.innerHTML = `Frete por envio: <b>${VV.brl(custo)}</b> (${viag} viagem/ns) · <b>${VV.fmtNum(2).format(custo / v * 100)}%</b> do valor<br>
+    Por mês: <b>${VV.brl(mes)}</b> = <b>${VV.fmtNum(2).format(mes / fat * 100)}%</b> do faturamento da loja`;
+}
+['sKm', 'sValor', 'sEnv', 'sFat'].forEach(i => document.getElementById(i).addEventListener('input', simular)); simular();
+const mapa = VVMapa.criar('mapa');
+if (mapa) {
+  const porId = Object.fromEntries(unid.map(u => [u.id, u]));
+  const cRotas = L.layerGroup().addTo(mapa), cNac = L.layerGroup(), cReg = L.layerGroup();
+  const vmax = Math.max(...rotas.map(r => r.valor));
+  const fp = rotas.map(r => r.frete_pct_valor);
+  const esc = VVMapa.escalaDiv(Math.min(...fp), [...fp].sort((a, b) => a - b)[Math.floor(fp.length / 2)], Math.max(...fp));
+  rotas.forEach(r => {
+    const med = [...fp].sort((a, b) => a - b)[Math.floor(fp.length / 2)];
+    L.polyline([[r.cd_lat, r.cd_lon], [r.loja_lat, r.loja_lon]], {color: esc(2 * med - r.frete_pct_valor), weight: 2 + 8 * Math.sqrt(r.valor / vmax), opacity: .85})
+      .bindPopup(`<b>${r.cd} → ${r.loja}</b><br>${VV.fmtNum(0).format(r.km)} km · lead time ${VV.fmtNum(1).format(r.lead_real)} dias<br>${r.envios} envios, ${r.viagens} viagens em 12 meses<br>
+        Transferido ${VV.compacto(r.valor)} · frete ${VV.compacto(r.frete)} (${VV.fmtNum(2).format(r.frete_pct_valor * 100)}% do valor; ${VV.fmtNum(2).format(r.frete_pct_receita * 100)}% do faturamento)`).addTo(cRotas);
+  });
+  forn.forEach(f => {
+    if (f.lat == null) return;
+    const nac = f.abrangencia === 'NACIONAL';
+    const camada = nac ? cNac : cReg;
+    L.circleMarker([f.lat, f.lon], {radius: 5, color: '#fcfcfb', weight: 1, fillColor: nac ? '#6250d6' : '#e87ba4', fillOpacity: .9})
+      .bindPopup(`<b>${f.nome_fantasia}</b><br>${nac ? 'Nacional (abastece CDs)' : 'Regional ' + f.regiao_atendida + ' (perecíveis)'}<br>${f.cidade}/${f.uf} · compras 12m ${VV.compacto(f.compras)}`).addTo(camada);
+    (f.destinos || '').split(',').filter(Boolean).forEach(d => { const u = porId[+d]; if (u) L.polyline([[f.lat, f.lon], [u.lat, u.lon]], {color: nac ? '#6250d6' : '#e87ba4', weight: 1, opacity: .35}).addTo(camada); });
+  });
+  unid.forEach(u => {
+    const cor = u.tipo === 'CD' ? VVMapa.cores.cd : u.tipo === 'SEDE' ? VVMapa.cores.sede : (u.modelo === 'PROPRIA' ? VVMapa.cores.loja : VVMapa.cores.franquia);
+    L.marker([u.lat, u.lon], {icon: L.divIcon({className: '', html: `<div style="background:${cor};color:#fff;font:600 10.5px system-ui;padding:2px 4px;border-radius:4px;border:2px solid #fff;white-space:nowrap">${u.codigo}</div>`})})
+      .bindTooltip(`${u.nome} (${u.cidade})`).addTo(mapa);
+  });
+  cRotas.addTo(mapa);
+  document.getElementById('cRotas').onchange = e => e.target.checked ? cRotas.addTo(mapa) : cRotas.remove();
+  document.getElementById('cNac').onchange = e => e.target.checked ? cNac.addTo(mapa) : cNac.remove();
+  document.getElementById('cReg').onchange = e => e.target.checked ? cReg.addTo(mapa) : cReg.remove();
+  VVMapa.legenda(mapa, `<b>Rotas CD → loja</b><br><i class="q" style="background:#1c5cab"></i>frete/valor baixo<br><i class="q" style="background:#d03b3b"></i>frete/valor alto<br>espessura = valor transferido<br>
+    <i style="background:${VVMapa.cores.cd}" class="q"></i>CD <i style="background:${VVMapa.cores.loja}" class="q"></i>própria <i style="background:${VVMapa.cores.franquia}" class="q"></i>franquia<br>
+    <i style="background:#6250d6"></i>fornecedor nacional <i style="background:#e87ba4"></i>regional`);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DRE gerencial · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="vv03";window.VV_KEY="/financeiro/dre";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="ativo">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" selected>VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      <a href="unidades_7.html">ficha da unidade</a>
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>DRE gerencial</h1>
+  <div class="sub"><b>VV03 · Vale Verde Rio Tijuca</b> · regime de competência. Na visão de rede/franqueadora, royalties e a margem dos CDs aparecem como receita da franqueadora e como custo das lojas (efeito líquido zero). IR/CSLL estimado (34% sobre lucro positivo da seleção).
+  Atalhos: <a href="?u=rede">rede</a> · <a href="?u=franqueadora">franqueadora</a> · <a href="?u=franquias">franqueadas</a> · <a href="?u=proprias">próprias</a></div></div>
+  
+  <form class="filtros" method="get">
+  <label>De</label>
+  <select name="ini"><option value="2024-11" >nov/24</option><option value="2024-12" >dez/24</option><option value="2025-01" >jan/25</option><option value="2025-02" >fev/25</option><option value="2025-03" >mar/25</option><option value="2025-04" >abr/25</option><option value="2025-05" >mai/25</option><option value="2025-06" >jun/25</option><option value="2025-07" >jul/25</option><option value="2025-08" >ago/25</option><option value="2025-09" >set/25</option><option value="2025-10" >out/25</option><option value="2025-11" selected>nov/25</option><option value="2025-12" >dez/25</option><option value="2026-01" >jan/26</option><option value="2026-02" >fev/26</option><option value="2026-03" >mar/26</option><option value="2026-04" >abr/26</option><option value="2026-05" >mai/26</option><option value="2026-06" >jun/26</option><option value="2026-07" >jul/26</option><option value="2026-08" >ago/26</option><option value="2026-09" >set/26</option><option value="2026-10" >out/26</option></select>
+  <label>até</label>
+  <select name="fim"><option value="2024-11" >nov/24</option><option value="2024-12" >dez/24</option><option value="2025-01" >jan/25</option><option value="2025-02" >fev/25</option><option value="2025-03" >mar/25</option><option value="2025-04" >abr/25</option><option value="2025-05" >mai/25</option><option value="2025-06" >jun/25</option><option value="2025-07" >jul/25</option><option value="2025-08" >ago/25</option><option value="2025-09" >set/25</option><option value="2025-10" >out/25</option><option value="2025-11" >nov/25</option><option value="2025-12" >dez/25</option><option value="2026-01" >jan/26</option><option value="2026-02" >fev/26</option><option value="2026-03" >mar/26</option><option value="2026-04" >abr/26</option><option value="2026-05" >mai/26</option><option value="2026-06" >jun/26</option><option value="2026-07" >jul/26</option><option value="2026-08" >ago/26</option><option value="2026-09" >set/26</option><option value="2026-10" selected>out/26</option></select>
+  <label><input type="checkbox" name="av" value="1" > análise vertical (% da receita bruta)</label>
+  <button type="submit">Aplicar</button>
+  
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a>
+</form></div>
+<div class="grade g2">
+  <div class="cartao col2"><h3>EBITDA e lucro líquido por mês</h3><div class="grafico baixo"><canvas id="gRes"></canvas></div></div>
+</div>
+<div class="cartao mt"><div class="tabela-wrap"><table>
+  <tr><th style="min-width:280px">Linha</th><th class="n">nov/25</th><th class="n">dez/25</th><th class="n">jan/26</th><th class="n">fev/26</th><th class="n">mar/26</th><th class="n">abr/26</th><th class="n">mai/26</th><th class="n">jun/26</th><th class="n">jul/26</th><th class="n">ago/26</th><th class="n">set/26</th><th class="n">out/26</th><th class="n">Total</th></tr>
+  
+  <tr class="">
+    <td style="padding-left:8px">Receita bruta de vendas (lojas)</td>
+    
+      <td class="n ">2.303.565</td>
+      <td class="n ">3.037.722</td>
+      <td class="n ">2.389.057</td>
+      <td class="n ">2.056.656</td>
+      <td class="n ">2.397.996</td>
+      <td class="n ">2.415.683</td>
+      <td class="n ">2.459.168</td>
+      <td class="n ">2.318.617</td>
+      <td class="n ">2.472.975</td>
+      <td class="n ">2.621.221</td>
+      <td class="n ">2.407.948</td>
+      <td class="n ">2.628.869</td>
+      <td class="n ">29.509.477</td>
+  </tr>
+  <tr class="">
+    <td style="padding-left:22px">(-) Descontos concedidos</td>
+    
+      <td class="n ">-169</td>
+      <td class="n ">-222</td>
+      <td class="n ">-163</td>
+      <td class="n ">-140</td>
+      <td class="n ">-150</td>
+      <td class="n ">-153</td>
+      <td class="n ">-162</td>
+      <td class="n ">-146</td>
+      <td class="n ">-152</td>
+      <td class="n ">-149</td>
+      <td class="n ">-132</td>
+      <td class="n ">-139</td>
+      <td class="n ">-1.876</td>
+  </tr>
+  <tr class="">
+    <td style="padding-left:22px">(-) Impostos sobre vendas e serviços</td>
+    
+      <td class="n ">-138.204</td>
+      <td class="n ">-182.250</td>
+      <td class="n ">-143.334</td>
+      <td class="n ">-123.391</td>
+      <td class="n ">-143.871</td>
+      <td class="n ">-144.932</td>
+      <td class="n ">-147.540</td>
+      <td class="n ">-139.108</td>
+      <td class="n ">-148.369</td>
+      <td class="n ">-157.264</td>
+      <td class="n ">-144.469</td>
+      <td class="n ">-157.724</td>
+      <td class="n ">-1.770.456</td>
+  </tr>
+  <tr class="sub">
+    <td style="padding-left:8px">= Receita líquida</td>
+    
+      <td class="n ">2.165.192</td>
+      <td class="n ">2.855.250</td>
+      <td class="n ">2.245.560</td>
+      <td class="n ">1.933.125</td>
+      <td class="n ">2.253.975</td>
+      <td class="n ">2.270.598</td>
+      <td class="n ">2.311.465</td>
+      <td class="n ">2.179.362</td>
+      <td class="n ">2.324.454</td>
+      <td class="n ">2.463.808</td>
+      <td class="n ">2.263.347</td>
+      <td class="n ">2.471.006</td>
+      <td class="n ">27.737.144</td>
+  </tr>
+  <tr class="">
+    <td style="padding-left:22px">(-) Custo das mercadorias vendidas (CMV)</td>
+    
+      <td class="n ">-1.492.427</td>
+      <td class="n ">-1.965.350</td>
+      <td class="n ">-1.541.034</td>
+      <td class="n ">-1.329.874</td>
+      <td class="n ">-1.560.476</td>
+      <td class="n ">-1.561.578</td>
+      <td class="n ">-1.573.933</td>
+      <td class="n ">-1.501.803</td>
+      <td class="n ">-1.600.032</td>
+      <td class="n ">-1.680.076</td>
+      <td class="n ">-1.555.550</td>
+      <td class="n ">-1.692.169</td>
+      <td class="n ">-19.054.303</td>
+  </tr>
+  <tr class="sub">
+    <td style="padding-left:8px">= Lucro bruto</td>
+    
+      <td class="n ">672.765</td>
+      <td class="n ">889.900</td>
+      <td class="n ">704.526</td>
+      <td class="n ">603.251</td>
+      <td class="n ">693.499</td>
+      <td class="n ">709.020</td>
+      <td class="n ">737.532</td>
+      <td class="n ">677.559</td>
+      <td class="n ">724.422</td>
+      <td class="n ">783.733</td>
+      <td class="n ">707.797</td>
+      <td class="n ">778.836</td>
+      <td class="n ">8.682.842</td>
+  </tr>
+  <tr class="">
+    <td style="padding-left:22px">(-) Perdas e quebras</td>
+    
+      <td class="n ">-49.200</td>
+      <td class="n ">-41.791</td>
+      <td class="n ">-49.181</td>
+      <td class="n ">-36.739</td>
+      <td class="n ">-37.562</td>
+      <td class="n ">-39.904</td>
+      <td class="n ">-51.507</td>
+      <td class="n ">-41.283</td>
+      <td class="n ">-41.820</td>
+      <td class="n ">-56.981</td>
+      <td class="n ">-42.253</td>
+      <td class="n ">-53.192</td>
+      <td class="n ">-541.414</td>
+  </tr>
+  <tr class="">
+    <td style="padding-left:22px">(-) Consumo interno</td>
+    
+      <td class="n ">-11.306</td>
+      <td class="n ">-10.772</td>
+      <td class="n ">-11.859</td>
+      <td class="n ">-8.953</td>
+      <td class="n ">-9.540</td>
+      <td class="n ">-9.708</td>
+      <td class="n ">-12.174</td>
+      <td class="n ">-9.978</td>
+      <td class="n ">-9.827</td>
+      <td class="n ">-12.913</td>
+      <td class="n ">-9.808</td>
+      <td class="n ">-12.558</td>
+      <td class="n ">-129.396</td>
+  </tr>
+  <tr class="sub">
+    <td style="padding-left:8px">= Margem após perdas</td>
+    
+      <td class="n ">612.259</td>
+      <td class="n ">837.337</td>
+      <td class="n ">643.486</td>
+      <td class="n ">557.560</td>
+      <td class="n ">646.397</td>
+      <td class="n ">659.408</td>
+      <td class="n ">673.851</td>
+      <td class="n ">626.299</td>
+      <td class="n ">672.775</td>
+      <td class="n ">713.838</td>
+      <td class="n ">655.737</td>
+      <td class="n ">713.086</td>
+      <td class="n ">8.012.031</td>
+  </tr>
+  <tr class="">
+    <td style="padding-left:22px">(-) Folha, encargos e benefícios</td>
+    
+      <td class="n ">-232.230</td>
+      <td class="n ">-254.408</td>
+      <td class="n ">-233.966</td>
+      <td class="n ">-222.028</td>
+      <td class="n ">-231.896</td>
+      <td class="n ">-232.925</td>
+      <td class="n ">-236.661</td>
+      <td class="n ">-232.464</td>
+      <td class="n ">-235.872</td>
+      <td class="n ">-234.607</td>
+      <td class="n ">-240.419</td>
+      <td class="n ">-238.739</td>
+      <td class="n ">-2.826.215</td>
+  </tr>
+  <tr class="">
+    <td style="padding-left:22px">(-) Pró-labore e outras despesas de pessoal</td>
+    
+      <td class="n ">-18.565</td>
+      <td class="n ">-20.082</td>
+      <td class="n ">-19.298</td>
+      <td class="n ">-21.446</td>
+      <td class="n ">-22.462</td>
+      <td class="n ">-18.644</td>
+      <td class="n ">-19.543</td>
+      <td class="n ">-21.818</td>
+      <td class="n ">-18.860</td>
+      <td class="n ">-19.795</td>
+      <td class="n ">-23.815</td>
+      <td class="n ">-18.858</td>
+      <td class="n ">-243.186</td>
+  </tr>
+  <tr class="">
+    <td style="padding-left:22px">(-) Ocupação (aluguel, IPTU, manutenção)</td>
+    
+      <td class="n ">-59.865</td>
+      <td class="n ">-59.851</td>
+      <td class="n ">-64.149</td>
+      <td class="n ">-65.457</td>
+      <td class="n ">-62.897</td>
+      <td class="n ">-85.912</td>
+      <td class="n ">-61.817</td>
+      <td class="n ">-59.664</td>
+      <td class="n ">-63.612</td>
+      <td class="n ">-61.396</td>
+      <td class="n ">-60.779</td>
+      <td class="n ">-62.209</td>
+      <td class="n ">-767.607</td>
+  </tr>
+  <tr class="">
+    <td style="padding-left:22px">(-) Energia, água e resíduos</td>
+    
+      <td class="n ">-52.125</td>
+      <td class="n ">-56.877</td>
+      <td class="n ">-54.795</td>
+      <td class="n ">-57.355</td>
+      <td class="n ">-51.939</td>
+      <td class="n ">-49.331</td>
+      <td class="n ">-42.675</td>
+      <td class="n ">-40.784</td>
+      <td class="n ">-40.621</td>
+      <td class="n ">-41.065</td>
+      <td class="n ">-45.807</td>
+      <td class="n ">-48.470</td>
+      <td class="n ">-581.843</td>
+  </tr>
+  <tr class="">
+    <td style="padding-left:22px">(-) Despesas administrativas</td>
+    
+      <td class="n ">-16.520</td>
+      <td class="n ">-16.514</td>
+      <td class="n ">-16.830</td>
+      <td class="n ">-16.822</td>
+      <td class="n ">-16.762</td>
+      <td class="n ">-16.307</td>
+      <td class="n ">-16.352</td>
+      <td class="n ">-16.762</td>
+      <td class="n ">-16.557</td>
+      <td class="n ">-16.333</td>
+      <td class="n ">-16.366</td>
+      <td class="n ">-16.339</td>
+      <td class="n ">-198.464</td>
+  </tr>
+  <tr class="">
+    <td style="padding-left:22px">(-) Despesas comerciais (cartões, marketing, entregas)</td>
+    
+      <td class="n ">-40.312</td>
+      <td class="n ">-52.443</td>
+      <td class="n ">-40.991</td>
+      <td class="n ">-36.230</td>
+      <td class="n ">-41.867</td>
+      <td class="n ">-42.982</td>
+      <td class="n ">-44.128</td>
+      <td class="n ">-40.380</td>
+      <td class="n ">-45.037</td>
+      <td class="n ">-48.076</td>
+      <td class="n ">-41.257</td>
+      <td class="n ">-46.005</td>
+      <td class="n ">-519.708</td>
+  </tr>
+  <tr class="">
+    <td style="padding-left:22px">(-) Royalties e fundo de marketing pagos</td>
+    
+      <td class="n ">-46.068</td>
+      <td class="n ">-60.750</td>
+      <td class="n ">-47.778</td>
+      <td class="n ">-41.130</td>
+      <td class="n ">-47.957</td>
+      <td class="n ">-48.311</td>
+      <td class="n ">-49.180</td>
+      <td class="n ">-46.369</td>
+      <td class="n ">-49.456</td>
+      <td class="n ">-52.421</td>
+      <td class="n ">-48.156</td>
+      <td class="n ">-52.575</td>
+      <td class="n ">-590.152</td>
+  </tr>
+  <tr class="sub">
+    <td style="padding-left:8px">= EBITDA</td>
+    
+      <td class="n ">146.574</td>
+      <td class="n ">316.412</td>
+      <td class="n ">165.679</td>
+      <td class="n ">97.092</td>
+      <td class="n ">170.617</td>
+      <td class="n ">164.997</td>
+      <td class="n ">203.496</td>
+      <td class="n ">168.057</td>
+      <td class="n ">202.759</td>
+      <td class="n ">240.144</td>
+      <td class="n ">179.137</td>
+      <td class="n ">229.890</td>
+      <td class="n ">2.284.856</td>
+  </tr>
+  <tr class="">
+    <td style="padding-left:22px">(-) Depreciação</td>
+    
+      <td class="n ">-7.771</td>
+      <td class="n ">-7.771</td>
+      <td class="n ">-7.771</td>
+      <td class="n ">-7.771</td>
+      <td class="n ">-7.771</td>
+      <td class="n ">-7.771</td>
+      <td class="n ">-7.771</td>
+      <td class="n ">-7.771</td>
+      <td class="n ">-7.771</td>
+      <td class="n ">-7.771</td>
+      <td class="n ">-7.771</td>
+      <td class="n ">-7.771</td>
+      <td class="n ">-93.257</td>
+  </tr>
+  <tr class="">
+    <td style="padding-left:22px">(-) Despesas financeiras</td>
+    
+      <td class="n ">-3.518</td>
+      <td class="n ">-3.475</td>
+      <td class="n ">-3.432</td>
+      <td class="n ">-3.389</td>
+      <td class="n ">-3.351</td>
+      <td class="n ">-3.310</td>
+      <td class="n ">-3.271</td>
+      <td class="n ">-3.230</td>
+      <td class="n ">-3.192</td>
+      <td class="n ">-3.153</td>
+      <td class="n ">-3.115</td>
+      <td class="n ">-3.078</td>
+      <td class="n ">-39.516</td>
+  </tr>
+  <tr class="sub">
+    <td style="padding-left:8px">= Lucro antes do IR/CSLL</td>
+    
+      <td class="n ">135.284</td>
+      <td class="n ">305.166</td>
+      <td class="n ">154.476</td>
+      <td class="n ">85.931</td>
+      <td class="n ">159.495</td>
+      <td class="n ">153.916</td>
+      <td class="n ">192.454</td>
+      <td class="n ">157.055</td>
+      <td class="n ">191.796</td>
+      <td class="n ">229.220</td>
+      <td class="n ">168.251</td>
+      <td class="n ">219.040</td>
+      <td class="n ">2.152.082</td>
+  </tr>
+  <tr class="">
+    <td style="padding-left:22px">(-) IRPJ/CSLL (estimado)</td>
+    
+      <td class="n ">-45.997</td>
+      <td class="n ">-103.756</td>
+      <td class="n ">-52.522</td>
+      <td class="n ">-29.217</td>
+      <td class="n ">-54.228</td>
+      <td class="n ">-52.331</td>
+      <td class="n ">-65.434</td>
+      <td class="n ">-53.399</td>
+      <td class="n ">-65.211</td>
+      <td class="n ">-77.935</td>
+      <td class="n ">-57.205</td>
+      <td class="n ">-74.474</td>
+      <td class="n ">-731.708</td>
+  </tr>
+  <tr class="total">
+    <td style="padding-left:8px">= Lucro líquido</td>
+    
+      <td class="n ">89.288</td>
+      <td class="n ">201.409</td>
+      <td class="n ">101.954</td>
+      <td class="n ">56.715</td>
+      <td class="n ">105.266</td>
+      <td class="n ">101.584</td>
+      <td class="n ">127.019</td>
+      <td class="n ">103.657</td>
+      <td class="n ">126.585</td>
+      <td class="n ">151.285</td>
+      <td class="n ">111.046</td>
+      <td class="n ">144.566</td>
+      <td class="n ">1.420.374</td>
+  </tr>
+</table></div>
+<p class="muted">Valores em R$. Linhas "(-)" são deduções e aparecem negativas.</p></div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+<script>
+const g = {"ebitda": [146573.72, 316412.33, 165679.14, 97091.91, 170617.43, 164997.11, 203495.66, 168057.32, 202759.47, 240144.48, 179137.49, 229889.58], "lucro": [89287.68, 201409.26, 101953.95, 56714.52, 105266.41, 101584.32, 127019.4, 103656.59, 126585.26, 151285.06, 111045.74, 144566.23], "meses": ["nov/25", "dez/25", "jan/26", "fev/26", "mar/26", "abr/26", "mai/26", "jun/26", "jul/26", "ago/26", "set/26", "out/26"]};
+VV.grafico('gRes', g.meses, [{nome: 'EBITDA', dados: g.ebitda, slot: 0}, {nome: 'Lucro líquido', dados: g.lucro, slot: 2}], {fmt: 'brl'});
+</script>
+</body>
+</html>

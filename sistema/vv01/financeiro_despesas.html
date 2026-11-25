@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Despesas · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="vv01";window.VV_KEY="/financeiro/despesas";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="ativo">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" selected>VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      <a href="unidades_5.html">ficha da unidade</a>
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Despesas fixas e variáveis</h1><div class="sub">Despesas operacionais (a folha de pagamento fica no módulo de RH)</div></div>
+  <form class="filtros" method="get">
+  <label>De</label>
+  <select name="ini"><option value="2024-11" >nov/24</option><option value="2024-12" >dez/24</option><option value="2025-01" >jan/25</option><option value="2025-02" >fev/25</option><option value="2025-03" >mar/25</option><option value="2025-04" >abr/25</option><option value="2025-05" >mai/25</option><option value="2025-06" >jun/25</option><option value="2025-07" >jul/25</option><option value="2025-08" >ago/25</option><option value="2025-09" >set/25</option><option value="2025-10" >out/25</option><option value="2025-11" >nov/25</option><option value="2025-12" >dez/25</option><option value="2026-01" >jan/26</option><option value="2026-02" >fev/26</option><option value="2026-03" >mar/26</option><option value="2026-04" >abr/26</option><option value="2026-05" >mai/26</option><option value="2026-06" >jun/26</option><option value="2026-07" >jul/26</option><option value="2026-08" >ago/26</option><option value="2026-09" >set/26</option><option value="2026-10" selected>out/26</option></select>
+  <label>até</label>
+  <select name="fim"><option value="2024-11" >nov/24</option><option value="2024-12" >dez/24</option><option value="2025-01" >jan/25</option><option value="2025-02" >fev/25</option><option value="2025-03" >mar/25</option><option value="2025-04" >abr/25</option><option value="2025-05" >mai/25</option><option value="2025-06" >jun/25</option><option value="2025-07" >jul/25</option><option value="2025-08" >ago/25</option><option value="2025-09" >set/25</option><option value="2025-10" >out/25</option><option value="2025-11" >nov/25</option><option value="2025-12" >dez/25</option><option value="2026-01" >jan/26</option><option value="2026-02" >fev/26</option><option value="2026-03" >mar/26</option><option value="2026-04" >abr/26</option><option value="2026-05" >mai/26</option><option value="2026-06" >jun/26</option><option value="2026-07" >jul/26</option><option value="2026-08" >ago/26</option><option value="2026-09" >set/26</option><option value="2026-10" selected>out/26</option></select>
+  
+  <button type="submit">Aplicar</button>
+  
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a>
+</form></div>
+<div class="grade g4">
+  <div class="cartao kpi">
+  <div class="rot">Total no período</div>
+  <div class="val">R$ 147 mil</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Fixas</div>
+  <div class="val">R$ 60 mil</div>
+  <div class="det">41,3% do total</div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Variáveis</div>
+  <div class="val">R$ 86 mil</div>
+  <div class="det">58,7% do total</div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Lançamentos</div>
+  <div class="val">19</div>
+  <div class="det">VV01 · Vale Verde Campinas Taquaral</div>
+</div>
+</div>
+<div class="grade g2 mt">
+  <div class="cartao col2"><h3>Fixas × variáveis por mês (sem depreciação)</h3><div class="grafico baixo"><canvas id="gDesp"></canvas></div></div>
+  <div class="cartao"><h3>Por categoria</h3><div class="rolagem" style="max-height:380px"><table><tr><th>Categoria</th><th>Tipo</th><th class="n">Valor</th><th class="n">%</th></tr>
+    <tr><td>Aluguel</td><td><span class="etq info">Fixa</span></td><td class="n">R$ 39.104,59</td><td class="n">26,7%</td></tr><tr><td>Energia elétrica</td><td><span class="etq alerta">Variavel</span></td><td class="n">R$ 35.151,68</td><td class="n">24,0%</td></tr><tr><td>Taxas de cartão e voucher</td><td><span class="etq alerta">Variavel</span></td><td class="n">R$ 28.672,68</td><td class="n">19,6%</td></tr><tr><td>Manutenção de equipamentos e refrigeração</td><td><span class="etq alerta">Variavel</span></td><td class="n">R$ 6.908,93</td><td class="n">4,7%</td></tr><tr><td>Depreciação</td><td><span class="etq info">Fixa</span></td><td class="n">R$ 6.800,00</td><td class="n">4,6%</td></tr><tr><td>Entregas em domicílio</td><td><span class="etq alerta">Variavel</span></td><td class="n">R$ 5.789,50</td><td class="n">3,9%</td></tr><tr><td>Segurança e monitoramento</td><td><span class="etq info">Fixa</span></td><td class="n">R$ 4.100,00</td><td class="n">2,8%</td></tr><tr><td>Água e esgoto</td><td><span class="etq alerta">Variavel</span></td><td class="n">R$ 3.973,59</td><td class="n">2,7%</td></tr><tr><td>Marketing local</td><td><span class="etq alerta">Variavel</span></td><td class="n">R$ 3.706,55</td><td class="n">2,5%</td></tr><tr><td>Sistemas (ERP, PDV, WMS)</td><td><span class="etq info">Fixa</span></td><td class="n">R$ 3.192,00</td><td class="n">2,2%</td></tr><tr><td>IPTU</td><td><span class="etq info">Fixa</span></td><td class="n">R$ 2.413,95</td><td class="n">1,6%</td></tr><tr><td>Seguros</td><td><span class="etq info">Fixa</span></td><td class="n">R$ 1.480,00</td><td class="n">1,0%</td></tr><tr><td>Internet e telefonia</td><td><span class="etq info">Fixa</span></td><td class="n">R$ 1.150,00</td><td class="n">0,8%</td></tr><tr><td>Coleta de resíduos</td><td><span class="etq info">Fixa</span></td><td class="n">R$ 900,00</td><td class="n">0,6%</td></tr><tr><td>Material de escritório</td><td><span class="etq alerta">Variavel</span></td><td class="n">R$ 703,40</td><td class="n">0,5%</td></tr><tr><td>Tarifas bancárias</td><td><span class="etq info">Fixa</span></td><td class="n">R$ 680,00</td><td class="n">0,5%</td></tr><tr><td>Uniformes e EPIs</td><td><span class="etq alerta">Variavel</span></td><td class="n">R$ 660,00</td><td class="n">0,5%</td></tr><tr><td>Dedetização e higienização</td><td><span class="etq info">Fixa</span></td><td class="n">R$ 650,00</td><td class="n">0,4%</td></tr><tr><td>Exames ocupacionais</td><td><span class="etq alerta">Variavel</span></td><td class="n">R$ 554,90</td><td class="n">0,4%</td></tr></table></div></div>
+  <div class="cartao"><h3>Lançar nova despesa</h3>
+    <form method="post" class="form-grade">
+      <div class="campo"><label>Unidade</label><select name="unidade_id" required><option value="1" >SEDE · Sede Vale Verde Franquias</option><option value="5" selected>VV01 · Vale Verde Campinas Taquaral</option><option value="6" >VV02 · Vale Verde São Paulo Mooca</option><option value="7" >VV03 · Vale Verde Rio Tijuca</option><option value="8" >VV04 · Vale Verde BH Savassi</option><option value="9" >VV05 · Vale Verde Curitiba Água Verde</option><option value="10" >VV06 · Vale Verde Porto Alegre Menino Deus</option><option value="11" >VV07 · Vale Verde Goiânia Setor Bueno</option><option value="12" >VV08 · Vale Verde Salvador Pituba</option><option value="13" >VV09 · Vale Verde Recife Boa Viagem</option><option value="14" >VV10 · Vale Verde Belém Nazaré</option><option value="2" >CD01 · CD Sudeste/Centro-Oeste</option><option value="3" >CD02 · CD Sul</option><option value="4" >CD03 · CD Nordeste/Norte</option></select></div>
+      <div class="campo"><label>Competência</label><input type="month" name="competencia" value="2026-11" required></div>
+      <div class="campo"><label>Categoria</label><select name="categoria_id"><option value="1">Aluguel (fixa)</option><option value="7">Coleta de resíduos (fixa)</option><option value="10">Contabilidade e auditoria (fixa)</option><option value="3">Dedetização e higienização (fixa)</option><option value="32">Depreciação (fixa)</option><option value="5">Energia elétrica (variavel)</option><option value="19">Entregas em domicílio (variavel)</option><option value="20">Eventos e convenção de franqueados (variavel)</option><option value="24">Exames ocupacionais (variavel)</option><option value="28">Fretes de transferência (variavel)</option><option value="27">Fundo de marketing (variavel)</option><option value="22">INSS sobre pró-labore (fixa)</option><option value="2">IPTU (fixa)</option><option value="8">Internet e telefonia (fixa)</option><option value="31">Juros de financiamento (fixa)</option><option value="14">Jurídico (fixa)</option><option value="4">Manutenção de equipamentos e refrigeração (variavel)</option><option value="29">Manutenção de frota e empilhadeiras (variavel)</option><option value="17">Marketing institucional da rede (variavel)</option><option value="16">Marketing local (variavel)</option><option value="13">Material de escritório (variavel)</option><option value="21">Pró-labore dos sócios (fixa)</option><option value="26">Royalties (variavel)</option><option value="11">Segurança e monitoramento (fixa)</option><option value="12">Seguros (fixa)</option><option value="9">Sistemas (ERP, PDV, WMS) (fixa)</option><option value="30">Tarifas bancárias (fixa)</option><option value="18">Taxas de cartão e voucher (variavel)</option><option value="25">Treinamentos (variavel)</option><option value="23">Uniformes e EPIs (variavel)</option><option value="15">Viagens e visitas de campo (variavel)</option><option value="6">Água e esgoto (variavel)</option></select></div>
+      <div class="campo"><label>Descrição</label><input type="text" name="descricao" required></div>
+      <div class="campo"><label>Favorecido</label><input type="text" name="favorecido"></div>
+      <div class="campo"><label>Departamento</label><select name="departamento_id"><option value="">—</option><option value="2">Administrativo/Financeiro</option><option value="5">Açougue</option><option value="12">Franqueadora (Sede)</option><option value="3">Frente de Caixa</option><option value="1">Gerência</option><option value="7">Hortifrúti</option><option value="10">Limpeza</option><option value="11">Logística (CD)</option><option value="4">Mercearia/Reposição</option><option value="6">Padaria</option><option value="9">Prevenção de Perdas</option><option value="8">Recebimento/Depósito</option></select></div>
+      <div class="campo"><label>Valor (R$)</label><input type="text" name="valor" required></div>
+      <div class="campo"><label>Vencimento</label><input type="date" name="vencimento" required></div>
+      <div class="campo"><label>&nbsp;</label><button class="btn-primario">Lançar</button></div>
+    </form></div>
+</div>
+<div class="cartao mt"><h3>Lançamentos</h3><div class="rolagem"><table>
+  <tr><th>Unidade</th><th>Competência</th><th>Categoria</th><th>Descrição</th><th>Favorecido</th><th>Departamento</th><th class="n">Valor</th><th>Vencimento</th><th>Status</th></tr>
+  <tr><td>VV01</td><td>out/26</td><td>Aluguel</td><td>Aluguel 2026-10</td><td>Locador do imóvel (fictício)</td><td>Gerência</td>
+    <td class="n">R$ 39.104,59</td><td>05/11/2026</td><td><span class="etq alerta">Aberto</span></td></tr><tr><td>VV01</td><td>out/26</td><td>Energia elétrica</td><td>Conta de energia 2026-10</td><td>Concessionária de Energia Elétrica</td><td>Gerência</td>
+    <td class="n">R$ 35.151,68</td><td>12/11/2026</td><td><span class="etq alerta">Aberto</span></td></tr><tr><td>VV01</td><td>out/26</td><td>Taxas de cartão e voucher</td><td>MDR adquirentes 2026-10</td><td>Adquirentes (cartões/vouchers)</td><td>Frente de Caixa</td>
+    <td class="n">R$ 28.672,68</td><td>01/11/2026</td><td><span class="etq alerta">Aberto</span></td></tr><tr><td>VV01</td><td>out/26</td><td>Manutenção de equipamentos e refrigeração</td><td>Manutenção preventiva e corretiva</td><td>Frio Total Refrigeração</td><td>Recebimento/Depósito</td>
+    <td class="n">R$ 6.908,93</td><td>10/11/2026</td><td><span class="etq alerta">Aberto</span></td></tr><tr><td>VV01</td><td>out/26</td><td>Depreciação</td><td>Depreciação de equipamentos e instalações</td><td>Lançamento contábil (não-caixa)</td><td>Gerência</td>
+    <td class="n">R$ 6.800,00</td><td>28/10/2026</td><td><span class="etq ok">Pago</span></td></tr><tr><td>VV01</td><td>out/26</td><td>Entregas em domicílio</td><td>Entregas (terceirizado)</td><td>Leva &amp; Traz Entregas</td><td>Frente de Caixa</td>
+    <td class="n">R$ 5.789,50</td><td>10/11/2026</td><td><span class="etq alerta">Aberto</span></td></tr><tr><td>VV01</td><td>out/26</td><td>Segurança e monitoramento</td><td>Monitoramento 24h e alarmes</td><td>Guardião Segurança Eletrônica</td><td>Prevenção de Perdas</td>
+    <td class="n">R$ 4.100,00</td><td>10/11/2026</td><td><span class="etq alerta">Aberto</span></td></tr><tr><td>VV01</td><td>out/26</td><td>Água e esgoto</td><td>Conta de água 2026-10</td><td>Companhia de Saneamento</td><td>Gerência</td>
+    <td class="n">R$ 3.973,59</td><td>12/11/2026</td><td><span class="etq alerta">Aberto</span></td></tr><tr><td>VV01</td><td>out/26</td><td>Marketing local</td><td>Carro de som, panfletos e redes sociais locais</td><td>Agência regional</td><td>Gerência</td>
+    <td class="n">R$ 3.706,55</td><td>15/11/2026</td><td><span class="etq alerta">Aberto</span></td></tr><tr><td>VV01</td><td>out/26</td><td>Sistemas (ERP, PDV, WMS)</td><td>Licenças de PDV e retaguarda</td><td>Sistemas Varejo Mais</td><td>Administrativo/Financeiro</td>
+    <td class="n">R$ 3.192,00</td><td>10/11/2026</td><td><span class="etq alerta">Aberto</span></td></tr><tr><td>VV01</td><td>out/26</td><td>IPTU</td><td>IPTU 2026 parcela 9/10</td><td>Prefeitura Municipal</td><td>Gerência</td>
+    <td class="n">R$ 2.413,95</td><td>15/10/2026</td><td><span class="etq ok">Pago</span></td></tr><tr><td>VV01</td><td>out/26</td><td>Seguros</td><td>Seguro do estabelecimento (parcela)</td><td>Seguradora Horizonte</td><td>Gerência</td>
+    <td class="n">R$ 1.480,00</td><td>20/11/2026</td><td><span class="etq alerta">Aberto</span></td></tr><tr><td>VV01</td><td>out/26</td><td>Internet e telefonia</td><td>Link dedicado + telefonia</td><td>Conecta Telecom</td><td>Administrativo/Financeiro</td>
+    <td class="n">R$ 1.150,00</td><td>15/11/2026</td><td><span class="etq alerta">Aberto</span></td></tr><tr><td>VV01</td><td>out/26</td><td>Coleta de resíduos</td><td>Coleta de resíduos orgânicos e recicláveis</td><td>Coleta Ambiental</td><td>Limpeza</td>
+    <td class="n">R$ 900,00</td><td>10/11/2026</td><td><span class="etq alerta">Aberto</span></td></tr><tr><td>VV01</td><td>out/26</td><td>Material de escritório</td><td>Papelaria e suprimentos</td><td>Papelaria Central</td><td>Administrativo/Financeiro</td>
+    <td class="n">R$ 703,40</td><td>10/11/2026</td><td><span class="etq alerta">Aberto</span></td></tr><tr><td>VV01</td><td>out/26</td><td>Tarifas bancárias</td><td>Tarifas e pacote de serviços</td><td>Banco Comercial</td><td>Administrativo/Financeiro</td>
+    <td class="n">R$ 680,00</td><td>01/10/2026</td><td><span class="etq ok">Pago</span></td></tr><tr><td>VV01</td><td>out/26</td><td>Uniformes e EPIs</td><td>Uniformes, botas e aventais</td><td>Uniformes Ideal</td><td>Administrativo/Financeiro</td>
+    <td class="n">R$ 660,00</td><td>10/11/2026</td><td><span class="etq alerta">Aberto</span></td></tr><tr><td>VV01</td><td>out/26</td><td>Dedetização e higienização</td><td>Controle de pragas mensal</td><td>Higienize Serviços Ambientais</td><td>Limpeza</td>
+    <td class="n">R$ 650,00</td><td>10/11/2026</td><td><span class="etq alerta">Aberto</span></td></tr><tr><td>VV01</td><td>out/26</td><td>Exames ocupacionais</td><td>ASO admissional/periódico/demissional</td><td>Clínica Saúde do Trabalho</td><td>Administrativo/Financeiro</td>
+    <td class="n">R$ 554,90</td><td>10/11/2026</td><td><span class="etq alerta">Aberto</span></td></tr>
+</table></div></div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+<script>
+const g = {"fixa": [50610.53, 48400.0, 48400.0, 50710.0, 52238.8, 52238.8, 52238.8, 52238.8, 52238.8, 52238.8, 52238.8, 52238.8, 52390.8, 50080.8, 50080.8, 52494.75, 53670.54, 53670.54, 53670.54, 53670.54, 53670.54, 53670.54, 53670.54, 53670.54], "meses": ["nov/24", "dez/24", "jan/25", "fev/25", "mar/25", "abr/25", "mai/25", "jun/25", "jul/25", "ago/25", "set/25", "out/25", "nov/25", "dez/25", "jan/26", "fev/26", "mar/26", "abr/26", "mai/26", "jun/26", "jul/26", "ago/26", "set/26", "out/26"], "variavel": [78981.32, 88568.02, 85610.31, 80119.73, 79248.84, 80571.65, 77365.89, 74031.88, 69493.77, 76005.12, 80903.03, 82001.11, 80702.67, 96622.15, 90834.93, 81130.2, 89725.84, 82748.3, 90729.21, 77079.82, 79131.67, 77440.62, 92529.88, 86121.23]};
+VV.grafico('gDesp', g.meses, [{nome: 'Fixas', dados: g.fixa, slot: 0, stack: 's'}, {nome: 'Variáveis', dados: g.variavel, slot: 1, stack: 's'}], {fmt: 'brl', empilhado: true});
+</script>
+</body>
+</html>

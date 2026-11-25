@@ -22,7 +22,8 @@
       tela: "abrir em tela cheia ↗", previa: "Prints do painel", oProblema: "O problema", oModelo: "O modelo de dados",
       decisoes: "Decisões de design", codigo: "Código e dados no GitHub ↗", voltar: "voltar", todosP: "Todos os projetos",
       proximo: "próximo case", ficticio: "dados 100% fictícios", contato: "Falar comigo", naoEncontrado: "Case não encontrado.",
-      matriz: "Matriz de barramento: cada fato, o grão e as dimensões que ele usa." },
+      matriz: "Matriz de barramento: cada fato, o grão e as dimensões que ele usa.",
+      sistema: "Sistema navegável (somente leitura): troque a visão e passeie pelas telas", sistemaBtn: "Abrir o sistema ↗", arquitetura: "Arquitetura" },
     en: { projetos: "Projects", processo: "How I work", sobre: "About", verProjetos: "See projects ↓", painel: "Open the dashboard ↗",
       curriculo: "Résumé", dashboards: "One project, six angles",
       introProjetos: "A fictional supermarket chain, from database to dashboard. Each case covers the business problem, the data model and the design decisions.",
@@ -31,7 +32,8 @@
       tela: "open full screen ↗", previa: "Dashboard screenshots", oProblema: "The problem", oModelo: "The data model",
       decisoes: "Design decisions", codigo: "Code and data on GitHub ↗", voltar: "back", todosP: "All projects",
       proximo: "next case", ficticio: "100% fictional data", contato: "Get in touch", naoEncontrado: "Case not found.",
-      matriz: "Bus matrix: each fact table, its grain and the dimensions it uses." },
+      matriz: "Bus matrix: each fact table, its grain and the dimensions it uses.",
+      sistema: "Browsable system (read-only, in Portuguese): switch the view and explore the screens", sistemaBtn: "Open the system ↗", arquitetura: "Architecture" },
   }[L];
 
   const linkCom = (href, extra) => {
@@ -94,13 +96,13 @@
     if (!c) { alvo.innerHTML = `<div class="contem"><p>${UI.naoEncontrado}</p></div>`; return; }
     document.title = `${t(c.titulo)} · ${P.nome}`;
     const prox = C[((i < 0 ? 0 : i) + 1) % C.length];
-    const url = c.pagina ? embed(c.pagina) : "";
+    const url = c.site || (c.pagina ? embed(c.pagina) : "");
     const painel = url
-      ? `<div class="painel"><div class="barra"><span>${UI.interativo}</span><a href="${esc(url)}" target="_blank" rel="noopener">${UI.tela}</a></div>
+      ? `<div class="painel"><div class="barra"><span>${c.site ? UI.sistema : UI.interativo}</span><a href="${esc(url)}" target="_blank" rel="noopener">${UI.tela}</a></div>
            <div class="moldura"><iframe title="${esc(t(c.titulo))}" src="${esc(url)}" allowfullscreen loading="lazy"></iframe></div></div>`
       : "";
     const prints = `<div class="galeria">${c.imagens.map(s => `<a href="${esc(img(s))}" target="_blank" rel="noopener"><img src="${esc(img(s))}" alt="${esc(t(c.titulo))}" loading="lazy"></a>`).join("")}</div>`;
-    const repo = P.repositorio ? `<p style="margin-top:20px"><a class="btn" href="${esc(P.repositorio)}" target="_blank" rel="noopener">${UI.codigo}</a></p>` : "";
+    const repo = P.repositorio ? `<p style="margin-top:20px">${c.site ? `<a class="btn" href="${esc(c.site)}" target="_blank" rel="noopener">${UI.sistemaBtn}</a> ` : ""}<a class="btn" href="${esc(P.repositorio)}" target="_blank" rel="noopener">${UI.codigo}</a></p>` : "";
     alvo.innerHTML = `<div class="contem">
       <div class="caso-topo"><a class="voltar" href="${esc(linkCom("index.html#projetos", { lang: params.get("lang") }))}">${UI.todos}</a>
         <div class="eyebrow" style="margin-top:28px">${UI.caso} ${esc(c.numero)}</div>
@@ -112,7 +114,7 @@
       <div class="texto-caso"><h2>${UI.oModelo}</h2><div><p>${esc(t(c.modelagem))}</p>
         ${c.matriz ? `<figure><img src="img/modelo-${L}.svg" alt="${UI.matriz}" loading="lazy"><figcaption>${UI.matriz}</figcaption></figure>` : ""}</div></div>
       <div class="texto-caso"><h2>${UI.decisoes}</h2><div><ul>${(t(c.decisoes) || []).map(d => `<li>${esc(d)}</li>`).join("")}</ul>${repo}</div></div>
-      ${painel ? `<div class="texto-caso"><h2>${UI.previa}</h2><div>${prints}</div></div>` : ""}
+      ${painel ? `<div class="texto-caso"><h2>${c.site ? UI.arquitetura : UI.previa}</h2><div>${prints}</div></div>` : ""}
       <div class="proximo"><a href="${esc(linkCom("index.html#projetos", { lang: params.get("lang") }))}"><small>${UI.voltar}</small><b>${UI.todosP}</b></a>
         <a href="${esc(linkCom("caso.html", { id: prox.id, lang: params.get("lang") }))}" style="text-align:right"><small>${UI.proximo}</small><b>${esc(t(prox.titulo))} →</b></a></div>
     </div>`;

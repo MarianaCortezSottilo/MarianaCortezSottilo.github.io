@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PDV · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="rede";window.VV_KEY="/pdv";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="ativo">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" selected>Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>PDV · registrar venda</h1>
+  <div class="sub">A venda baixa o estoque da loja, alimenta os relatórios e usa o preço da loja (com oferta do encarte nacional quando vigente).</div></div>
+  <form class="filtros"><label>Loja</label><select name="unidade_id" onchange="this.form.submit()"><option value="">— escolha —</option><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="6" >VV02 · Vale Verde São Paulo Mooca</option><option value="7" >VV03 · Vale Verde Rio Tijuca</option><option value="8" >VV04 · Vale Verde BH Savassi</option><option value="9" >VV05 · Vale Verde Curitiba Água Verde</option><option value="10" >VV06 · Vale Verde Porto Alegre Menino Deus</option><option value="11" >VV07 · Vale Verde Goiânia Setor Bueno</option><option value="12" >VV08 · Vale Verde Salvador Pituba</option><option value="13" >VV09 · Vale Verde Recife Boa Viagem</option><option value="14" >VV10 · Vale Verde Belém Nazaré</option></select></form></div>
+<div class="cartao"><p class="muted">Escolha a loja para abrir o caixa.</p></div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+
+<script>
+const produtos = [];
+const porChave = {};
+produtos.forEach(p => { porChave[`${p.sku} · ${p.descricao}`] = p; porChave[p.sku] = p; if (p.ean) porChave[p.ean] = p; });
+let itens = [];
+function render() {
+  const t = document.getElementById('itens');
+  t.querySelectorAll('tr.it').forEach(r => r.remove());
+  let tot = 0;
+  itens.forEach((it, i) => {
+    const v = it.qtd * it.p.preco; tot += v;
+    const tr = document.createElement('tr'); tr.className = 'it';
+    tr.innerHTML = `<td>${it.p.descricao}</td><td class="n">${it.qtd} ${it.p.unidade.toLowerCase()}</td><td class="n">${VV.brl(it.p.preco)}</td><td class="n">${VV.brl(v)}</td><td><button class="btn-peq" onclick="itens.splice(${i},1);render()">✕</button></td>`;
+    t.appendChild(tr);
+  });
+  tot -= +document.getElementById('desconto').value || 0;
+  document.getElementById('total').textContent = VV.brl(tot);
+}
+document.getElementById('desconto').addEventListener('input', render);
+function adicionar() {
+  const p = porChave[document.getElementById('busca').value.trim()];
+  if (!p) { alertaMsg('Produto não encontrado.', 'erro'); return; }
+  const q = +document.getElementById('qtd').value;
+  if (!(q > 0)) return;
+  itens.push({p, qtd: q}); render();
+  document.getElementById('busca').value = ''; document.getElementById('qtd').value = 1; document.getElementById('busca').focus();
+}
+function alertaMsg(t, c) { document.getElementById('msg').innerHTML = `<div class="flash ${c}">${t}</div>`; }
+async function finalizar() {
+  if (!itens.length) { alertaMsg('Inclua ao menos um item.', 'erro'); return; }
+  const corpo = { unidade_id: null, data: document.getElementById('data').value, pdv: document.getElementById('pdv').value,
+    operador_id: document.getElementById('operador').value, forma_pagamento: document.getElementById('forma').value,
+    cpf: document.getElementById('cpf').value, desconto: document.getElementById('desconto').value,
+    itens: itens.map(i => ({produto_id: i.p.id, quantidade: i.qtd})) };
+  const r = await fetch('/pdv', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(corpo)});
+  const j = await r.json();
+  if (!r.ok) { alertaMsg(j.erro, 'erro'); return; }
+  alertaMsg(`Venda registrada: cupom <a href="#" data-off="1">${String(j.venda_id).padStart(7, '0')}</a> — ${VV.brl(j.total)}`, 'ok');
+  itens = []; render();
+}
+</script>
+
+</body>
+</html>

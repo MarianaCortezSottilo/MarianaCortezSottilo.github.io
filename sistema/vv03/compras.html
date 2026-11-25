@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compras · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="vv03";window.VV_KEY="/compras";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="ativo">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" selected>VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      <a href="unidades_7.html">ficha da unidade</a>
+    </div>
+    
+      
+    
+    
+<div class="topo">
+  <div><h1>Pedidos de compra</h1><div class="sub">VV03 · Vale Verde Rio Tijuca · 100 pedidos no filtro (em aberto aparecem sempre). CDs compram de fornecedores nacionais; lojas compram perecíveis de fornecedores regionais e o resto recebem do CD.</div></div>
+  <div class="filtros"><a class="btn btn-primario" href="compras_novo.html">+ Novo pedido</a></div>
+</div>
+
+<div class="cartao"><form class="filtros" method="get">
+  <label>De</label>
+  <select name="ini"><option value="2024-11" >nov/24</option><option value="2024-12" >dez/24</option><option value="2025-01" >jan/25</option><option value="2025-02" >fev/25</option><option value="2025-03" >mar/25</option><option value="2025-04" >abr/25</option><option value="2025-05" >mai/25</option><option value="2025-06" >jun/25</option><option value="2025-07" >jul/25</option><option value="2025-08" >ago/25</option><option value="2025-09" >set/25</option><option value="2025-10" >out/25</option><option value="2025-11" >nov/25</option><option value="2025-12" >dez/25</option><option value="2026-01" >jan/26</option><option value="2026-02" >fev/26</option><option value="2026-03" >mar/26</option><option value="2026-04" >abr/26</option><option value="2026-05" >mai/26</option><option value="2026-06" >jun/26</option><option value="2026-07" >jul/26</option><option value="2026-08" >ago/26</option><option value="2026-09" >set/26</option><option value="2026-10" selected>out/26</option></select>
+  <label>até</label>
+  <select name="fim"><option value="2024-11" >nov/24</option><option value="2024-12" >dez/24</option><option value="2025-01" >jan/25</option><option value="2025-02" >fev/25</option><option value="2025-03" >mar/25</option><option value="2025-04" >abr/25</option><option value="2025-05" >mai/25</option><option value="2025-06" >jun/25</option><option value="2025-07" >jul/25</option><option value="2025-08" >ago/25</option><option value="2025-09" >set/25</option><option value="2025-10" >out/25</option><option value="2025-11" >nov/25</option><option value="2025-12" >dez/25</option><option value="2026-01" >jan/26</option><option value="2026-02" >fev/26</option><option value="2026-03" >mar/26</option><option value="2026-04" >abr/26</option><option value="2026-05" >mai/26</option><option value="2026-06" >jun/26</option><option value="2026-07" >jul/26</option><option value="2026-08" >ago/26</option><option value="2026-09" >set/26</option><option value="2026-10" selected>out/26</option></select>
+  
+<select name="status"><option value="">Todos os status</option><option value="ABERTO" >Aberto</option><option value="RECEBIDO" >Recebido</option><option value="RECEBIDO_PARCIAL" >Recebido parcial</option></select>
+<select name="fornecedor"><option value="">Todos os fornecedores</option><option value="6" >Andrade Bazar &amp; Pet</option><option value="2" >Atacado Real</option><option value="29" >Avícola Agreste</option><option value="35" >Avícola Castanhal</option><option value="23" >Avícola Rio Verde</option><option value="11" >Avícola Santa Clara</option><option value="17" >Avícola Vale do Itajaí</option><option value="1" >Dist. Paulista</option><option value="10" >Frigorífico Boi Forte</option><option value="22" >Frigorífico Boi do Cerrado</option><option value="34" >Frigorífico Marajó Carnes</option><option value="16" >Frigorífico Pampa Carnes</option><option value="28" >Frigorífico Sertão Carnes</option><option value="37" >Frios Amazônia Frios</option><option value="31" >Frios Atlântico</option><option value="19" >Frios Campos Gerais</option><option value="25" >Frios Planalto</option><option value="13" >Frios Serra da Mantiqueira</option><option value="8" >Hortifruti Irmãos Okada (CEASA)</option><option value="20" >Hortifruti Planalto Central</option><option value="14" >Hortifruti Serra Gaúcha</option><option value="26" >Hortifruti Vale do São Francisco</option><option value="32" >Hortifruti Ver-o-Peso</option><option value="30" >Laticínios Bacia Leiteira</option><option value="12" >Laticínios Campo Bom</option><option value="18" >Laticínios Colônia Holandesa</option><option value="36" >Laticínios Laticínios do Pará</option><option value="24" >Laticínios Leite do Goiás</option><option value="21" >Massas Congeladas Cerrado Massas</option><option value="33" >Massas Congeladas Massas Amazônia</option><option value="27" >Massas Congeladas Massas Nordeste</option><option value="15" >Massas Congeladas Pão do Sul</option><option value="9" >Massas Congeladas Trigo de Ouro</option><option value="5" >Nova Era</option><option value="4" >Polar Congelados</option><option value="3" >Serra Azul Bebidas</option><option value="7" >Vale Pack</option></select>
+
+  <button type="submit">Aplicar</button>
+  
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a>
+</form></div>
+<div class="grade g2 mt">
+  <div class="cartao">
+    <h3>Compras recebidas por mês</h3><div class="nota">Valor das notas recebidas</div>
+    <div class="grafico baixo"><canvas id="gCompras"></canvas></div>
+  </div>
+  <div class="cartao">
+    <h3>Desempenho dos fornecedores no período</h3>
+    <div class="rolagem" style="max-height:230px"><table>
+      <tr><th>Fornecedor</th><th class="n">Pedidos</th><th class="n">Valor</th><th class="n">Distância</th><th class="n">Prazo real (dias)</th><th class="n">% entregas parciais</th></tr>
+      <tr><td>Hortifruti Irmãos Okada (CEASA)</td><td class="n">26</td><td class="n">R$ 168.010,82</td><td class="n">507 km</td><td class="n">2,2</td><td class="n">26,9%</td></tr><tr><td>Frigorífico Boi Forte</td><td class="n">13</td><td class="n">R$ 166.719,40</td><td class="n">475 km</td><td class="n">2,3</td><td class="n">0,0%</td></tr><tr><td>Laticínios Campo Bom</td><td class="n">13</td><td class="n">R$ 162.514,83</td><td class="n">505 km</td><td class="n">2,3</td><td class="n">15,4%</td></tr><tr><td>Avícola Santa Clara</td><td class="n">13</td><td class="n">R$ 108.572,00</td><td class="n">504 km</td><td class="n">2,0</td><td class="n">0,0%</td></tr><tr><td>Massas Congeladas Trigo de Ouro</td><td class="n">26</td><td class="n">R$ 75.564,70</td><td class="n">474 km</td><td class="n">2,2</td><td class="n">11,5%</td></tr><tr><td>Frios Serra da Mantiqueira</td><td class="n">9</td><td class="n">R$ 22.177,12</td><td class="n">515 km</td><td class="n">2,5</td><td class="n">0,0%</td></tr>
+    </table></div>
+  </div>
+</div>
+<div class="cartao mt">
+  <div class="rolagem"><table>
+    <tr><th>Pedido</th><th>Unidade</th><th>Fornecedor</th><th>Pedido em</th><th>Previsto</th><th>Recebido</th><th class="n">Itens</th><th class="n">Valor</th><th>Status</th><th>Comprador</th></tr>
+    <tr><td><a href="compras_23833.html">PC-023833</a></td><td>VV03</td><td>Laticínios Campo Bom</td><td>30/10/2026</td>
+      <td>01/11/2026</td><td>–</td><td class="n">22</td><td class="n">R$ 16.611,48</td><td><span class="etq alerta">Aberto</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="compras_23832.html">PC-023832</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>30/10/2026</td>
+      <td>01/11/2026</td><td>–</td><td class="n">15</td><td class="n">R$ 7.029,87</td><td><span class="etq alerta">Aberto</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="compras_23831.html">PC-023831</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>30/10/2026</td>
+      <td>01/11/2026</td><td>–</td><td class="n">6</td><td class="n">R$ 4.871,28</td><td><span class="etq alerta">Aberto</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="compras_23830.html">PC-023830</a></td><td>VV03</td><td>Frigorífico Boi Forte</td><td>30/10/2026</td>
+      <td>01/11/2026</td><td>–</td><td class="n">6</td><td class="n">R$ 18.866,50</td><td><span class="etq alerta">Aberto</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="compras_23829.html">PC-023829</a></td><td>VV03</td><td>Frios Serra da Mantiqueira</td><td>30/10/2026</td>
+      <td>01/11/2026</td><td>–</td><td class="n">5</td><td class="n">R$ 2.780,49</td><td><span class="etq alerta">Aberto</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="compras_23791.html">PC-023791</a></td><td>VV03</td><td>Avícola Santa Clara</td><td>29/10/2026</td>
+      <td>31/10/2026</td><td>31/10/2026</td><td class="n">7</td><td class="n">R$ 8.448,30</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="compras_23790.html">PC-023790</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>29/10/2026</td>
+      <td>31/10/2026</td><td>31/10/2026</td><td class="n">15</td><td class="n">R$ 4.259,90</td><td><span class="etq alerta">Recebido parcial</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="compras_23789.html">PC-023789</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>29/10/2026</td>
+      <td>31/10/2026</td><td>31/10/2026</td><td class="n">5</td><td class="n">R$ 1.395,76</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023751</a></td><td>VV03</td><td>Laticínios Campo Bom</td><td>28/10/2026</td>
+      <td>30/10/2026</td><td>30/10/2026</td><td class="n">22</td><td class="n">R$ 11.261,34</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023750</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>28/10/2026</td>
+      <td>30/10/2026</td><td>30/10/2026</td><td class="n">15</td><td class="n">R$ 5.413,83</td><td><span class="etq alerta">Recebido parcial</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023749</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>28/10/2026</td>
+      <td>30/10/2026</td><td>30/10/2026</td><td class="n">6</td><td class="n">R$ 4.757,80</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023748</a></td><td>VV03</td><td>Frigorífico Boi Forte</td><td>28/10/2026</td>
+      <td>30/10/2026</td><td>30/10/2026</td><td class="n">6</td><td class="n">R$ 10.603,70</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023702</a></td><td>VV03</td><td>Avícola Santa Clara</td><td>27/10/2026</td>
+      <td>29/10/2026</td><td>29/10/2026</td><td class="n">7</td><td class="n">R$ 6.526,85</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023701</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>27/10/2026</td>
+      <td>29/10/2026</td><td>29/10/2026</td><td class="n">15</td><td class="n">R$ 5.030,93</td><td><span class="etq alerta">Recebido parcial</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023700</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>27/10/2026</td>
+      <td>29/10/2026</td><td>29/10/2026</td><td class="n">6</td><td class="n">R$ 2.530,56</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023699</a></td><td>VV03</td><td>Frios Serra da Mantiqueira</td><td>27/10/2026</td>
+      <td>29/10/2026</td><td>29/10/2026</td><td class="n">5</td><td class="n">R$ 2.099,61</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023656</a></td><td>VV03</td><td>Laticínios Campo Bom</td><td>26/10/2026</td>
+      <td>28/10/2026</td><td>28/10/2026</td><td class="n">22</td><td class="n">R$ 8.967,48</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023655</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>26/10/2026</td>
+      <td>28/10/2026</td><td>28/10/2026</td><td class="n">15</td><td class="n">R$ 3.049,29</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023654</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>26/10/2026</td>
+      <td>28/10/2026</td><td>28/10/2026</td><td class="n">6</td><td class="n">R$ 2.464,06</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023653</a></td><td>VV03</td><td>Frigorífico Boi Forte</td><td>26/10/2026</td>
+      <td>28/10/2026</td><td>28/10/2026</td><td class="n">6</td><td class="n">R$ 10.906,75</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023623</a></td><td>VV03</td><td>Avícola Santa Clara</td><td>24/10/2026</td>
+      <td>26/10/2026</td><td>26/10/2026</td><td class="n">7</td><td class="n">R$ 11.028,90</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023622</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>24/10/2026</td>
+      <td>26/10/2026</td><td>26/10/2026</td><td class="n">15</td><td class="n">R$ 11.984,18</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023621</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>24/10/2026</td>
+      <td>26/10/2026</td><td>26/10/2026</td><td class="n">6</td><td class="n">R$ 4.738,84</td><td><span class="etq alerta">Recebido parcial</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023573</a></td><td>VV03</td><td>Laticínios Campo Bom</td><td>23/10/2026</td>
+      <td>26/10/2026</td><td>26/10/2026</td><td class="n">22</td><td class="n">R$ 14.764,61</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023572</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>23/10/2026</td>
+      <td>26/10/2026</td><td>26/10/2026</td><td class="n">15</td><td class="n">R$ 5.705,60</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023571</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>23/10/2026</td>
+      <td>26/10/2026</td><td>26/10/2026</td><td class="n">6</td><td class="n">R$ 3.212,54</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023570</a></td><td>VV03</td><td>Frigorífico Boi Forte</td><td>23/10/2026</td>
+      <td>26/10/2026</td><td>26/10/2026</td><td class="n">6</td><td class="n">R$ 14.359,50</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023569</a></td><td>VV03</td><td>Frios Serra da Mantiqueira</td><td>23/10/2026</td>
+      <td>26/10/2026</td><td>26/10/2026</td><td class="n">5</td><td class="n">R$ 2.796,29</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023531</a></td><td>VV03</td><td>Avícola Santa Clara</td><td>22/10/2026</td>
+      <td>24/10/2026</td><td>24/10/2026</td><td class="n">7</td><td class="n">R$ 5.536,35</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023530</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>22/10/2026</td>
+      <td>24/10/2026</td><td>24/10/2026</td><td class="n">15</td><td class="n">R$ 3.516,79</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023529</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>22/10/2026</td>
+      <td>24/10/2026</td><td>24/10/2026</td><td class="n">6</td><td class="n">R$ 2.627,88</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023491</a></td><td>VV03</td><td>Laticínios Campo Bom</td><td>21/10/2026</td>
+      <td>23/10/2026</td><td>23/10/2026</td><td class="n">19</td><td class="n">R$ 8.100,51</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023490</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>21/10/2026</td>
+      <td>23/10/2026</td><td>23/10/2026</td><td class="n">15</td><td class="n">R$ 7.953,68</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023489</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>21/10/2026</td>
+      <td>23/10/2026</td><td>23/10/2026</td><td class="n">6</td><td class="n">R$ 2.252,84</td><td><span class="etq alerta">Recebido parcial</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023488</a></td><td>VV03</td><td>Frigorífico Boi Forte</td><td>21/10/2026</td>
+      <td>23/10/2026</td><td>23/10/2026</td><td class="n">6</td><td class="n">R$ 12.133,20</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023442</a></td><td>VV03</td><td>Avícola Santa Clara</td><td>20/10/2026</td>
+      <td>22/10/2026</td><td>22/10/2026</td><td class="n">7</td><td class="n">R$ 5.830,30</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023441</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>20/10/2026</td>
+      <td>22/10/2026</td><td>22/10/2026</td><td class="n">14</td><td class="n">R$ 5.993,10</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023440</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>20/10/2026</td>
+      <td>22/10/2026</td><td>22/10/2026</td><td class="n">6</td><td class="n">R$ 1.723,82</td><td><span class="etq alerta">Recebido parcial</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023439</a></td><td>VV03</td><td>Frios Serra da Mantiqueira</td><td>20/10/2026</td>
+      <td>22/10/2026</td><td>22/10/2026</td><td class="n">5</td><td class="n">R$ 2.019,37</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023396</a></td><td>VV03</td><td>Laticínios Campo Bom</td><td>19/10/2026</td>
+      <td>21/10/2026</td><td>21/10/2026</td><td class="n">22</td><td class="n">R$ 9.951,60</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023395</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>19/10/2026</td>
+      <td>21/10/2026</td><td>21/10/2026</td><td class="n">12</td><td class="n">R$ 4.585,64</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023394</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>19/10/2026</td>
+      <td>21/10/2026</td><td>21/10/2026</td><td class="n">6</td><td class="n">R$ 2.196,38</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023393</a></td><td>VV03</td><td>Frigorífico Boi Forte</td><td>19/10/2026</td>
+      <td>21/10/2026</td><td>21/10/2026</td><td class="n">6</td><td class="n">R$ 13.320,90</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023363</a></td><td>VV03</td><td>Avícola Santa Clara</td><td>17/10/2026</td>
+      <td>19/10/2026</td><td>19/10/2026</td><td class="n">7</td><td class="n">R$ 12.008,40</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023362</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>17/10/2026</td>
+      <td>19/10/2026</td><td>19/10/2026</td><td class="n">15</td><td class="n">R$ 13.857,50</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023361</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>17/10/2026</td>
+      <td>19/10/2026</td><td>19/10/2026</td><td class="n">6</td><td class="n">R$ 4.789,55</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023313</a></td><td>VV03</td><td>Laticínios Campo Bom</td><td>16/10/2026</td>
+      <td>19/10/2026</td><td>19/10/2026</td><td class="n">22</td><td class="n">R$ 14.504,19</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023312</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>16/10/2026</td>
+      <td>19/10/2026</td><td>19/10/2026</td><td class="n">15</td><td class="n">R$ 4.685,91</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023311</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>16/10/2026</td>
+      <td>19/10/2026</td><td>19/10/2026</td><td class="n">6</td><td class="n">R$ 2.733,06</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023310</a></td><td>VV03</td><td>Frigorífico Boi Forte</td><td>16/10/2026</td>
+      <td>19/10/2026</td><td>19/10/2026</td><td class="n">6</td><td class="n">R$ 11.604,50</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023309</a></td><td>VV03</td><td>Frios Serra da Mantiqueira</td><td>16/10/2026</td>
+      <td>19/10/2026</td><td>19/10/2026</td><td class="n">5</td><td class="n">R$ 2.528,08</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023271</a></td><td>VV03</td><td>Avícola Santa Clara</td><td>15/10/2026</td>
+      <td>17/10/2026</td><td>17/10/2026</td><td class="n">7</td><td class="n">R$ 5.193,45</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023270</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>15/10/2026</td>
+      <td>17/10/2026</td><td>17/10/2026</td><td class="n">15</td><td class="n">R$ 4.095,95</td><td><span class="etq alerta">Recebido parcial</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023269</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>15/10/2026</td>
+      <td>17/10/2026</td><td>17/10/2026</td><td class="n">6</td><td class="n">R$ 2.101,78</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023231</a></td><td>VV03</td><td>Laticínios Campo Bom</td><td>14/10/2026</td>
+      <td>16/10/2026</td><td>16/10/2026</td><td class="n">21</td><td class="n">R$ 10.598,88</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023230</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>14/10/2026</td>
+      <td>16/10/2026</td><td>16/10/2026</td><td class="n">15</td><td class="n">R$ 9.619,78</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023229</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>14/10/2026</td>
+      <td>16/10/2026</td><td>16/10/2026</td><td class="n">6</td><td class="n">R$ 3.024,05</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023228</a></td><td>VV03</td><td>Frigorífico Boi Forte</td><td>14/10/2026</td>
+      <td>16/10/2026</td><td>16/10/2026</td><td class="n">6</td><td class="n">R$ 9.766,30</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023182</a></td><td>VV03</td><td>Avícola Santa Clara</td><td>13/10/2026</td>
+      <td>15/10/2026</td><td>15/10/2026</td><td class="n">7</td><td class="n">R$ 6.605,65</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023181</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>13/10/2026</td>
+      <td>15/10/2026</td><td>15/10/2026</td><td class="n">15</td><td class="n">R$ 6.341,08</td><td><span class="etq alerta">Recebido parcial</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023180</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>13/10/2026</td>
+      <td>15/10/2026</td><td>15/10/2026</td><td class="n">6</td><td class="n">R$ 2.304,85</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023179</a></td><td>VV03</td><td>Frios Serra da Mantiqueira</td><td>13/10/2026</td>
+      <td>15/10/2026</td><td>15/10/2026</td><td class="n">5</td><td class="n">R$ 2.120,99</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023136</a></td><td>VV03</td><td>Laticínios Campo Bom</td><td>12/10/2026</td>
+      <td>14/10/2026</td><td>14/10/2026</td><td class="n">22</td><td class="n">R$ 8.677,80</td><td><span class="etq alerta">Recebido parcial</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023135</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>12/10/2026</td>
+      <td>14/10/2026</td><td>14/10/2026</td><td class="n">12</td><td class="n">R$ 3.129,19</td><td><span class="etq alerta">Recebido parcial</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023134</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>12/10/2026</td>
+      <td>14/10/2026</td><td>14/10/2026</td><td class="n">5</td><td class="n">R$ 1.692,54</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023133</a></td><td>VV03</td><td>Frigorífico Boi Forte</td><td>12/10/2026</td>
+      <td>14/10/2026</td><td>14/10/2026</td><td class="n">6</td><td class="n">R$ 13.022,35</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023103</a></td><td>VV03</td><td>Avícola Santa Clara</td><td>10/10/2026</td>
+      <td>12/10/2026</td><td>12/10/2026</td><td class="n">7</td><td class="n">R$ 12.137,35</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023102</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>10/10/2026</td>
+      <td>12/10/2026</td><td>12/10/2026</td><td class="n">15</td><td class="n">R$ 12.009,33</td><td><span class="etq alerta">Recebido parcial</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023101</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>10/10/2026</td>
+      <td>12/10/2026</td><td>12/10/2026</td><td class="n">6</td><td class="n">R$ 5.419,98</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023053</a></td><td>VV03</td><td>Laticínios Campo Bom</td><td>09/10/2026</td>
+      <td>12/10/2026</td><td>12/10/2026</td><td class="n">22</td><td class="n">R$ 15.500,52</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023052</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>09/10/2026</td>
+      <td>12/10/2026</td><td>12/10/2026</td><td class="n">15</td><td class="n">R$ 4.730,72</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023051</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>09/10/2026</td>
+      <td>12/10/2026</td><td>12/10/2026</td><td class="n">6</td><td class="n">R$ 1.365,10</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023050</a></td><td>VV03</td><td>Frigorífico Boi Forte</td><td>09/10/2026</td>
+      <td>12/10/2026</td><td>12/10/2026</td><td class="n">6</td><td class="n">R$ 10.809,50</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023049</a></td><td>VV03</td><td>Frios Serra da Mantiqueira</td><td>09/10/2026</td>
+      <td>12/10/2026</td><td>12/10/2026</td><td class="n">5</td><td class="n">R$ 2.512,05</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023011</a></td><td>VV03</td><td>Avícola Santa Clara</td><td>08/10/2026</td>
+      <td>10/10/2026</td><td>10/10/2026</td><td class="n">7</td><td class="n">R$ 5.366,80</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023010</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>08/10/2026</td>
+      <td>10/10/2026</td><td>10/10/2026</td><td class="n">15</td><td class="n">R$ 4.145,75</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-023009</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>08/10/2026</td>
+      <td>10/10/2026</td><td>10/10/2026</td><td class="n">6</td><td class="n">R$ 2.175,47</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-022971</a></td><td>VV03</td><td>Laticínios Campo Bom</td><td>07/10/2026</td>
+      <td>09/10/2026</td><td>09/10/2026</td><td class="n">22</td><td class="n">R$ 11.217,84</td><td><span class="etq alerta">Recebido parcial</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-022970</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>07/10/2026</td>
+      <td>09/10/2026</td><td>09/10/2026</td><td class="n">15</td><td class="n">R$ 8.690,70</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-022969</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>07/10/2026</td>
+      <td>09/10/2026</td><td>09/10/2026</td><td class="n">6</td><td class="n">R$ 4.275,90</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-022968</a></td><td>VV03</td><td>Frigorífico Boi Forte</td><td>07/10/2026</td>
+      <td>09/10/2026</td><td>09/10/2026</td><td class="n">6</td><td class="n">R$ 13.900,05</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-022922</a></td><td>VV03</td><td>Avícola Santa Clara</td><td>06/10/2026</td>
+      <td>08/10/2026</td><td>08/10/2026</td><td class="n">7</td><td class="n">R$ 11.147,30</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-022921</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>06/10/2026</td>
+      <td>08/10/2026</td><td>08/10/2026</td><td class="n">15</td><td class="n">R$ 5.955,13</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-022920</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>06/10/2026</td>
+      <td>08/10/2026</td><td>08/10/2026</td><td class="n">6</td><td class="n">R$ 2.724,80</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-022919</a></td><td>VV03</td><td>Frios Serra da Mantiqueira</td><td>06/10/2026</td>
+      <td>08/10/2026</td><td>08/10/2026</td><td class="n">5</td><td class="n">R$ 2.456,62</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-022876</a></td><td>VV03</td><td>Laticínios Campo Bom</td><td>05/10/2026</td>
+      <td>07/10/2026</td><td>07/10/2026</td><td class="n">22</td><td class="n">R$ 13.118,28</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-022875</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>05/10/2026</td>
+      <td>07/10/2026</td><td>07/10/2026</td><td class="n">14</td><td class="n">R$ 4.821,52</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-022874</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>05/10/2026</td>
+      <td>07/10/2026</td><td>07/10/2026</td><td class="n">6</td><td class="n">R$ 1.855,68</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-022873</a></td><td>VV03</td><td>Frigorífico Boi Forte</td><td>05/10/2026</td>
+      <td>07/10/2026</td><td>07/10/2026</td><td class="n">6</td><td class="n">R$ 11.876,15</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-022843</a></td><td>VV03</td><td>Avícola Santa Clara</td><td>03/10/2026</td>
+      <td>05/10/2026</td><td>05/10/2026</td><td class="n">7</td><td class="n">R$ 12.020,25</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-022842</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>03/10/2026</td>
+      <td>05/10/2026</td><td>05/10/2026</td><td class="n">15</td><td class="n">R$ 12.150,87</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-022841</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>03/10/2026</td>
+      <td>05/10/2026</td><td>05/10/2026</td><td class="n">6</td><td class="n">R$ 4.620,98</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-022793</a></td><td>VV03</td><td>Laticínios Campo Bom</td><td>02/10/2026</td>
+      <td>05/10/2026</td><td>05/10/2026</td><td class="n">22</td><td class="n">R$ 19.240,30</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-022792</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>02/10/2026</td>
+      <td>05/10/2026</td><td>05/10/2026</td><td class="n">15</td><td class="n">R$ 5.726,37</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-022791</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>02/10/2026</td>
+      <td>05/10/2026</td><td>05/10/2026</td><td class="n">6</td><td class="n">R$ 2.317,96</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-022790</a></td><td>VV03</td><td>Frigorífico Boi Forte</td><td>02/10/2026</td>
+      <td>05/10/2026</td><td>05/10/2026</td><td class="n">6</td><td class="n">R$ 15.550,00</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-022789</a></td><td>VV03</td><td>Frios Serra da Mantiqueira</td><td>02/10/2026</td>
+      <td>05/10/2026</td><td>05/10/2026</td><td class="n">5</td><td class="n">R$ 2.863,62</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-022751</a></td><td>VV03</td><td>Avícola Santa Clara</td><td>01/10/2026</td>
+      <td>03/10/2026</td><td>03/10/2026</td><td class="n">7</td><td class="n">R$ 6.722,10</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-022750</a></td><td>VV03</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>01/10/2026</td>
+      <td>03/10/2026</td><td>03/10/2026</td><td class="n">15</td><td class="n">R$ 3.528,21</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr><tr><td><a href="#" data-off="1">PC-022749</a></td><td>VV03</td><td>Massas Congeladas Trigo de Ouro</td><td>01/10/2026</td>
+      <td>03/10/2026</td><td>03/10/2026</td><td class="n">6</td><td class="n">R$ 1.391,24</td><td><span class="etq ok">Recebido</span></td><td>Fernando Ribeiro Ferreira</td></tr>
+  </table></div>
+</div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+<script>
+const g = {"meses": ["nov/24", "dez/24", "jan/25", "fev/25", "mar/25", "abr/25", "mai/25", "jun/25", "jul/25", "ago/25", "set/25", "out/25", "nov/25", "dez/25", "jan/26", "fev/26", "mar/26", "abr/26", "mai/26", "jun/26", "jul/26", "ago/26", "set/26", "out/26"], "valor": [541384.76, 664174.65, 564058.67, 530058.84, 621334.41, 594407.95, 639935.03, 652587.51, 669040.39, 659543.02, 654686.89, 650970.99, 592743.07, 754600.6, 605288.73, 551603.01, 635370.17, 679778.35, 653669.76, 723325.19, 724416.35, 821285.92, 661749.82, 710886.38]};
+VV.grafico('gCompras', g.meses, [{nome: 'Compras', dados: g.valor, slot: 0}], {fmt: 'brl', legenda: false});
+</script>
+</body>
+</html>

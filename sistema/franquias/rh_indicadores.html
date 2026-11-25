@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Indicadores de RH · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="franquias";window.VV_KEY="/rh/indicadores";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="ativo">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" selected>Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Indicadores de RH</h1><div class="sub">Turnover = média de admissões e desligamentos ÷ quadro médio. Absenteísmo = (faltas + atestados) ÷ dias escalados.</div></div>
+  <div class="filtros">
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a></div></div>
+
+<div class="grade g6">
+  <div class="cartao kpi">
+  <div class="rot">Quadro atual</div>
+  <div class="val">247</div>
+  <div class="det">0 temporários</div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Turnover do mês</div>
+  <div class="val">5,1%</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Absenteísmo</div>
+  <div class="val">1,17%</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Custo médio por funcionário</div>
+  <div class="val">R$ 4.806,10</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Folha ÷ faturamento</div>
+  <div class="val">9,7%</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Faturamento por funcionário</div>
+  <div class="val">R$ 50 mil</div>
+  <div class="det"></div>
+</div>
+</div>
+<div class="grade g3 mt">
+  <div class="cartao"><h3>Quadro de funcionários</h3><div class="grafico baixo"><canvas id="gHc"></canvas></div></div>
+  <div class="cartao"><h3>Turnover mensal</h3><div class="grafico baixo"><canvas id="gTo"></canvas></div></div>
+  <div class="cartao"><h3>Custo de pessoal ÷ faturamento</h3><div class="grafico baixo"><canvas id="gFp"></canvas></div></div>
+</div>
+<div class="cartao mt"><h3>Comparativo por unidade (12 meses)</h3><div class="tabela-wrap"><table>
+  <tr><th>Unidade</th><th>Tipo</th><th class="n">Ativos</th><th class="n">Desligamentos 12m</th><th class="n">Turnover anual</th><th class="n">Custo de pessoal 12m</th><th class="n">% do faturamento</th></tr>
+  <tr><td>VV03 Vale Verde Rio Tijuca</td><td>Loja · franquia</td><td class="n">48</td><td class="n">34</td><td class="n">70,8%</td><td class="n">R$ 2,83 mi</td><td class="n">9,6%</td></tr><tr><td>VV04 Vale Verde BH Savassi</td><td>Loja · franquia</td><td class="n">44</td><td class="n">25</td><td class="n">56,8%</td><td class="n">R$ 2,53 mi</td><td class="n">10,7%</td></tr><tr><td>VV05 Vale Verde Curitiba Água Verde</td><td>Loja · franquia</td><td class="n">42</td><td class="n">27</td><td class="n">64,3%</td><td class="n">R$ 2,58 mi</td><td class="n">11,3%</td></tr><tr><td>VV06 Vale Verde Porto Alegre Menino Deus</td><td>Loja · franquia</td><td class="n">40</td><td class="n">32</td><td class="n">80,0%</td><td class="n">R$ 2,40 mi</td><td class="n">12,8%</td></tr><tr><td>VV08 Vale Verde Salvador Pituba</td><td>Loja · franquia</td><td class="n">42</td><td class="n">32</td><td class="n">76,2%</td><td class="n">R$ 2,30 mi</td><td class="n">10,2%</td></tr><tr><td>VV10 Vale Verde Belém Nazaré</td><td>Loja · franquia</td><td class="n">31</td><td class="n">14</td><td class="n">45,2%</td><td class="n">R$ 1,06 mi</td><td class="n">11,8%</td></tr>
+</table></div></div>
+<div class="grade g2 mt">
+  <div class="cartao"><h3>Motivos de desligamento</h3><table><tr><th>Motivo</th><th class="n">Qtd</th></tr>
+    <tr><td>Pedido de demissão</td><td class="n">116</td></tr><tr><td>Dispensa sem justa causa</td><td class="n">96</td></tr><tr><td>Término de contrato temporário</td><td class="n">36</td></tr><tr><td>Justa causa</td><td class="n">10</td></tr><tr><td>Término de contrato de experiência</td><td class="n">5</td></tr></table></div>
+  <div class="cartao"><h3>Desligamentos por cargo (no período)</h3><table><tr><th>Cargo</th><th class="n">Desligamentos</th><th class="n">Tempo médio de casa</th></tr>
+    <tr><td>Operador de Caixa</td><td class="n">95</td><td class="n">13,0 meses</td></tr><tr><td>Repositor</td><td class="n">41</td><td class="n">12,8 meses</td></tr><tr><td>Empacotador</td><td class="n">38</td><td class="n">10,7 meses</td></tr><tr><td>Auxiliar de Limpeza</td><td class="n">12</td><td class="n">13,2 meses</td></tr><tr><td>Auxiliar de Hortifrúti</td><td class="n">10</td><td class="n">17,9 meses</td></tr><tr><td>Atendente de Padaria</td><td class="n">10</td><td class="n">18,8 meses</td></tr><tr><td>Fiscal de Prevenção</td><td class="n">8</td><td class="n">19,5 meses</td></tr><tr><td>Fiscal de Caixa</td><td class="n">8</td><td class="n">16,7 meses</td></tr><tr><td>Auxiliar de Depósito</td><td class="n">7</td><td class="n">14,8 meses</td></tr><tr><td>Jovem Aprendiz</td><td class="n">6</td><td class="n">7,2 meses</td></tr><tr><td>Auxiliar de Açougue</td><td class="n">6</td><td class="n">27,8 meses</td></tr><tr><td>Padeiro</td><td class="n">5</td><td class="n">31,3 meses</td></tr><tr><td>Açougueiro</td><td class="n">4</td><td class="n">23,9 meses</td></tr><tr><td>Assistente Financeiro</td><td class="n">3</td><td class="n">26,2 meses</td></tr><tr><td>Gerente Geral</td><td class="n">2</td><td class="n">42,6 meses</td></tr><tr><td>Encarregado de Mercearia</td><td class="n">2</td><td class="n">11,6 meses</td></tr><tr><td>Encarregado de Hortifrúti</td><td class="n">2</td><td class="n">5,6 meses</td></tr><tr><td>Assistente de DP/RH</td><td class="n">2</td><td class="n">20,1 meses</td></tr><tr><td>Subgerente</td><td class="n">1</td><td class="n">38,6 meses</td></tr><tr><td>Conferente</td><td class="n">1</td><td class="n">45,9 meses</td></tr></table></div>
+</div>
+<div class="cartao mt"><div class="tabela-wrap"><table>
+  <tr><th>Mês</th><th class="n">Quadro</th><th class="n">Admissões</th><th class="n">Desligamentos</th><th class="n">Turnover</th><th class="n">Absenteísmo</th><th class="n">Horas extras (R$)</th><th class="n">Custo de pessoal</th><th class="n">% do faturamento</th></tr>
+  <tr><td>nov/24</td><td class="n">176</td><td class="n">4</td><td class="n">7</td><td class="n">3,1%</td>
+    <td class="n">1,05%</td><td class="n">R$ 12.252,26</td><td class="n">R$ 792.072,90</td><td class="n">10,8%</td></tr><tr><td>dez/24</td><td class="n">193</td><td class="n">23</td><td class="n">6</td><td class="n">7,9%</td>
+    <td class="n">1,10%</td><td class="n">R$ 30.077,40</td><td class="n">R$ 864.805,45</td><td class="n">9,6%</td></tr><tr><td>jan/25</td><td class="n">178</td><td class="n">4</td><td class="n">19</td><td class="n">6,2%</td>
+    <td class="n">1,45%</td><td class="n">R$ 13.630,58</td><td class="n">R$ 802.244,83</td><td class="n">11,3%</td></tr><tr><td>fev/25</td><td class="n">178</td><td class="n">5</td><td class="n">5</td><td class="n">2,8%</td>
+    <td class="n">1,21%</td><td class="n">R$ 11.759,06</td><td class="n">R$ 784.963,38</td><td class="n">12,2%</td></tr><tr><td>mar/25</td><td class="n">176</td><td class="n">4</td><td class="n">6</td><td class="n">2,8%</td>
+    <td class="n">1,01%</td><td class="n">R$ 13.115,51</td><td class="n">R$ 792.162,59</td><td class="n">10,6%</td></tr><tr><td>abr/25</td><td class="n">177</td><td class="n">6</td><td class="n">5</td><td class="n">3,1%</td>
+    <td class="n">1,05%</td><td class="n">R$ 12.005,98</td><td class="n">R$ 793.785,49</td><td class="n">10,7%</td></tr><tr><td>mai/25</td><td class="n">174</td><td class="n">5</td><td class="n">8</td><td class="n">3,7%</td>
+    <td class="n">1,21%</td><td class="n">R$ 13.834,31</td><td class="n">R$ 829.021,20</td><td class="n">10,3%</td></tr><tr><td>jun/25</td><td class="n">171</td><td class="n">7</td><td class="n">10</td><td class="n">4,9%</td>
+    <td class="n">1,13%</td><td class="n">R$ 12.357,35</td><td class="n">R$ 832.682,33</td><td class="n">11,2%</td></tr><tr><td>jul/25</td><td class="n">172</td><td class="n">8</td><td class="n">7</td><td class="n">4,4%</td>
+    <td class="n">1,32%</td><td class="n">R$ 12.234,28</td><td class="n">R$ 818.894,12</td><td class="n">10,6%</td></tr><tr><td>ago/25</td><td class="n">217</td><td class="n">50</td><td class="n">5</td><td class="n">14,1%</td>
+    <td class="n">1,17%</td><td class="n">R$ 15.229,18</td><td class="n">R$ 940.168,48</td><td class="n">11,9%</td></tr><tr><td>set/25</td><td class="n">216</td><td class="n">8</td><td class="n">9</td><td class="n">3,9%</td>
+    <td class="n">1,01%</td><td class="n">R$ 15.602,90</td><td class="n">R$ 1.013.036,59</td><td class="n">12,2%</td></tr><tr><td>out/25</td><td class="n">215</td><td class="n">11</td><td class="n">12</td><td class="n">5,3%</td>
+    <td class="n">1,12%</td><td class="n">R$ 16.120,96</td><td class="n">R$ 1.015.600,79</td><td class="n">11,3%</td></tr><tr><td>nov/25</td><td class="n">212</td><td class="n">10</td><td class="n">13</td><td class="n">5,4%</td>
+    <td class="n">0,94%</td><td class="n">R$ 17.317,61</td><td class="n">R$ 1.045.512,86</td><td class="n">11,7%</td></tr><tr><td>dez/25</td><td class="n">235</td><td class="n">38</td><td class="n">15</td><td class="n">11,9%</td>
+    <td class="n">1,09%</td><td class="n">R$ 37.330,33</td><td class="n">R$ 1.124.917,04</td><td class="n">9,6%</td></tr><tr><td>jan/26</td><td class="n">213</td><td class="n">10</td><td class="n">32</td><td class="n">9,4%</td>
+    <td class="n">0,89%</td><td class="n">R$ 16.231,25</td><td class="n">R$ 1.045.993,44</td><td class="n">11,5%</td></tr><tr><td>fev/26</td><td class="n">217</td><td class="n">11</td><td class="n">7</td><td class="n">4,2%</td>
+    <td class="n">0,72%</td><td class="n">R$ 15.424,87</td><td class="n">R$ 1.001.408,17</td><td class="n">12,3%</td></tr><tr><td>mar/26</td><td class="n">246</td><td class="n">46</td><td class="n">17</td><td class="n">13,6%</td>
+    <td class="n">1,12%</td><td class="n">R$ 17.053,15</td><td class="n">R$ 1.105.793,51</td><td class="n">11,6%</td></tr><tr><td>abr/26</td><td class="n">244</td><td class="n">5</td><td class="n">7</td><td class="n">2,4%</td>
+    <td class="n">0,81%</td><td class="n">R$ 17.860,88</td><td class="n">R$ 1.150.855,05</td><td class="n">11,0%</td></tr><tr><td>mai/26</td><td class="n">237</td><td class="n">13</td><td class="n">20</td><td class="n">6,9%</td>
+    <td class="n">1,30%</td><td class="n">R$ 18.603,75</td><td class="n">R$ 1.202.283,15</td><td class="n">11,0%</td></tr><tr><td>jun/26</td><td class="n">248</td><td class="n">19</td><td class="n">8</td><td class="n">5,6%</td>
+    <td class="n">1,05%</td><td class="n">R$ 19.323,29</td><td class="n">R$ 1.178.614,83</td><td class="n">11,0%</td></tr><tr><td>jul/26</td><td class="n">244</td><td class="n">7</td><td class="n">11</td><td class="n">3,7%</td>
+    <td class="n">1,09%</td><td class="n">R$ 18.992,08</td><td class="n">R$ 1.196.145,13</td><td class="n">10,5%</td></tr><tr><td>ago/26</td><td class="n">246</td><td class="n">12</td><td class="n">10</td><td class="n">4,5%</td>
+    <td class="n">1,09%</td><td class="n">R$ 19.303,64</td><td class="n">R$ 1.199.592,95</td><td class="n">10,1%</td></tr><tr><td>set/26</td><td class="n">244</td><td class="n">11</td><td class="n">13</td><td class="n">4,9%</td>
+    <td class="n">1,00%</td><td class="n">R$ 18.119,36</td><td class="n">R$ 1.244.949,89</td><td class="n">11,3%</td></tr><tr><td>out/26</td><td class="n">247</td><td class="n">14</td><td class="n">11</td><td class="n">5,1%</td>
+    <td class="n">1,17%</td><td class="n">R$ 18.916,60</td><td class="n">R$ 1.187.105,82</td><td class="n">9,7%</td></tr>
+</table></div></div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+<script>
+const g = {"folha_pct": [10.85, 9.58, 11.34, 12.16, 10.58, 10.73, 10.34, 11.17, 10.61, 11.88, 12.16, 11.26, 11.73, 9.6, 11.51, 12.3, 11.58, 11.01, 11.0, 11.0, 10.49, 10.09, 11.34, 9.67], "hc": [176, 193, 178, 178, 176, 177, 174, 171, 172, 217, 216, 215, 212, 235, 213, 217, 246, 244, 237, 248, 244, 246, 244, 247], "meses": ["nov/24", "dez/24", "jan/25", "fev/25", "mar/25", "abr/25", "mai/25", "jun/25", "jul/25", "ago/25", "set/25", "out/25", "nov/25", "dez/25", "jan/26", "fev/26", "mar/26", "abr/26", "mai/26", "jun/26", "jul/26", "ago/26", "set/26", "out/26"], "turnover": [3.1, 7.86, 6.2, 2.81, 2.82, 3.12, 3.7, 4.93, 4.37, 14.14, 3.93, 5.34, 5.39, 11.86, 9.38, 4.19, 13.61, 2.45, 6.86, 5.57, 3.66, 4.49, 4.9, 5.09]};
+VV.grafico('gHc', g.meses, [{nome: 'Funcionários', dados: g.hc, slot: 0}], {fmt: 'num', legenda: false});
+VV.grafico('gTo', g.meses, [{nome: 'Turnover', dados: g.turnover, slot: 1, pontos: 3}], {tipo: 'line', fmt: 'pct', legenda: false});
+VV.grafico('gFp', g.meses, [{nome: 'Folha ÷ faturamento', dados: g.folha_pct, slot: 0, pontos: 3}], {tipo: 'line', fmt: 'pct', legenda: false});
+</script>
+</body>
+</html>

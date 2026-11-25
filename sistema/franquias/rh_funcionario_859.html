@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marcos Marques Pinto · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="franquias";window.VV_KEY="/rh/funcionario/859";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" selected>Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Marcos Marques Pinto</h1>
+  <div class="sub">VV03 · Vale Verde Rio Tijuca · VV00859 · Auxiliar de Açougue (Açougue) · Clt · turno manha · admitido em 15/07/2026
+  </div></div>
+  <a class="btn" href="rh.html">‹ Funcionários</a></div>
+<div class="grade g4">
+  <div class="cartao kpi">
+  <div class="rot">Salário atual</div>
+  <div class="val">R$ 2.266,58</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Nascimento</div>
+  <div class="val">17/08/1974</div>
+  <div class="det">CPF 999.747.500-11 (fictício)</div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Vale-transporte</div>
+  <div class="val">Não</div>
+  <div class="det"></div>
+</div>
+  
+  <div class="cartao kpi">
+  <div class="rot">Dias trabalhados</div>
+  <div class="val">92</div>
+  <div class="det">faltas 0 · atestados 2 · férias 0 dias</div>
+</div>
+</div>
+<div class="grade g2 mt">
+  <div class="cartao"><h3>Histórico salarial</h3><table><tr><th>Desde</th><th>Motivo</th><th class="n">Salário</th></tr>
+    <tr><td>15/07/2026</td><td>Admissão</td><td class="n">R$ 2.266,58</td></tr></table>
+    
+    <form method="post" action="/rh/funcionario/859/reajuste" class="linha mt">
+      <div class="campo"><label>Novo salário</label><input type="text" name="salario" required style="width:110px"></div>
+      <div class="campo"><label>A partir de</label><input type="date" name="data" value="2026-11-25"></div>
+      <div class="campo"><label>Motivo</label><select name="motivo"><option>Promoção</option><option>Mérito</option><option>Enquadramento</option><option>Dissídio</option></select></div>
+      <button>Registrar</button></form></div>
+  <div class="cartao">
+    
+    
+    <h3 class="mt">Desligar funcionário</h3>
+    <form method="post" action="/rh/funcionario/859/desligar" class="linha" onsubmit="return confirm('Confirmar o desligamento?')">
+      <div class="campo"><label>Data</label><input type="date" name="data" value="2026-11-25"></div>
+      <div class="campo"><label>Motivo</label><select name="motivo"><option>Pedido de demissão</option><option>Dispensa sem justa causa</option><option>Término de contrato de experiência</option><option>Justa causa</option><option>Término de contrato temporário</option></select></div>
+      <button>Desligar</button></form>
+  </div>
+</div>
+<div class="cartao mt"><h3>Holerites</h3><div class="tabela-wrap"><table>
+  <tr><th>Competência</th><th class="n">Dias</th><th class="n">Salário base</th><th class="n">HE (h)</th><th class="n">HE + DSR</th><th class="n">Rescisão</th><th class="n">Bruto</th><th class="n">INSS</th><th class="n">IRRF</th><th class="n">VT</th><th class="n">Líquido</th><th class="n">Custo empresa</th></tr>
+  <tr><td>out/26</td><td class="n">30</td><td class="n">R$ 2.266,58</td><td class="n">8,0</td>
+    <td class="n">R$ 144,24</td><td class="n">R$ 0,00</td><td class="n">R$ 2.410,82</td><td class="n">R$ 192,66</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 2.218,16</td><td class="n">R$ 4.260,49</td></tr><tr><td>set/26</td><td class="n">30</td><td class="n">R$ 2.266,58</td><td class="n">6,0</td>
+    <td class="n">R$ 108,17</td><td class="n">R$ 0,00</td><td class="n">R$ 2.374,75</td><td class="n">R$ 189,41</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 2.185,34</td><td class="n">R$ 4.201,98</td></tr><tr><td>ago/26</td><td class="n">30</td><td class="n">R$ 2.266,58</td><td class="n">5,0</td>
+    <td class="n">R$ 90,15</td><td class="n">R$ 0,00</td><td class="n">R$ 2.356,73</td><td class="n">R$ 187,79</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 2.168,94</td><td class="n">R$ 4.172,74</td></tr><tr><td>jul/26</td><td class="n">17</td><td class="n">R$ 1.284,40</td><td class="n">5,7</td>
+    <td class="n">R$ 102,16</td><td class="n">R$ 0,00</td><td class="n">R$ 1.386,56</td><td class="n">R$ 103,99</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 1.282,57</td><td class="n">R$ 2.447,40</td></tr>
+</table></div></div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+
+</body>
+</html>

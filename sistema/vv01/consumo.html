@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consumo interno · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="vv01";window.VV_KEY="/consumo";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="ativo">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" selected>VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      <a href="unidades_5.html">ficha da unidade</a>
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Consumo interno</h1><div class="sub">Materiais e mercadorias usados pela própria loja (sacolas, bobinas, embalagens, limpeza, copa, degustação)</div></div>
+  <div class="filtros"><form class="filtros" method="get">
+  <label>De</label>
+  <select name="ini"><option value="2024-11" >nov/24</option><option value="2024-12" >dez/24</option><option value="2025-01" >jan/25</option><option value="2025-02" >fev/25</option><option value="2025-03" >mar/25</option><option value="2025-04" >abr/25</option><option value="2025-05" >mai/25</option><option value="2025-06" >jun/25</option><option value="2025-07" >jul/25</option><option value="2025-08" >ago/25</option><option value="2025-09" >set/25</option><option value="2025-10" >out/25</option><option value="2025-11" selected>nov/25</option><option value="2025-12" >dez/25</option><option value="2026-01" >jan/26</option><option value="2026-02" >fev/26</option><option value="2026-03" >mar/26</option><option value="2026-04" >abr/26</option><option value="2026-05" >mai/26</option><option value="2026-06" >jun/26</option><option value="2026-07" >jul/26</option><option value="2026-08" >ago/26</option><option value="2026-09" >set/26</option><option value="2026-10" >out/26</option></select>
+  <label>até</label>
+  <select name="fim"><option value="2024-11" >nov/24</option><option value="2024-12" >dez/24</option><option value="2025-01" >jan/25</option><option value="2025-02" >fev/25</option><option value="2025-03" >mar/25</option><option value="2025-04" >abr/25</option><option value="2025-05" >mai/25</option><option value="2025-06" >jun/25</option><option value="2025-07" >jul/25</option><option value="2025-08" >ago/25</option><option value="2025-09" >set/25</option><option value="2025-10" >out/25</option><option value="2025-11" >nov/25</option><option value="2025-12" >dez/25</option><option value="2026-01" >jan/26</option><option value="2026-02" >fev/26</option><option value="2026-03" >mar/26</option><option value="2026-04" >abr/26</option><option value="2026-05" >mai/26</option><option value="2026-06" >jun/26</option><option value="2026-07" >jul/26</option><option value="2026-08" >ago/26</option><option value="2026-09" >set/26</option><option value="2026-10" selected>out/26</option></select>
+  
+  <button type="submit">Aplicar</button>
+  
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a>
+</form><a class="btn" href="estoque_movimentar__tipo-CONSUMO-INTERNO.html">+ Lançar</a></div></div>
+<div class="grade g2">
+  <div class="cartao col2"><h3>Consumo interno por mês · total R$ 114.013,19</h3><div class="grafico baixo"><canvas id="gCons"></canvas></div></div>
+  
+  <div class="cartao"><h3>Por departamento</h3><table><tr><th>Departamento</th><th class="n">Valor</th><th class="n">%</th></tr>
+    <tr><td>Frente de Caixa</td><td class="n">R$ 51.913,26</td><td class="n">45,5%</td></tr><tr><td>Açougue</td><td class="n">R$ 27.974,46</td><td class="n">24,5%</td></tr><tr><td>Administrativo/Financeiro</td><td class="n">R$ 12.530,55</td><td class="n">11,0%</td></tr><tr><td>Limpeza</td><td class="n">R$ 8.220,31</td><td class="n">7,2%</td></tr><tr><td>Padaria</td><td class="n">R$ 7.087,47</td><td class="n">6,2%</td></tr><tr><td>Hortifrúti</td><td class="n">R$ 3.973,28</td><td class="n">3,5%</td></tr><tr><td>Mercearia/Reposição</td><td class="n">R$ 2.313,86</td><td class="n">2,0%</td></tr></table></div>
+  <div class="cartao"><h3>Por finalidade</h3><table><tr><th>Finalidade</th><th class="n">Valor</th><th class="n">%</th></tr>
+    <tr><td>Sacolas para clientes</td><td class="n">R$ 49.465,87</td><td class="n">43,4%</td></tr><tr><td>Embalagem de fracionados</td><td class="n">R$ 24.724,07</td><td class="n">21,7%</td></tr><tr><td>Copa/refeitório</td><td class="n">R$ 9.103,30</td><td class="n">8,0%</td></tr><tr><td>Embalagem da padaria</td><td class="n">R$ 7.087,47</td><td class="n">6,2%</td></tr><tr><td>Limpeza da loja</td><td class="n">R$ 4.273,89</td><td class="n">3,7%</td></tr><tr><td>Etiquetas de balança</td><td class="n">R$ 3.973,28</td><td class="n">3,5%</td></tr><tr><td>EPI manipulação de alimentos</td><td class="n">R$ 3.250,38</td><td class="n">2,9%</td></tr><tr><td>Lanche dos funcionários</td><td class="n">R$ 2.820,70</td><td class="n">2,5%</td></tr><tr><td>Bobinas dos PDVs</td><td class="n">R$ 2.447,39</td><td class="n">2,1%</td></tr><tr><td>Degustação/ação promocional</td><td class="n">R$ 2.313,86</td><td class="n">2,0%</td></tr><tr><td>Banheiros e copa</td><td class="n">R$ 2.053,07</td><td class="n">1,8%</td></tr><tr><td>Banheiros</td><td class="n">R$ 1.653,44</td><td class="n">1,5%</td></tr><tr><td>Copa/bebedouros</td><td class="n">R$ 846,47</td><td class="n">0,7%</td></tr></table></div>
+  <div class="cartao col2"><h3>Itens consumidos</h3><div class="rolagem"><table><tr><th>Item</th><th class="n">Quantidade</th><th class="n">Valor</th></tr>
+    <tr><td>Sacola Plástica Reciclada (pct 1000un)</td><td class="n">527,0</td><td class="n">R$ 49.465,87</td></tr><tr><td>Bandeja de Isopor (pct 400un)</td><td class="n">253,0</td><td class="n">R$ 19.852,34</td></tr><tr><td>Saco para Pão Kraft (pct 1000un)</td><td class="n">159,0</td><td class="n">R$ 7.087,47</td></tr><tr><td>Café Torrado e Moído 500g Bom Grão</td><td class="n">316,0</td><td class="n">R$ 5.984,95</td></tr><tr><td>Filme PVC 28cm x 300m</td><td class="n">92,0</td><td class="n">R$ 4.871,73</td></tr><tr><td>Etiqueta para Balança (cx 12 rolos)</td><td class="n">39,0</td><td class="n">R$ 3.973,28</td></tr><tr><td>Luva Descartável (cx 100un)</td><td class="n">130,0</td><td class="n">R$ 3.250,38</td></tr><tr><td>Pão Francês</td><td class="n">404,6</td><td class="n">R$ 2.820,70</td></tr><tr><td>Bobina Térmica PDV 80mm (cx 30 rolos)</td><td class="n">21,0</td><td class="n">R$ 2.447,39</td></tr><tr><td>Leite UHT Integral 1L Vale Verde</td><td class="n">519,0</td><td class="n">R$ 2.122,73</td></tr><tr><td>Papel Toalha Interfolha (cx 1000 fls)</td><td class="n">104,0</td><td class="n">R$ 2.053,07</td></tr><tr><td>Papel Higiênico 12 Rolos Vale Verde</td><td class="n">112,0</td><td class="n">R$ 1.653,44</td></tr><tr><td>Saco de Lixo 50L 10un</td><td class="n">263,0</td><td class="n">R$ 1.569,86</td></tr><tr><td>Detergente Profissional 5L</td><td class="n">48,0</td><td class="n">R$ 1.455,32</td></tr><tr><td>Desinfetante Profissional 5L</td><td class="n">45,0</td><td class="n">R$ 1.248,70</td></tr><tr><td>Copo Descartável 200ml 100un</td><td class="n">172,0</td><td class="n">R$ 846,47</td></tr><tr><td>Açúcar Refinado 1kg Vale Verde</td><td class="n">203,0</td><td class="n">R$ 755,70</td></tr><tr><td>Detergente Líquido 500ml Vale Verde</td><td class="n">140,0</td><td class="n">R$ 239,92</td></tr><tr><td>Arroz Branco Tipo 1 5kg Bom Grão</td><td class="n">6,0</td><td class="n">R$ 139,12</td></tr><tr><td>Sorvete Napolitano 2L</td><td class="n">8,0</td><td class="n">R$ 133,44</td></tr><tr><td>Cerveja Pack 12 Latas 350ml Cevada Nobre</td><td class="n">3,0</td><td class="n">R$ 125,96</td></tr><tr><td>Arroz Branco Tipo 1 5kg Tio Nino</td><td class="n">4,0</td><td class="n">R$ 110,37</td></tr><tr><td>Café Torrado e Moído 500g Vale Verde</td><td class="n">6,0</td><td class="n">R$ 102,25</td></tr><tr><td>Refrigerante Cola 2L Tropical</td><td class="n">9,0</td><td class="n">R$ 72,53</td></tr><tr><td>Manteiga com Sal 200g Vale Verde</td><td class="n">6,0</td><td class="n">R$ 63,90</td></tr><tr><td>Batata Pré-Frita 1kg</td><td class="n">4,0</td><td class="n">R$ 59,87</td></tr><tr><td>Óleo de Soja 900ml Bom Grão</td><td class="n">8,0</td><td class="n">R$ 51,82</td></tr><tr><td>Papel Higiênico 12 Rolos Suavità</td><td class="n">3,0</td><td class="n">R$ 49,81</td></tr><tr><td>Requeijão Cremoso 200g Campo Bom</td><td class="n">7,0</td><td class="n">R$ 45,94</td></tr><tr><td>Hambúrguer Bovino 672g Polar</td><td class="n">3,0</td><td class="n">R$ 45,75</td></tr><tr><td>Achocolatado em Pó 400g Bom Grão</td><td class="n">6,0</td><td class="n">R$ 45,61</td></tr><tr><td>Refrigerante Cola 2L Vale Verde</td><td class="n">7,0</td><td class="n">R$ 42,59</td></tr><tr><td>Manteiga com Sal 200g Leiteria Mineira</td><td class="n">3,0</td><td class="n">R$ 42,18</td></tr><tr><td>Desodorante Aerossol 150ml Bem-Estar</td><td class="n">3,0</td><td class="n">R$ 42,15</td></tr><tr><td>Lasanha Congelada Bolonhesa 600g Polar</td><td class="n">3,0</td><td class="n">R$ 41,33</td></tr><tr><td>Feijão Carioca 1kg Bom Grão</td><td class="n">6,0</td><td class="n">R$ 40,42</td></tr><tr><td>Leite UHT Desnatado 1L Campo Bom</td><td class="n">8,0</td><td class="n">R$ 38,84</td></tr><tr><td>Shampoo 350ml Vale Verde</td><td class="n">4,0</td><td class="n">R$ 38,62</td></tr><tr><td>Ovos Brancos Dúzia</td><td class="n">4,0</td><td class="n">R$ 37,56</td></tr><tr><td>Amaciante 2L Lar Limpo</td><td class="n">3,0</td><td class="n">R$ 35,97</td></tr><tr><td>Refrigerante Cola 2L Serra Azul</td><td class="n">5,0</td><td class="n">R$ 35,75</td></tr><tr><td>Feijão Carioca 1kg Vale Verde</td><td class="n">6,0</td><td class="n">R$ 35,45</td></tr><tr><td>Hambúrguer Bovino 672g Sabor de Casa</td><td class="n">2,0</td><td class="n">R$ 34,89</td></tr><tr><td>Refrigerante Guaraná 2L Serra Azul</td><td class="n">6,0</td><td class="n">R$ 33,03</td></tr><tr><td>Maionese 500g Bom Grão</td><td class="n">4,0</td><td class="n">R$ 32,64</td></tr><tr><td>Bolo Caseiro Fubá</td><td class="n">4,0</td><td class="n">R$ 31,24</td></tr><tr><td>Cereal Matinal 300g Bom Grão</td><td class="n">3,0</td><td class="n">R$ 31,06</td></tr><tr><td>Cerveja Long Neck 330ml Lúpulo Dourado</td><td class="n">7,0</td><td class="n">R$ 30,29</td></tr><tr><td>Maionese 500g Vale Verde</td><td class="n">4,0</td><td class="n">R$ 29,77</td></tr><tr><td>Molho de Tomate Sachê 300g Tio Nino</td><td class="n">12,0</td><td class="n">R$ 28,52</td></tr><tr><td>Macarrão Parafuso 500g Tio Nino</td><td class="n">6,0</td><td class="n">R$ 27,19</td></tr><tr><td>Bebida Láctea Morango 900g Leiteria Mineira</td><td class="n">4,0</td><td class="n">R$ 26,60</td></tr><tr><td>Sabão em Pó 1,6kg Vale Verde</td><td class="n">2,0</td><td class="n">R$ 26,44</td></tr><tr><td>Shampoo 350ml Bem-Estar</td><td class="n">2,0</td><td class="n">R$ 26,22</td></tr><tr><td>Cerveja Lata 350ml Cevada Nobre</td><td class="n">7,0</td><td class="n">R$ 25,60</td></tr><tr><td>Condicionador 350ml Suavità</td><td class="n">2,0</td><td class="n">R$ 23,59</td></tr><tr><td>Leite UHT Desnatado 1L Leiteria Mineira</td><td class="n">4,0</td><td class="n">R$ 23,04</td></tr><tr><td>Chocolate em Barra 90g Bom Grão</td><td class="n">4,0</td><td class="n">R$ 22,18</td></tr><tr><td>Água de Coco 1L</td><td class="n">3,0</td><td class="n">R$ 21,76</td></tr><tr><td>Água Sanitária 2L Lar Limpo</td><td class="n">4,0</td><td class="n">R$ 20,73</td></tr><tr><td>Margarina 500g Campo Bom</td><td class="n">3,0</td><td class="n">R$ 20,52</td></tr><tr><td>Absorvente com Abas 8un</td><td class="n">4,0</td><td class="n">R$ 19,84</td></tr><tr><td>Refrigerante Guaraná 2L Tropical</td><td class="n">3,0</td><td class="n">R$ 19,54</td></tr><tr><td>Óleo de Soja 900ml Vale Verde</td><td class="n">3,0</td><td class="n">R$ 16,57</td></tr><tr><td>Rosca Doce</td><td class="n">3,0</td><td class="n">R$ 15,75</td></tr><tr><td>Suco Integral Caixinha 1L Serra Azul</td><td class="n">3,0</td><td class="n">R$ 15,36</td></tr><tr><td>Feijão Preto 1kg Bom Grão</td><td class="n">2,0</td><td class="n">R$ 14,99</td></tr><tr><td>Cerveja Long Neck 330ml Cevada Nobre</td><td class="n">3,0</td><td class="n">R$ 14,94</td></tr><tr><td>Água Mineral sem Gás 1,5L Serra Azul</td><td class="n">9,0</td><td class="n">R$ 13,73</td></tr><tr><td>Macarrão Parafuso 500g Vale Verde</td><td class="n">4,0</td><td class="n">R$ 13,66</td></tr><tr><td>Água Sanitária 2L Brilhante</td><td class="n">3,0</td><td class="n">R$ 13,51</td></tr><tr><td>Milho Verde Lata 170g Tio Nino</td><td class="n">4,0</td><td class="n">R$ 13,45</td></tr><tr><td>Água Sanitária 2L Vale Verde</td><td class="n">3,0</td><td class="n">R$ 12,15</td></tr><tr><td>Creme de Leite 200g Bom Grão</td><td class="n">4,0</td><td class="n">R$ 12,12</td></tr><tr><td>Farinha de Trigo 1kg Vale Verde</td><td class="n">3,0</td><td class="n">R$ 11,70</td></tr><tr><td>Pão de Forma Tradicional 500g</td><td class="n">2,0</td><td class="n">R$ 11,44</td></tr><tr><td>Leite Condensado 395g Vale Verde</td><td class="n">2,0</td><td class="n">R$ 10,02</td></tr><tr><td>Leite UHT Integral 1L Campo Bom</td><td class="n">2,0</td><td class="n">R$ 9,74</td></tr><tr><td>Alface Crespa</td><td class="n">6,0</td><td class="n">R$ 9,18</td></tr><tr><td>Aveia em Flocos 200g Bom Grão</td><td class="n">2,0</td><td class="n">R$ 8,79</td></tr><tr><td>Biscoito Recheado 130g Vale Verde</td><td class="n">4,0</td><td class="n">R$ 7,80</td></tr><tr><td>Biscoito Recheado 130g Tio Nino</td><td class="n">3,0</td><td class="n">R$ 7,61</td></tr><tr><td>Macarrão Espaguete 500g Bom Grão</td><td class="n">2,0</td><td class="n">R$ 7,51</td></tr><tr><td>Extrato de Tomate 340g Vale Verde</td><td class="n">2,0</td><td class="n">R$ 6,65</td></tr><tr><td>Detergente Líquido 500ml Brilhante</td><td class="n">3,0</td><td class="n">R$ 6,06</td></tr><tr><td>Molho de Tomate Sachê 300g Vale Verde</td><td class="n">3,0</td><td class="n">R$ 5,58</td></tr><tr><td>Água Mineral sem Gás 1,5L Vale Verde</td><td class="n">4,0</td><td class="n">R$ 5,41</td></tr><tr><td>Sal Refinado 1kg Bom Grão</td><td class="n">3,0</td><td class="n">R$ 5,12</td></tr><tr><td>Biscoito Recheado 130g Bom Grão</td><td class="n">2,0</td><td class="n">R$ 4,50</td></tr><tr><td>Sal Refinado 1kg Vale Verde</td><td class="n">3,0</td><td class="n">R$ 4,45</td></tr><tr><td>Molho de Tomate Sachê 300g Bom Grão</td><td class="n">2,0</td><td class="n">R$ 4,14</td></tr></table></div></div>
+</div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+<script>
+const g = {"meses": ["nov/25", "dez/25", "jan/26", "fev/26", "mar/26", "abr/26", "mai/26", "jun/26", "jul/26", "ago/26", "set/26", "out/26"], "valor": [10220.36, 9666.47, 10065.63, 7958.98, 8538.44, 8497.91, 10810.87, 8535.02, 8745.28, 11430.72, 8594.21, 10949.29]};
+VV.grafico('gCons', g.meses, [{nome: 'Consumo interno', dados: g.valor, slot: 2}], {fmt: 'brl', legenda: false});
+</script>
+</body>
+</html>

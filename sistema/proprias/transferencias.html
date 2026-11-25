@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Transferências · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="proprias";window.VV_KEY="/transferencias";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="ativo">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" selected>Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Transferências CD → loja</h1><div class="sub">48 transferências no filtro (as que estão em trânsito aparecem sempre). Lojas próprias: intercompany sem título; franqueadas: título a pagar ao CD.</div></div>
+  <form class="filtros" method="get">
+  <label>De</label>
+  <select name="ini"><option value="2024-11" >nov/24</option><option value="2024-12" >dez/24</option><option value="2025-01" >jan/25</option><option value="2025-02" >fev/25</option><option value="2025-03" >mar/25</option><option value="2025-04" >abr/25</option><option value="2025-05" >mai/25</option><option value="2025-06" >jun/25</option><option value="2025-07" >jul/25</option><option value="2025-08" >ago/25</option><option value="2025-09" >set/25</option><option value="2025-10" >out/25</option><option value="2025-11" >nov/25</option><option value="2025-12" >dez/25</option><option value="2026-01" >jan/26</option><option value="2026-02" >fev/26</option><option value="2026-03" >mar/26</option><option value="2026-04" >abr/26</option><option value="2026-05" >mai/26</option><option value="2026-06" >jun/26</option><option value="2026-07" >jul/26</option><option value="2026-08" >ago/26</option><option value="2026-09" >set/26</option><option value="2026-10" selected>out/26</option></select>
+  <label>até</label>
+  <select name="fim"><option value="2024-11" >nov/24</option><option value="2024-12" >dez/24</option><option value="2025-01" >jan/25</option><option value="2025-02" >fev/25</option><option value="2025-03" >mar/25</option><option value="2025-04" >abr/25</option><option value="2025-05" >mai/25</option><option value="2025-06" >jun/25</option><option value="2025-07" >jul/25</option><option value="2025-08" >ago/25</option><option value="2025-09" >set/25</option><option value="2025-10" >out/25</option><option value="2025-11" >nov/25</option><option value="2025-12" >dez/25</option><option value="2026-01" >jan/26</option><option value="2026-02" >fev/26</option><option value="2026-03" >mar/26</option><option value="2026-04" >abr/26</option><option value="2026-05" >mai/26</option><option value="2026-06" >jun/26</option><option value="2026-07" >jul/26</option><option value="2026-08" >ago/26</option><option value="2026-09" >set/26</option><option value="2026-10" selected>out/26</option></select>
+  
+  <button type="submit">Aplicar</button>
+  
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a>
+</form></div>
+<div class="cartao"><h3>Resumo por rota</h3><table>
+  <tr><th>CD</th><th>Loja</th><th class="n">Distância</th><th class="n">Envios</th><th class="n">Viagens</th><th class="n">Valor</th><th class="n">Frete</th><th class="n">Frete/valor</th></tr>
+  <tr><td>CD01</td><td>VV01</td><td class="n">20 km</td><td class="n">13</td><td class="n">13</td><td class="n">R$ 903.788,64</td><td class="n">R$ 6.212,70</td><td class="n">0,69%</td></tr><tr><td>CD01</td><td>VV02</td><td class="n">124 km</td><td class="n">13</td><td class="n">13</td><td class="n">R$ 1.064.229,43</td><td class="n">R$ 11.305,84</td><td class="n">1,06%</td></tr><tr><td>CD01</td><td>VV07</td><td class="n">900 km</td><td class="n">9</td><td class="n">9</td><td class="n">R$ 755.709,05</td><td class="n">R$ 34.373,16</td><td class="n">4,55%</td></tr><tr><td>CD03</td><td>VV09</td><td class="n">33 km</td><td class="n">13</td><td class="n">13</td><td class="n">R$ 732.617,13</td><td class="n">R$ 6.849,96</td><td class="n">0,93%</td></tr>
+</table></div>
+<div class="cartao mt"><div class="rolagem"><table>
+  <tr><th>Transferência</th><th>CD</th><th>Loja</th><th>Envio</th><th>Recebimento</th><th class="n">Valor</th><th class="n">Custo CD</th><th class="n">Frete</th><th>Status</th></tr>
+  <tr><td><a href="transferencias_2182.html">TR-002182</a></td><td>CD03</td><td>VV09 <span class="muted">Vale Verde Recife Boa Viagem</span></td>
+    <td>30/10/2026</td><td>31/10/2026</td><td class="n">R$ 118.395,42</td><td class="n">R$ 110.189,80</td><td class="n">R$ 526,92</td>
+    <td><span class="etq alerta">Recebida parcial</span></td></tr><tr><td><a href="transferencias_2178.html">TR-002178</a></td><td>CD01</td><td>VV07 <span class="muted">Vale Verde Goiânia Setor Bueno</span></td>
+    <td>30/10/2026</td><td>–</td><td class="n">R$ 103.554,01</td><td class="n">R$ 96.377,00</td><td class="n">R$ 3.819,24</td>
+    <td><span class="etq alerta">Em transito</span></td></tr><tr><td><a href="transferencias_2175.html">TR-002175</a></td><td>CD01</td><td>VV02 <span class="muted">Vale Verde São Paulo Mooca</span></td>
+    <td>30/10/2026</td><td>31/10/2026</td><td class="n">R$ 116.032,65</td><td class="n">R$ 107.990,78</td><td class="n">R$ 869,68</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="transferencias_2174.html">TR-002174</a></td><td>CD01</td><td>VV01 <span class="muted">Vale Verde Campinas Taquaral</span></td>
+    <td>30/10/2026</td><td>31/10/2026</td><td class="n">R$ 134.809,02</td><td class="n">R$ 125.465,82</td><td class="n">R$ 477,90</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="transferencias_2173.html">TR-002173</a></td><td>CD03</td><td>VV09 <span class="muted">Vale Verde Recife Boa Viagem</span></td>
+    <td>28/10/2026</td><td>29/10/2026</td><td class="n">R$ 68.721,69</td><td class="n">R$ 63.958,80</td><td class="n">R$ 526,92</td>
+    <td><span class="etq alerta">Recebida parcial</span></td></tr><tr><td><a href="transferencias_2171.html">TR-002171</a></td><td>CD01</td><td>VV02 <span class="muted">Vale Verde São Paulo Mooca</span></td>
+    <td>28/10/2026</td><td>29/10/2026</td><td class="n">R$ 93.236,45</td><td class="n">R$ 86.774,52</td><td class="n">R$ 869,68</td>
+    <td><span class="etq alerta">Recebida parcial</span></td></tr><tr><td><a href="transferencias_2170.html">TR-002170</a></td><td>CD01</td><td>VV01 <span class="muted">Vale Verde Campinas Taquaral</span></td>
+    <td>28/10/2026</td><td>29/10/2026</td><td class="n">R$ 79.278,75</td><td class="n">R$ 73.784,18</td><td class="n">R$ 477,90</td>
+    <td><span class="etq alerta">Recebida parcial</span></td></tr><tr><td><a href="transferencias_2167.html">TR-002167</a></td><td>CD01</td><td>VV07 <span class="muted">Vale Verde Goiânia Setor Bueno</span></td>
+    <td>27/10/2026</td><td>29/10/2026</td><td class="n">R$ 80.497,87</td><td class="n">R$ 74.918,81</td><td class="n">R$ 3.819,24</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002163</a></td><td>CD03</td><td>VV09 <span class="muted">Vale Verde Recife Boa Viagem</span></td>
+    <td>26/10/2026</td><td>27/10/2026</td><td class="n">R$ 36.224,42</td><td class="n">R$ 33.713,81</td><td class="n">R$ 526,92</td>
+    <td><span class="etq alerta">Recebida parcial</span></td></tr><tr><td><a href="#" data-off="1">TR-002161</a></td><td>CD01</td><td>VV02 <span class="muted">Vale Verde São Paulo Mooca</span></td>
+    <td>26/10/2026</td><td>27/10/2026</td><td class="n">R$ 63.415,32</td><td class="n">R$ 59.020,20</td><td class="n">R$ 869,68</td>
+    <td><span class="etq alerta">Recebida parcial</span></td></tr><tr><td><a href="#" data-off="1">TR-002160</a></td><td>CD01</td><td>VV01 <span class="muted">Vale Verde Campinas Taquaral</span></td>
+    <td>26/10/2026</td><td>27/10/2026</td><td class="n">R$ 55.636,75</td><td class="n">R$ 51.780,74</td><td class="n">R$ 477,90</td>
+    <td><span class="etq alerta">Recebida parcial</span></td></tr><tr><td><a href="#" data-off="1">TR-002159</a></td><td>CD03</td><td>VV09 <span class="muted">Vale Verde Recife Boa Viagem</span></td>
+    <td>23/10/2026</td><td>24/10/2026</td><td class="n">R$ 58.519,01</td><td class="n">R$ 54.463,23</td><td class="n">R$ 526,92</td>
+    <td><span class="etq alerta">Recebida parcial</span></td></tr><tr><td><a href="#" data-off="1">TR-002155</a></td><td>CD01</td><td>VV07 <span class="muted">Vale Verde Goiânia Setor Bueno</span></td>
+    <td>23/10/2026</td><td>26/10/2026</td><td class="n">R$ 91.364,89</td><td class="n">R$ 85.032,67</td><td class="n">R$ 3.819,24</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002152</a></td><td>CD01</td><td>VV02 <span class="muted">Vale Verde São Paulo Mooca</span></td>
+    <td>23/10/2026</td><td>24/10/2026</td><td class="n">R$ 84.897,32</td><td class="n">R$ 79.013,34</td><td class="n">R$ 869,68</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002151</a></td><td>CD01</td><td>VV01 <span class="muted">Vale Verde Campinas Taquaral</span></td>
+    <td>23/10/2026</td><td>24/10/2026</td><td class="n">R$ 75.865,87</td><td class="n">R$ 70.607,84</td><td class="n">R$ 477,90</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002150</a></td><td>CD03</td><td>VV09 <span class="muted">Vale Verde Recife Boa Viagem</span></td>
+    <td>21/10/2026</td><td>22/10/2026</td><td class="n">R$ 50.743,19</td><td class="n">R$ 47.226,33</td><td class="n">R$ 526,92</td>
+    <td><span class="etq alerta">Recebida parcial</span></td></tr><tr><td><a href="#" data-off="1">TR-002148</a></td><td>CD01</td><td>VV02 <span class="muted">Vale Verde São Paulo Mooca</span></td>
+    <td>21/10/2026</td><td>22/10/2026</td><td class="n">R$ 75.010,22</td><td class="n">R$ 69.811,49</td><td class="n">R$ 869,68</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002147</a></td><td>CD01</td><td>VV01 <span class="muted">Vale Verde Campinas Taquaral</span></td>
+    <td>21/10/2026</td><td>22/10/2026</td><td class="n">R$ 60.049,99</td><td class="n">R$ 55.888,11</td><td class="n">R$ 477,90</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002144</a></td><td>CD01</td><td>VV07 <span class="muted">Vale Verde Goiânia Setor Bueno</span></td>
+    <td>20/10/2026</td><td>22/10/2026</td><td class="n">R$ 68.446,68</td><td class="n">R$ 63.702,85</td><td class="n">R$ 3.819,24</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002140</a></td><td>CD03</td><td>VV09 <span class="muted">Vale Verde Recife Boa Viagem</span></td>
+    <td>19/10/2026</td><td>20/10/2026</td><td class="n">R$ 41.976,31</td><td class="n">R$ 39.067,06</td><td class="n">R$ 526,92</td>
+    <td><span class="etq alerta">Recebida parcial</span></td></tr><tr><td><a href="#" data-off="1">TR-002138</a></td><td>CD01</td><td>VV02 <span class="muted">Vale Verde São Paulo Mooca</span></td>
+    <td>19/10/2026</td><td>20/10/2026</td><td class="n">R$ 65.453,66</td><td class="n">R$ 60.917,26</td><td class="n">R$ 869,68</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002137</a></td><td>CD01</td><td>VV01 <span class="muted">Vale Verde Campinas Taquaral</span></td>
+    <td>19/10/2026</td><td>20/10/2026</td><td class="n">R$ 57.508,73</td><td class="n">R$ 53.522,98</td><td class="n">R$ 477,90</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002136</a></td><td>CD03</td><td>VV09 <span class="muted">Vale Verde Recife Boa Viagem</span></td>
+    <td>16/10/2026</td><td>17/10/2026</td><td class="n">R$ 57.322,56</td><td class="n">R$ 53.349,71</td><td class="n">R$ 526,92</td>
+    <td><span class="etq alerta">Recebida parcial</span></td></tr><tr><td><a href="#" data-off="1">TR-002132</a></td><td>CD01</td><td>VV07 <span class="muted">Vale Verde Goiânia Setor Bueno</span></td>
+    <td>16/10/2026</td><td>19/10/2026</td><td class="n">R$ 92.103,13</td><td class="n">R$ 85.719,75</td><td class="n">R$ 3.819,24</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002129</a></td><td>CD01</td><td>VV02 <span class="muted">Vale Verde São Paulo Mooca</span></td>
+    <td>16/10/2026</td><td>17/10/2026</td><td class="n">R$ 86.922,00</td><td class="n">R$ 80.897,71</td><td class="n">R$ 869,68</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002128</a></td><td>CD01</td><td>VV01 <span class="muted">Vale Verde Campinas Taquaral</span></td>
+    <td>16/10/2026</td><td>17/10/2026</td><td class="n">R$ 64.958,63</td><td class="n">R$ 60.456,55</td><td class="n">R$ 477,90</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002127</a></td><td>CD03</td><td>VV09 <span class="muted">Vale Verde Recife Boa Viagem</span></td>
+    <td>14/10/2026</td><td>15/10/2026</td><td class="n">R$ 43.291,00</td><td class="n">R$ 40.290,64</td><td class="n">R$ 526,92</td>
+    <td><span class="etq alerta">Recebida parcial</span></td></tr><tr><td><a href="#" data-off="1">TR-002125</a></td><td>CD01</td><td>VV02 <span class="muted">Vale Verde São Paulo Mooca</span></td>
+    <td>14/10/2026</td><td>15/10/2026</td><td class="n">R$ 80.515,62</td><td class="n">R$ 74.935,33</td><td class="n">R$ 869,68</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002124</a></td><td>CD01</td><td>VV01 <span class="muted">Vale Verde Campinas Taquaral</span></td>
+    <td>14/10/2026</td><td>15/10/2026</td><td class="n">R$ 65.281,28</td><td class="n">R$ 60.756,83</td><td class="n">R$ 477,90</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002121</a></td><td>CD01</td><td>VV07 <span class="muted">Vale Verde Goiânia Setor Bueno</span></td>
+    <td>13/10/2026</td><td>15/10/2026</td><td class="n">R$ 56.594,76</td><td class="n">R$ 52.672,35</td><td class="n">R$ 3.819,24</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002117</a></td><td>CD03</td><td>VV09 <span class="muted">Vale Verde Recife Boa Viagem</span></td>
+    <td>12/10/2026</td><td>13/10/2026</td><td class="n">R$ 39.406,95</td><td class="n">R$ 36.675,77</td><td class="n">R$ 526,92</td>
+    <td><span class="etq alerta">Recebida parcial</span></td></tr><tr><td><a href="#" data-off="1">TR-002115</a></td><td>CD01</td><td>VV02 <span class="muted">Vale Verde São Paulo Mooca</span></td>
+    <td>12/10/2026</td><td>13/10/2026</td><td class="n">R$ 57.576,29</td><td class="n">R$ 53.585,86</td><td class="n">R$ 869,68</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002114</a></td><td>CD01</td><td>VV01 <span class="muted">Vale Verde Campinas Taquaral</span></td>
+    <td>12/10/2026</td><td>13/10/2026</td><td class="n">R$ 45.039,03</td><td class="n">R$ 41.917,51</td><td class="n">R$ 477,90</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002113</a></td><td>CD03</td><td>VV09 <span class="muted">Vale Verde Recife Boa Viagem</span></td>
+    <td>09/10/2026</td><td>10/10/2026</td><td class="n">R$ 50.469,53</td><td class="n">R$ 46.971,64</td><td class="n">R$ 526,92</td>
+    <td><span class="etq alerta">Recebida parcial</span></td></tr><tr><td><a href="#" data-off="1">TR-002109</a></td><td>CD01</td><td>VV07 <span class="muted">Vale Verde Goiânia Setor Bueno</span></td>
+    <td>09/10/2026</td><td>12/10/2026</td><td class="n">R$ 89.857,77</td><td class="n">R$ 83.630,00</td><td class="n">R$ 3.819,24</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002106</a></td><td>CD01</td><td>VV02 <span class="muted">Vale Verde São Paulo Mooca</span></td>
+    <td>09/10/2026</td><td>10/10/2026</td><td class="n">R$ 77.630,75</td><td class="n">R$ 72.250,40</td><td class="n">R$ 869,68</td>
+    <td><span class="etq alerta">Recebida parcial</span></td></tr><tr><td><a href="#" data-off="1">TR-002105</a></td><td>CD01</td><td>VV01 <span class="muted">Vale Verde Campinas Taquaral</span></td>
+    <td>09/10/2026</td><td>10/10/2026</td><td class="n">R$ 65.575,81</td><td class="n">R$ 61.030,95</td><td class="n">R$ 477,90</td>
+    <td><span class="etq alerta">Recebida parcial</span></td></tr><tr><td><a href="#" data-off="1">TR-002104</a></td><td>CD03</td><td>VV09 <span class="muted">Vale Verde Recife Boa Viagem</span></td>
+    <td>07/10/2026</td><td>08/10/2026</td><td class="n">R$ 57.291,01</td><td class="n">R$ 53.320,34</td><td class="n">R$ 526,92</td>
+    <td><span class="etq alerta">Recebida parcial</span></td></tr><tr><td><a href="#" data-off="1">TR-002102</a></td><td>CD01</td><td>VV02 <span class="muted">Vale Verde São Paulo Mooca</span></td>
+    <td>07/10/2026</td><td>08/10/2026</td><td class="n">R$ 90.332,85</td><td class="n">R$ 84.072,16</td><td class="n">R$ 869,68</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002101</a></td><td>CD01</td><td>VV01 <span class="muted">Vale Verde Campinas Taquaral</span></td>
+    <td>07/10/2026</td><td>08/10/2026</td><td class="n">R$ 69.650,70</td><td class="n">R$ 64.823,42</td><td class="n">R$ 477,90</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002098</a></td><td>CD01</td><td>VV07 <span class="muted">Vale Verde Goiânia Setor Bueno</span></td>
+    <td>06/10/2026</td><td>08/10/2026</td><td class="n">R$ 70.653,40</td><td class="n">R$ 65.756,63</td><td class="n">R$ 3.819,24</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002094</a></td><td>CD03</td><td>VV09 <span class="muted">Vale Verde Recife Boa Viagem</span></td>
+    <td>05/10/2026</td><td>06/10/2026</td><td class="n">R$ 44.712,42</td><td class="n">R$ 41.613,54</td><td class="n">R$ 526,92</td>
+    <td><span class="etq alerta">Recebida parcial</span></td></tr><tr><td><a href="#" data-off="1">TR-002092</a></td><td>CD01</td><td>VV02 <span class="muted">Vale Verde São Paulo Mooca</span></td>
+    <td>05/10/2026</td><td>06/10/2026</td><td class="n">R$ 73.734,65</td><td class="n">R$ 68.624,32</td><td class="n">R$ 869,68</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002091</a></td><td>CD01</td><td>VV01 <span class="muted">Vale Verde Campinas Taquaral</span></td>
+    <td>05/10/2026</td><td>06/10/2026</td><td class="n">R$ 49.370,90</td><td class="n">R$ 45.949,16</td><td class="n">R$ 477,90</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002090</a></td><td>CD03</td><td>VV09 <span class="muted">Vale Verde Recife Boa Viagem</span></td>
+    <td>02/10/2026</td><td>03/10/2026</td><td class="n">R$ 65.543,62</td><td class="n">R$ 61.000,99</td><td class="n">R$ 526,92</td>
+    <td><span class="etq alerta">Recebida parcial</span></td></tr><tr><td><a href="#" data-off="1">TR-002086</a></td><td>CD01</td><td>VV07 <span class="muted">Vale Verde Goiânia Setor Bueno</span></td>
+    <td>02/10/2026</td><td>05/10/2026</td><td class="n">R$ 102.636,54</td><td class="n">R$ 95.523,12</td><td class="n">R$ 3.819,24</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002083</a></td><td>CD01</td><td>VV02 <span class="muted">Vale Verde São Paulo Mooca</span></td>
+    <td>02/10/2026</td><td>03/10/2026</td><td class="n">R$ 99.471,65</td><td class="n">R$ 92.577,57</td><td class="n">R$ 869,68</td>
+    <td><span class="etq ok">Recebida</span></td></tr><tr><td><a href="#" data-off="1">TR-002082</a></td><td>CD01</td><td>VV01 <span class="muted">Vale Verde Campinas Taquaral</span></td>
+    <td>02/10/2026</td><td>03/10/2026</td><td class="n">R$ 80.763,18</td><td class="n">R$ 75.165,73</td><td class="n">R$ 477,90</td>
+    <td><span class="etq ok">Recebida</span></td></tr>
+</table></div></div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Matheus Ramos Soares · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="vv01";window.VV_KEY="/rh/funcionario/41";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" selected>VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      <a href="unidades_5.html">ficha da unidade</a>
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Matheus Ramos Soares</h1>
+  <div class="sub">VV01 · Vale Verde Campinas Taquaral · VV00041 · Assistente de DP/RH (Administrativo/Financeiro) · Clt · turno comercial · admitido em 27/12/2021
+  </div></div>
+  <a class="btn" href="rh.html">‹ Funcionários</a></div>
+<div class="grade g4">
+  <div class="cartao kpi">
+  <div class="rot">Salário atual</div>
+  <div class="val">R$ 3.787,20</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Nascimento</div>
+  <div class="val">11/10/1994</div>
+  <div class="det">CPF 999.785.367-84 (fictício)</div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Vale-transporte</div>
+  <div class="val">Não</div>
+  <div class="det"></div>
+</div>
+  
+  <div class="cartao kpi">
+  <div class="rot">Dias trabalhados</div>
+  <div class="val">453</div>
+  <div class="det">faltas 1 · atestados 4 · férias 60 dias</div>
+</div>
+</div>
+<div class="grade g2 mt">
+  <div class="cartao"><h3>Histórico salarial</h3><table><tr><th>Desde</th><th>Motivo</th><th class="n">Salário</th></tr>
+    <tr><td>27/12/2021</td><td>Admissão</td><td class="n">R$ 2.871,82</td></tr><tr><td>01/11/2024</td><td>Saldo em 01/11/2024</td><td class="n">R$ 3.293,57</td></tr><tr><td>01/05/2025</td><td>Dissídio 2025 (+5.3%)</td><td class="n">R$ 3.468,13</td></tr><tr><td>02/01/2026</td><td>Mérito (+4%)</td><td class="n">R$ 3.606,86</td></tr><tr><td>01/05/2026</td><td>Dissídio 2026 (+5.0%)</td><td class="n">R$ 3.787,20</td></tr></table>
+    
+    <form method="post" action="/rh/funcionario/41/reajuste" class="linha mt">
+      <div class="campo"><label>Novo salário</label><input type="text" name="salario" required style="width:110px"></div>
+      <div class="campo"><label>A partir de</label><input type="date" name="data" value="2026-11-25"></div>
+      <div class="campo"><label>Motivo</label><select name="motivo"><option>Promoção</option><option>Mérito</option><option>Enquadramento</option><option>Dissídio</option></select></div>
+      <button>Registrar</button></form></div>
+  <div class="cartao">
+    
+    
+    <h3 class="mt">Desligar funcionário</h3>
+    <form method="post" action="/rh/funcionario/41/desligar" class="linha" onsubmit="return confirm('Confirmar o desligamento?')">
+      <div class="campo"><label>Data</label><input type="date" name="data" value="2026-11-25"></div>
+      <div class="campo"><label>Motivo</label><select name="motivo"><option>Pedido de demissão</option><option>Dispensa sem justa causa</option><option>Término de contrato de experiência</option><option>Justa causa</option><option>Término de contrato temporário</option></select></div>
+      <button>Desligar</button></form>
+  </div>
+</div>
+<div class="cartao mt"><h3>Holerites</h3><div class="tabela-wrap"><table>
+  <tr><th>Competência</th><th class="n">Dias</th><th class="n">Salário base</th><th class="n">HE (h)</th><th class="n">HE + DSR</th><th class="n">Rescisão</th><th class="n">Bruto</th><th class="n">INSS</th><th class="n">IRRF</th><th class="n">VT</th><th class="n">Líquido</th><th class="n">Custo empresa</th></tr>
+  <tr><td>out/26</td><td class="n">30</td><td class="n">R$ 3.787,20</td><td class="n">0,0</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.787,20</td><td class="n">R$ 343,06</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.444,14</td><td class="n">R$ 6.493,05</td></tr><tr><td>set/26</td><td class="n">30</td><td class="n">R$ 3.787,20</td><td class="n">0,0</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.787,20</td><td class="n">R$ 343,06</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.444,14</td><td class="n">R$ 6.493,05</td></tr><tr><td>ago/26</td><td class="n">30</td><td class="n">R$ 3.787,20</td><td class="n">0,0</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.787,20</td><td class="n">R$ 343,06</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.444,14</td><td class="n">R$ 6.493,05</td></tr><tr><td>jul/26</td><td class="n">30</td><td class="n">R$ 3.787,20</td><td class="n">0,0</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.787,20</td><td class="n">R$ 343,06</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.444,14</td><td class="n">R$ 6.493,05</td></tr><tr><td>jun/26</td><td class="n">30</td><td class="n">R$ 3.787,20</td><td class="n">0,0</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.787,20</td><td class="n">R$ 343,06</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.444,14</td><td class="n">R$ 6.493,05</td></tr><tr><td>mai/26</td><td class="n">30</td><td class="n">R$ 3.787,20</td><td class="n">0,0</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.787,20</td><td class="n">R$ 343,06</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.444,14</td><td class="n">R$ 6.493,05</td></tr><tr><td>abr/26</td><td class="n">30</td><td class="n">R$ 3.606,86</td><td class="n">0,0</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.606,86</td><td class="n">R$ 321,42</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.285,44</td><td class="n">R$ 6.200,53</td></tr><tr><td>mar/26</td><td class="n">30</td><td class="n">R$ 3.606,86</td><td class="n">0,0</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.606,86</td><td class="n">R$ 321,42</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.285,44</td><td class="n">R$ 6.200,53</td></tr><tr><td>fev/26</td><td class="n">30</td><td class="n">R$ 3.606,86</td><td class="n">0,0</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.606,86</td><td class="n">R$ 321,42</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.285,44</td><td class="n">R$ 6.200,53</td></tr><tr><td>jan/26</td><td class="n">30</td><td class="n">R$ 3.606,86</td><td class="n">0,0</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.606,86</td><td class="n">R$ 321,42</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.285,44</td><td class="n">R$ 6.200,53</td></tr><tr><td>dez/25</td><td class="n">30</td><td class="n">R$ 3.468,13</td><td class="n">0,0</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.468,13</td><td class="n">R$ 309,59</td>
+    <td class="n">R$ 34,98</td><td class="n">R$ 0,00</td><td class="n">R$ 3.123,56</td><td class="n">R$ 5.975,50</td></tr><tr><td>nov/25</td><td class="n">30</td><td class="n">R$ 3.468,13</td><td class="n">0,0</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.468,13</td><td class="n">R$ 309,59</td>
+    <td class="n">R$ 34,98</td><td class="n">R$ 0,00</td><td class="n">R$ 3.123,56</td><td class="n">R$ 5.975,50</td></tr><tr><td>out/25</td><td class="n">30</td><td class="n">R$ 3.468,13</td><td class="n">0,0</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.468,13</td><td class="n">R$ 309,59</td>
+    <td class="n">R$ 34,98</td><td class="n">R$ 0,00</td><td class="n">R$ 3.123,56</td><td class="n">R$ 5.975,50</td></tr><tr><td>set/25</td><td class="n">30</td><td class="n">R$ 3.468,13</td><td class="n">0,0</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.468,13</td><td class="n">R$ 309,59</td>
+    <td class="n">R$ 34,98</td><td class="n">R$ 0,00</td><td class="n">R$ 3.123,56</td><td class="n">R$ 5.975,50</td></tr><tr><td>ago/25</td><td class="n">30</td><td class="n">R$ 3.468,13</td><td class="n">0,0</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.468,13</td><td class="n">R$ 309,59</td>
+    <td class="n">R$ 34,98</td><td class="n">R$ 0,00</td><td class="n">R$ 3.123,56</td><td class="n">R$ 5.975,50</td></tr><tr><td>jul/25</td><td class="n">30</td><td class="n">R$ 3.468,13</td><td class="n">0,0</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.468,13</td><td class="n">R$ 309,59</td>
+    <td class="n">R$ 34,98</td><td class="n">R$ 0,00</td><td class="n">R$ 3.123,56</td><td class="n">R$ 5.975,50</td></tr><tr><td>jun/25</td><td class="n">30</td><td class="n">R$ 3.468,13</td><td class="n">0,0</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.468,13</td><td class="n">R$ 309,59</td>
+    <td class="n">R$ 34,98</td><td class="n">R$ 0,00</td><td class="n">R$ 3.123,56</td><td class="n">R$ 5.975,50</td></tr><tr><td>mai/25</td><td class="n">30</td><td class="n">R$ 3.468,13</td><td class="n">0,0</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.468,13</td><td class="n">R$ 309,59</td>
+    <td class="n">R$ 34,98</td><td class="n">R$ 0,00</td><td class="n">R$ 3.123,56</td><td class="n">R$ 5.975,50</td></tr><tr><td>abr/25</td><td class="n">30</td><td class="n">R$ 3.293,57</td><td class="n">0,0</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.293,57</td><td class="n">R$ 288,64</td>
+    <td class="n">R$ 35,22</td><td class="n">R$ 0,00</td><td class="n">R$ 2.969,71</td><td class="n">R$ 5.692,35</td></tr><tr><td>mar/25</td><td class="n">30</td><td class="n">R$ 3.293,57</td><td class="n">0,0</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.293,57</td><td class="n">R$ 288,64</td>
+    <td class="n">R$ 35,22</td><td class="n">R$ 0,00</td><td class="n">R$ 2.969,71</td><td class="n">R$ 5.692,35</td></tr><tr><td>fev/25</td><td class="n">30</td><td class="n">R$ 3.293,57</td><td class="n">0,0</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.293,57</td><td class="n">R$ 288,64</td>
+    <td class="n">R$ 35,22</td><td class="n">R$ 0,00</td><td class="n">R$ 2.969,71</td><td class="n">R$ 5.692,35</td></tr><tr><td>jan/25</td><td class="n">30</td><td class="n">R$ 3.293,57</td><td class="n">0,0</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.293,57</td><td class="n">R$ 288,64</td>
+    <td class="n">R$ 35,22</td><td class="n">R$ 0,00</td><td class="n">R$ 2.969,71</td><td class="n">R$ 5.692,35</td></tr><tr><td>dez/24</td><td class="n">30</td><td class="n">R$ 3.293,57</td><td class="n">0,0</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.293,57</td><td class="n">R$ 294,05</td>
+    <td class="n">R$ 35,22</td><td class="n">R$ 0,00</td><td class="n">R$ 2.964,30</td><td class="n">R$ 5.692,35</td></tr><tr><td>nov/24</td><td class="n">30</td><td class="n">R$ 3.293,57</td><td class="n">0,0</td>
+    <td class="n">R$ 0,00</td><td class="n">R$ 0,00</td><td class="n">R$ 3.293,57</td><td class="n">R$ 294,05</td>
+    <td class="n">R$ 35,22</td><td class="n">R$ 0,00</td><td class="n">R$ 2.964,30</td><td class="n">R$ 5.692,35</td></tr>
+</table></div></div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+
+</body>
+</html>

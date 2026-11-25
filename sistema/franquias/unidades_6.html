@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VV02 · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+<script src="../static/vv_mapa.js"></script>
+<script>window.VV_DIR="franquias";window.VV_KEY="/unidades/6";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" selected>Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>VV02 · Vale Verde São Paulo Mooca <span class="etq PROPRIA">Própria</span></h1>
+  <div class="sub">Av. Fictícia, 2637 — Mooca · São Paulo/SP (Sudeste) · inaugurada em 01/08/2020 · 1.800 m² · 10 checkouts
+   · abastecida pelo CD01 (124 km, 1 dia(s), pedidos seg, qua, sex)</div></div>
+  <a class="btn btn-primario" href="index.html">Ver o sistema filtrado por esta unidade</a></div>
+<div class="grade g6">
+  <div class="cartao kpi">
+  <div class="rot">Faturamento 12m</div>
+  <div class="val">R$ 32,56 mi</div>
+  <div class="det"></div>
+</div>
+  
+  
+  <div class="cartao kpi">
+  <div class="rot">EBITDA 12m</div>
+  <div class="val">R$ 3,71 mi</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Lucro antes do IR</div>
+  <div class="val">R$ 3,60 mi</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Funcionários ativos</div>
+  <div class="val">50</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Estoque</div>
+  <div class="val">R$ 738 mil</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Pessoal 12m</div>
+  <div class="val">R$ 3,08 mi</div>
+  <div class="det"></div>
+</div>
+</div>
+<div class="grade g2 mt">
+  <div class="cartao"><h3>Localização</h3><div id="mapa" class="mapa baixo"></div></div>
+  <div class="cartao"><h3>Faturamento mensal</h3><div class="grafico baixo"><canvas id="gRec"></canvas></div>
+    
+    <p class="mt"><a href="financeiro_dre.html">DRE</a> · <a href="estoque.html">estoque</a> · <a href="rh.html">funcionários</a> · <a href="rh_escala.html">escala</a>
+       · <a href="#" data-off="1">área de influência</a></p></div>
+</div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+<script>
+const u = {"codigo": "VV02", "lat": -23.561311, "lon": -46.589076}, conc = [{"distancia_km": 2.29, "formato": "Supermercado", "lat": -23.544059, "lon": -46.601353, "nome": "Super Bom Pre\u00e7o S\u00e3o 1"}, {"distancia_km": 1.81, "formato": "Mercado de bairro", "lat": -23.568254, "lon": -46.605145, "nome": "Emp\u00f3rio Fresco S\u00e3o 2"}, {"distancia_km": 1.53, "formato": "Supermercado", "lat": -23.561758, "lon": -46.604113, "nome": "Super Bom Pre\u00e7o S\u00e3o 3"}, {"distancia_km": 2.75, "formato": "Supermercado", "lat": -23.547167, "lon": -46.611311, "nome": "Rede Sol Supermercados S\u00e3o 4"}, {"distancia_km": 2.23, "formato": "Mercado de bairro", "lat": -23.563691, "lon": -46.610799, "nome": "Mercadinho do Bairro S\u00e3o 5"}, {"distancia_km": 0.64, "formato": "Atacarejo", "lat": -23.555582, "lon": -46.588732, "nome": "Atacarejo Max S\u00e3o 6"}, {"distancia_km": 2.2, "formato": "Mercado de bairro", "lat": -23.550359, "lon": -46.607141, "nome": "Emp\u00f3rio Fresco S\u00e3o 7"}], atendidas = [], cd = {"codigo": "CD01", "lat": -22.871814, "lon": -47.200446, "nome": "CD Sudeste/Centro-Oeste"}, g = {"meses": ["nov/24", "dez/24", "jan/25", "fev/25", "mar/25", "abr/25", "mai/25", "jun/25", "jul/25", "ago/25", "set/25", "out/25", "nov/25", "dez/25", "jan/26", "fev/26", "mar/26", "abr/26", "mai/26", "jun/26", "jul/26", "ago/26", "set/26", "out/26"], "receita": [2467079.3, 3039803.54, 2306964.66, 2127754.5, 2550909.86, 2516232.87, 2680140.24, 2324572.33, 2518131.78, 2518413.66, 2412957.81, 2545442.47, 2549087.47, 3290146.77, 2592225.51, 2311048.86, 2666450.26, 2571759.18, 2767468.59, 2613218.56, 2766925.49, 2886662.51, 2679855.93, 2863474.85]};
+if (g.receita.length) VV.grafico('gRec', g.meses, [{nome: 'Faturamento', dados: g.receita, slot: 0}], {fmt: 'brl', legenda: false});
+const mapa = VVMapa.criar('mapa', [u.lat, u.lon], atendidas.length ? 5 : 13);
+if (mapa) {
+  L.circleMarker([u.lat, u.lon], {radius: 9, color: '#fff', weight: 2, fillColor: VVMapa.cores.loja, fillOpacity: 1}).bindTooltip(u.codigo, {permanent: true}).addTo(mapa);
+  conc.forEach(c => L.circleMarker([c.lat, c.lon], {radius: 5, stroke: false, fillColor: VVMapa.cores.concorrente, fillOpacity: .8}).bindTooltip(`${c.nome} (${c.formato}) · ${VV.fmtNum(1).format(c.distancia_km)} km`).addTo(mapa));
+  atendidas.forEach(a => { L.circleMarker([a.lat, a.lon], {radius: 6, color: '#fff', weight: 1.5, fillColor: VVMapa.cores.franquia, fillOpacity: 1}).bindTooltip(a.codigo).addTo(mapa); L.polyline([[u.lat, u.lon], [a.lat, a.lon]], {color: VVMapa.cores.cd, weight: 1.5, dashArray: '4 4'}).addTo(mapa); });
+  if (cd) L.polyline([[u.lat, u.lon], [cd.lat, cd.lon]], {color: VVMapa.cores.cd, weight: 1.5, dashArray: '4 4'}).bindTooltip(cd.codigo).addTo(mapa);
+}
+</script>
+</body>
+</html>

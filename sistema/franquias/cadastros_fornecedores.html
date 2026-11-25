@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fornecedores · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="franquias";window.VV_KEY="/cadastros/fornecedores";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="ativo">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" selected>Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Fornecedores</h1><div class="sub">Todos fictícios. Nacionais abastecem os CDs; regionais entregam perecíveis direto nas lojas da sua região. <a href="mapas_logistica.html">Ver no mapa ›</a></div></div><div class="filtros">
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a></div></div>
+<div class="cartao"><div class="tabela-wrap"><table>
+  <tr><th>Fornecedor</th><th>Abrangência</th><th>Tipo</th><th>Base</th><th>Dias de pedido</th><th class="n">Prazo pgto.</th><th class="n">Fator de custo</th><th class="n">Unidades atendidas</th><th class="n">Distância média</th><th class="n">Compras 12m</th></tr>
+  <tr><td><b>Dist. Paulista</b><br><span class="muted">Distribuidora Paulista de Alimentos Ltda. · 58.480.734/0001-52 (fictício)</span></td><td>Nacional</td><td>MERC1</td>
+    <td>Campinas/SP</td><td>seg, qui</td><td class="n">28 d</td><td class="n">1,00</td>
+    <td class="n">3</td><td class="n">1.029 km</td><td class="n">R$ 25,03 mi</td></tr><tr><td><b>Serra Azul Bebidas</b><br><span class="muted">Serra Azul Distribuidora de Bebidas Ltda. · 82.944.567/0001-62 (fictício)</span></td><td>Nacional</td><td>BEB</td>
+    <td>Limeira/SP</td><td>ter, sex</td><td class="n">21 d</td><td class="n">1,00</td>
+    <td class="n">3</td><td class="n">1.042 km</td><td class="n">R$ 22,71 mi</td></tr><tr><td><b>Nova Era</b><br><span class="muted">Nova Era Higiene e Limpeza Ltda. · 56.607.363/0001-59 (fictício)</span></td><td>Nacional</td><td>LIMP</td>
+    <td>São Paulo/SP</td><td>qua</td><td class="n">28 d</td><td class="n">1,00</td>
+    <td class="n">3</td><td class="n">1.065 km</td><td class="n">R$ 15,58 mi</td></tr><tr><td><b>Atacado Real</b><br><span class="muted">Atacado Real Distribuidora S.A. · 54.521.918/0001-43 (fictício)</span></td><td>Nacional</td><td>MERC2</td>
+    <td>Jundiaí/SP</td><td>ter</td><td class="n">35 d</td><td class="n">1,00</td>
+    <td class="n">3</td><td class="n">1.043 km</td><td class="n">R$ 13,13 mi</td></tr><tr><td><b>Polar Congelados</b><br><span class="muted">Polar Congelados Ltda. · 28.575.774/0001-13 (fictício)</span></td><td>Nacional</td><td>FRIOS</td>
+    <td>Sumaré/SP</td><td>ter, sex</td><td class="n">21 d</td><td class="n">1,00</td>
+    <td class="n">3</td><td class="n">1.029 km</td><td class="n">R$ 4,19 mi</td></tr><tr><td><b>Andrade Bazar &amp; Pet</b><br><span class="muted">Comercial Andrade Bazar e Pet Ltda. · 22.189.461/0001-21 (fictício)</span></td><td>Nacional</td><td>BAZAR</td>
+    <td>Piracicaba/SP</td><td>seg</td><td class="n">30 d</td><td class="n">1,00</td>
+    <td class="n">3</td><td class="n">1.046 km</td><td class="n">R$ 2,61 mi</td></tr><tr><td><b>Vale Pack</b><br><span class="muted">Vale Pack Embalagens Ltda. · 40.276.971/0001-93 (fictício)</span></td><td>Nacional</td><td>EMB</td>
+    <td>Indaiatuba/SP</td><td>qui</td><td class="n">28 d</td><td class="n">1,00</td>
+    <td class="n">3</td><td class="n">1.022 km</td><td class="n">R$ 748 mil</td></tr><tr><td><b>Laticínios Leite do Goiás</b><br><span class="muted">Laticínios Leite do Goiás Ltda. · 33.701.374/0001-62 (fictício)</span></td><td>Regional · Centro-Oeste</td><td>LAT</td>
+    <td>Anápolis/GO</td><td>seg, qua, sex</td><td class="n">14 d</td><td class="n">1,02</td>
+    <td class="n">1</td><td class="n">102 km</td><td class="n">R$ 1,53 mi</td></tr><tr><td><b>Frigorífico Boi do Cerrado</b><br><span class="muted">Frigorífico Boi do Cerrado Ltda. · 32.214.672/0001-13 (fictício)</span></td><td>Regional · Centro-Oeste</td><td>BOV</td>
+    <td>Anápolis/GO</td><td>seg, qua, sex</td><td class="n">14 d</td><td class="n">1,02</td>
+    <td class="n">1</td><td class="n">78 km</td><td class="n">R$ 1,45 mi</td></tr><tr><td><b>Hortifruti Planalto Central</b><br><span class="muted">Hortifruti Planalto Central Ltda. · 40.797.160/0001-13 (fictício)</span></td><td>Regional · Centro-Oeste</td><td>HORTI</td>
+    <td>Anápolis/GO</td><td>seg, ter, qua, qui, sex, sab</td><td class="n">7 d</td><td class="n">1,02</td>
+    <td class="n">1</td><td class="n">50 km</td><td class="n">R$ 1,36 mi</td></tr><tr><td><b>Avícola Rio Verde</b><br><span class="muted">Avícola Rio Verde Ltda. · 91.348.529/0001-10 (fictício)</span></td><td>Regional · Centro-Oeste</td><td>AVES</td>
+    <td>Anápolis/GO</td><td>ter, qui, sab</td><td class="n">14 d</td><td class="n">1,02</td>
+    <td class="n">1</td><td class="n">74 km</td><td class="n">R$ 993 mil</td></tr><tr><td><b>Massas Congeladas Cerrado Massas</b><br><span class="muted">Massas Congeladas Cerrado Massas Ltda. · 68.382.811/0001-14 (fictício)</span></td><td>Regional · Centro-Oeste</td><td>PAD</td>
+    <td>Anápolis/GO</td><td>seg, ter, qua, qui, sex, sab</td><td class="n">14 d</td><td class="n">1,02</td>
+    <td class="n">1</td><td class="n">74 km</td><td class="n">R$ 639 mil</td></tr><tr><td><b>Frios Planalto</b><br><span class="muted">Frios Planalto Ltda. · 46.792.566/0001-78 (fictício)</span></td><td>Regional · Centro-Oeste</td><td>FRIOS</td>
+    <td>Anápolis/GO</td><td>ter, sex</td><td class="n">21 d</td><td class="n">1,02</td>
+    <td class="n">1</td><td class="n">59 km</td><td class="n">R$ 205 mil</td></tr><tr><td><b>Laticínios Bacia Leiteira</b><br><span class="muted">Laticínios Bacia Leiteira Ltda. · 53.904.322/0001-54 (fictício)</span></td><td>Regional · Nordeste</td><td>LAT</td>
+    <td>Caruaru/PE</td><td>seg, qua, sex</td><td class="n">14 d</td><td class="n">1,03</td>
+    <td class="n">2</td><td class="n">464 km</td><td class="n">R$ 3,09 mi</td></tr><tr><td><b>Frigorífico Sertão Carnes</b><br><span class="muted">Frigorífico Sertão Carnes Ltda. · 60.700.788/0001-92 (fictício)</span></td><td>Regional · Nordeste</td><td>BOV</td>
+    <td>Caruaru/PE</td><td>seg, qua, sex</td><td class="n">14 d</td><td class="n">1,03</td>
+    <td class="n">2</td><td class="n">479 km</td><td class="n">R$ 2,86 mi</td></tr><tr><td><b>Hortifruti Vale do São Francisco</b><br><span class="muted">Hortifruti Vale do São Francisco Ltda. · 61.664.977/0001-40 (fictício)</span></td><td>Regional · Nordeste</td><td>HORTI</td>
+    <td>Caruaru/PE</td><td>seg, ter, qua, qui, sex, sab</td><td class="n">7 d</td><td class="n">1,03</td>
+    <td class="n">2</td><td class="n">483 km</td><td class="n">R$ 2,75 mi</td></tr><tr><td><b>Avícola Agreste</b><br><span class="muted">Avícola Agreste Ltda. · 34.669.369/0001-37 (fictício)</span></td><td>Regional · Nordeste</td><td>AVES</td>
+    <td>Caruaru/PE</td><td>ter, qui, sab</td><td class="n">14 d</td><td class="n">1,03</td>
+    <td class="n">2</td><td class="n">485 km</td><td class="n">R$ 2,00 mi</td></tr><tr><td><b>Massas Congeladas Massas Nordeste</b><br><span class="muted">Massas Congeladas Massas Nordeste Ltda. · 20.749.719/0001-81 (fictício)</span></td><td>Regional · Nordeste</td><td>PAD</td>
+    <td>Caruaru/PE</td><td>seg, ter, qua, qui, sex, sab</td><td class="n">14 d</td><td class="n">1,03</td>
+    <td class="n">2</td><td class="n">467 km</td><td class="n">R$ 1,28 mi</td></tr><tr><td><b>Frios Atlântico</b><br><span class="muted">Frios Atlântico Ltda. · 37.490.962/0001-34 (fictício)</span></td><td>Regional · Nordeste</td><td>FRIOS</td>
+    <td>Caruaru/PE</td><td>ter, sex</td><td class="n">21 d</td><td class="n">1,03</td>
+    <td class="n">2</td><td class="n">467 km</td><td class="n">R$ 409 mil</td></tr><tr><td><b>Laticínios Laticínios do Pará</b><br><span class="muted">Laticínios Laticínios do Pará Ltda. · 31.925.601/0001-28 (fictício)</span></td><td>Regional · Norte</td><td>LAT</td>
+    <td>Castanhal/PA</td><td>seg, qua, sex</td><td class="n">14 d</td><td class="n">1,07</td>
+    <td class="n">1</td><td class="n">92 km</td><td class="n">R$ 684 mil</td></tr><tr><td><b>Frigorífico Marajó Carnes</b><br><span class="muted">Frigorífico Marajó Carnes Ltda. · 20.467.707/0001-54 (fictício)</span></td><td>Regional · Norte</td><td>BOV</td>
+    <td>Castanhal/PA</td><td>seg, qua, sex</td><td class="n">14 d</td><td class="n">1,07</td>
+    <td class="n">1</td><td class="n">94 km</td><td class="n">R$ 619 mil</td></tr><tr><td><b>Hortifruti Ver-o-Peso</b><br><span class="muted">Hortifruti Ver-o-Peso Ltda. · 81.122.870/0001-50 (fictício)</span></td><td>Regional · Norte</td><td>HORTI</td>
+    <td>Castanhal/PA</td><td>seg, ter, qua, qui, sex, sab</td><td class="n">7 d</td><td class="n">1,07</td>
+    <td class="n">1</td><td class="n">83 km</td><td class="n">R$ 580 mil</td></tr><tr><td><b>Avícola Castanhal</b><br><span class="muted">Avícola Castanhal Ltda. · 76.606.891/0001-51 (fictício)</span></td><td>Regional · Norte</td><td>AVES</td>
+    <td>Castanhal/PA</td><td>ter, qui, sab</td><td class="n">14 d</td><td class="n">1,07</td>
+    <td class="n">1</td><td class="n">109 km</td><td class="n">R$ 424 mil</td></tr><tr><td><b>Massas Congeladas Massas Amazônia</b><br><span class="muted">Massas Congeladas Massas Amazônia Ltda. · 22.240.231/0001-53 (fictício)</span></td><td>Regional · Norte</td><td>PAD</td>
+    <td>Castanhal/PA</td><td>seg, ter, qua, qui, sex, sab</td><td class="n">14 d</td><td class="n">1,07</td>
+    <td class="n">1</td><td class="n">108 km</td><td class="n">R$ 279 mil</td></tr><tr><td><b>Frios Amazônia Frios</b><br><span class="muted">Frios Amazônia Frios Ltda. · 90.933.552/0001-48 (fictício)</span></td><td>Regional · Norte</td><td>FRIOS</td>
+    <td>Castanhal/PA</td><td>ter, sex</td><td class="n">21 d</td><td class="n">1,07</td>
+    <td class="n">1</td><td class="n">74 km</td><td class="n">R$ 88 mil</td></tr><tr><td><b>Laticínios Campo Bom</b><br><span class="muted">Laticínios Campo Bom Ltda. · 75.789.707/0001-54 (fictício)</span></td><td>Regional · Sudeste</td><td>LAT</td>
+    <td>Campinas/SP</td><td>seg, qua, sex</td><td class="n">14 d</td><td class="n">1,00</td>
+    <td class="n">4</td><td class="n">308 km</td><td class="n">R$ 7,64 mi</td></tr><tr><td><b>Frigorífico Boi Forte</b><br><span class="muted">Frigorífico Boi Forte Ltda. · 59.983.143/0001-30 (fictício)</span></td><td>Regional · Sudeste</td><td>BOV</td>
+    <td>Campinas/SP</td><td>seg, qua, sex</td><td class="n">14 d</td><td class="n">1,00</td>
+    <td class="n">4</td><td class="n">290 km</td><td class="n">R$ 7,19 mi</td></tr><tr><td><b>Hortifruti Irmãos Okada (CEASA)</b><br><span class="muted">Hortifruti Irmãos Okada (CEASA) Ltda. · 36.797.358/0001-72 (fictício)</span></td><td>Regional · Sudeste</td><td>HORTI</td>
+    <td>Campinas/SP</td><td>seg, ter, qua, qui, sex, sab</td><td class="n">7 d</td><td class="n">1,00</td>
+    <td class="n">4</td><td class="n">308 km</td><td class="n">R$ 6,87 mi</td></tr><tr><td><b>Avícola Santa Clara</b><br><span class="muted">Avícola Santa Clara Ltda. · 17.682.535/0001-11 (fictício)</span></td><td>Regional · Sudeste</td><td>AVES</td>
+    <td>Campinas/SP</td><td>ter, qui, sab</td><td class="n">14 d</td><td class="n">1,00</td>
+    <td class="n">4</td><td class="n">305 km</td><td class="n">R$ 4,98 mi</td></tr><tr><td><b>Massas Congeladas Trigo de Ouro</b><br><span class="muted">Massas Congeladas Trigo de Ouro Ltda. · 63.252.659/0001-59 (fictício)</span></td><td>Regional · Sudeste</td><td>PAD</td>
+    <td>Campinas/SP</td><td>seg, ter, qua, qui, sex, sab</td><td class="n">14 d</td><td class="n">1,00</td>
+    <td class="n">4</td><td class="n">291 km</td><td class="n">R$ 3,24 mi</td></tr><tr><td><b>Frios Serra da Mantiqueira</b><br><span class="muted">Frios Serra da Mantiqueira Ltda. · 45.513.239/0001-57 (fictício)</span></td><td>Regional · Sudeste</td><td>FRIOS</td>
+    <td>Campinas/SP</td><td>ter, sex</td><td class="n">21 d</td><td class="n">1,00</td>
+    <td class="n">4</td><td class="n">317 km</td><td class="n">R$ 1,02 mi</td></tr><tr><td><b>Laticínios Colônia Holandesa</b><br><span class="muted">Laticínios Colônia Holandesa Ltda. · 63.734.230/0001-31 (fictício)</span></td><td>Regional · Sul</td><td>LAT</td>
+    <td>Ponta Grossa/PR</td><td>seg, qua, sex</td><td class="n">14 d</td><td class="n">1,01</td>
+    <td class="n">2</td><td class="n">332 km</td><td class="n">R$ 2,88 mi</td></tr><tr><td><b>Frigorífico Pampa Carnes</b><br><span class="muted">Frigorífico Pampa Carnes Ltda. · 33.863.712/0001-24 (fictício)</span></td><td>Regional · Sul</td><td>BOV</td>
+    <td>Ponta Grossa/PR</td><td>seg, qua, sex</td><td class="n">14 d</td><td class="n">1,01</td>
+    <td class="n">2</td><td class="n">340 km</td><td class="n">R$ 2,80 mi</td></tr><tr><td><b>Hortifruti Serra Gaúcha</b><br><span class="muted">Hortifruti Serra Gaúcha Ltda. · 36.801.694/0001-89 (fictício)</span></td><td>Regional · Sul</td><td>HORTI</td>
+    <td>Ponta Grossa/PR</td><td>seg, ter, qua, qui, sex, sab</td><td class="n">7 d</td><td class="n">1,01</td>
+    <td class="n">2</td><td class="n">330 km</td><td class="n">R$ 2,65 mi</td></tr><tr><td><b>Avícola Vale do Itajaí</b><br><span class="muted">Avícola Vale do Itajaí Ltda. · 95.283.569/0001-12 (fictício)</span></td><td>Regional · Sul</td><td>AVES</td>
+    <td>Ponta Grossa/PR</td><td>ter, qui, sab</td><td class="n">14 d</td><td class="n">1,01</td>
+    <td class="n">2</td><td class="n">343 km</td><td class="n">R$ 1,87 mi</td></tr><tr><td><b>Massas Congeladas Pão do Sul</b><br><span class="muted">Massas Congeladas Pão do Sul Ltda. · 27.826.109/0001-50 (fictício)</span></td><td>Regional · Sul</td><td>PAD</td>
+    <td>Ponta Grossa/PR</td><td>seg, ter, qua, qui, sex, sab</td><td class="n">14 d</td><td class="n">1,01</td>
+    <td class="n">2</td><td class="n">311 km</td><td class="n">R$ 1,27 mi</td></tr><tr><td><b>Frios Campos Gerais</b><br><span class="muted">Frios Campos Gerais Ltda. · 21.147.255/0001-59 (fictício)</span></td><td>Regional · Sul</td><td>FRIOS</td>
+    <td>Ponta Grossa/PR</td><td>ter, sex</td><td class="n">21 d</td><td class="n">1,01</td>
+    <td class="n">2</td><td class="n">340 km</td><td class="n">R$ 386 mil</td></tr>
+</table></div>
+<p class="mt"><a class="btn" href="compras_novo.html">+ Novo pedido de compra</a></p></div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+
+</body>
+</html>

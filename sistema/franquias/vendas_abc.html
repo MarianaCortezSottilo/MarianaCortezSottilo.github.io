@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Curva ABC · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="franquias";window.VV_KEY="/vendas/abc";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="ativo">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" selected>Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      
+    </div>
+    
+      
+    
+    
+<div class="topo">
+  <div><h1>Curva ABC de produtos</h1><div class="sub">Classificação pelo faturamento acumulado: A até 80%, B até 95%, C o restante</div></div>
+  <form class="filtros" method="get">
+  <label>De</label>
+  <select name="ini"><option value="2024-11" >nov/24</option><option value="2024-12" >dez/24</option><option value="2025-01" >jan/25</option><option value="2025-02" >fev/25</option><option value="2025-03" >mar/25</option><option value="2025-04" >abr/25</option><option value="2025-05" >mai/25</option><option value="2025-06" >jun/25</option><option value="2025-07" >jul/25</option><option value="2025-08" >ago/25</option><option value="2025-09" >set/25</option><option value="2025-10" >out/25</option><option value="2025-11" >nov/25</option><option value="2025-12" >dez/25</option><option value="2026-01" >jan/26</option><option value="2026-02" >fev/26</option><option value="2026-03" >mar/26</option><option value="2026-04" >abr/26</option><option value="2026-05" >mai/26</option><option value="2026-06" >jun/26</option><option value="2026-07" >jul/26</option><option value="2026-08" selected>ago/26</option><option value="2026-09" >set/26</option><option value="2026-10" >out/26</option></select>
+  <label>até</label>
+  <select name="fim"><option value="2024-11" >nov/24</option><option value="2024-12" >dez/24</option><option value="2025-01" >jan/25</option><option value="2025-02" >fev/25</option><option value="2025-03" >mar/25</option><option value="2025-04" >abr/25</option><option value="2025-05" >mai/25</option><option value="2025-06" >jun/25</option><option value="2025-07" >jul/25</option><option value="2025-08" >ago/25</option><option value="2025-09" >set/25</option><option value="2025-10" >out/25</option><option value="2025-11" >nov/25</option><option value="2025-12" >dez/25</option><option value="2026-01" >jan/26</option><option value="2026-02" >fev/26</option><option value="2026-03" >mar/26</option><option value="2026-04" >abr/26</option><option value="2026-05" >mai/26</option><option value="2026-06" >jun/26</option><option value="2026-07" >jul/26</option><option value="2026-08" >ago/26</option><option value="2026-09" >set/26</option><option value="2026-10" selected>out/26</option></select>
+  
+  <button type="submit">Aplicar</button>
+  
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a>
+</form>
+</div>
+<div class="grade g3">
+  
+  <div class="cartao kpi"><div class="rot"><span class="etq A">Classe A</span></div>
+    <div class="val">97 produtos</div>
+    <div class="det">42,9% do mix geram 80,3% do faturamento (R$ 28,20 mi)</div></div>
+  
+  <div class="cartao kpi"><div class="rot"><span class="etq B">Classe B</span></div>
+    <div class="val">71 produtos</div>
+    <div class="det">31,4% do mix geram 14,8% do faturamento (R$ 5,18 mi)</div></div>
+  
+  <div class="cartao kpi"><div class="rot"><span class="etq C">Classe C</span></div>
+    <div class="val">58 produtos</div>
+    <div class="det">25,7% do mix geram 5,0% do faturamento (R$ 1,75 mi)</div></div>
+  
+</div>
+<div class="grade g2 mt">
+  <div class="cartao">
+    <h3>Curva de Pareto</h3><div class="nota">% acumulado do faturamento × nº de produtos ordenados</div>
+    <div class="grafico"><canvas id="gAbc"></canvas></div>
+  </div>
+  <div class="cartao">
+    <h3>Ranking</h3>
+    <div class="rolagem"><table>
+      <tr><th>#</th><th>Produto</th><th>Classe</th><th class="n">Faturamento</th><th class="n">% acum.</th><th class="n">Margem</th></tr>
+      <tr><td>1</td><td>Leite UHT Integral 1L Campo Bom<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 947.189,54</td><td class="n">2,7%</td><td class="n">26,5%</td></tr><tr><td>2</td><td>Pão Francês<br><span class="muted">Padaria</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 893.672,49</td><td class="n">5,2%</td><td class="n">58,1%</td></tr><tr><td>3</td><td>Arroz Branco Tipo 1 5kg Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 802.520,13</td><td class="n">7,5%</td><td class="n">26,9%</td></tr><tr><td>4</td><td>Alcatra Bovina<br><span class="muted">Açougue</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 753.611,21</td><td class="n">9,7%</td><td class="n">30,8%</td></tr><tr><td>5</td><td>Cerveja Lata 350ml Lúpulo Dourado<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 624.792,28</td><td class="n">11,4%</td><td class="n">27,7%</td></tr><tr><td>6</td><td>Contrafilé Bovino<br><span class="muted">Açougue</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 608.439,84</td><td class="n">13,2%</td><td class="n">33,7%</td></tr><tr><td>7</td><td>Carne Moída Patinho<br><span class="muted">Açougue</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 596.000,75</td><td class="n">14,9%</td><td class="n">32,5%</td></tr><tr><td>8</td><td>Banana Prata<br><span class="muted">Hortifrúti</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 591.089,02</td><td class="n">16,6%</td><td class="n">42,7%</td></tr><tr><td>9</td><td>Batata Lavada<br><span class="muted">Hortifrúti</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 590.748,20</td><td class="n">18,2%</td><td class="n">41,4%</td></tr><tr><td>10</td><td>Acém Bovino<br><span class="muted">Açougue</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 587.535,72</td><td class="n">19,9%</td><td class="n">29,6%</td></tr><tr><td>11</td><td>Costela Bovina<br><span class="muted">Açougue</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 558.586,02</td><td class="n">21,5%</td><td class="n">32,3%</td></tr><tr><td>12</td><td>Picanha Bovina<br><span class="muted">Açougue</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 545.419,01</td><td class="n">23,1%</td><td class="n">31,8%</td></tr><tr><td>13</td><td>Leite UHT Integral 1L Leiteria Mineira<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 538.942,85</td><td class="n">24,6%</td><td class="n">30,3%</td></tr><tr><td>14</td><td>Tomate Italiano<br><span class="muted">Hortifrúti</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 523.014,75</td><td class="n">26,1%</td><td class="n">41,1%</td></tr><tr><td>15</td><td>Café Torrado e Moído 500g Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 517.731,82</td><td class="n">27,5%</td><td class="n">31,3%</td></tr><tr><td>16</td><td>Laranja Pera<br><span class="muted">Hortifrúti</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 516.597,20</td><td class="n">29,0%</td><td class="n">41,6%</td></tr><tr><td>17</td><td>Peito de Frango<br><span class="muted">Açougue</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 516.372,73</td><td class="n">30,5%</td><td class="n">32,7%</td></tr><tr><td>18</td><td>Arroz Branco Tipo 1 5kg Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 510.521,35</td><td class="n">31,9%</td><td class="n">29,9%</td></tr><tr><td>19</td><td>Pão de Forma Tradicional 500g<br><span class="muted">Padaria</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 462.712,28</td><td class="n">33,3%</td><td class="n">58,1%</td></tr><tr><td>20</td><td>Bolo Caseiro Fubá<br><span class="muted">Padaria</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 444.769,37</td><td class="n">34,5%</td><td class="n">53,7%</td></tr><tr><td>21</td><td>Cerveja Pack 12 Latas 350ml Lúpulo Dourado<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 439.531,37</td><td class="n">35,8%</td><td class="n">32,9%</td></tr><tr><td>22</td><td>Feijão Carioca 1kg Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 416.154,84</td><td class="n">37,0%</td><td class="n">25,0%</td></tr><tr><td>23</td><td>Coxa e Sobrecoxa de Frango<br><span class="muted">Açougue</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 398.419,43</td><td class="n">38,1%</td><td class="n">33,7%</td></tr><tr><td>24</td><td>Leite UHT Integral 1L Vale Verde<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 398.167,60</td><td class="n">39,2%</td><td class="n">34,5%</td></tr><tr><td>25</td><td>Cerveja Lata 350ml Cevada Nobre<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 383.960,20</td><td class="n">40,3%</td><td class="n">27,3%</td></tr><tr><td>26</td><td>Refrigerante Cola 2L Serra Azul<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 382.112,69</td><td class="n">41,4%</td><td class="n">29,5%</td></tr><tr><td>27</td><td>Maçã Gala<br><span class="muted">Hortifrúti</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 379.581,80</td><td class="n">42,5%</td><td class="n">42,9%</td></tr><tr><td>28</td><td>Papel Higiênico 12 Rolos Suavità<br><span class="muted">Higiene e Perfumaria</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 373.112,29</td><td class="n">43,6%</td><td class="n">36,8%</td></tr><tr><td>29</td><td>Linguiça Toscana<br><span class="muted">Açougue</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 367.051,10</td><td class="n">44,6%</td><td class="n">33,9%</td></tr><tr><td>30</td><td>Café Torrado e Moído 500g Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 358.208,37</td><td class="n">45,6%</td><td class="n">32,1%</td></tr><tr><td>31</td><td>Arroz Branco Tipo 1 5kg Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 350.251,74</td><td class="n">46,6%</td><td class="n">32,9%</td></tr><tr><td>32</td><td>Pernil Suíno<br><span class="muted">Açougue</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 327.906,25</td><td class="n">47,5%</td><td class="n">32,2%</td></tr><tr><td>33</td><td>Cerveja Pack 12 Latas 350ml Cevada Nobre<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 294.726,24</td><td class="n">48,4%</td><td class="n">31,3%</td></tr><tr><td>34</td><td>Óleo de Soja 900ml Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 292.195,94</td><td class="n">49,2%</td><td class="n">30,1%</td></tr><tr><td>35</td><td>Café Torrado e Moído 500g Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 286.029,10</td><td class="n">50,0%</td><td class="n">32,5%</td></tr><tr><td>36</td><td>Melancia<br><span class="muted">Hortifrúti</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 279.302,59</td><td class="n">50,8%</td><td class="n">43,4%</td></tr><tr><td>37</td><td>Cerveja Lata 350ml Serra Fria<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 274.281,11</td><td class="n">51,6%</td><td class="n">31,4%</td></tr><tr><td>38</td><td>Fralda Descartável Pacote<br><span class="muted">Higiene e Perfumaria</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 270.410,29</td><td class="n">52,4%</td><td class="n">34,8%</td></tr><tr><td>39</td><td>Ovos Brancos Dúzia<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 269.878,80</td><td class="n">53,1%</td><td class="n">25,6%</td></tr><tr><td>40</td><td>Frango Inteiro Congelado<br><span class="muted">Açougue</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 268.527,29</td><td class="n">53,9%</td><td class="n">28,5%</td></tr><tr><td>41</td><td>Cerveja Long Neck 330ml Lúpulo Dourado<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 262.466,61</td><td class="n">54,7%</td><td class="n">33,0%</td></tr><tr><td>42</td><td>Refrigerante Cola 2L Tropical<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 255.533,54</td><td class="n">55,4%</td><td class="n">32,9%</td></tr><tr><td>43</td><td>Papel Higiênico 12 Rolos Bem-Estar<br><span class="muted">Higiene e Perfumaria</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 244.605,32</td><td class="n">56,1%</td><td class="n">32,0%</td></tr><tr><td>44</td><td>Feijão Carioca 1kg Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 240.254,26</td><td class="n">56,8%</td><td class="n">26,7%</td></tr><tr><td>45</td><td>Cerveja Pack 12 Latas 350ml Serra Fria<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 237.377,09</td><td class="n">57,4%</td><td class="n">30,6%</td></tr><tr><td>46</td><td>Leite UHT Desnatado 1L Campo Bom<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 228.756,06</td><td class="n">58,1%</td><td class="n">30,6%</td></tr><tr><td>47</td><td>Mamão Formosa<br><span class="muted">Hortifrúti</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 221.120,67</td><td class="n">58,7%</td><td class="n">43,5%</td></tr><tr><td>48</td><td>Refrigerante Guaraná 2L Serra Azul<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 220.973,94</td><td class="n">59,3%</td><td class="n">29,4%</td></tr><tr><td>49</td><td>Bisteca Suína<br><span class="muted">Açougue</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 218.234,78</td><td class="n">60,0%</td><td class="n">39,0%</td></tr><tr><td>50</td><td>Pão de Queijo<br><span class="muted">Padaria</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 216.580,41</td><td class="n">60,6%</td><td class="n">58,2%</td></tr><tr><td>51</td><td>Ração para Cães Adultos 10kg Amigo Fiel<br><span class="muted">Bazar e Pet</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 213.191,47</td><td class="n">61,2%</td><td class="n">37,7%</td></tr><tr><td>52</td><td>Azeite de Oliva Extra Virgem 500ml Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 206.008,11</td><td class="n">61,8%</td><td class="n">29,9%</td></tr><tr><td>53</td><td>Queijo Mussarela Fatiado<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 204.213,77</td><td class="n">62,4%</td><td class="n">29,4%</td></tr><tr><td>54</td><td>Sabão em Pó 1,6kg Brilhante<br><span class="muted">Limpeza</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 199.210,22</td><td class="n">62,9%</td><td class="n">31,6%</td></tr><tr><td>55</td><td>Cebola<br><span class="muted">Hortifrúti</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 196.442,42</td><td class="n">63,5%</td><td class="n">41,0%</td></tr><tr><td>56</td><td>Óleo de Soja 900ml Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 196.239,40</td><td class="n">64,0%</td><td class="n">29,0%</td></tr><tr><td>57</td><td>Macarrão Espaguete 500g Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 191.592,37</td><td class="n">64,6%</td><td class="n">28,5%</td></tr><tr><td>58</td><td>Rosca Doce<br><span class="muted">Padaria</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 188.079,76</td><td class="n">65,1%</td><td class="n">56,9%</td></tr><tr><td>59</td><td>Refrigerante Cola 2L Vale Verde<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 182.461,47</td><td class="n">65,6%</td><td class="n">35,6%</td></tr><tr><td>60</td><td>Vinho Tinto Seco 750ml<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 182.068,22</td><td class="n">66,2%</td><td class="n">28,3%</td></tr><tr><td>61</td><td>Lava-Roupas Líquido 3L Brilhante<br><span class="muted">Limpeza</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 176.575,64</td><td class="n">66,7%</td><td class="n">33,6%</td></tr><tr><td>62</td><td>Papel Higiênico 12 Rolos Vale Verde<br><span class="muted">Higiene e Perfumaria</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 174.771,54</td><td class="n">67,2%</td><td class="n">40,2%</td></tr><tr><td>63</td><td>Cerveja Long Neck 330ml Cevada Nobre<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 174.599,29</td><td class="n">67,7%</td><td class="n">34,9%</td></tr><tr><td>64</td><td>Açúcar Refinado 1kg Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 166.060,12</td><td class="n">68,1%</td><td class="n">31,2%</td></tr><tr><td>65</td><td>Carvão Vegetal 3kg<br><span class="muted">Bazar e Pet</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 160.685,61</td><td class="n">68,6%</td><td class="n">37,6%</td></tr><tr><td>66</td><td>Feijão Carioca 1kg Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 159.574,60</td><td class="n">69,0%</td><td class="n">31,2%</td></tr><tr><td>67</td><td>Lasanha Congelada Bolonhesa 600g Polar<br><span class="muted">Congelados</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 157.231,16</td><td class="n">69,5%</td><td class="n">33,4%</td></tr><tr><td>68</td><td>Sorvete Napolitano 2L<br><span class="muted">Congelados</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 154.989,09</td><td class="n">69,9%</td><td class="n">31,8%</td></tr><tr><td>69</td><td>Azeite de Oliva Extra Virgem 500ml Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 153.546,27</td><td class="n">70,4%</td><td class="n">33,0%</td></tr><tr><td>70</td><td>Refrigerante Guaraná 2L Tropical<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 149.680,64</td><td class="n">70,8%</td><td class="n">31,2%</td></tr><tr><td>71</td><td>Leite Condensado 395g Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 149.648,88</td><td class="n">71,2%</td><td class="n">31,3%</td></tr><tr><td>72</td><td>Leite UHT Desnatado 1L Leiteria Mineira<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 148.143,53</td><td class="n">71,6%</td><td class="n">30,5%</td></tr><tr><td>73</td><td>Ração para Cães Adultos 10kg Casa &amp; Cia<br><span class="muted">Bazar e Pet</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 145.138,19</td><td class="n">72,1%</td><td class="n">37,4%</td></tr><tr><td>74</td><td>Chocolate em Barra 90g Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 144.305,34</td><td class="n">72,5%</td><td class="n">30,5%</td></tr><tr><td>75</td><td>Sabão em Pó 1,6kg Lar Limpo<br><span class="muted">Limpeza</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 143.037,39</td><td class="n">72,9%</td><td class="n">31,8%</td></tr><tr><td>76</td><td>Óleo de Soja 900ml Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 137.775,73</td><td class="n">73,3%</td><td class="n">34,4%</td></tr><tr><td>77</td><td>Amaciante 2L Brilhante<br><span class="muted">Limpeza</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 135.082,47</td><td class="n">73,6%</td><td class="n">31,0%</td></tr><tr><td>78</td><td>Uva Niágara<br><span class="muted">Hortifrúti</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 132.979,45</td><td class="n">74,0%</td><td class="n">39,0%</td></tr><tr><td>79</td><td>Achocolatado em Pó 400g Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 123.539,95</td><td class="n">74,4%</td><td class="n">31,3%</td></tr><tr><td>80</td><td>Pizza Congelada Mussarela 460g Polar<br><span class="muted">Congelados</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 122.472,23</td><td class="n">74,7%</td><td class="n">33,0%</td></tr><tr><td>81</td><td>Creme Dental 90g Suavità<br><span class="muted">Higiene e Perfumaria</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 121.882,91</td><td class="n">75,1%</td><td class="n">39,1%</td></tr><tr><td>82</td><td>Desodorante Aerossol 150ml Suavità<br><span class="muted">Higiene e Perfumaria</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 119.802,07</td><td class="n">75,4%</td><td class="n">35,0%</td></tr><tr><td>83</td><td>Cerveja Long Neck 330ml Serra Fria<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 119.315,59</td><td class="n">75,8%</td><td class="n">30,8%</td></tr><tr><td>84</td><td>Leite UHT Desnatado 1L Vale Verde<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 118.768,15</td><td class="n">76,1%</td><td class="n">32,8%</td></tr><tr><td>85</td><td>Azeite de Oliva Extra Virgem 500ml Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 116.661,04</td><td class="n">76,4%</td><td class="n">35,8%</td></tr><tr><td>86</td><td>Lava-Roupas Líquido 3L Lar Limpo<br><span class="muted">Limpeza</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 116.519,44</td><td class="n">76,8%</td><td class="n">29,8%</td></tr><tr><td>87</td><td>Margarina 500g Campo Bom<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 116.494,93</td><td class="n">77,1%</td><td class="n">31,1%</td></tr><tr><td>88</td><td>Suco Integral Caixinha 1L Serra Azul<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 115.371,20</td><td class="n">77,4%</td><td class="n">34,4%</td></tr><tr><td>89</td><td>Macarrão Parafuso 500g Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 114.965,26</td><td class="n">77,7%</td><td class="n">28,8%</td></tr><tr><td>90</td><td>Leite Condensado 395g Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 114.372,57</td><td class="n">78,1%</td><td class="n">27,1%</td></tr><tr><td>91</td><td>Macarrão Espaguete 500g Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 114.208,45</td><td class="n">78,4%</td><td class="n">31,6%</td></tr><tr><td>92</td><td>Feijão Preto 1kg Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 113.613,66</td><td class="n">78,7%</td><td class="n">32,8%</td></tr><tr><td>93</td><td>Shampoo 350ml Suavità<br><span class="muted">Higiene e Perfumaria</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 111.374,54</td><td class="n">79,0%</td><td class="n">37,6%</td></tr><tr><td>94</td><td>Manteiga com Sal 200g Campo Bom<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 110.655,27</td><td class="n">79,4%</td><td class="n">30,8%</td></tr><tr><td>95</td><td>Açúcar Refinado 1kg Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 108.461,10</td><td class="n">79,7%</td><td class="n">25,5%</td></tr><tr><td>96</td><td>Biscoito Recheado 130g Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 108.318,66</td><td class="n">80,0%</td><td class="n">31,9%</td></tr><tr><td>97</td><td>Lasanha Congelada Bolonhesa 600g Sabor de Casa<br><span class="muted">Congelados</span></td>
+      <td><span class="etq A">A</span></td><td class="n">R$ 104.719,27</td><td class="n">80,3%</td><td class="n">34,3%</td></tr><tr><td>98</td><td>Presunto Cozido Fatiado<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 104.364,78</td><td class="n">80,6%</td><td class="n">30,3%</td></tr><tr><td>99</td><td>Batata Pré-Frita 1kg<br><span class="muted">Congelados</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 102.550,19</td><td class="n">80,9%</td><td class="n">28,1%</td></tr><tr><td>100</td><td>Amaciante 2L Lar Limpo<br><span class="muted">Limpeza</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 99.405,53</td><td class="n">81,1%</td><td class="n">32,1%</td></tr><tr><td>101</td><td>Refrigerante Guaraná 2L Vale Verde<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 98.527,10</td><td class="n">81,4%</td><td class="n">33,6%</td></tr><tr><td>102</td><td>Lava-Roupas Líquido 3L Vale Verde<br><span class="muted">Limpeza</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 97.377,77</td><td class="n">81,7%</td><td class="n">41,2%</td></tr><tr><td>103</td><td>Pizza Congelada Mussarela 460g Sabor de Casa<br><span class="muted">Congelados</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 96.731,14</td><td class="n">82,0%</td><td class="n">28,6%</td></tr><tr><td>104</td><td>Macarrão Espaguete 500g Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 95.820,24</td><td class="n">82,2%</td><td class="n">33,7%</td></tr><tr><td>105</td><td>Sonho de Creme<br><span class="muted">Padaria</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 95.569,51</td><td class="n">82,5%</td><td class="n">59,0%</td></tr><tr><td>106</td><td>Sabão em Pó 1,6kg Vale Verde<br><span class="muted">Limpeza</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 95.108,81</td><td class="n">82,8%</td><td class="n">34,8%</td></tr><tr><td>107</td><td>Chocolate em Barra 90g Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 91.774,42</td><td class="n">83,0%</td><td class="n">26,3%</td></tr><tr><td>108</td><td>Requeijão Cremoso 200g Campo Bom<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 90.162,22</td><td class="n">83,3%</td><td class="n">25,8%</td></tr><tr><td>109</td><td>Maionese 500g Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 87.913,24</td><td class="n">83,6%</td><td class="n">31,2%</td></tr><tr><td>110</td><td>Condicionador 350ml Suavità<br><span class="muted">Higiene e Perfumaria</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 87.328,55</td><td class="n">83,8%</td><td class="n">37,8%</td></tr><tr><td>111</td><td>Molho de Tomate Sachê 300g Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 86.718,23</td><td class="n">84,0%</td><td class="n">36,8%</td></tr><tr><td>112</td><td>Creme de Leite 200g Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 86.513,91</td><td class="n">84,3%</td><td class="n">29,8%</td></tr><tr><td>113</td><td>Desodorante Aerossol 150ml Bem-Estar<br><span class="muted">Higiene e Perfumaria</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 85.445,62</td><td class="n">84,5%</td><td class="n">36,3%</td></tr><tr><td>114</td><td>Hambúrguer Bovino 672g Polar<br><span class="muted">Congelados</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 84.303,44</td><td class="n">84,8%</td><td class="n">27,7%</td></tr><tr><td>115</td><td>Queijo Minas Frescal<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 83.932,15</td><td class="n">85,0%</td><td class="n">27,4%</td></tr><tr><td>116</td><td>Shampoo 350ml Bem-Estar<br><span class="muted">Higiene e Perfumaria</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 83.157,63</td><td class="n">85,3%</td><td class="n">32,6%</td></tr><tr><td>117</td><td>Cenoura<br><span class="muted">Hortifrúti</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 83.032,04</td><td class="n">85,5%</td><td class="n">36,4%</td></tr><tr><td>118</td><td>Leite Condensado 395g Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 82.783,92</td><td class="n">85,7%</td><td class="n">31,4%</td></tr><tr><td>119</td><td>Margarina 500g Leiteria Mineira<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 82.400,52</td><td class="n">86,0%</td><td class="n">26,2%</td></tr><tr><td>120</td><td>Detergente Líquido 500ml Brilhante<br><span class="muted">Limpeza</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 81.803,18</td><td class="n">86,2%</td><td class="n">29,4%</td></tr><tr><td>121</td><td>Macarrão Parafuso 500g Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 80.998,24</td><td class="n">86,4%</td><td class="n">28,9%</td></tr><tr><td>122</td><td>Pão de Alho Congelado 400g<br><span class="muted">Congelados</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 79.877,27</td><td class="n">86,7%</td><td class="n">33,0%</td></tr><tr><td>123</td><td>Alface Crespa<br><span class="muted">Hortifrúti</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 79.632,42</td><td class="n">86,9%</td><td class="n">41,6%</td></tr><tr><td>124</td><td>Creme Dental 90g Bem-Estar<br><span class="muted">Higiene e Perfumaria</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 79.393,61</td><td class="n">87,1%</td><td class="n">38,3%</td></tr><tr><td>125</td><td>Achocolatado em Pó 400g Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 78.912,56</td><td class="n">87,3%</td><td class="n">27,7%</td></tr><tr><td>126</td><td>Manteiga com Sal 200g Leiteria Mineira<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 78.776,97</td><td class="n">87,6%</td><td class="n">26,7%</td></tr><tr><td>127</td><td>Energético Lata 250ml<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 77.538,10</td><td class="n">87,8%</td><td class="n">36,0%</td></tr><tr><td>128</td><td>Açúcar Refinado 1kg Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 76.846,97</td><td class="n">88,0%</td><td class="n">30,9%</td></tr><tr><td>129</td><td>Chocolate em Barra 90g Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 76.352,33</td><td class="n">88,2%</td><td class="n">35,6%</td></tr><tr><td>130</td><td>Feijão Preto 1kg Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 75.494,01</td><td class="n">88,4%</td><td class="n">32,0%</td></tr><tr><td>131</td><td>Bebida Láctea Morango 900g Campo Bom<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 75.189,52</td><td class="n">88,6%</td><td class="n">25,3%</td></tr><tr><td>132</td><td>Sabonete em Barra 85g Suavità<br><span class="muted">Higiene e Perfumaria</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 74.387,26</td><td class="n">88,9%</td><td class="n">36,7%</td></tr><tr><td>133</td><td>Sardinha em Lata 125g Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 73.504,09</td><td class="n">89,1%</td><td class="n">30,8%</td></tr><tr><td>134</td><td>Suco Integral Caixinha 1L Tropical<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 73.173,56</td><td class="n">89,3%</td><td class="n">36,3%</td></tr><tr><td>135</td><td>Limão Tahiti<br><span class="muted">Hortifrúti</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 72.674,61</td><td class="n">89,5%</td><td class="n">47,8%</td></tr><tr><td>136</td><td>Desinfetante 2L Brilhante<br><span class="muted">Limpeza</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 68.940,31</td><td class="n">89,7%</td><td class="n">35,2%</td></tr><tr><td>137</td><td>Amaciante 2L Vale Verde<br><span class="muted">Limpeza</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 68.548,30</td><td class="n">89,9%</td><td class="n">37,3%</td></tr><tr><td>138</td><td>Creme Dental 90g Vale Verde<br><span class="muted">Higiene e Perfumaria</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 68.124,87</td><td class="n">90,1%</td><td class="n">42,7%</td></tr><tr><td>139</td><td>Cereal Matinal 300g Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 66.479,96</td><td class="n">90,2%</td><td class="n">32,5%</td></tr><tr><td>140</td><td>Biscoito Recheado 130g Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 66.396,66</td><td class="n">90,4%</td><td class="n">28,6%</td></tr><tr><td>141</td><td>Peito de Peru Defumado Fatiado<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 66.291,26</td><td class="n">90,6%</td><td class="n">31,5%</td></tr><tr><td>142</td><td>Feijão Preto 1kg Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 66.279,13</td><td class="n">90,8%</td><td class="n">33,3%</td></tr><tr><td>143</td><td>Hambúrguer Bovino 672g Sabor de Casa<br><span class="muted">Congelados</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 65.825,13</td><td class="n">91,0%</td><td class="n">33,4%</td></tr><tr><td>144</td><td>Molho de Tomate Sachê 300g Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 63.911,45</td><td class="n">91,2%</td><td class="n">30,5%</td></tr><tr><td>145</td><td>Farinha de Trigo 1kg Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 62.277,56</td><td class="n">91,4%</td><td class="n">34,7%</td></tr><tr><td>146</td><td>Saco de Lixo 50L 10un<br><span class="muted">Limpeza</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 61.966,42</td><td class="n">91,5%</td><td class="n">37,7%</td></tr><tr><td>147</td><td>Alho Nacional<br><span class="muted">Hortifrúti</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 61.856,40</td><td class="n">91,7%</td><td class="n">39,2%</td></tr><tr><td>148</td><td>Achocolatado em Pó 400g Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 60.802,90</td><td class="n">91,9%</td><td class="n">30,0%</td></tr><tr><td>149</td><td>Detergente Líquido 500ml Lar Limpo<br><span class="muted">Limpeza</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 60.038,54</td><td class="n">92,1%</td><td class="n">30,2%</td></tr><tr><td>150</td><td>Shampoo 350ml Vale Verde<br><span class="muted">Higiene e Perfumaria</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 59.943,60</td><td class="n">92,2%</td><td class="n">41,4%</td></tr><tr><td>151</td><td>Biscoito Cream Cracker 350g Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 59.794,59</td><td class="n">92,4%</td><td class="n">28,4%</td></tr><tr><td>152</td><td>Manteiga com Sal 200g Vale Verde<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 59.455,76</td><td class="n">92,6%</td><td class="n">35,1%</td></tr><tr><td>153</td><td>Requeijão Cremoso 200g Leiteria Mineira<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 59.132,93</td><td class="n">92,7%</td><td class="n">25,7%</td></tr><tr><td>154</td><td>Água Sanitária 2L Brilhante<br><span class="muted">Limpeza</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 58.722,43</td><td class="n">92,9%</td><td class="n">31,9%</td></tr><tr><td>155</td><td>Desodorante Aerossol 150ml Vale Verde<br><span class="muted">Higiene e Perfumaria</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 57.865,65</td><td class="n">93,1%</td><td class="n">38,8%</td></tr><tr><td>156</td><td>Iogurte Natural 170g Campo Bom<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 57.856,77</td><td class="n">93,2%</td><td class="n">35,1%</td></tr><tr><td>157</td><td>Condicionador 350ml Bem-Estar<br><span class="muted">Higiene e Perfumaria</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 57.119,19</td><td class="n">93,4%</td><td class="n">37,5%</td></tr><tr><td>158</td><td>Creme de Leite 200g Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 55.952,47</td><td class="n">93,6%</td><td class="n">27,8%</td></tr><tr><td>159</td><td>Margarina 500g Vale Verde<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 54.282,55</td><td class="n">93,7%</td><td class="n">32,4%</td></tr><tr><td>160</td><td>Macarrão Parafuso 500g Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 53.811,01</td><td class="n">93,9%</td><td class="n">32,6%</td></tr><tr><td>161</td><td>Suco Integral Caixinha 1L Vale Verde<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 53.766,61</td><td class="n">94,0%</td><td class="n">36,6%</td></tr><tr><td>162</td><td>Ração para Gatos 1kg Amigo Fiel<br><span class="muted">Bazar e Pet</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 53.312,58</td><td class="n">94,2%</td><td class="n">33,9%</td></tr><tr><td>163</td><td>Salsicha Hot Dog<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 52.156,00</td><td class="n">94,3%</td><td class="n">28,8%</td></tr><tr><td>164</td><td>Bebida Láctea Morango 900g Leiteria Mineira<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 50.052,66</td><td class="n">94,5%</td><td class="n">31,3%</td></tr><tr><td>165</td><td>Maionese 500g Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 49.948,81</td><td class="n">94,6%</td><td class="n">30,8%</td></tr><tr><td>166</td><td>Sardinha em Lata 125g Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 49.354,91</td><td class="n">94,7%</td><td class="n">32,7%</td></tr><tr><td>167</td><td>Sabonete em Barra 85g Bem-Estar<br><span class="muted">Higiene e Perfumaria</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 49.129,59</td><td class="n">94,9%</td><td class="n">32,9%</td></tr><tr><td>168</td><td>Água de Coco 1L<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq B">B</span></td><td class="n">R$ 47.796,60</td><td class="n">95,0%</td><td class="n">30,6%</td></tr><tr><td>169</td><td>Molho de Tomate Sachê 300g Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 47.547,46</td><td class="n">95,2%</td><td class="n">32,2%</td></tr><tr><td>170</td><td>Água Sanitária 2L Lar Limpo<br><span class="muted">Limpeza</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 46.434,88</td><td class="n">95,3%</td><td class="n">30,6%</td></tr><tr><td>171</td><td>Milho Verde Lata 170g Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 45.833,41</td><td class="n">95,4%</td><td class="n">34,9%</td></tr><tr><td>172</td><td>Cereal Matinal 300g Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 45.536,72</td><td class="n">95,5%</td><td class="n">29,6%</td></tr><tr><td>173</td><td>Creme de Leite 200g Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 45.287,96</td><td class="n">95,7%</td><td class="n">34,9%</td></tr><tr><td>174</td><td>Água Mineral sem Gás 1,5L Serra Azul<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 44.900,13</td><td class="n">95,8%</td><td class="n">31,4%</td></tr><tr><td>175</td><td>Farinha de Trigo 1kg Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 44.771,53</td><td class="n">95,9%</td><td class="n">29,3%</td></tr><tr><td>176</td><td>Requeijão Cremoso 200g Vale Verde<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 44.622,67</td><td class="n">96,1%</td><td class="n">37,1%</td></tr><tr><td>177</td><td>Biscoito Recheado 130g Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 43.869,08</td><td class="n">96,2%</td><td class="n">27,3%</td></tr><tr><td>178</td><td>Mortadela Fatiada<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 42.701,77</td><td class="n">96,3%</td><td class="n">31,2%</td></tr><tr><td>179</td><td>Detergente Líquido 500ml Vale Verde<br><span class="muted">Limpeza</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 42.261,46</td><td class="n">96,4%</td><td class="n">37,3%</td></tr><tr><td>180</td><td>Desinfetante 2L Lar Limpo<br><span class="muted">Limpeza</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 42.181,78</td><td class="n">96,5%</td><td class="n">29,3%</td></tr><tr><td>181</td><td>Sardinha em Lata 125g Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 41.262,11</td><td class="n">96,7%</td><td class="n">39,3%</td></tr><tr><td>182</td><td>Condicionador 350ml Vale Verde<br><span class="muted">Higiene e Perfumaria</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 40.710,34</td><td class="n">96,8%</td><td class="n">35,2%</td></tr><tr><td>183</td><td>Copo Descartável 200ml 100un<br><span class="muted">Bazar e Pet</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 40.225,80</td><td class="n">96,9%</td><td class="n">37,5%</td></tr><tr><td>184</td><td>Ração para Gatos 1kg Casa &amp; Cia<br><span class="muted">Bazar e Pet</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 40.042,32</td><td class="n">97,0%</td><td class="n">39,9%</td></tr><tr><td>185</td><td>Bebida Láctea Morango 900g Vale Verde<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 39.975,51</td><td class="n">97,1%</td><td class="n">35,0%</td></tr><tr><td>186</td><td>Biscoito Cream Cracker 350g Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 39.001,00</td><td class="n">97,2%</td><td class="n">30,7%</td></tr><tr><td>187</td><td>Abobrinha<br><span class="muted">Hortifrúti</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 38.456,26</td><td class="n">97,3%</td><td class="n">46,5%</td></tr><tr><td>188</td><td>Maionese 500g Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 37.990,77</td><td class="n">97,4%</td><td class="n">31,5%</td></tr><tr><td>189</td><td>Iogurte Natural 170g Leiteria Mineira<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 37.353,62</td><td class="n">97,6%</td><td class="n">29,1%</td></tr><tr><td>190</td><td>Sabonete em Barra 85g Vale Verde<br><span class="muted">Higiene e Perfumaria</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 36.201,71</td><td class="n">97,7%</td><td class="n">39,5%</td></tr><tr><td>191</td><td>Extrato de Tomate 340g Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 35.252,06</td><td class="n">97,8%</td><td class="n">31,8%</td></tr><tr><td>192</td><td>Absorvente com Abas 8un<br><span class="muted">Higiene e Perfumaria</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 35.057,76</td><td class="n">97,9%</td><td class="n">37,2%</td></tr><tr><td>193</td><td>Desinfetante 2L Vale Verde<br><span class="muted">Limpeza</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 34.591,45</td><td class="n">98,0%</td><td class="n">36,5%</td></tr><tr><td>194</td><td>Pimentão Verde<br><span class="muted">Hortifrúti</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 34.495,13</td><td class="n">98,1%</td><td class="n">38,3%</td></tr><tr><td>195</td><td>Milho Verde Lata 170g Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 33.306,49</td><td class="n">98,1%</td><td class="n">33,0%</td></tr><tr><td>196</td><td>Aveia em Flocos 200g Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 31.804,38</td><td class="n">98,2%</td><td class="n">30,3%</td></tr><tr><td>197</td><td>Cereal Matinal 300g Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 31.559,28</td><td class="n">98,3%</td><td class="n">32,8%</td></tr><tr><td>198</td><td>Água Mineral sem Gás 1,5L Tropical<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 31.490,39</td><td class="n">98,4%</td><td class="n">30,1%</td></tr><tr><td>199</td><td>Esponja Multiuso 3un<br><span class="muted">Limpeza</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 30.649,48</td><td class="n">98,5%</td><td class="n">33,4%</td></tr><tr><td>200</td><td>Água Sanitária 2L Vale Verde<br><span class="muted">Limpeza</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 29.648,12</td><td class="n">98,6%</td><td class="n">37,0%</td></tr><tr><td>201</td><td>Biscoito Cream Cracker 350g Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 28.490,15</td><td class="n">98,7%</td><td class="n">32,0%</td></tr><tr><td>202</td><td>Iogurte Natural 170g Vale Verde<br><span class="muted">Laticínios e Frios</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 28.325,53</td><td class="n">98,8%</td><td class="n">34,8%</td></tr><tr><td>203</td><td>Farofa Pronta 400g Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 28.073,44</td><td class="n">98,8%</td><td class="n">36,5%</td></tr><tr><td>204</td><td>Pilha Alcalina AA 2un<br><span class="muted">Bazar e Pet</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 27.958,81</td><td class="n">98,9%</td><td class="n">36,2%</td></tr><tr><td>205</td><td>Farinha de Trigo 1kg Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 27.428,46</td><td class="n">99,0%</td><td class="n">32,1%</td></tr><tr><td>206</td><td>Água Mineral sem Gás 1,5L Vale Verde<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 26.958,55</td><td class="n">99,1%</td><td class="n">35,4%</td></tr><tr><td>207</td><td>Tempero Completo 300g Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 25.910,69</td><td class="n">99,1%</td><td class="n">32,5%</td></tr><tr><td>208</td><td>Extrato de Tomate 340g Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 24.899,13</td><td class="n">99,2%</td><td class="n">30,3%</td></tr><tr><td>209</td><td>Fubá Mimoso 1kg Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 23.377,15</td><td class="n">99,3%</td><td class="n">32,0%</td></tr><tr><td>210</td><td>Milho Verde Lata 170g Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 22.266,81</td><td class="n">99,3%</td><td class="n">32,9%</td></tr><tr><td>211</td><td>Água Mineral sem Gás 500ml<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 21.708,51</td><td class="n">99,4%</td><td class="n">32,6%</td></tr><tr><td>212</td><td>Extrato de Tomate 340g Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 18.487,42</td><td class="n">99,5%</td><td class="n">34,4%</td></tr><tr><td>213</td><td>Farofa Pronta 400g Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 18.040,78</td><td class="n">99,5%</td><td class="n">32,9%</td></tr><tr><td>214</td><td>Sal Refinado 1kg Bom Grão<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 18.024,40</td><td class="n">99,6%</td><td class="n">30,1%</td></tr><tr><td>215</td><td>Aveia em Flocos 200g Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 16.995,64</td><td class="n">99,6%</td><td class="n">32,9%</td></tr><tr><td>216</td><td>Fubá Mimoso 1kg Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 16.841,30</td><td class="n">99,7%</td><td class="n">27,8%</td></tr><tr><td>217</td><td>Tempero Completo 300g Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 14.775,08</td><td class="n">99,7%</td><td class="n">28,8%</td></tr><tr><td>218</td><td>Fósforo 10 Caixas<br><span class="muted">Bazar e Pet</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 13.724,20</td><td class="n">99,7%</td><td class="n">38,8%</td></tr><tr><td>219</td><td>Aveia em Flocos 200g Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 13.373,86</td><td class="n">99,8%</td><td class="n">35,4%</td></tr><tr><td>220</td><td>Farofa Pronta 400g Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 12.504,08</td><td class="n">99,8%</td><td class="n">33,2%</td></tr><tr><td>221</td><td>Tempero Completo 300g Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 12.348,55</td><td class="n">99,8%</td><td class="n">35,7%</td></tr><tr><td>222</td><td>Fubá Mimoso 1kg Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 12.076,13</td><td class="n">99,9%</td><td class="n">33,6%</td></tr><tr><td>223</td><td>Panetone Frutas 500g<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 11.970,01</td><td class="n">99,9%</td><td class="n">31,0%</td></tr><tr><td>224</td><td>Refresco em Pó 25g<br><span class="muted">Bebidas</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 11.687,08</td><td class="n">99,9%</td><td class="n">31,1%</td></tr><tr><td>225</td><td>Sal Refinado 1kg Tio Nino<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 11.281,96</td><td class="n">100,0%</td><td class="n">32,4%</td></tr><tr><td>226</td><td>Sal Refinado 1kg Vale Verde<br><span class="muted">Mercearia</span></td>
+      <td><span class="etq C">C</span></td><td class="n">R$ 8.255,50</td><td class="n">100,0%</td><td class="n">30,7%</td></tr>
+    </table></div>
+  </div>
+</div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+<script>
+const g = {"x": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226], "y": [2.7, 5.24, 7.52, 9.67, 11.45, 13.18, 14.87, 16.56, 18.24, 19.91, 21.5, 23.05, 24.59, 26.08, 27.55, 29.02, 30.49, 31.94, 33.26, 34.53, 35.78, 36.96, 38.09, 39.23, 40.32, 41.41, 42.49, 43.55, 44.6, 45.62, 46.61, 47.55, 48.38, 49.22, 50.03, 50.82, 51.61, 52.38, 53.14, 53.91, 54.65, 55.38, 56.08, 56.76, 57.44, 58.09, 58.72, 59.35, 59.97, 60.58, 61.19, 61.78, 62.36, 62.93, 63.49, 64.04, 64.59, 65.12, 65.64, 66.16, 66.66, 67.16, 67.66, 68.13, 68.59, 69.04, 69.49, 69.93, 70.37, 70.79, 71.22, 71.64, 72.06, 72.47, 72.87, 73.27, 73.65, 74.03, 74.38, 74.73, 75.08, 75.42, 75.76, 76.09, 76.43, 76.76, 77.09, 77.42, 77.74, 78.07, 78.4, 78.72, 79.04, 79.35, 79.66, 79.97, 80.27, 80.56, 80.85, 81.14, 81.42, 81.7, 81.97, 82.24, 82.52, 82.79, 83.05, 83.3, 83.55, 83.8, 84.05, 84.3, 84.54, 84.78, 85.02, 85.25, 85.49, 85.73, 85.96, 86.19, 86.42, 86.65, 86.88, 87.1, 87.33, 87.55, 87.77, 87.99, 88.21, 88.42, 88.64, 88.85, 89.06, 89.27, 89.47, 89.67, 89.87, 90.06, 90.25, 90.44, 90.63, 90.82, 91.0, 91.18, 91.36, 91.54, 91.71, 91.89, 92.06, 92.23, 92.4, 92.57, 92.74, 92.9, 93.07, 93.23, 93.4, 93.55, 93.71, 93.86, 94.02, 94.17, 94.32, 94.46, 94.6, 94.74, 94.88, 95.02, 95.15, 95.28, 95.41, 95.54, 95.67, 95.8, 95.93, 96.06, 96.18, 96.3, 96.42, 96.54, 96.66, 96.78, 96.89, 97.0, 97.12, 97.23, 97.34, 97.45, 97.55, 97.66, 97.76, 97.86, 97.95, 98.05, 98.15, 98.24, 98.33, 98.42, 98.5, 98.59, 98.67, 98.75, 98.83, 98.91, 98.99, 99.06, 99.14, 99.21, 99.28, 99.34, 99.4, 99.45, 99.51, 99.56, 99.6, 99.65, 99.69, 99.73, 99.77, 99.81, 99.84, 99.88, 99.91, 99.94, 99.98, 100.0]};
+VV.grafico('gAbc', g.x, [{nome: '% acumulado', dados: g.y, slot: 0, preencher: true, fundo: 'rgba(42,120,214,.12)'}], {tipo: 'line', fmt: 'pct', legenda: false});
+</script>
+</body>
+</html>

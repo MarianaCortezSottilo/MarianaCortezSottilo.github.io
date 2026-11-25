@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cupons · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="rede";window.VV_KEY="/vendas/cupons";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="ativo">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" selected>Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      
+    </div>
+    
+      
+    
+    
+<div class="topo">
+  <div><h1>Cupons fiscais</h1><div class="sub">Rede (todas as lojas) · 31/10/2026 · 7.773 cupons · R$ 982.075,78 · ticket R$ 126,34<br>
+  Cupons individuais disponíveis de 01/05/2026 a 31/10/2026 (os 24 meses completos estão nos resumos diários).</div></div>
+  <form class="filtros"><label>Dia</label><input type="date" name="dia" value="2026-10-31"><button>Ver</button></form>
+</div>
+<div class="cartao">
+  <div class="tabela-wrap"><table>
+    <tr><th>Cupom</th><th>Loja</th><th>Hora</th><th>PDV</th><th>Operador</th><th>Cliente</th><th>Pagamento</th><th class="n">Itens</th><th class="n">Desconto</th><th class="n">Total</th><th class="n">Margem</th><th>Status</th></tr>
+    <tr><td><a href="vendas_cupom_1052457.html">1052457</a></td><td>VV10</td><td>21:58:10</td><td>3</td><td>José Vieira Alves</td><td>Jéssica Nascimento Alves</td>
+      <td>Dinheiro</td><td class="n">1</td><td class="n">R$ 0,09</td><td class="n">R$ 10,50</td>
+      <td class="n">36,6%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="vendas_cupom_1052456.html">1052456</a></td><td>VV10</td><td>21:57:29</td><td>1</td><td>Rita Ferreira Pereira</td><td>Luana Vieira Santana</td>
+      <td>Credito</td><td class="n">5</td><td class="n">R$ 0,00</td><td class="n">R$ 62,53</td>
+      <td class="n">35,8%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="vendas_cupom_1052455.html">1052455</a></td><td>VV10</td><td>21:55:13</td><td>3</td><td>José Vieira Alves</td><td>–</td>
+      <td>Pix</td><td class="n">2</td><td class="n">R$ 0,00</td><td class="n">R$ 85,52</td>
+      <td class="n">33,3%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="vendas_cupom_1052454.html">1052454</a></td><td>VV10</td><td>21:49:57</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Debito</td><td class="n">5</td><td class="n">R$ 0,00</td><td class="n">R$ 152,44</td>
+      <td class="n">39,2%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="vendas_cupom_1052453.html">1052453</a></td><td>VV10</td><td>21:48:53</td><td>1</td><td>Rita Ferreira Pereira</td><td>Fernando Freitas Nascimento</td>
+      <td>Credito</td><td class="n">8</td><td class="n">R$ 0,00</td><td class="n">R$ 147,31</td>
+      <td class="n">37,2%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="vendas_cupom_1052452.html">1052452</a></td><td>VV10</td><td>21:37:09</td><td>3</td><td>José Vieira Alves</td><td>Simone Lopes Costa</td>
+      <td>Credito</td><td class="n">7</td><td class="n">R$ 0,00</td><td class="n">R$ 211,80</td>
+      <td class="n">34,3%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="vendas_cupom_1052451.html">1052451</a></td><td>VV10</td><td>21:36:00</td><td>3</td><td>José Vieira Alves</td><td>–</td>
+      <td>Credito</td><td class="n">2</td><td class="n">R$ 0,00</td><td class="n">R$ 96,86</td>
+      <td class="n">33,4%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="vendas_cupom_1052450.html">1052450</a></td><td>VV10</td><td>21:28:20</td><td>3</td><td>José Vieira Alves</td><td>Guilherme Campos Barbosa</td>
+      <td>Debito</td><td class="n">10</td><td class="n">R$ 0,00</td><td class="n">R$ 223,97</td>
+      <td class="n">34,1%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052449</a></td><td>VV10</td><td>21:19:55</td><td>3</td><td>José Vieira Alves</td><td>–</td>
+      <td>Credito</td><td class="n">12</td><td class="n">R$ 0,00</td><td class="n">R$ 218,18</td>
+      <td class="n">34,3%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052448</a></td><td>VV10</td><td>21:13:14</td><td>2</td><td>Júlia Moraes Pinto</td><td>Leandro Pereira Cardoso</td>
+      <td>Debito</td><td class="n">2</td><td class="n">R$ 0,00</td><td class="n">R$ 36,47</td>
+      <td class="n">47,4%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052447</a></td><td>VV10</td><td>20:58:50</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Credito</td><td class="n">4</td><td class="n">R$ 0,00</td><td class="n">R$ 126,44</td>
+      <td class="n">37,3%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052446</a></td><td>VV10</td><td>20:58:02</td><td>2</td><td>Júlia Moraes Pinto</td><td>Tiago Almeida Machado</td>
+      <td>Pix</td><td class="n">6</td><td class="n">R$ 0,00</td><td class="n">R$ 180,32</td>
+      <td class="n">33,7%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052445</a></td><td>VV10</td><td>20:57:10</td><td>2</td><td>Júlia Moraes Pinto</td><td>Priscila Costa Cardoso</td>
+      <td>Pix</td><td class="n">21</td><td class="n">R$ 0,00</td><td class="n">R$ 450,47</td>
+      <td class="n">36,9%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052444</a></td><td>VV10</td><td>20:56:37</td><td>2</td><td>Júlia Moraes Pinto</td><td>–</td>
+      <td>Credito</td><td class="n">10</td><td class="n">R$ 0,00</td><td class="n">R$ 152,49</td>
+      <td class="n">36,2%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052443</a></td><td>VV10</td><td>20:56:06</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Credito</td><td class="n">10</td><td class="n">R$ 0,00</td><td class="n">R$ 158,97</td>
+      <td class="n">41,2%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052442</a></td><td>VV10</td><td>20:53:58</td><td>1</td><td>Rita Ferreira Pereira</td><td>Francisca Souza Alves</td>
+      <td>Pix</td><td class="n">3</td><td class="n">R$ 0,00</td><td class="n">R$ 21,61</td>
+      <td class="n">41,7%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052441</a></td><td>VV10</td><td>20:53:24</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Pix</td><td class="n">4</td><td class="n">R$ 0,00</td><td class="n">R$ 56,02</td>
+      <td class="n">40,3%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052440</a></td><td>VV10</td><td>20:50:12</td><td>2</td><td>Júlia Moraes Pinto</td><td>–</td>
+      <td>Pix</td><td class="n">10</td><td class="n">R$ 0,00</td><td class="n">R$ 166,02</td>
+      <td class="n">39,5%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052439</a></td><td>VV10</td><td>20:44:30</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Credito</td><td class="n">4</td><td class="n">R$ 0,00</td><td class="n">R$ 40,05</td>
+      <td class="n">33,5%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052438</a></td><td>VV10</td><td>20:42:40</td><td>3</td><td>José Vieira Alves</td><td>Vinícius Gomes Nunes</td>
+      <td>Credito</td><td class="n">2</td><td class="n">R$ 0,00</td><td class="n">R$ 50,23</td>
+      <td class="n">31,9%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052437</a></td><td>VV10</td><td>20:41:30</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Credito</td><td class="n">5</td><td class="n">R$ 0,00</td><td class="n">R$ 67,34</td>
+      <td class="n">38,7%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052436</a></td><td>VV10</td><td>20:41:12</td><td>3</td><td>José Vieira Alves</td><td>Bruna Nascimento Souza</td>
+      <td>Debito</td><td class="n">8</td><td class="n">R$ 0,00</td><td class="n">R$ 106,20</td>
+      <td class="n">40,2%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052435</a></td><td>VV10</td><td>20:39:10</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Pix</td><td class="n">1</td><td class="n">R$ 0,00</td><td class="n">R$ 14,98</td>
+      <td class="n">40,5%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052434</a></td><td>VV10</td><td>20:36:34</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Credito</td><td class="n">10</td><td class="n">R$ 0,00</td><td class="n">R$ 162,46</td>
+      <td class="n">42,4%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052433</a></td><td>VV10</td><td>20:31:49</td><td>2</td><td>Júlia Moraes Pinto</td><td>–</td>
+      <td>Dinheiro</td><td class="n">2</td><td class="n">R$ 0,09</td><td class="n">R$ 16,60</td>
+      <td class="n">32,6%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052432</a></td><td>VV10</td><td>20:31:46</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Pix</td><td class="n">9</td><td class="n">R$ 0,00</td><td class="n">R$ 198,53</td>
+      <td class="n">35,1%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052431</a></td><td>VV10</td><td>20:30:34</td><td>3</td><td>José Vieira Alves</td><td>Guilherme Carvalho Cavalcanti</td>
+      <td>Dinheiro</td><td class="n">10</td><td class="n">R$ 0,02</td><td class="n">R$ 232,30</td>
+      <td class="n">33,2%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052430</a></td><td>VV10</td><td>20:30:10</td><td>3</td><td>José Vieira Alves</td><td>Luis Gomes Silva</td>
+      <td>Credito</td><td class="n">10</td><td class="n">R$ 0,00</td><td class="n">R$ 230,24</td>
+      <td class="n">34,1%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052429</a></td><td>VV10</td><td>20:29:36</td><td>1</td><td>Rita Ferreira Pereira</td><td>Beatriz Nascimento Pinto</td>
+      <td>Dinheiro</td><td class="n">2</td><td class="n">R$ 0,07</td><td class="n">R$ 58,80</td>
+      <td class="n">35,7%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052428</a></td><td>VV10</td><td>20:27:03</td><td>2</td><td>Júlia Moraes Pinto</td><td>–</td>
+      <td>Pix</td><td class="n">19</td><td class="n">R$ 0,00</td><td class="n">R$ 460,80</td>
+      <td class="n">33,7%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052427</a></td><td>VV10</td><td>20:26:16</td><td>3</td><td>José Vieira Alves</td><td>–</td>
+      <td>Debito</td><td class="n">8</td><td class="n">R$ 0,00</td><td class="n">R$ 209,91</td>
+      <td class="n">35,1%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052426</a></td><td>VV10</td><td>20:25:56</td><td>2</td><td>Júlia Moraes Pinto</td><td>–</td>
+      <td>Credito</td><td class="n">12</td><td class="n">R$ 0,00</td><td class="n">R$ 206,71</td>
+      <td class="n">37,6%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052425</a></td><td>VV10</td><td>20:21:58</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Pix</td><td class="n">5</td><td class="n">R$ 0,00</td><td class="n">R$ 109,49</td>
+      <td class="n">32,2%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052424</a></td><td>VV10</td><td>20:21:06</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Pix</td><td class="n">7</td><td class="n">R$ 0,00</td><td class="n">R$ 154,59</td>
+      <td class="n">41,3%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052423</a></td><td>VV10</td><td>20:16:30</td><td>3</td><td>José Vieira Alves</td><td>–</td>
+      <td>Credito</td><td class="n">14</td><td class="n">R$ 0,00</td><td class="n">R$ 266,32</td>
+      <td class="n">36,8%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052422</a></td><td>VV10</td><td>20:11:50</td><td>2</td><td>Júlia Moraes Pinto</td><td>–</td>
+      <td>Credito</td><td class="n">15</td><td class="n">R$ 0,00</td><td class="n">R$ 250,57</td>
+      <td class="n">39,9%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052421</a></td><td>VV10</td><td>20:11:11</td><td>2</td><td>Júlia Moraes Pinto</td><td>Vera Moraes Martins</td>
+      <td>Pix</td><td class="n">3</td><td class="n">R$ 0,00</td><td class="n">R$ 184,36</td>
+      <td class="n">37,1%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052420</a></td><td>VV10</td><td>20:09:14</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Debito</td><td class="n">8</td><td class="n">R$ 0,00</td><td class="n">R$ 141,29</td>
+      <td class="n">40,0%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052419</a></td><td>VV10</td><td>20:08:14</td><td>2</td><td>Júlia Moraes Pinto</td><td>–</td>
+      <td>Credito</td><td class="n">8</td><td class="n">R$ 0,00</td><td class="n">R$ 198,98</td>
+      <td class="n">34,5%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052418</a></td><td>VV10</td><td>20:07:43</td><td>1</td><td>Rita Ferreira Pereira</td><td>Francisca Ribeiro Nunes</td>
+      <td>Pix</td><td class="n">17</td><td class="n">R$ 0,00</td><td class="n">R$ 186,34</td>
+      <td class="n">35,5%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052417</a></td><td>VV10</td><td>20:06:58</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Pix</td><td class="n">3</td><td class="n">R$ 0,00</td><td class="n">R$ 118,03</td>
+      <td class="n">34,8%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052416</a></td><td>VV10</td><td>20:06:31</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Credito</td><td class="n">18</td><td class="n">R$ 0,00</td><td class="n">R$ 198,96</td>
+      <td class="n">40,1%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052415</a></td><td>VV10</td><td>20:05:50</td><td>3</td><td>José Vieira Alves</td><td>–</td>
+      <td>Credito</td><td class="n">5</td><td class="n">R$ 0,00</td><td class="n">R$ 90,73</td>
+      <td class="n">48,5%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052414</a></td><td>VV10</td><td>20:03:47</td><td>2</td><td>Júlia Moraes Pinto</td><td>–</td>
+      <td>Credito</td><td class="n">1</td><td class="n">R$ 0,00</td><td class="n">R$ 25,48</td>
+      <td class="n">33,4%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052413</a></td><td>VV10</td><td>20:03:27</td><td>3</td><td>José Vieira Alves</td><td>–</td>
+      <td>Pix</td><td class="n">5</td><td class="n">R$ 0,00</td><td class="n">R$ 47,49</td>
+      <td class="n">35,4%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052412</a></td><td>VV10</td><td>19:59:56</td><td>3</td><td>José Vieira Alves</td><td>Isabela Campos Gomes</td>
+      <td>Debito</td><td class="n">5</td><td class="n">R$ 0,00</td><td class="n">R$ 51,80</td>
+      <td class="n">42,7%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052411</a></td><td>VV10</td><td>19:57:45</td><td>3</td><td>José Vieira Alves</td><td>–</td>
+      <td>Credito</td><td class="n">13</td><td class="n">R$ 0,00</td><td class="n">R$ 341,80</td>
+      <td class="n">37,1%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052410</a></td><td>VV10</td><td>19:57:18</td><td>2</td><td>Júlia Moraes Pinto</td><td>–</td>
+      <td>Dinheiro</td><td class="n">7</td><td class="n">R$ 0,02</td><td class="n">R$ 113,20</td>
+      <td class="n">36,1%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052409</a></td><td>VV10</td><td>19:57:08</td><td>2</td><td>Júlia Moraes Pinto</td><td>–</td>
+      <td>Credito</td><td class="n">17</td><td class="n">R$ 0,00</td><td class="n">R$ 281,91</td>
+      <td class="n">38,1%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052408</a></td><td>VV10</td><td>19:55:43</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Voucher</td><td class="n">11</td><td class="n">R$ 0,00</td><td class="n">R$ 215,79</td>
+      <td class="n">38,1%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052407</a></td><td>VV10</td><td>19:53:18</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Debito</td><td class="n">4</td><td class="n">R$ 0,00</td><td class="n">R$ 125,80</td>
+      <td class="n">29,2%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052406</a></td><td>VV10</td><td>19:52:42</td><td>3</td><td>José Vieira Alves</td><td>–</td>
+      <td>Dinheiro</td><td class="n">9</td><td class="n">R$ 0,02</td><td class="n">R$ 104,10</td>
+      <td class="n">36,5%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052405</a></td><td>VV10</td><td>19:49:25</td><td>3</td><td>José Vieira Alves</td><td>Jéssica Vieira Vieira</td>
+      <td>Pix</td><td class="n">23</td><td class="n">R$ 0,00</td><td class="n">R$ 377,15</td>
+      <td class="n">35,3%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052404</a></td><td>VV10</td><td>19:47:34</td><td>2</td><td>Júlia Moraes Pinto</td><td>Priscila Lopes Prado</td>
+      <td>Credito</td><td class="n">8</td><td class="n">R$ 0,00</td><td class="n">R$ 154,72</td>
+      <td class="n">38,1%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052403</a></td><td>VV10</td><td>19:43:14</td><td>1</td><td>Rita Ferreira Pereira</td><td>Larissa Lopes Silva</td>
+      <td>Credito</td><td class="n">1</td><td class="n">R$ 0,00</td><td class="n">R$ 22,77</td>
+      <td class="n">31,9%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052402</a></td><td>VV10</td><td>19:41:31</td><td>1</td><td>Rita Ferreira Pereira</td><td>Renata Carvalho Freitas</td>
+      <td>Debito</td><td class="n">6</td><td class="n">R$ 0,00</td><td class="n">R$ 139,11</td>
+      <td class="n">36,3%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052401</a></td><td>VV10</td><td>19:39:56</td><td>3</td><td>José Vieira Alves</td><td>–</td>
+      <td>Pix</td><td class="n">14</td><td class="n">R$ 0,00</td><td class="n">R$ 271,61</td>
+      <td class="n">36,9%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052400</a></td><td>VV10</td><td>19:38:10</td><td>2</td><td>Júlia Moraes Pinto</td><td>–</td>
+      <td>Credito</td><td class="n">14</td><td class="n">R$ 0,00</td><td class="n">R$ 296,69</td>
+      <td class="n">34,1%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052399</a></td><td>VV10</td><td>19:36:33</td><td>3</td><td>José Vieira Alves</td><td>Maria Ferreira Nunes</td>
+      <td>Credito</td><td class="n">12</td><td class="n">R$ 0,00</td><td class="n">R$ 231,88</td>
+      <td class="n">41,5%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052398</a></td><td>VV10</td><td>19:34:37</td><td>3</td><td>José Vieira Alves</td><td>–</td>
+      <td>Debito</td><td class="n">7</td><td class="n">R$ 0,00</td><td class="n">R$ 305,51</td>
+      <td class="n">33,4%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052397</a></td><td>VV10</td><td>19:33:44</td><td>3</td><td>José Vieira Alves</td><td>–</td>
+      <td>Credito</td><td class="n">14</td><td class="n">R$ 0,00</td><td class="n">R$ 204,79</td>
+      <td class="n">37,2%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052396</a></td><td>VV10</td><td>19:33:33</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Credito</td><td class="n">24</td><td class="n">R$ 0,00</td><td class="n">R$ 579,89</td>
+      <td class="n">35,2%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052395</a></td><td>VV10</td><td>19:31:29</td><td>3</td><td>José Vieira Alves</td><td>–</td>
+      <td>Debito</td><td class="n">3</td><td class="n">R$ 0,00</td><td class="n">R$ 43,86</td>
+      <td class="n">35,2%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052394</a></td><td>VV10</td><td>19:28:50</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Credito</td><td class="n">4</td><td class="n">R$ 0,00</td><td class="n">R$ 79,69</td>
+      <td class="n">40,1%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052393</a></td><td>VV10</td><td>19:28:31</td><td>1</td><td>Rita Ferreira Pereira</td><td>Luana Vieira Santana</td>
+      <td>Credito</td><td class="n">4</td><td class="n">R$ 0,00</td><td class="n">R$ 89,52</td>
+      <td class="n">37,5%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052392</a></td><td>VV10</td><td>19:26:30</td><td>3</td><td>José Vieira Alves</td><td>–</td>
+      <td>Credito</td><td class="n">6</td><td class="n">R$ 0,00</td><td class="n">R$ 63,96</td>
+      <td class="n">44,9%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052391</a></td><td>VV10</td><td>19:24:39</td><td>3</td><td>José Vieira Alves</td><td>–</td>
+      <td>Debito</td><td class="n">5</td><td class="n">R$ 0,00</td><td class="n">R$ 154,52</td>
+      <td class="n">35,0%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052390</a></td><td>VV10</td><td>19:20:08</td><td>3</td><td>José Vieira Alves</td><td>–</td>
+      <td>Debito</td><td class="n">4</td><td class="n">R$ 0,00</td><td class="n">R$ 33,03</td>
+      <td class="n">30,8%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052389</a></td><td>VV10</td><td>19:18:00</td><td>2</td><td>Júlia Moraes Pinto</td><td>Fábio Martins Cavalcanti</td>
+      <td>Pix</td><td class="n">21</td><td class="n">R$ 0,00</td><td class="n">R$ 441,55</td>
+      <td class="n">35,5%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052388</a></td><td>VV10</td><td>19:17:58</td><td>2</td><td>Júlia Moraes Pinto</td><td>Sandra Martins Rodrigues</td>
+      <td>Credito</td><td class="n">12</td><td class="n">R$ 0,00</td><td class="n">R$ 251,16</td>
+      <td class="n">37,7%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052387</a></td><td>VV10</td><td>19:17:50</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Debito</td><td class="n">1</td><td class="n">R$ 0,00</td><td class="n">R$ 13,19</td>
+      <td class="n">50,8%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052386</a></td><td>VV10</td><td>19:17:46</td><td>1</td><td>Rita Ferreira Pereira</td><td>Vinícius Machado Souza</td>
+      <td>Pix</td><td class="n">11</td><td class="n">R$ 0,00</td><td class="n">R$ 147,64</td>
+      <td class="n">38,9%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052385</a></td><td>VV10</td><td>19:16:56</td><td>2</td><td>Júlia Moraes Pinto</td><td>–</td>
+      <td>Dinheiro</td><td class="n">12</td><td class="n">R$ 0,01</td><td class="n">R$ 178,40</td>
+      <td class="n">32,6%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052384</a></td><td>VV10</td><td>19:16:45</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Credito</td><td class="n">11</td><td class="n">R$ 0,00</td><td class="n">R$ 212,71</td>
+      <td class="n">35,9%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052383</a></td><td>VV10</td><td>19:16:45</td><td>2</td><td>Júlia Moraes Pinto</td><td>Isabela Cardoso Costa</td>
+      <td>Credito</td><td class="n">2</td><td class="n">R$ 0,00</td><td class="n">R$ 14,88</td>
+      <td class="n">37,2%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052382</a></td><td>VV10</td><td>19:16:11</td><td>2</td><td>Júlia Moraes Pinto</td><td>–</td>
+      <td>Debito</td><td class="n">16</td><td class="n">R$ 0,00</td><td class="n">R$ 400,74</td>
+      <td class="n">37,7%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052381</a></td><td>VV10</td><td>19:16:04</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Debito</td><td class="n">10</td><td class="n">R$ 0,00</td><td class="n">R$ 385,60</td>
+      <td class="n">34,9%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052380</a></td><td>VV10</td><td>19:16:02</td><td>1</td><td>Rita Ferreira Pereira</td><td>Vera Cavalcanti Marques</td>
+      <td>Debito</td><td class="n">3</td><td class="n">R$ 0,00</td><td class="n">R$ 15,50</td>
+      <td class="n">40,8%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052379</a></td><td>VV10</td><td>19:15:52</td><td>3</td><td>José Vieira Alves</td><td>–</td>
+      <td>Dinheiro</td><td class="n">14</td><td class="n">R$ 0,08</td><td class="n">R$ 336,30</td>
+      <td class="n">37,5%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052378</a></td><td>VV10</td><td>19:15:18</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Pix</td><td class="n">1</td><td class="n">R$ 0,00</td><td class="n">R$ 47,34</td>
+      <td class="n">36,9%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052377</a></td><td>VV10</td><td>19:14:52</td><td>3</td><td>José Vieira Alves</td><td>Roberta Ferreira Oliveira</td>
+      <td>Dinheiro</td><td class="n">2</td><td class="n">R$ 0,09</td><td class="n">R$ 13,60</td>
+      <td class="n">50,3%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052376</a></td><td>VV10</td><td>19:13:13</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Credito</td><td class="n">18</td><td class="n">R$ 0,00</td><td class="n">R$ 407,58</td>
+      <td class="n">35,0%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052375</a></td><td>VV10</td><td>19:12:32</td><td>3</td><td>José Vieira Alves</td><td>–</td>
+      <td>Dinheiro</td><td class="n">4</td><td class="n">R$ 0,06</td><td class="n">R$ 80,10</td>
+      <td class="n">36,4%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052374</a></td><td>VV10</td><td>19:12:14</td><td>2</td><td>Júlia Moraes Pinto</td><td>Camila Moreira Teixeira</td>
+      <td>Credito</td><td class="n">1</td><td class="n">R$ 0,00</td><td class="n">R$ 6,79</td>
+      <td class="n">27,7%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052373</a></td><td>VV10</td><td>19:11:45</td><td>3</td><td>José Vieira Alves</td><td>–</td>
+      <td>Dinheiro</td><td class="n">2</td><td class="n">R$ 0,03</td><td class="n">R$ 14,70</td>
+      <td class="n">33,7%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052372</a></td><td>VV10</td><td>19:11:22</td><td>2</td><td>Júlia Moraes Pinto</td><td>–</td>
+      <td>Debito</td><td class="n">1</td><td class="n">R$ 0,00</td><td class="n">R$ 10,99</td>
+      <td class="n">40,0%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052371</a></td><td>VV10</td><td>19:10:54</td><td>3</td><td>José Vieira Alves</td><td>Leonardo Prado Rocha</td>
+      <td>Credito</td><td class="n">10</td><td class="n">R$ 0,00</td><td class="n">R$ 196,36</td>
+      <td class="n">38,2%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052370</a></td><td>VV10</td><td>19:08:08</td><td>2</td><td>Júlia Moraes Pinto</td><td>–</td>
+      <td>Dinheiro</td><td class="n">26</td><td class="n">R$ 0,01</td><td class="n">R$ 363,30</td>
+      <td class="n">36,5%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052369</a></td><td>VV10</td><td>19:06:38</td><td>2</td><td>Júlia Moraes Pinto</td><td>Vera Cavalcanti Marques</td>
+      <td>Debito</td><td class="n">1</td><td class="n">R$ 0,00</td><td class="n">R$ 64,37</td>
+      <td class="n">35,0%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052368</a></td><td>VV10</td><td>19:06:34</td><td>2</td><td>Júlia Moraes Pinto</td><td>–</td>
+      <td>Credito</td><td class="n">10</td><td class="n">R$ 0,00</td><td class="n">R$ 208,33</td>
+      <td class="n">37,5%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052367</a></td><td>VV10</td><td>19:05:43</td><td>2</td><td>Júlia Moraes Pinto</td><td>Raquel Freitas Alves</td>
+      <td>Debito</td><td class="n">3</td><td class="n">R$ 0,00</td><td class="n">R$ 76,01</td>
+      <td class="n">36,7%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052366</a></td><td>VV10</td><td>19:05:26</td><td>1</td><td>Rita Ferreira Pereira</td><td>Bruna Nascimento Souza</td>
+      <td>Pix</td><td class="n">3</td><td class="n">R$ 0,00</td><td class="n">R$ 46,29</td>
+      <td class="n">35,2%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052365</a></td><td>VV10</td><td>19:04:17</td><td>2</td><td>Júlia Moraes Pinto</td><td>Antônia Martins Mendes</td>
+      <td>Dinheiro</td><td class="n">1</td><td class="n">R$ 0,01</td><td class="n">R$ 8,60</td>
+      <td class="n">56,4%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052364</a></td><td>VV10</td><td>19:02:07</td><td>3</td><td>José Vieira Alves</td><td>Fábio Gonçalves Andrade</td>
+      <td>Debito</td><td class="n">2</td><td class="n">R$ 0,00</td><td class="n">R$ 18,77</td>
+      <td class="n">41,4%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052363</a></td><td>VV10</td><td>19:00:30</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Dinheiro</td><td class="n">2</td><td class="n">R$ 0,07</td><td class="n">R$ 14,10</td>
+      <td class="n">35,8%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052362</a></td><td>VV10</td><td>18:58:49</td><td>3</td><td>José Vieira Alves</td><td>–</td>
+      <td>Dinheiro</td><td class="n">3</td><td class="n">R$ 0,06</td><td class="n">R$ 24,60</td>
+      <td class="n">33,9%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052361</a></td><td>VV10</td><td>18:58:17</td><td>1</td><td>Rita Ferreira Pereira</td><td>Raimundo Martins Nascimento</td>
+      <td>Pix</td><td class="n">3</td><td class="n">R$ 0,00</td><td class="n">R$ 46,58</td>
+      <td class="n">38,0%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052360</a></td><td>VV10</td><td>18:56:31</td><td>1</td><td>Rita Ferreira Pereira</td><td>–</td>
+      <td>Debito</td><td class="n">1</td><td class="n">R$ 0,00</td><td class="n">R$ 30,87</td>
+      <td class="n">32,4%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052359</a></td><td>VV10</td><td>18:54:03</td><td>3</td><td>José Vieira Alves</td><td>–</td>
+      <td>Pix</td><td class="n">1</td><td class="n">R$ 0,00</td><td class="n">R$ 10,99</td>
+      <td class="n">40,0%</td><td><span class="etq ok">Concluida</span></td></tr><tr><td><a href="#" data-off="1">1052358</a></td><td>VV10</td><td>18:54:00</td><td>2</td><td>Júlia Moraes Pinto</td><td>–</td>
+      <td>Credito</td><td class="n">8</td><td class="n">R$ 0,00</td><td class="n">R$ 81,10</td>
+      <td class="n">35,7%</td><td><span class="etq ok">Concluida</span></td></tr>
+  </table></div>
+  <div class="paginacao">Página 1 de 78
+    
+    <a class="btn btn-peq" href="?dia=2026-10-31&pag=2">próxima ›</a></div>
+</div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+
+</body>
+</html>

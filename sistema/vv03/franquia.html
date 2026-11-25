@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Franqueadora · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="vv03";window.VV_KEY="/franquia";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="ativo">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" selected>VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      <a href="unidades_7.html">ficha da unidade</a>
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Franqueadora e franqueados</h1>
+  <div class="sub">Royalties de 1,5% e fundo de marketing de 0,5% sobre a receita bruta das lojas franqueadas · taxa inicial R$ 180 mil · transferência dos CDs a custo + 1%. Últimos 12 meses: nov/25 a out/26.</div></div>
+  <div class="filtros">
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a><a class="btn" href="financeiro_dre.html">DRE da franqueadora</a><a class="btn" href="financeiro_dre.html">DRE dos franqueados</a></div></div>
+<div class="grade g4">
+  <div class="cartao kpi">
+  <div class="rot">Resultado da franqueadora (LAIR)</div>
+  <div class="val">R$ 1,88 mi</div>
+  <div class="det">lojas próprias + CDs + sede</div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Lojas próprias</div>
+  <div class="val">R$ 7,75 mi</div>
+  <div class="det">EBITDA R$ 8,14 mi · receita R$ 98,13 mi</div>
+</div><div class="cartao kpi">
+  <div class="rot">Centros de distribuição</div>
+  <div class="val">-R$ 2,32 mi</div>
+  <div class="det">EBITDA -R$ 1,94 mi · receita R$ 6,20 mi</div>
+</div><div class="cartao kpi">
+  <div class="rot">Sede (royalties e fundo)</div>
+  <div class="val">-R$ 3,55 mi</div>
+  <div class="det">EBITDA -R$ 3,46 mi · receita R$ 2,70 mi</div>
+</div>
+</div>
+<div class="grade g2 mt">
+  <div class="cartao col2"><h3>Receitas de franquia por mês</h3><div class="nota">Royalties e fundo crescem com as vendas dos franqueados; taxas iniciais entram na assinatura de novos contratos</div>
+    <div class="grafico"><canvas id="gRf"></canvas></div></div>
+</div>
+<div class="cartao mt"><h3>Franqueados</h3><div class="tabela-wrap"><table>
+  <tr><th>Franqueado</th><th>Loja</th><th>Contrato</th><th>Inauguração</th><th class="n">Faturamento 12m</th><th class="n">Cresc.</th><th class="n">Royalties 12m</th><th class="n">Fundo 12m</th>
+      <th class="n">Em aberto</th><th class="n">Compras no CD</th><th class="n">Perdas</th><th class="n">LAIR do franqueado</th></tr>
+  <tr><td><b>Grupo Tijuca</b><br><span class="muted">Renato Albuquerque Siqueira</span></td><td><a href="unidades_7.html">VV03</a> Rio de Janeiro</td>
+    <td>15/01/2021</td><td>01/05/2021</td><td class="n">R$ 29,51 mi</td><td class="n">+8,1%</td>
+    <td class="n">R$ 443 mil</td><td class="n">R$ 148 mil</td><td class="n">R$ 53 mil</td><td class="n">R$ 11,55 mi</td><td class="n">1,83%</td>
+    <td class="n ">R$ 2,15 mi (7,29%)</td></tr><tr><td><b>Horizonte Varejo</b><br><span class="muted">Cláudia Rezende Pacheco</span></td><td><a href="unidades_8.html">VV04</a> Belo Horizonte</td>
+    <td>10/06/2021</td><td>01/11/2021</td><td class="n">R$ 23,64 mi</td><td class="n">+7,1%</td>
+    <td class="n">R$ 355 mil</td><td class="n">R$ 118 mil</td><td class="n">R$ 43 mil</td><td class="n">R$ 9,51 mi</td><td class="n">1,90%</td>
+    <td class="n ">R$ 1,04 mi (4,38%)</td></tr><tr><td><b>Pinhais Alimentos</b><br><span class="muted">Marcos Wiedmann Kowalski</span></td><td><a href="unidades_9.html">VV05</a> Curitiba</td>
+    <td>01/12/2021</td><td>01/04/2022</td><td class="n">R$ 22,79 mi</td><td class="n">+7,9%</td>
+    <td class="n">R$ 342 mil</td><td class="n">R$ 114 mil</td><td class="n">R$ 41 mil</td><td class="n">R$ 9,11 mi</td><td class="n">1,84%</td>
+    <td class="n ">R$ 858 mil (3,76%)</td></tr><tr><td><b>Guaíba Supermercados</b><br><span class="muted">Eduardo Bertolini Fontana</span></td><td><a href="#" data-off="1">VV06</a> Porto Alegre</td>
+    <td>20/04/2025</td><td>01/09/2025</td><td class="n">R$ 18,68 mi</td><td class="n">nova</td>
+    <td class="n">R$ 280 mil</td><td class="n">R$ 93 mil</td><td class="n">R$ 35 mil</td><td class="n">R$ 7,43 mi</td><td class="n">1,88%</td>
+    <td class="n ">R$ 313 mil (1,68%)</td></tr><tr><td><b>Itapuã Varejo</b><br><span class="muted">Juliana Matos Conceição</span></td><td><a href="unidades_12.html">VV08</a> Salvador</td>
+    <td>05/05/2022</td><td>01/10/2022</td><td class="n">R$ 22,44 mi</td><td class="n">+8,8%</td>
+    <td class="n">R$ 337 mil</td><td class="n">R$ 112 mil</td><td class="n">R$ 40 mil</td><td class="n">R$ 9,17 mi</td><td class="n">1,94%</td>
+    <td class="n ">R$ 681 mil (3,04%)</td></tr><tr><td><b>Marajó Alimentos</b><br><span class="muted">Paulo Sérgio Barbalho Lobato</span></td><td><a href="#" data-off="1">VV10</a> Belém</td>
+    <td>25/11/2025</td><td>01/04/2026</td><td class="n">R$ 8,98 mi</td><td class="n">nova</td>
+    <td class="n">R$ 135 mil</td><td class="n">R$ 45 mil</td><td class="n">R$ 34 mil</td><td class="n">R$ 3,43 mi</td><td class="n">1,92%</td>
+    <td class="n ">R$ 190 mil (2,11%)</td></tr>
+</table></div></div>
+<div class="grade g2 mt">
+  <div class="cartao"><h3>Lojas próprias × franqueadas</h3><table>
+    <tr><th>Indicador</th><th class="n">Franqueadas</th><th class="n">Próprias</th></tr>
+    
+    <tr><td>Lojas</td><td class="n">6</td><td class="n">4</td></tr>
+    <tr><td>Faturamento 12m</td><td class="n">R$ 126,04 mi</td><td class="n">R$ 98,12 mi</td></tr>
+    <tr><td>Faturamento por m²</td><td class="n">R$ 16.158,41</td><td class="n">R$ 17.521,78</td></tr>
+    <tr><td>Ticket médio</td><td class="n">R$ 111,93</td><td class="n">R$ 111,48</td></tr>
+    <tr><td>Margem bruta</td><td class="n">34,06%</td><td class="n">33,72%</td></tr>
+    <tr><td>Perdas / faturamento</td><td class="n">1,88%</td><td class="n">1,84%</td></tr>
+    <tr><td>Pessoal / faturamento</td><td class="n">10,86%</td><td class="n">10,42%</td></tr>
+    <tr><td>Margem antes do IR</td><td class="n">4,15%</td><td class="n">7,90%</td></tr>
+  </table><p class="muted">Franqueadas pagam royalties + fundo (2,0%), têm pró-labore do franqueado e juros do financiamento da implantação.</p></div>
+  <div class="cartao"><h3>Taxas iniciais de franquia</h3><table><tr><th>Competência</th><th>Franqueado</th><th class="n">Valor</th></tr>
+    <tr><td>abr/25</td><td>Guaíba Supermercados</td><td class="n">R$ 180.000,00</td></tr><tr><td>nov/25</td><td>Marajó Alimentos</td><td class="n">R$ 180.000,00</td></tr></table></div>
+</div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+<script>
+const g = {"fundo": [36502.49, 45138.25, 35356.79, 32272.4, 37423.47, 36978.92, 40095.48, 37259.55, 38608.72, 39566.32, 41651.77, 45116.05, 44571.4, 58591.02, 45430.91, 40704.47, 47738.48, 52272.82, 54656.87, 53552.62, 56998.51, 59427.76, 54868.21, 61364.73], "meses": ["nov/24", "dez/24", "jan/25", "fev/25", "mar/25", "abr/25", "mai/25", "jun/25", "jul/25", "ago/25", "set/25", "out/25", "nov/25", "dez/25", "jan/26", "fev/26", "mar/26", "abr/26", "mai/26", "jun/26", "jul/26", "ago/26", "set/26", "out/26"], "roy": [109507.47, 135414.75, 106070.38, 96817.18, 112270.42, 110936.77, 120286.46, 111778.66, 115826.17, 118698.94, 124955.31, 135348.12, 133714.22, 175773.05, 136292.71, 122113.41, 143215.46, 156818.45, 163970.6, 160657.87, 170995.54, 178283.29, 164604.65, 184094.18], "taxa": [0.0, 0.0, 0.0, 0.0, 0.0, 180000.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 180000.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]};
+VV.grafico('gRf', g.meses, [{nome: 'Royalties', dados: g.roy, slot: 0, stack: 's'}, {nome: 'Fundo de marketing', dados: g.fundo, slot: 1, stack: 's'},
+  {nome: 'Taxa inicial', dados: g.taxa, slot: 2, stack: 's'}], {fmt: 'brl', empilhado: true});
+</script>
+</body>
+</html>

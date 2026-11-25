@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admitir · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="vv03";window.VV_KEY="/rh/admitir";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" selected>VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      <a href="unidades_7.html">ficha da unidade</a>
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Admitir funcionário</h1><div class="sub">O salário sugerido é o da última admissão no cargo naquela unidade (o piso varia por região)</div></div></div>
+<div class="cartao" style="max-width:900px"><form method="post" class="form-grade">
+  <div class="campo" style="grid-column:1/-1"><label>Nome completo</label><input type="text" name="nome" required></div>
+  <div class="campo"><label>CPF</label><input type="text" name="cpf" placeholder="999.000.000-00"></div>
+  <div class="campo"><label>Nascimento</label><input type="date" name="data_nascimento"></div>
+  <div class="campo"><label>Sexo</label><select name="sexo"><option>F</option><option>M</option></select></div>
+  <div class="campo"><label>Unidade</label><select name="unidade_id" id="unid" onchange="piso()"><option value="1" data-tipo="SEDE" >SEDE · Sede Vale Verde Franquias</option><option value="5" data-tipo="LOJA" >VV01 · Vale Verde Campinas Taquaral</option><option value="6" data-tipo="LOJA" >VV02 · Vale Verde São Paulo Mooca</option><option value="7" data-tipo="LOJA" selected>VV03 · Vale Verde Rio Tijuca</option><option value="8" data-tipo="LOJA" >VV04 · Vale Verde BH Savassi</option><option value="9" data-tipo="LOJA" >VV05 · Vale Verde Curitiba Água Verde</option><option value="10" data-tipo="LOJA" >VV06 · Vale Verde Porto Alegre Menino Deus</option><option value="11" data-tipo="LOJA" >VV07 · Vale Verde Goiânia Setor Bueno</option><option value="12" data-tipo="LOJA" >VV08 · Vale Verde Salvador Pituba</option><option value="13" data-tipo="LOJA" >VV09 · Vale Verde Recife Boa Viagem</option><option value="14" data-tipo="LOJA" >VV10 · Vale Verde Belém Nazaré</option><option value="2" data-tipo="CD" >CD01 · CD Sudeste/Centro-Oeste</option><option value="3" data-tipo="CD" >CD02 · CD Sul</option><option value="4" data-tipo="CD" >CD03 · CD Nordeste/Norte</option></select></div>
+  <div class="campo"><label>Cargo</label><select name="cargo_id" id="cargo" onchange="piso(true)"><option value="23" data-tipo="CD" data-base="4300.0">Logística (CD) · Analista de Logística</option><option value="24" data-tipo="CD" data-base="2600.0">Logística (CD) · Conferente de CD</option><option value="22" data-tipo="CD" data-base="9800.0">Logística (CD) · Gerente de CD</option><option value="25" data-tipo="CD" data-base="2800.0">Logística (CD) · Operador de Empilhadeira</option><option value="26" data-tipo="CD" data-base="2050.0">Logística (CD) · Separador de Pedidos</option><option value="4" data-tipo="LOJA" data-base="2900.0">Administrativo/Financeiro · Assistente Financeiro</option><option value="5" data-tipo="LOJA" data-base="3200.0">Administrativo/Financeiro · Assistente de DP/RH</option><option value="3" data-tipo="LOJA" data-base="4600.0">Administrativo/Financeiro · Comprador</option><option value="6" data-tipo="LOJA" data-base="760.0">Administrativo/Financeiro · Jovem Aprendiz</option><option value="13" data-tipo="LOJA" data-base="2050.0">Açougue · Auxiliar de Açougue</option><option value="12" data-tipo="LOJA" data-base="3100.0">Açougue · Açougueiro</option><option value="9" data-tipo="LOJA" data-base="1530.0">Frente de Caixa · Empacotador</option><option value="7" data-tipo="LOJA" data-base="2350.0">Frente de Caixa · Fiscal de Caixa</option><option value="8" data-tipo="LOJA" data-base="1980.0">Frente de Caixa · Operador de Caixa</option><option value="1" data-tipo="LOJA" data-base="10500.0">Gerência · Gerente Geral</option><option value="2" data-tipo="LOJA" data-base="5800.0">Gerência · Subgerente</option><option value="17" data-tipo="LOJA" data-base="1900.0">Hortifrúti · Auxiliar de Hortifrúti</option><option value="16" data-tipo="LOJA" data-base="3000.0">Hortifrúti · Encarregado de Hortifrúti</option><option value="21" data-tipo="LOJA" data-base="1780.0">Limpeza · Auxiliar de Limpeza</option><option value="10" data-tipo="LOJA" data-base="3300.0">Mercearia/Reposição · Encarregado de Mercearia</option><option value="11" data-tipo="LOJA" data-base="1950.0">Mercearia/Reposição · Repositor</option><option value="15" data-tipo="LOJA" data-base="1950.0">Padaria · Atendente de Padaria</option><option value="14" data-tipo="LOJA" data-base="2800.0">Padaria · Padeiro</option><option value="20" data-tipo="LOJA" data-base="2250.0">Prevenção de Perdas · Fiscal de Prevenção</option><option value="19" data-tipo="LOJA" data-base="1900.0">Recebimento/Depósito · Auxiliar de Depósito</option><option value="18" data-tipo="LOJA" data-base="2450.0">Recebimento/Depósito · Conferente</option><option value="33" data-tipo="SEDE" data-base="6500.0">Franqueadora (Sede) · Analista Financeiro</option><option value="34" data-tipo="SEDE" data-base="7500.0">Franqueadora (Sede) · Analista de BI</option><option value="32" data-tipo="SEDE" data-base="6200.0">Franqueadora (Sede) · Analista de Marketing</option><option value="35" data-tipo="SEDE" data-base="3600.0">Franqueadora (Sede) · Assistente de DP</option><option value="30" data-tipo="SEDE" data-base="7200.0">Franqueadora (Sede) · Comprador Corporativo</option><option value="31" data-tipo="SEDE" data-base="7800.0">Franqueadora (Sede) · Consultor de Campo</option><option value="27" data-tipo="SEDE" data-base="32000.0">Franqueadora (Sede) · Diretor Geral</option><option value="29" data-tipo="SEDE" data-base="15000.0">Franqueadora (Sede) · Gerente Comercial e de Compras</option><option value="28" data-tipo="SEDE" data-base="16000.0">Franqueadora (Sede) · Gerente de Expansão</option></select></div>
+  <div class="campo"><label>Contrato</label><select name="tipo_contrato"><option>CLT</option><option>TEMPORARIO</option><option>JOVEM_APRENDIZ</option><option>ESTAGIO</option></select></div>
+  <div class="campo"><label>Turno</label><select name="turno"><option>MANHA</option><option>TARDE</option><option>COMERCIAL</option></select></div>
+  <div class="campo"><label>Salário (R$)</label><input type="text" name="salario" id="salario" required></div>
+  <div class="campo"><label>Admissão</label><input type="date" name="data_admissao" value="2026-11-25" required></div>
+  <div class="campo"><label>&nbsp;</label><label><input type="checkbox" name="vt" checked> Usa vale-transporte</label></div>
+  <div class="campo"><label>&nbsp;</label><button class="btn-primario">Admitir</button></div>
+</form></div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+<script>
+const pisos = {"1-27": 27785.18, "1-28": 12809.39, "1-29": 13965.3, "1-30": 7038.31, "1-31": 8624.07, "1-32": 6259.05, "1-33": 7186.73, "1-34": 7605.78, "1-35": 3032.82, "10-1": 10724.8, "10-10": 3370.65, "10-11": 2091.34, "10-12": 3166.37, "10-13": 2198.58, "10-14": 3002.95, "10-15": 1991.75, "10-16": 3064.23, "10-17": 1940.68, "10-18": 2502.45, "10-19": 1940.68, "10-2": 5924.18, "10-20": 2413.08, "10-21": 1909.02, "10-3": 4698.49, "10-4": 2962.09, "10-5": 3268.51, "10-6": 875.34, "10-7": 2520.33, "10-8": 2123.51, "10-9": 1702.05, "11-1": 8765.21, "11-10": 2942.98, "11-11": 1940.41, "11-12": 2602.71, "11-13": 1942.78, "11-14": 2653.56, "11-15": 1848.01, "11-16": 2685.64, "11-17": 1800.63, "11-18": 2205.0, "11-19": 1800.63, "11-2": 5220.0, "11-20": 2238.94, "11-21": 1686.91, "11-3": 3899.39, "11-4": 2416.13, "11-5": 2654.49, "11-6": 688.93, "11-7": 2227.09, "11-8": 1970.27, "11-9": 1702.05, "12-1": 9508.59, "12-10": 2777.6, "12-11": 1765.88, "12-12": 2613.4, "12-13": 1949.26, "12-14": 2662.4, "12-15": 1854.17, "12-16": 2716.74, "12-17": 1806.63, "12-18": 2329.6, "12-19": 1720.6, "12-2": 5252.36, "12-20": 2139.43, "12-21": 1445.06, "12-3": 4047.64, "12-4": 2307.31, "12-5": 2897.86, "12-6": 863.17, "12-7": 2079.94, "12-8": 1882.7, "12-9": 1702.05, "13-1": 9030.0, "13-10": 2838.0, "13-11": 1765.88, "13-12": 2807.3, "13-13": 1856.44, "13-14": 2408.0, "13-15": 1765.88, "13-16": 2580.0, "13-17": 1806.63, "13-18": 2107.0, "13-19": 1634.0, "13-2": 4988.0, "13-20": 2139.43, "13-21": 1611.93, "13-3": 3956.0, "13-4": 2494.0, "13-5": 2752.0, "13-6": 819.72, "13-7": 2021.0, "13-8": 1882.7, "13-9": 1598.45, "14-1": 9398.02, "14-10": 2953.66, "14-11": 1832.62, "14-12": 2774.65, "14-13": 1834.85, "14-14": 2506.14, "14-15": 1745.35, "14-16": 2685.15, "14-17": 1700.59, "14-18": 2192.87, "14-19": 1785.62, "14-2": 5191.29, "14-20": 2114.55, "14-21": 1621.0, "14-3": 4117.23, "14-4": 2595.64, "14-5": 2864.16, "14-6": 919.11, "14-7": 2103.37, "14-8": 1860.81, "14-9": 1702.05, "2-22": 9684.66, "2-23": 3529.71, "2-24": 2817.19, "2-25": 3033.9, "2-26": 2221.25, "3-22": 8620.88, "3-23": 3711.21, "3-24": 2628.29, "3-25": 2518.4, "3-26": 2175.92, "4-22": 9318.41, "4-23": 3893.99, "4-24": 2354.51, "4-25": 2287.19, "4-26": 1949.26, "5-1": 10133.82, "5-10": 3272.76, "5-11": 2012.28, "5-12": 3199.01, "5-13": 2221.25, "5-14": 2642.39, "5-15": 1760.92, "5-16": 2580.06, "5-17": 1960.69, "5-18": 2280.36, "5-19": 1482.1, "5-2": 5574.58, "5-20": 2437.95, "5-21": 1836.85, "5-3": 4128.7, "5-4": 2513.1, "5-5": 2871.82, "5-6": 746.31, "5-7": 2425.06, "5-8": 2145.4, "5-9": 1702.05, "6-1": 9734.56, "6-10": 3387.34, "6-11": 2156.02, "6-12": 3598.89, "6-13": 2266.58, "6-14": 3095.82, "6-15": 2156.02, "6-16": 3165.91, "6-17": 1985.15, "6-18": 2708.84, "6-19": 2205.77, "6-2": 5855.49, "6-20": 2487.71, "6-21": 2066.46, "6-3": 4474.59, "6-4": 2606.15, "6-5": 3285.9, "6-6": 786.36, "6-7": 2470.4, "6-8": 2298.65, "6-9": 1776.22, "7-1": 10233.98, "7-10": 3474.9, "7-11": 2156.02, "7-12": 3077.29, "7-13": 2266.58, "7-14": 2799.95, "7-15": 2156.02, "7-16": 2660.32, "7-17": 2000.7, "7-18": 2287.56, "7-19": 2100.74, "7-2": 5772.96, "7-20": 2250.0, "7-21": 1968.06, "7-3": 4301.43, "7-4": 3206.38, "7-5": 2915.85, "7-6": 736.02, "7-7": 2474.55, "7-8": 2189.19, "7-9": 1702.05, "8-1": 9361.25, "8-10": 3100.78, "8-11": 2005.1, "8-12": 3035.8, "8-13": 2107.92, "8-14": 2879.11, "8-15": 2005.1, "8-16": 2771.35, "8-17": 1860.65, "8-18": 2107.66, "8-19": 1860.65, "8-2": 4732.97, "8-20": 2137.59, "8-21": 1743.14, "8-3": 4231.08, "8-4": 2670.08, "8-5": 2909.97, "8-6": 703.4, "8-7": 2416.4, "8-8": 2035.94, "8-9": 1598.45, "9-1": 11261.04, "9-10": 3039.2, "9-11": 2091.34, "9-12": 3166.37, "9-13": 2198.58, "9-14": 2859.95, "9-15": 1860.61, "9-16": 2953.77, "9-17": 1794.4, "9-18": 2300.69, "9-19": 1940.68, "9-2": 5329.35, "9-20": 2298.17, "9-21": 1909.02, "9-3": 4063.72, "9-4": 2962.09, "9-5": 3104.0, "9-6": 863.17, "9-7": 2400.31, "9-8": 2123.51, "9-9": 1702.05};
+function piso(soCargo) {
+  const u = document.getElementById('unid'), c = document.getElementById('cargo'), tipo = u.options[u.selectedIndex].dataset.tipo;
+  [...c.options].forEach(o => o.hidden = o.dataset.tipo !== tipo);
+  if (!soCargo && c.options[c.selectedIndex].hidden) c.value = [...c.options].find(o => !o.hidden).value;
+  const k = u.value + '-' + c.value, o = c.options[c.selectedIndex];
+  document.getElementById('salario').value = (pisos[k] || +o.dataset.base || 0).toFixed(2);
+}
+piso();
+</script>
+</body>
+</html>

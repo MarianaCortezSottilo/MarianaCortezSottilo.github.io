@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vendas · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="vv03";window.VV_KEY="/vendas";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="ativo">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" selected>VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      <a href="unidades_7.html">ficha da unidade</a>
+    </div>
+    
+      
+    
+    
+<div class="topo">
+  <div><h1>Vendas</h1><div class="sub">out/26</div></div>
+  <form class="filtros" method="get">
+  <label>De</label>
+  <select name="ini"><option value="2024-11" >nov/24</option><option value="2024-12" >dez/24</option><option value="2025-01" >jan/25</option><option value="2025-02" >fev/25</option><option value="2025-03" >mar/25</option><option value="2025-04" >abr/25</option><option value="2025-05" >mai/25</option><option value="2025-06" >jun/25</option><option value="2025-07" >jul/25</option><option value="2025-08" >ago/25</option><option value="2025-09" >set/25</option><option value="2025-10" >out/25</option><option value="2025-11" >nov/25</option><option value="2025-12" >dez/25</option><option value="2026-01" >jan/26</option><option value="2026-02" >fev/26</option><option value="2026-03" >mar/26</option><option value="2026-04" >abr/26</option><option value="2026-05" >mai/26</option><option value="2026-06" >jun/26</option><option value="2026-07" >jul/26</option><option value="2026-08" >ago/26</option><option value="2026-09" >set/26</option><option value="2026-10" selected>out/26</option></select>
+  <label>até</label>
+  <select name="fim"><option value="2024-11" >nov/24</option><option value="2024-12" >dez/24</option><option value="2025-01" >jan/25</option><option value="2025-02" >fev/25</option><option value="2025-03" >mar/25</option><option value="2025-04" >abr/25</option><option value="2025-05" >mai/25</option><option value="2025-06" >jun/25</option><option value="2025-07" >jul/25</option><option value="2025-08" >ago/25</option><option value="2025-09" >set/25</option><option value="2025-10" >out/25</option><option value="2025-11" >nov/25</option><option value="2025-12" >dez/25</option><option value="2026-01" >jan/26</option><option value="2026-02" >fev/26</option><option value="2026-03" >mar/26</option><option value="2026-04" >abr/26</option><option value="2026-05" >mai/26</option><option value="2026-06" >jun/26</option><option value="2026-07" >jul/26</option><option value="2026-08" >ago/26</option><option value="2026-09" >set/26</option><option value="2026-10" selected>out/26</option></select>
+  
+  <button type="submit">Aplicar</button>
+  
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a>
+</form>
+</div>
+<div class="grade g6">
+  <div class="cartao kpi">
+  <div class="rot">Faturamento</div>
+  <div class="val">R$ 2,63 mi</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Cupons</div>
+  <div class="val">22.642</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Ticket médio</div>
+  <div class="val">R$ 116,10</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">CMV</div>
+  <div class="val">R$ 1,69 mi</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Margem bruta</div>
+  <div class="val">35,6%</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Cupons com CPF fidelidade</div>
+  <div class="val">38,4%</div>
+  <div class="det"></div>
+</div>
+</div>
+
+<div class="grade g2 mt">
+  <div class="cartao col2">
+    <h3>Faturamento diário</h3>
+    <div class="nota">Repare nos picos de sexta/sábado e no início do mês (pagamento de salários)</div>
+    <div class="grafico"><canvas id="gDia"></canvas></div>
+  </div>
+  <div class="cartao col2">
+    <h3>Mapa de calor: faturamento médio por dia da semana e hora</h3>
+    <div class="nota">Útil para dimensionar caixas abertos e a escala da frente de loja. Valores em R$ por loja-dia, a partir dos cupons individuais (desde 01/10/2026).</div>
+    
+    <div class="tabela-wrap"><table class="mapa">
+      <tr><th></th><th class="n">7h</th><th class="n">8h</th><th class="n">9h</th><th class="n">10h</th><th class="n">11h</th><th class="n">12h</th><th class="n">13h</th><th class="n">14h</th><th class="n">15h</th><th class="n">16h</th><th class="n">17h</th><th class="n">18h</th><th class="n">19h</th><th class="n">20h</th><th class="n">21h</th></tr>
+      
+      <tr><th>Seg</th>
+        
+        <td style="background:#b7d3f6;" title="Seg 7h: R$ 2.850,92">2,9</td>
+        <td style="background:#9ec5f4;" title="Seg 8h: R$ 4.584,42">4,6</td>
+        <td style="background:#6da7ec;" title="Seg 9h: R$ 6.618,57">6,6</td>
+        <td style="background:#6da7ec;" title="Seg 10h: R$ 7.636,85">7,6</td>
+        <td style="background:#5598e7;" title="Seg 11h: R$ 8.937,59">8,9</td>
+        <td style="background:#6da7ec;" title="Seg 12h: R$ 6.592,83">6,6</td>
+        <td style="background:#b7d3f6;" title="Seg 13h: R$ 3.345,33">3,3</td>
+        <td style="background:#9ec5f4;" title="Seg 14h: R$ 4.040,66">4,0</td>
+        <td style="background:#b7d3f6;" title="Seg 15h: R$ 3.322,25">3,3</td>
+        <td style="background:#9ec5f4;" title="Seg 16h: R$ 4.489,95">4,5</td>
+        <td style="background:#5598e7;" title="Seg 17h: R$ 7.969,84">8,0</td>
+        <td style="background:#6da7ec;" title="Seg 18h: R$ 7.471,20">7,5</td>
+        <td style="background:#6da7ec;" title="Seg 19h: R$ 7.278,55">7,3</td>
+        <td style="background:#b7d3f6;" title="Seg 20h: R$ 3.429,37">3,4</td>
+        <td style="background:#cde2fb;" title="Seg 21h: R$ 1.848,85">1,8</td>
+      </tr>
+      <tr><th>Ter</th>
+        
+        <td style="background:#cde2fb;" title="Ter 7h: R$ 2.012,57">2,0</td>
+        <td style="background:#9ec5f4;" title="Ter 8h: R$ 3.643,36">3,6</td>
+        <td style="background:#86b6ef;" title="Ter 9h: R$ 5.294,80">5,3</td>
+        <td style="background:#6da7ec;" title="Ter 10h: R$ 7.328,10">7,3</td>
+        <td style="background:#5598e7;" title="Ter 11h: R$ 8.609,72">8,6</td>
+        <td style="background:#86b6ef;" title="Ter 12h: R$ 5.351,90">5,4</td>
+        <td style="background:#86b6ef;" title="Ter 13h: R$ 4.928,29">4,9</td>
+        <td style="background:#9ec5f4;" title="Ter 14h: R$ 4.537,06">4,5</td>
+        <td style="background:#9ec5f4;" title="Ter 15h: R$ 3.827,01">3,8</td>
+        <td style="background:#b7d3f6;" title="Ter 16h: R$ 3.153,86">3,2</td>
+        <td style="background:#86b6ef;" title="Ter 17h: R$ 6.088,97">6,1</td>
+        <td style="background:#5598e7;" title="Ter 18h: R$ 7.879,01">7,9</td>
+        <td style="background:#6da7ec;" title="Ter 19h: R$ 7.414,43">7,4</td>
+        <td style="background:#9ec5f4;" title="Ter 20h: R$ 3.913,57">3,9</td>
+        <td style="background:#cde2fb;" title="Ter 21h: R$ 1.007,91">1,0</td>
+      </tr>
+      <tr><th>Qua</th>
+        
+        <td style="background:#b7d3f6;" title="Qua 7h: R$ 2.406,91">2,4</td>
+        <td style="background:#9ec5f4;" title="Qua 8h: R$ 3.646,73">3,6</td>
+        <td style="background:#9ec5f4;" title="Qua 9h: R$ 4.816,18">4,8</td>
+        <td style="background:#6da7ec;" title="Qua 10h: R$ 6.362,57">6,4</td>
+        <td style="background:#6da7ec;" title="Qua 11h: R$ 7.590,35">7,6</td>
+        <td style="background:#6da7ec;" title="Qua 12h: R$ 6.432,74">6,4</td>
+        <td style="background:#9ec5f4;" title="Qua 13h: R$ 3.685,91">3,7</td>
+        <td style="background:#9ec5f4;" title="Qua 14h: R$ 3.690,62">3,7</td>
+        <td style="background:#b7d3f6;" title="Qua 15h: R$ 3.309,17">3,3</td>
+        <td style="background:#9ec5f4;" title="Qua 16h: R$ 4.527,91">4,5</td>
+        <td style="background:#6da7ec;" title="Qua 17h: R$ 6.455,79">6,5</td>
+        <td style="background:#5598e7;" title="Qua 18h: R$ 7.734,20">7,7</td>
+        <td style="background:#6da7ec;" title="Qua 19h: R$ 6.450,17">6,5</td>
+        <td style="background:#9ec5f4;" title="Qua 20h: R$ 4.081,90">4,1</td>
+        <td style="background:#cde2fb;" title="Qua 21h: R$ 1.345,04">1,3</td>
+      </tr>
+      <tr><th>Qui</th>
+        
+        <td style="background:#b7d3f6;" title="Qui 7h: R$ 2.369,97">2,4</td>
+        <td style="background:#9ec5f4;" title="Qui 8h: R$ 3.975,92">4,0</td>
+        <td style="background:#86b6ef;" title="Qui 9h: R$ 5.272,56">5,3</td>
+        <td style="background:#6da7ec;" title="Qui 10h: R$ 6.936,63">6,9</td>
+        <td style="background:#5598e7;" title="Qui 11h: R$ 8.586,47">8,6</td>
+        <td style="background:#86b6ef;" title="Qui 12h: R$ 6.240,23">6,2</td>
+        <td style="background:#86b6ef;" title="Qui 13h: R$ 5.024,22">5,0</td>
+        <td style="background:#9ec5f4;" title="Qui 14h: R$ 3.676,18">3,7</td>
+        <td style="background:#9ec5f4;" title="Qui 15h: R$ 4.729,07">4,7</td>
+        <td style="background:#9ec5f4;" title="Qui 16h: R$ 4.170,38">4,2</td>
+        <td style="background:#6da7ec;" title="Qui 17h: R$ 7.587,34">7,6</td>
+        <td style="background:#5598e7;" title="Qui 18h: R$ 8.919,60">8,9</td>
+        <td style="background:#6da7ec;" title="Qui 19h: R$ 6.816,31">6,8</td>
+        <td style="background:#b7d3f6;" title="Qui 20h: R$ 3.453,31">3,5</td>
+        <td style="background:#cde2fb;" title="Qui 21h: R$ 1.932,22">1,9</td>
+      </tr>
+      <tr><th>Sex</th>
+        
+        <td style="background:#b7d3f6;" title="Sex 7h: R$ 2.475,25">2,5</td>
+        <td style="background:#9ec5f4;" title="Sex 8h: R$ 4.655,65">4,7</td>
+        <td style="background:#6da7ec;" title="Sex 9h: R$ 6.977,90">7,0</td>
+        <td style="background:#5598e7;" title="Sex 10h: R$ 8.811,97">8,8</td>
+        <td style="background:#3987e5;color:#fff" title="Sex 11h: R$ 9.332,02">9,3</td>
+        <td style="background:#5598e7;" title="Sex 12h: R$ 8.108,53">8,1</td>
+        <td style="background:#86b6ef;" title="Sex 13h: R$ 5.293,66">5,3</td>
+        <td style="background:#86b6ef;" title="Sex 14h: R$ 5.034,60">5,0</td>
+        <td style="background:#86b6ef;" title="Sex 15h: R$ 5.030,21">5,0</td>
+        <td style="background:#86b6ef;" title="Sex 16h: R$ 5.902,65">5,9</td>
+        <td style="background:#5598e7;" title="Sex 17h: R$ 8.764,97">8,8</td>
+        <td style="background:#2a78d6;color:#fff" title="Sex 18h: R$ 11.112,65">11,1</td>
+        <td style="background:#5598e7;" title="Sex 19h: R$ 7.840,37">7,8</td>
+        <td style="background:#9ec5f4;" title="Sex 20h: R$ 4.241,87">4,2</td>
+        <td style="background:#cde2fb;" title="Sex 21h: R$ 2.062,29">2,1</td>
+      </tr>
+      <tr><th>Sáb</th>
+        
+        <td style="background:#9ec5f4;" title="Sáb 7h: R$ 3.609,24">3,6</td>
+        <td style="background:#6da7ec;" title="Sáb 8h: R$ 6.357,58">6,4</td>
+        <td style="background:#5598e7;" title="Sáb 9h: R$ 8.895,10">8,9</td>
+        <td style="background:#2a78d6;color:#fff" title="Sáb 10h: R$ 11.487,97">11,5</td>
+        <td style="background:#1c5cab;color:#fff" title="Sáb 11h: R$ 14.052,06">14,1</td>
+        <td style="background:#3987e5;color:#fff" title="Sáb 12h: R$ 10.239,33">10,2</td>
+        <td style="background:#3987e5;color:#fff" title="Sáb 13h: R$ 9.378,65">9,4</td>
+        <td style="background:#5598e7;" title="Sáb 14h: R$ 7.866,00">7,9</td>
+        <td style="background:#6da7ec;" title="Sáb 15h: R$ 7.247,29">7,2</td>
+        <td style="background:#5598e7;" title="Sáb 16h: R$ 8.197,39">8,2</td>
+        <td style="background:#1c5cab;color:#fff" title="Sáb 17h: R$ 13.519,20">13,5</td>
+        <td style="background:#1c5cab;color:#fff" title="Sáb 18h: R$ 13.820,42">13,8</td>
+        <td style="background:#256abf;color:#fff" title="Sáb 19h: R$ 12.453,55">12,5</td>
+        <td style="background:#6da7ec;" title="Sáb 20h: R$ 6.633,81">6,6</td>
+        <td style="background:#cde2fb;" title="Sáb 21h: R$ 1.774,64">1,8</td>
+      </tr>
+      <tr><th>Dom</th>
+        
+        <td style="background:#f7fafe;" title="Dom 7h: R$ 0,00"></td>
+        <td style="background:#5598e7;" title="Dom 8h: R$ 8.190,69">8,2</td>
+        <td style="background:#256abf;color:#fff" title="Dom 9h: R$ 12.865,99">12,9</td>
+        <td style="background:#256abf;color:#fff" title="Dom 10h: R$ 12.919,15">12,9</td>
+        <td style="background:#2a78d6;color:#fff" title="Dom 11h: R$ 10.923,24">10,9</td>
+        <td style="background:#6da7ec;" title="Dom 12h: R$ 7.267,12">7,3</td>
+        <td style="background:#f7fafe;" title="Dom 13h: R$ 0,00"></td>
+        <td style="background:#f7fafe;" title="Dom 14h: R$ 0,00"></td>
+        <td style="background:#f7fafe;" title="Dom 15h: R$ 0,00"></td>
+        <td style="background:#f7fafe;" title="Dom 16h: R$ 0,00"></td>
+        <td style="background:#f7fafe;" title="Dom 17h: R$ 0,00"></td>
+        <td style="background:#f7fafe;" title="Dom 18h: R$ 0,00"></td>
+        <td style="background:#f7fafe;" title="Dom 19h: R$ 0,00"></td>
+        <td style="background:#f7fafe;" title="Dom 20h: R$ 0,00"></td>
+        <td style="background:#f7fafe;" title="Dom 21h: R$ 0,00"></td>
+      </tr>
+    </table></div>
+    <div class="muted" style="font-size:12px;margin-top:6px">Números em R$ mil. Tons mais escuros = mais faturamento.</div>
+  </div>
+  
+  <div class="cartao">
+    <h3>Por categoria</h3>
+    <div class="tabela-wrap"><table>
+      <tr><th>Categoria</th><th class="n">Faturamento</th><th class="n">% total</th><th class="n">Margem</th></tr>
+      <tr><td>Mercearia</td><td class="n">R$ 625.089,01</td><td class="n">23,8%</td><td class="n">30,9%</td></tr><tr><td>Bebidas</td><td class="n">R$ 422.811,76</td><td class="n">16,1%</td><td class="n">32,1%</td></tr><tr><td>Açougue</td><td class="n">R$ 410.992,01</td><td class="n">15,6%</td><td class="n">35,7%</td></tr><tr><td>Laticínios e Frios</td><td class="n">R$ 302.191,10</td><td class="n">11,5%</td><td class="n">31,4%</td></tr><tr><td>Hortifrúti</td><td class="n">R$ 289.077,11</td><td class="n">11,0%</td><td class="n">42,9%</td></tr><tr><td>Padaria</td><td class="n">R$ 166.216,18</td><td class="n">6,3%</td><td class="n">58,4%</td></tr><tr><td>Higiene e Perfumaria</td><td class="n">R$ 165.580,23</td><td class="n">6,3%</td><td class="n">37,3%</td></tr><tr><td>Limpeza</td><td class="n">R$ 124.190,85</td><td class="n">4,7%</td><td class="n">33,2%</td></tr><tr><td>Congelados</td><td class="n">R$ 70.869,88</td><td class="n">2,7%</td><td class="n">32,4%</td></tr><tr><td>Bazar e Pet</td><td class="n">R$ 51.850,92</td><td class="n">2,0%</td><td class="n">37,4%</td></tr>
+    </table></div>
+  </div>
+  <div class="cartao">
+    <h3>Formas de pagamento</h3>
+    <div class="tabela-wrap"><table>
+      <tr><th>Forma</th><th class="n">Cupons</th><th class="n">Faturamento</th><th class="n">%</th><th class="n">Ticket</th></tr>
+      <tr><td>Credito</td><td class="n">6.626</td><td class="n">R$ 885.211,05</td><td class="n">33,7%</td><td class="n">R$ 133,60</td></tr><tr><td>Pix</td><td class="n">6.358</td><td class="n">R$ 682.547,59</td><td class="n">26,0%</td><td class="n">R$ 107,35</td></tr><tr><td>Debito</td><td class="n">5.591</td><td class="n">R$ 622.549,79</td><td class="n">23,7%</td><td class="n">R$ 111,35</td></tr><tr><td>Dinheiro</td><td class="n">2.783</td><td class="n">R$ 295.819,90</td><td class="n">11,3%</td><td class="n">R$ 106,30</td></tr><tr><td>Voucher</td><td class="n">1.284</td><td class="n">R$ 142.601,35</td><td class="n">5,4%</td><td class="n">R$ 111,06</td></tr>
+    </table></div>
+  </div>
+  <div class="cartao">
+    <h3>Top 20 produtos</h3>
+    <div class="rolagem"><table>
+      <tr><th>Produto</th><th class="n">Qtd</th><th class="n">Faturamento</th><th class="n">Margem</th></tr>
+      <tr><td><a href="estoque_7_165.html">Pão Francês</a></td><td class="n">4.150,6</td><td class="n">R$ 72.169,66</td><td class="n">58,4%</td></tr><tr><td><a href="estoque_7_110.html">Leite UHT Integral 1L Campo Bom</a></td><td class="n">9.523,0</td><td class="n">R$ 64.022,87</td><td class="n">28,2%</td></tr><tr><td><a href="estoque_7_98.html">Cerveja Lata 350ml Lúpulo Dourado</a></td><td class="n">12.484,0</td><td class="n">R$ 57.661,96</td><td class="n">28,3%</td></tr><tr><td><a href="estoque_7_141.html">Contrafilé Bovino</a></td><td class="n">638,1</td><td class="n">R$ 52.268,41</td><td class="n">34,2%</td></tr><tr><td><a href="estoque_7_1.html">Arroz Branco Tipo 1 5kg Bom Grão</a></td><td class="n">1.547,0</td><td class="n">R$ 51.963,73</td><td class="n">29,9%</td></tr><tr><td><a href="estoque_7_138.html">Carne Moída Patinho</a></td><td class="n">848,6</td><td class="n">R$ 50.940,56</td><td class="n">33,4%</td></tr><tr><td><a href="estoque_7_152.html">Batata Lavada</a></td><td class="n">6.230,0</td><td class="n">R$ 48.922,20</td><td class="n">41,3%</td></tr><tr><td><a href="estoque_7_139.html">Alcatra Bovina</a></td><td class="n">637,5</td><td class="n">R$ 48.760,06</td><td class="n">35,8%</td></tr><tr><td><a href="#" data-off="1">Banana Prata</a></td><td class="n">6.519,1</td><td class="n">R$ 47.055,81</td><td class="n">43,3%</td></tr><tr><td><a href="#" data-off="1">Café Torrado e Moído 500g Bom Grão</a></td><td class="n">1.504,0</td><td class="n">R$ 41.431,76</td><td class="n">29,0%</td></tr><tr><td><a href="#" data-off="1">Cerveja Pack 12 Latas 350ml Lúpulo Dourado</a></td><td class="n">715,0</td><td class="n">R$ 40.104,35</td><td class="n">34,1%</td></tr><tr><td><a href="#" data-off="1">Leite UHT Integral 1L Leiteria Mineira</a></td><td class="n">4.713,0</td><td class="n">R$ 39.070,77</td><td class="n">33,5%</td></tr><tr><td><a href="#" data-off="1">Costela Bovina</a></td><td class="n">897,8</td><td class="n">R$ 38.954,23</td><td class="n">35,3%</td></tr><tr><td><a href="#" data-off="1">Picanha Bovina</a></td><td class="n">310,1</td><td class="n">R$ 38.449,71</td><td class="n">35,5%</td></tr><tr><td><a href="#" data-off="1">Cerveja Lata 350ml Cevada Nobre</a></td><td class="n">7.494,0</td><td class="n">R$ 37.777,26</td><td class="n">25,9%</td></tr><tr><td><a href="#" data-off="1">Arroz Branco Tipo 1 5kg Tio Nino</a></td><td class="n">920,0</td><td class="n">R$ 37.342,80</td><td class="n">29,9%</td></tr><tr><td><a href="#" data-off="1">Tomate Italiano</a></td><td class="n">3.838,1</td><td class="n">R$ 37.130,96</td><td class="n">43,9%</td></tr><tr><td><a href="#" data-off="1">Peito de Frango</a></td><td class="n">1.236,7</td><td class="n">R$ 36.223,92</td><td class="n">36,8%</td></tr><tr><td><a href="#" data-off="1">Pão de Forma Tradicional 500g</a></td><td class="n">2.215,0</td><td class="n">R$ 32.798,75</td><td class="n">59,0%</td></tr><tr><td><a href="#" data-off="1">Coxa e Sobrecoxa de Frango</a></td><td class="n">1.450,0</td><td class="n">R$ 31.304,63</td><td class="n">38,8%</td></tr>
+    </table></div>
+  </div>
+  <div class="cartao">
+    <h3>Produtividade dos operadores de caixa</h3>
+    <div class="rolagem"><table>
+      <tr><th>Operador</th><th>Loja</th><th class="n">Dias</th><th class="n">Cupons</th><th class="n">Cupons/dia</th><th class="n">Faturamento</th></tr>
+      <tr><td>Vinícius Moreira Teixeira</td><td>VV03</td><td class="n">27</td><td class="n">2.063</td><td class="n">76</td><td class="n">R$ 239.138,69</td></tr><tr><td>Camila Prado Moreira</td><td>VV03</td><td class="n">27</td><td class="n">2.041</td><td class="n">76</td><td class="n">R$ 240.717,03</td></tr><tr><td>Daniela Vieira Souza</td><td>VV03</td><td class="n">27</td><td class="n">2.027</td><td class="n">75</td><td class="n">R$ 231.082,19</td></tr><tr><td>Maria Pereira Costa</td><td>VV03</td><td class="n">26</td><td class="n">1.983</td><td class="n">76</td><td class="n">R$ 228.719,17</td></tr><tr><td>Otávio Lima Freitas</td><td>VV03</td><td class="n">27</td><td class="n">1.971</td><td class="n">73</td><td class="n">R$ 233.818,05</td></tr><tr><td>Mariana Machado Fernandes</td><td>VV03</td><td class="n">27</td><td class="n">1.921</td><td class="n">71</td><td class="n">R$ 225.729,96</td></tr><tr><td>Bruna Ramos Carvalho</td><td>VV03</td><td class="n">26</td><td class="n">1.829</td><td class="n">70</td><td class="n">R$ 219.707,75</td></tr><tr><td>Simone Rocha Martins</td><td>VV03</td><td class="n">27</td><td class="n">1.823</td><td class="n">68</td><td class="n">R$ 212.003,81</td></tr><tr><td>Natália Alves Pereira</td><td>VV03</td><td class="n">27</td><td class="n">1.821</td><td class="n">67</td><td class="n">R$ 210.501,50</td></tr><tr><td>Guilherme Marques Silva</td><td>VV03</td><td class="n">25</td><td class="n">1.777</td><td class="n">71</td><td class="n">R$ 199.956,19</td></tr><tr><td>Raquel Santos Cardoso</td><td>VV03</td><td class="n">26</td><td class="n">1.701</td><td class="n">65</td><td class="n">R$ 190.526,11</td></tr><tr><td>Carla Oliveira Pereira</td><td>VV03</td><td class="n">24</td><td class="n">1.685</td><td class="n">70</td><td class="n">R$ 196.829,23</td></tr>
+    </table></div>
+  </div>
+</div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+
+<script>
+const g = {"dias": ["01/10", "02/10", "03/10", "04/10", "05/10", "06/10", "07/10", "08/10", "09/10", "10/10", "11/10", "12/10", "13/10", "14/10", "15/10", "16/10", "17/10", "18/10", "19/10", "20/10", "21/10", "22/10", "23/10", "24/10", "25/10", "26/10", "27/10", "28/10", "29/10", "30/10", "31/10"], "receita": [90576.37, 120670.5, 144991.34, 59712.12, 96842.87, 92566.47, 81171.81, 85763.44, 98203.94, 150922.24, 52825.85, 46568.36, 75596.78, 66372.2, 80581.65, 85382.35, 129143.94, 48809.15, 67145.32, 68551.87, 69299.78, 69801.12, 85456.97, 119932.38, 47317.63, 65065.24, 63247.11, 73300.97, 71729.49, 88509.23, 132671.19]};
+VV.grafico('gDia', g.dias, [{nome: 'Faturamento', dados: g.receita, slot: 0}], {fmt: 'brl'});
+</script>
+
+</body>
+</html>

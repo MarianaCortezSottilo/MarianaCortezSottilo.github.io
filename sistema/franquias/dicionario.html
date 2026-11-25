@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dicionário de dados · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="franquias";window.VV_KEY="/dicionario";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="ativo">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" selected>Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Dicionário de dados</h1><div class="sub">33 tabelas no banco SQLite</div></div></div>
+<div class="cartao"><p><a href="#cargos">cargos</a> · <a href="#categorias">categorias</a> · <a href="#categorias_despesa">categorias_despesa</a> · <a href="#cidades">cidades</a> · <a href="#clientes">clientes</a> · <a href="#concorrentes">concorrentes</a> · <a href="#contas_pagar">contas_pagar</a> · <a href="#departamentos">departamentos</a> · <a href="#despesas">despesas</a> · <a href="#empresa">empresa</a> · <a href="#escalas">escalas</a> · <a href="#estoque">estoque</a> · <a href="#folha_pagamento">folha_pagamento</a> · <a href="#fornecedores">fornecedores</a> · <a href="#franqueados">franqueados</a> · <a href="#funcionarios">funcionarios</a> · <a href="#historico_precos">historico_precos</a> · <a href="#historico_salarial">historico_salarial</a> · <a href="#itens_compra">itens_compra</a> · <a href="#itens_transferencia">itens_transferencia</a> · <a href="#itens_venda">itens_venda</a> · <a href="#movimentacoes_estoque">movimentacoes_estoque</a> · <a href="#parametros">parametros</a> · <a href="#pedidos_compra">pedidos_compra</a> · <a href="#produtos">produtos</a> · <a href="#promocoes">promocoes</a> · <a href="#receitas_franquia">receitas_franquia</a> · <a href="#resumo_cupons_diario">resumo_cupons_diario</a> · <a href="#resumo_vendas_diario">resumo_vendas_diario</a> · <a href="#rupturas">rupturas</a> · <a href="#transferencias">transferencias</a> · <a href="#unidades">unidades</a> · <a href="#vendas">vendas</a></p></div>
+<div class="grade g2 mt">
+
+  <div class="cartao" id="cargos"><h3>cargos</h3><div class="nota">35 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>nome</code></td><td>TEXT</td><td></td></tr><tr><td><code>departamento_id</code></td><td>INTEGER</td><td> <span class="etq">→ departamentos.id</span></td></tr><tr><td><code>salario_base</code></td><td>REAL</td><td></td></tr><tr><td><code>carga_horaria_sem</code></td><td>INTEGER</td><td></td></tr><tr><td><code>quadro_ideal</code></td><td>INTEGER</td><td></td></tr><tr><td><code>tipo_unidade</code></td><td>TEXT</td><td></td></tr></table></div>
+
+  <div class="cartao" id="categorias"><h3>categorias</h3><div class="nota">11 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>nome</code></td><td>TEXT</td><td></td></tr><tr><td><code>departamento_id</code></td><td>INTEGER</td><td> <span class="etq">→ departamentos.id</span></td></tr><tr><td><code>margem_alvo</code></td><td>REAL</td><td></td></tr><tr><td><code>perecivel</code></td><td>INTEGER</td><td></td></tr><tr><td><code>revenda</code></td><td>INTEGER</td><td></td></tr><tr><td><code>canal</code></td><td>TEXT</td><td></td></tr></table></div>
+
+  <div class="cartao" id="categorias_despesa"><h3>categorias_despesa</h3><div class="nota">32 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>nome</code></td><td>TEXT</td><td></td></tr><tr><td><code>tipo</code></td><td>TEXT</td><td></td></tr><tr><td><code>grupo_dre</code></td><td>TEXT</td><td></td></tr></table></div>
+
+  <div class="cartao" id="cidades"><h3>cidades</h3><div class="nota">41 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>nome</code></td><td>TEXT</td><td></td></tr><tr><td><code>uf</code></td><td>TEXT</td><td></td></tr><tr><td><code>regiao</code></td><td>TEXT</td><td></td></tr><tr><td><code>lat</code></td><td>REAL</td><td></td></tr><tr><td><code>lon</code></td><td>REAL</td><td></td></tr><tr><td><code>populacao</code></td><td>INTEGER</td><td></td></tr><tr><td><code>renda_per_capita</code></td><td>REAL</td><td></td></tr><tr><td><code>supermercados_concorrentes</code></td><td>INTEGER</td><td></td></tr></table></div>
+
+  <div class="cartao" id="clientes"><h3>clientes</h3><div class="nota">33.480 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>unidade_id</code></td><td>INTEGER</td><td> <span class="etq">→ unidades.id</span></td></tr><tr><td><code>nome</code></td><td>TEXT</td><td></td></tr><tr><td><code>cpf</code></td><td>TEXT</td><td></td></tr><tr><td><code>data_nascimento</code></td><td>TEXT</td><td></td></tr><tr><td><code>sexo</code></td><td>TEXT</td><td></td></tr><tr><td><code>bairro</code></td><td>TEXT</td><td></td></tr><tr><td><code>lat</code></td><td>REAL</td><td></td></tr><tr><td><code>lon</code></td><td>REAL</td><td></td></tr><tr><td><code>distancia_km</code></td><td>REAL</td><td></td></tr><tr><td><code>data_cadastro</code></td><td>TEXT</td><td></td></tr></table></div>
+
+  <div class="cartao" id="concorrentes"><h3>concorrentes</h3><div class="nota">67 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>nome</code></td><td>TEXT</td><td></td></tr><tr><td><code>formato</code></td><td>TEXT</td><td></td></tr><tr><td><code>cidade_id</code></td><td>INTEGER</td><td> <span class="etq">→ cidades.id</span></td></tr><tr><td><code>loja_referencia_id</code></td><td>INTEGER</td><td> <span class="etq">→ unidades.id</span></td></tr><tr><td><code>lat</code></td><td>REAL</td><td></td></tr><tr><td><code>lon</code></td><td>REAL</td><td></td></tr><tr><td><code>area_m2</code></td><td>INTEGER</td><td></td></tr><tr><td><code>distancia_km</code></td><td>REAL</td><td></td></tr></table></div>
+
+  <div class="cartao" id="contas_pagar"><h3>contas_pagar</h3><div class="nota">33.213 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>unidade_id</code></td><td>INTEGER</td><td> <span class="etq">→ unidades.id</span></td></tr><tr><td><code>origem</code></td><td>TEXT</td><td></td></tr><tr><td><code>referencia</code></td><td>TEXT</td><td></td></tr><tr><td><code>favorecido</code></td><td>TEXT</td><td></td></tr><tr><td><code>favorecido_unidade_id</code></td><td>INTEGER</td><td> <span class="etq">→ unidades.id</span></td></tr><tr><td><code>competencia</code></td><td>TEXT</td><td></td></tr><tr><td><code>data_emissao</code></td><td>TEXT</td><td></td></tr><tr><td><code>data_vencimento</code></td><td>TEXT</td><td></td></tr><tr><td><code>valor</code></td><td>REAL</td><td></td></tr><tr><td><code>data_pagamento</code></td><td>TEXT</td><td></td></tr><tr><td><code>status</code></td><td>TEXT</td><td></td></tr></table></div>
+
+  <div class="cartao" id="departamentos"><h3>departamentos</h3><div class="nota">12 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>nome</code></td><td>TEXT</td><td></td></tr><tr><td><code>tipo</code></td><td>TEXT</td><td></td></tr></table></div>
+
+  <div class="cartao" id="despesas"><h3>despesas</h3><div class="nota">5.812 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>unidade_id</code></td><td>INTEGER</td><td> <span class="etq">→ unidades.id</span></td></tr><tr><td><code>competencia</code></td><td>TEXT</td><td></td></tr><tr><td><code>categoria_id</code></td><td>INTEGER</td><td> <span class="etq">→ categorias_despesa.id</span></td></tr><tr><td><code>descricao</code></td><td>TEXT</td><td></td></tr><tr><td><code>favorecido</code></td><td>TEXT</td><td></td></tr><tr><td><code>departamento_id</code></td><td>INTEGER</td><td> <span class="etq">→ departamentos.id</span></td></tr><tr><td><code>valor</code></td><td>REAL</td><td></td></tr><tr><td><code>data_vencimento</code></td><td>TEXT</td><td></td></tr><tr><td><code>data_pagamento</code></td><td>TEXT</td><td></td></tr><tr><td><code>status</code></td><td>TEXT</td><td></td></tr></table></div>
+
+  <div class="cartao" id="empresa"><h3>empresa</h3><div class="nota">1 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>razao_social</code></td><td>TEXT</td><td></td></tr><tr><td><code>nome_fantasia</code></td><td>TEXT</td><td></td></tr><tr><td><code>cnpj</code></td><td>TEXT</td><td></td></tr><tr><td><code>cidade</code></td><td>TEXT</td><td></td></tr><tr><td><code>uf</code></td><td>TEXT</td><td></td></tr><tr><td><code>regime_tributario</code></td><td>TEXT</td><td></td></tr><tr><td><code>fundacao</code></td><td>TEXT</td><td></td></tr></table></div>
+
+  <div class="cartao" id="escalas"><h3>escalas</h3><div class="nota">317.816 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>funcionario_id</code></td><td>INTEGER</td><td> <span class="etq">→ funcionarios.id</span></td></tr><tr><td><code>data</code></td><td>TEXT</td><td></td></tr><tr><td><code>tipo</code></td><td>TEXT</td><td></td></tr><tr><td><code>hora_inicio</code></td><td>TEXT</td><td></td></tr><tr><td><code>hora_fim</code></td><td>TEXT</td><td></td></tr></table></div>
+
+  <div class="cartao" id="estoque"><h3>estoque</h3><div class="nota">2.898 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>unidade_id</code></td><td>INTEGER</td><td><span class="etq info">PK</span> <span class="etq">→ unidades.id</span></td></tr><tr><td><code>produto_id</code></td><td>INTEGER</td><td><span class="etq info">PK</span> <span class="etq">→ produtos.id</span></td></tr><tr><td><code>quantidade</code></td><td>REAL</td><td></td></tr><tr><td><code>custo_medio</code></td><td>REAL</td><td></td></tr><tr><td><code>estoque_minimo</code></td><td>REAL</td><td></td></tr><tr><td><code>estoque_maximo</code></td><td>REAL</td><td></td></tr><tr><td><code>atualizado_em</code></td><td>TEXT</td><td></td></tr></table></div>
+
+  <div class="cartao" id="folha_pagamento"><h3>folha_pagamento</h3><div class="nota">10.473 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>competencia</code></td><td>TEXT</td><td></td></tr><tr><td><code>unidade_id</code></td><td>INTEGER</td><td> <span class="etq">→ unidades.id</span></td></tr><tr><td><code>funcionario_id</code></td><td>INTEGER</td><td> <span class="etq">→ funcionarios.id</span></td></tr><tr><td><code>dias_trabalhados</code></td><td>INTEGER</td><td></td></tr><tr><td><code>salario_base</code></td><td>REAL</td><td></td></tr><tr><td><code>horas_extras_qtd</code></td><td>REAL</td><td></td></tr><tr><td><code>horas_extras_valor</code></td><td>REAL</td><td></td></tr><tr><td><code>dsr_horas_extras</code></td><td>REAL</td><td></td></tr><tr><td><code>verbas_rescisorias</code></td><td>REAL</td><td></td></tr><tr><td><code>salario_bruto</code></td><td>REAL</td><td></td></tr><tr><td><code>inss_funcionario</code></td><td>REAL</td><td></td></tr><tr><td><code>irrf</code></td><td>REAL</td><td></td></tr><tr><td><code>desconto_vt</code></td><td>REAL</td><td></td></tr><tr><td><code>salario_liquido</code></td><td>REAL</td><td></td></tr><tr><td><code>fgts</code></td><td>REAL</td><td></td></tr><tr><td><code>inss_patronal</code></td><td>REAL</td><td></td></tr><tr><td><code>vale_alimentacao</code></td><td>REAL</td><td></td></tr><tr><td><code>vale_transporte_custo</code></td><td>REAL</td><td></td></tr><tr><td><code>provisao_13</code></td><td>REAL</td><td></td></tr><tr><td><code>provisao_ferias</code></td><td>REAL</td><td></td></tr><tr><td><code>encargos_provisoes</code></td><td>REAL</td><td></td></tr><tr><td><code>custo_total</code></td><td>REAL</td><td></td></tr></table></div>
+
+  <div class="cartao" id="fornecedores"><h3>fornecedores</h3><div class="nota">37 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>razao_social</code></td><td>TEXT</td><td></td></tr><tr><td><code>nome_fantasia</code></td><td>TEXT</td><td></td></tr><tr><td><code>cnpj</code></td><td>TEXT</td><td></td></tr><tr><td><code>abrangencia</code></td><td>TEXT</td><td></td></tr><tr><td><code>regiao_atendida</code></td><td>TEXT</td><td></td></tr><tr><td><code>cidade</code></td><td>TEXT</td><td></td></tr><tr><td><code>uf</code></td><td>TEXT</td><td></td></tr><tr><td><code>lat</code></td><td>REAL</td><td></td></tr><tr><td><code>lon</code></td><td>REAL</td><td></td></tr><tr><td><code>telefone</code></td><td>TEXT</td><td></td></tr><tr><td><code>prazo_pagamento_dias</code></td><td>INTEGER</td><td></td></tr><tr><td><code>dias_pedido</code></td><td>TEXT</td><td></td></tr><tr><td><code>pedido_minimo</code></td><td>REAL</td><td></td></tr><tr><td><code>fator_custo</code></td><td>REAL</td><td></td></tr><tr><td><code>tipo</code></td><td>TEXT</td><td></td></tr></table></div>
+
+  <div class="cartao" id="franqueados"><h3>franqueados</h3><div class="nota">6 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>razao_social</code></td><td>TEXT</td><td></td></tr><tr><td><code>nome_fantasia</code></td><td>TEXT</td><td></td></tr><tr><td><code>cnpj</code></td><td>TEXT</td><td></td></tr><tr><td><code>socio_responsavel</code></td><td>TEXT</td><td></td></tr><tr><td><code>telefone</code></td><td>TEXT</td><td></td></tr><tr><td><code>data_contrato</code></td><td>TEXT</td><td></td></tr><tr><td><code>taxa_franquia</code></td><td>REAL</td><td></td></tr></table></div>
+
+  <div class="cartao" id="funcionarios"><h3>funcionarios</h3><div class="nota">920 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>matricula</code></td><td>TEXT</td><td></td></tr><tr><td><code>nome</code></td><td>TEXT</td><td></td></tr><tr><td><code>cpf</code></td><td>TEXT</td><td></td></tr><tr><td><code>data_nascimento</code></td><td>TEXT</td><td></td></tr><tr><td><code>sexo</code></td><td>TEXT</td><td></td></tr><tr><td><code>unidade_id</code></td><td>INTEGER</td><td> <span class="etq">→ unidades.id</span></td></tr><tr><td><code>cargo_id</code></td><td>INTEGER</td><td> <span class="etq">→ cargos.id</span></td></tr><tr><td><code>tipo_contrato</code></td><td>TEXT</td><td></td></tr><tr><td><code>turno</code></td><td>TEXT</td><td></td></tr><tr><td><code>salario_admissao</code></td><td>REAL</td><td></td></tr><tr><td><code>data_admissao</code></td><td>TEXT</td><td></td></tr><tr><td><code>data_demissao</code></td><td>TEXT</td><td></td></tr><tr><td><code>motivo_desligamento</code></td><td>TEXT</td><td></td></tr><tr><td><code>usa_vale_transporte</code></td><td>INTEGER</td><td></td></tr></table></div>
+
+  <div class="cartao" id="historico_precos"><h3>historico_precos</h3><div class="nota">5.688 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>produto_id</code></td><td>INTEGER</td><td> <span class="etq">→ produtos.id</span></td></tr><tr><td><code>competencia</code></td><td>TEXT</td><td></td></tr><tr><td><code>custo</code></td><td>REAL</td><td></td></tr><tr><td><code>preco</code></td><td>REAL</td><td></td></tr></table></div>
+
+  <div class="cartao" id="historico_salarial"><h3>historico_salarial</h3><div class="nota">2.264 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>funcionario_id</code></td><td>INTEGER</td><td> <span class="etq">→ funcionarios.id</span></td></tr><tr><td><code>data_inicio</code></td><td>TEXT</td><td></td></tr><tr><td><code>salario</code></td><td>REAL</td><td></td></tr><tr><td><code>motivo</code></td><td>TEXT</td><td></td></tr></table></div>
+
+  <div class="cartao" id="itens_compra"><h3>itens_compra</h3><div class="nota">277.602 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>pedido_id</code></td><td>INTEGER</td><td> <span class="etq">→ pedidos_compra.id</span></td></tr><tr><td><code>produto_id</code></td><td>INTEGER</td><td> <span class="etq">→ produtos.id</span></td></tr><tr><td><code>quantidade_pedida</code></td><td>REAL</td><td></td></tr><tr><td><code>quantidade_recebida</code></td><td>REAL</td><td></td></tr><tr><td><code>custo_unitario</code></td><td>REAL</td><td></td></tr><tr><td><code>valor_total</code></td><td>REAL</td><td></td></tr></table></div>
+
+  <div class="cartao" id="itens_transferencia"><h3>itens_transferencia</h3><div class="nota">344.153 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>transferencia_id</code></td><td>INTEGER</td><td> <span class="etq">→ transferencias.id</span></td></tr><tr><td><code>produto_id</code></td><td>INTEGER</td><td> <span class="etq">→ produtos.id</span></td></tr><tr><td><code>quantidade_solicitada</code></td><td>REAL</td><td></td></tr><tr><td><code>quantidade_enviada</code></td><td>REAL</td><td></td></tr><tr><td><code>custo_cd</code></td><td>REAL</td><td></td></tr><tr><td><code>preco_transferencia</code></td><td>REAL</td><td></td></tr></table></div>
+
+  <div class="cartao" id="itens_venda"><h3>itens_venda</h3><div class="nota">2.218.646 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>venda_id</code></td><td>INTEGER</td><td> <span class="etq">→ vendas.id</span></td></tr><tr><td><code>produto_id</code></td><td>INTEGER</td><td> <span class="etq">→ produtos.id</span></td></tr><tr><td><code>quantidade</code></td><td>REAL</td><td></td></tr><tr><td><code>preco_unitario</code></td><td>REAL</td><td></td></tr><tr><td><code>custo_unitario</code></td><td>REAL</td><td></td></tr><tr><td><code>em_promocao</code></td><td>INTEGER</td><td></td></tr><tr><td><code>valor_total</code></td><td>REAL</td><td></td></tr></table></div>
+
+  <div class="cartao" id="movimentacoes_estoque"><h3>movimentacoes_estoque</h3><div class="nota">497.041 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>unidade_id</code></td><td>INTEGER</td><td> <span class="etq">→ unidades.id</span></td></tr><tr><td><code>data</code></td><td>TEXT</td><td></td></tr><tr><td><code>produto_id</code></td><td>INTEGER</td><td> <span class="etq">→ produtos.id</span></td></tr><tr><td><code>tipo</code></td><td>TEXT</td><td></td></tr><tr><td><code>quantidade</code></td><td>REAL</td><td></td></tr><tr><td><code>custo_unitario</code></td><td>REAL</td><td></td></tr><tr><td><code>motivo</code></td><td>TEXT</td><td></td></tr><tr><td><code>departamento_id</code></td><td>INTEGER</td><td> <span class="etq">→ departamentos.id</span></td></tr><tr><td><code>referencia</code></td><td>TEXT</td><td></td></tr></table></div>
+
+  <div class="cartao" id="parametros"><h3>parametros</h3><div class="nota">26 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>chave</code></td><td>TEXT</td><td><span class="etq info">PK</span></td></tr><tr><td><code>valor</code></td><td>REAL</td><td></td></tr><tr><td><code>descricao</code></td><td>TEXT</td><td></td></tr></table></div>
+
+  <div class="cartao" id="pedidos_compra"><h3>pedidos_compra</h3><div class="nota">23.876 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>unidade_id</code></td><td>INTEGER</td><td> <span class="etq">→ unidades.id</span></td></tr><tr><td><code>fornecedor_id</code></td><td>INTEGER</td><td> <span class="etq">→ fornecedores.id</span></td></tr><tr><td><code>comprador_id</code></td><td>INTEGER</td><td> <span class="etq">→ funcionarios.id</span></td></tr><tr><td><code>data_pedido</code></td><td>TEXT</td><td></td></tr><tr><td><code>data_prevista</code></td><td>TEXT</td><td></td></tr><tr><td><code>data_recebimento</code></td><td>TEXT</td><td></td></tr><tr><td><code>status</code></td><td>TEXT</td><td></td></tr><tr><td><code>nota_fiscal</code></td><td>TEXT</td><td></td></tr><tr><td><code>valor_total</code></td><td>REAL</td><td></td></tr><tr><td><code>prazo_pagamento_dias</code></td><td>INTEGER</td><td></td></tr><tr><td><code>distancia_km</code></td><td>REAL</td><td></td></tr></table></div>
+
+  <div class="cartao" id="produtos"><h3>produtos</h3><div class="nota">237 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>sku</code></td><td>TEXT</td><td></td></tr><tr><td><code>ean</code></td><td>TEXT</td><td></td></tr><tr><td><code>descricao</code></td><td>TEXT</td><td></td></tr><tr><td><code>marca</code></td><td>TEXT</td><td></td></tr><tr><td><code>categoria_id</code></td><td>INTEGER</td><td> <span class="etq">→ categorias.id</span></td></tr><tr><td><code>fornecedor_id</code></td><td>INTEGER</td><td> <span class="etq">→ fornecedores.id</span></td></tr><tr><td><code>tipo_fornecedor</code></td><td>TEXT</td><td></td></tr><tr><td><code>unidade</code></td><td>TEXT</td><td></td></tr><tr><td><code>embalagem_compra</code></td><td>REAL</td><td></td></tr><tr><td><code>custo_atual</code></td><td>REAL</td><td></td></tr><tr><td><code>preco_atual</code></td><td>REAL</td><td></td></tr><tr><td><code>validade_dias</code></td><td>INTEGER</td><td></td></tr><tr><td><code>sazonalidade</code></td><td>TEXT</td><td></td></tr><tr><td><code>ativo</code></td><td>INTEGER</td><td></td></tr></table></div>
+
+  <div class="cartao" id="promocoes"><h3>promocoes</h3><div class="nota">1.890 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>produto_id</code></td><td>INTEGER</td><td> <span class="etq">→ produtos.id</span></td></tr><tr><td><code>data_inicio</code></td><td>TEXT</td><td></td></tr><tr><td><code>data_fim</code></td><td>TEXT</td><td></td></tr><tr><td><code>preco_normal</code></td><td>REAL</td><td></td></tr><tr><td><code>preco_promocional</code></td><td>REAL</td><td></td></tr><tr><td><code>campanha</code></td><td>TEXT</td><td></td></tr></table></div>
+
+  <div class="cartao" id="receitas_franquia"><h3>receitas_franquia</h3><div class="nota">236 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>competencia</code></td><td>TEXT</td><td></td></tr><tr><td><code>loja_id</code></td><td>INTEGER</td><td> <span class="etq">→ unidades.id</span></td></tr><tr><td><code>franqueado_id</code></td><td>INTEGER</td><td> <span class="etq">→ franqueados.id</span></td></tr><tr><td><code>tipo</code></td><td>TEXT</td><td></td></tr><tr><td><code>base_calculo</code></td><td>REAL</td><td></td></tr><tr><td><code>percentual</code></td><td>REAL</td><td></td></tr><tr><td><code>valor</code></td><td>REAL</td><td></td></tr><tr><td><code>data_vencimento</code></td><td>TEXT</td><td></td></tr><tr><td><code>data_recebimento</code></td><td>TEXT</td><td></td></tr><tr><td><code>status</code></td><td>TEXT</td><td></td></tr></table></div>
+
+  <div class="cartao" id="resumo_cupons_diario"><h3>resumo_cupons_diario</h3><div class="nota">31.570 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>unidade_id</code></td><td>INTEGER</td><td><span class="etq info">PK</span> <span class="etq">→ unidades.id</span></td></tr><tr><td><code>data</code></td><td>TEXT</td><td><span class="etq info">PK</span></td></tr><tr><td><code>forma_pagamento</code></td><td>TEXT</td><td><span class="etq info">PK</span></td></tr><tr><td><code>cupons</code></td><td>INTEGER</td><td></td></tr><tr><td><code>itens</code></td><td>INTEGER</td><td></td></tr><tr><td><code>valor_bruto</code></td><td>REAL</td><td></td></tr><tr><td><code>desconto</code></td><td>REAL</td><td></td></tr><tr><td><code>valor_total</code></td><td>REAL</td><td></td></tr><tr><td><code>custo_total</code></td><td>REAL</td><td></td></tr><tr><td><code>cupons_fidelidade</code></td><td>INTEGER</td><td></td></tr></table></div>
+
+  <div class="cartao" id="resumo_vendas_diario"><h3>resumo_vendas_diario</h3><div class="nota">1.409.868 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>unidade_id</code></td><td>INTEGER</td><td><span class="etq info">PK</span> <span class="etq">→ unidades.id</span></td></tr><tr><td><code>data</code></td><td>TEXT</td><td><span class="etq info">PK</span></td></tr><tr><td><code>produto_id</code></td><td>INTEGER</td><td><span class="etq info">PK</span> <span class="etq">→ produtos.id</span></td></tr><tr><td><code>quantidade</code></td><td>REAL</td><td></td></tr><tr><td><code>receita</code></td><td>REAL</td><td></td></tr><tr><td><code>custo</code></td><td>REAL</td><td></td></tr></table></div>
+
+  <div class="cartao" id="rupturas"><h3>rupturas</h3><div class="nota">388 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>unidade_id</code></td><td>INTEGER</td><td> <span class="etq">→ unidades.id</span></td></tr><tr><td><code>data</code></td><td>TEXT</td><td></td></tr><tr><td><code>produto_id</code></td><td>INTEGER</td><td> <span class="etq">→ produtos.id</span></td></tr><tr><td><code>qtd_nao_atendida</code></td><td>REAL</td><td></td></tr><tr><td><code>venda_perdida_estimada</code></td><td>REAL</td><td></td></tr></table></div>
+
+  <div class="cartao" id="transferencias"><h3>transferencias</h3><div class="nota">2.182 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>cd_id</code></td><td>INTEGER</td><td> <span class="etq">→ unidades.id</span></td></tr><tr><td><code>loja_id</code></td><td>INTEGER</td><td> <span class="etq">→ unidades.id</span></td></tr><tr><td><code>data_pedido</code></td><td>TEXT</td><td></td></tr><tr><td><code>data_envio</code></td><td>TEXT</td><td></td></tr><tr><td><code>data_recebimento</code></td><td>TEXT</td><td></td></tr><tr><td><code>status</code></td><td>TEXT</td><td></td></tr><tr><td><code>valor_custo_cd</code></td><td>REAL</td><td></td></tr><tr><td><code>valor_transferencia</code></td><td>REAL</td><td></td></tr><tr><td><code>distancia_km</code></td><td>REAL</td><td></td></tr><tr><td><code>viagens</code></td><td>INTEGER</td><td></td></tr><tr><td><code>custo_frete</code></td><td>REAL</td><td></td></tr></table></div>
+
+  <div class="cartao" id="unidades"><h3>unidades</h3><div class="nota">14 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>codigo</code></td><td>TEXT</td><td></td></tr><tr><td><code>nome</code></td><td>TEXT</td><td></td></tr><tr><td><code>tipo</code></td><td>TEXT</td><td></td></tr><tr><td><code>modelo</code></td><td>TEXT</td><td></td></tr><tr><td><code>franqueado_id</code></td><td>INTEGER</td><td> <span class="etq">→ franqueados.id</span></td></tr><tr><td><code>cidade_id</code></td><td>INTEGER</td><td> <span class="etq">→ cidades.id</span></td></tr><tr><td><code>bairro</code></td><td>TEXT</td><td></td></tr><tr><td><code>endereco</code></td><td>TEXT</td><td></td></tr><tr><td><code>lat</code></td><td>REAL</td><td></td></tr><tr><td><code>lon</code></td><td>REAL</td><td></td></tr><tr><td><code>area_m2</code></td><td>INTEGER</td><td></td></tr><tr><td><code>checkouts</code></td><td>INTEGER</td><td></td></tr><tr><td><code>data_inauguracao</code></td><td>TEXT</td><td></td></tr><tr><td><code>cd_id</code></td><td>INTEGER</td><td> <span class="etq">→ unidades.id</span></td></tr><tr><td><code>distancia_cd_km</code></td><td>REAL</td><td></td></tr><tr><td><code>lead_time_cd_dias</code></td><td>INTEGER</td><td></td></tr><tr><td><code>dias_pedido_cd</code></td><td>TEXT</td><td></td></tr><tr><td><code>fator_preco</code></td><td>REAL</td><td></td></tr><tr><td><code>status</code></td><td>TEXT</td><td></td></tr></table></div>
+
+  <div class="cartao" id="vendas"><h3>vendas</h3><div class="nota">1.052.457 registros</div>
+    <table><tr><th>Coluna</th><th>Tipo</th><th>Chave</th></tr>
+    <tr><td><code>id</code></td><td>INTEGER</td><td><span class="etq info">PK</span></td></tr><tr><td><code>unidade_id</code></td><td>INTEGER</td><td> <span class="etq">→ unidades.id</span></td></tr><tr><td><code>data</code></td><td>TEXT</td><td></td></tr><tr><td><code>hora</code></td><td>TEXT</td><td></td></tr><tr><td><code>pdv</code></td><td>INTEGER</td><td></td></tr><tr><td><code>operador_id</code></td><td>INTEGER</td><td> <span class="etq">→ funcionarios.id</span></td></tr><tr><td><code>cliente_id</code></td><td>INTEGER</td><td> <span class="etq">→ clientes.id</span></td></tr><tr><td><code>forma_pagamento</code></td><td>TEXT</td><td></td></tr><tr><td><code>qtd_itens</code></td><td>INTEGER</td><td></td></tr><tr><td><code>valor_bruto</code></td><td>REAL</td><td></td></tr><tr><td><code>desconto</code></td><td>REAL</td><td></td></tr><tr><td><code>valor_total</code></td><td>REAL</td><td></td></tr><tr><td><code>custo_total</code></td><td>REAL</td><td></td></tr><tr><td><code>status</code></td><td>TEXT</td><td></td></tr></table></div>
+
+</div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+
+</body>
+</html>

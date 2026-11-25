@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mortadela Fatiada · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="rede";window.VV_KEY="/estoque/7/136";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" selected>Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Mortadela Fatiada</h1>
+  <div class="sub"><b>VV03 · Vale Verde Rio Tijuca</b> · SKU 030027 · EAN 2001957262945 · Laticínios e Frios · fornecedor Frios Serra da Mantiqueira · validade 15 dias</div></div>
+  <div class="filtros">
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a><a class="btn" href="estoque.html">‹ Estoque</a><a class="btn" href="#" data-off="1">Lançar movimentação</a></div></div>
+<div class="grade g6">
+  <div class="cartao kpi">
+  <div class="rot">Estoque atual</div>
+  <div class="val">8,106 kg</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Mínimo / máximo</div>
+  <div class="val">8,5 / 20,0</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Custo médio</div>
+  <div class="val">R$ 17,85</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Preço de venda (loja)</div>
+  <div class="val">R$ 26,41</div>
+  <div class="det">canal: fornecedor regional</div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Margem sobre custo médio</div>
+  <div class="val">32,4%</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Movimentos</div>
+  <div class="val">1.041</div>
+  <div class="det"></div>
+</div>
+</div>
+<div class="grade g2 mt">
+  <div class="cartao col2"><h3>Saldo diário de estoque</h3><div class="nota">Quedas = vendas, perdas e consumo; saltos = recebimentos de compra</div><div class="grafico"><canvas id="gSaldo"></canvas></div></div>
+  <div class="cartao"><h3>Quantidade vendida por mês</h3><div class="grafico baixo"><canvas id="gQtd"></canvas></div></div>
+  <div class="cartao"><h3>Custo e preço por mês</h3><div class="grafico baixo"><canvas id="gPreco"></canvas></div></div>
+</div>
+<div class="cartao mt"><h3>Este produto nas outras unidades</h3><p><a href="estoque_5_136.html" class="">VV01: 3,6</a> · <a href="#" data-off="1" class="">VV02: 14,7</a> · <a href="estoque_7_136.html" class="etq ok">VV03: 8,1</a> · <a href="#" data-off="1" class="">VV04: 8,4</a> · <a href="#" data-off="1" class="">VV05: 12,1</a> · <a href="#" data-off="1" class="">VV06: 7,3</a> · <a href="#" data-off="1" class="">VV07: 8,9</a> · <a href="#" data-off="1" class="">VV08: 7,6</a> · <a href="#" data-off="1" class="">VV09: 10,8</a> · <a href="#" data-off="1" class="">VV10: 10,5</a></p></div>
+<div class="cartao mt"><h3>Kardex (últimos 150 lançamentos)</h3>
+  <div class="rolagem"><table>
+    <tr><th>Data</th><th>Tipo</th><th>Motivo</th><th>Ref.</th><th class="n">Quantidade</th><th class="n">Custo unit.</th><th class="n">Saldo</th></tr>
+    <tr><td>31/10/2026</td><td>Perda</td><td>Vencimento/deterioração</td><td></td>
+      <td class="n neg">-0,519</td><td class="n">R$ 17,85</td><td class="n">8,106</td></tr><tr><td>31/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-4,503</td><td class="n">R$ 17,85</td><td class="n">8,625</td></tr><tr><td>30/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-4,454</td><td class="n">R$ 17,85</td><td class="n">13,128</td></tr><tr><td>29/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,266</td><td class="n">R$ 17,85</td><td class="n">17,582</td></tr><tr><td>29/10/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-023699</a></td>
+      <td class="n ">10,000</td><td class="n">R$ 17,67</td><td class="n">20,848</td></tr><tr><td>28/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-4,905</td><td class="n">R$ 17,85</td><td class="n">10,848</td></tr><tr><td>27/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-4,042</td><td class="n">R$ 17,85</td><td class="n">15,753</td></tr><tr><td>26/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,964</td><td class="n">R$ 17,85</td><td class="n">19,795</td></tr><tr><td>26/10/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-023569</a></td>
+      <td class="n ">16,000</td><td class="n">R$ 17,76</td><td class="n">23,759</td></tr><tr><td>25/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-1,516</td><td class="n">R$ 17,85</td><td class="n">7,759</td></tr><tr><td>24/10/2026</td><td>Perda</td><td>Vencimento/deterioração</td><td></td>
+      <td class="n neg">-0,416</td><td class="n">R$ 17,85</td><td class="n">9,275</td></tr><tr><td>24/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-5,033</td><td class="n">R$ 17,85</td><td class="n">9,691</td></tr><tr><td>23/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-4,378</td><td class="n">R$ 17,85</td><td class="n">14,724</td></tr><tr><td>22/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,725</td><td class="n">R$ 17,85</td><td class="n">19,102</td></tr><tr><td>22/10/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-023439</a></td>
+      <td class="n ">12,000</td><td class="n">R$ 18,09</td><td class="n">22,827</td></tr><tr><td>21/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-2,066</td><td class="n">R$ 17,85</td><td class="n">10,827</td></tr><tr><td>20/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-4,160</td><td class="n">R$ 17,85</td><td class="n">12,893</td></tr><tr><td>19/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,269</td><td class="n">R$ 17,85</td><td class="n">17,053</td></tr><tr><td>19/10/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-023309</a></td>
+      <td class="n ">15,000</td><td class="n">R$ 17,76</td><td class="n">20,322</td></tr><tr><td>18/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,707</td><td class="n">R$ 17,85</td><td class="n">5,322</td></tr><tr><td>17/10/2026</td><td>Perda</td><td>Vencimento/deterioração</td><td></td>
+      <td class="n neg">-0,510</td><td class="n">R$ 17,85</td><td class="n">9,029</td></tr><tr><td>17/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-4,889</td><td class="n">R$ 17,85</td><td class="n">9,539</td></tr><tr><td>16/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-5,153</td><td class="n">R$ 17,85</td><td class="n">14,428</td></tr><tr><td>15/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,741</td><td class="n">R$ 17,85</td><td class="n">19,581</td></tr><tr><td>15/10/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-023179</a></td>
+      <td class="n ">12,000</td><td class="n">R$ 17,74</td><td class="n">23,322</td></tr><tr><td>14/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-2,680</td><td class="n">R$ 17,85</td><td class="n">11,322</td></tr><tr><td>13/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-5,201</td><td class="n">R$ 17,85</td><td class="n">14,002</td></tr><tr><td>12/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-1,673</td><td class="n">R$ 17,85</td><td class="n">19,203</td></tr><tr><td>12/10/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-023049</a></td>
+      <td class="n ">15,000</td><td class="n">R$ 17,90</td><td class="n">20,876</td></tr><tr><td>11/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-0,926</td><td class="n">R$ 17,85</td><td class="n">5,876</td></tr><tr><td>10/10/2026</td><td>Perda</td><td>Vencimento/deterioração</td><td></td>
+      <td class="n neg">-0,484</td><td class="n">R$ 17,85</td><td class="n">6,802</td></tr><tr><td>10/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-7,264</td><td class="n">R$ 17,85</td><td class="n">7,286</td></tr><tr><td>09/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-4,097</td><td class="n">R$ 17,85</td><td class="n">14,550</td></tr><tr><td>08/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-5,116</td><td class="n">R$ 17,85</td><td class="n">18,647</td></tr><tr><td>08/10/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-022919</a></td>
+      <td class="n ">11,000</td><td class="n">R$ 17,61</td><td class="n">23,763</td></tr><tr><td>07/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,095</td><td class="n">R$ 17,85</td><td class="n">12,763</td></tr><tr><td>06/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-4,544</td><td class="n">R$ 17,85</td><td class="n">15,858</td></tr><tr><td>05/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-5,298</td><td class="n">R$ 17,85</td><td class="n">20,402</td></tr><tr><td>05/10/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-022789</a></td>
+      <td class="n ">16,000</td><td class="n">R$ 17,87</td><td class="n">25,700</td></tr><tr><td>04/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-0,917</td><td class="n">R$ 17,85</td><td class="n">9,700</td></tr><tr><td>03/10/2026</td><td>Perda</td><td>Vencimento/deterioração</td><td></td>
+      <td class="n neg">-0,527</td><td class="n">R$ 17,70</td><td class="n">10,617</td></tr><tr><td>03/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-4,610</td><td class="n">R$ 17,85</td><td class="n">11,144</td></tr><tr><td>02/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,120</td><td class="n">R$ 17,85</td><td class="n">15,754</td></tr><tr><td>01/10/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-4,033</td><td class="n">R$ 17,85</td><td class="n">18,874</td></tr><tr><td>01/10/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-022659</a></td>
+      <td class="n ">12,000</td><td class="n">R$ 17,59</td><td class="n">22,907</td></tr><tr><td>30/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-1,812</td><td class="n">R$ 17,52</td><td class="n">10,907</td></tr><tr><td>29/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,242</td><td class="n">R$ 17,52</td><td class="n">12,719</td></tr><tr><td>28/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-5,654</td><td class="n">R$ 17,52</td><td class="n">15,961</td></tr><tr><td>28/09/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-022529</a></td>
+      <td class="n ">16,000</td><td class="n">R$ 17,66</td><td class="n">21,615</td></tr><tr><td>27/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,396</td><td class="n">R$ 17,52</td><td class="n">5,615</td></tr><tr><td>26/09/2026</td><td>Perda</td><td>Vencimento/deterioração</td><td></td>
+      <td class="n neg">-0,460</td><td class="n">R$ 17,52</td><td class="n">9,011</td></tr><tr><td>26/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-4,593</td><td class="n">R$ 17,52</td><td class="n">9,471</td></tr><tr><td>25/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-2,986</td><td class="n">R$ 17,52</td><td class="n">14,064</td></tr><tr><td>24/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,818</td><td class="n">R$ 17,52</td><td class="n">17,050</td></tr><tr><td>24/09/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-022399</a></td>
+      <td class="n ">11,000</td><td class="n">R$ 17,58</td><td class="n">20,868</td></tr><tr><td>23/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,330</td><td class="n">R$ 17,52</td><td class="n">9,868</td></tr><tr><td>22/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,184</td><td class="n">R$ 17,52</td><td class="n">13,198</td></tr><tr><td>21/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,072</td><td class="n">R$ 17,52</td><td class="n">16,382</td></tr><tr><td>21/09/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-022269</a></td>
+      <td class="n ">13,000</td><td class="n">R$ 17,42</td><td class="n">19,454</td></tr><tr><td>20/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-2,111</td><td class="n">R$ 17,52</td><td class="n">6,454</td></tr><tr><td>19/09/2026</td><td>Perda</td><td>Vencimento/deterioração</td><td></td>
+      <td class="n neg">-0,432</td><td class="n">R$ 17,52</td><td class="n">8,565</td></tr><tr><td>19/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-6,636</td><td class="n">R$ 17,52</td><td class="n">8,997</td></tr><tr><td>18/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,961</td><td class="n">R$ 17,52</td><td class="n">15,633</td></tr><tr><td>17/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-4,979</td><td class="n">R$ 17,52</td><td class="n">19,594</td></tr><tr><td>17/09/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-022139</a></td>
+      <td class="n ">14,000</td><td class="n">R$ 17,73</td><td class="n">24,573</td></tr><tr><td>16/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,771</td><td class="n">R$ 17,52</td><td class="n">10,573</td></tr><tr><td>15/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,266</td><td class="n">R$ 17,52</td><td class="n">14,344</td></tr><tr><td>14/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-1,718</td><td class="n">R$ 17,52</td><td class="n">17,610</td></tr><tr><td>14/09/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-022009</a></td>
+      <td class="n ">13,000</td><td class="n">R$ 17,80</td><td class="n">19,328</td></tr><tr><td>13/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-2,787</td><td class="n">R$ 17,52</td><td class="n">6,328</td></tr><tr><td>12/09/2026</td><td>Perda</td><td>Vencimento/deterioração</td><td></td>
+      <td class="n neg">-0,498</td><td class="n">R$ 17,52</td><td class="n">9,115</td></tr><tr><td>12/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-4,626</td><td class="n">R$ 17,52</td><td class="n">9,613</td></tr><tr><td>11/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-4,495</td><td class="n">R$ 17,52</td><td class="n">14,239</td></tr><tr><td>10/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-5,833</td><td class="n">R$ 17,52</td><td class="n">18,734</td></tr><tr><td>10/09/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-021879</a></td>
+      <td class="n ">12,000</td><td class="n">R$ 17,21</td><td class="n">24,567</td></tr><tr><td>09/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-5,642</td><td class="n">R$ 17,52</td><td class="n">12,567</td></tr><tr><td>08/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-2,422</td><td class="n">R$ 17,52</td><td class="n">18,209</td></tr><tr><td>07/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-1,339</td><td class="n">R$ 17,52</td><td class="n">20,631</td></tr><tr><td>07/09/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-021749</a></td>
+      <td class="n ">15,000</td><td class="n">R$ 17,76</td><td class="n">21,970</td></tr><tr><td>06/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-1,323</td><td class="n">R$ 17,52</td><td class="n">6,970</td></tr><tr><td>05/09/2026</td><td>Perda</td><td>Vencimento/deterioração</td><td></td>
+      <td class="n neg">-0,439</td><td class="n">R$ 17,55</td><td class="n">8,293</td></tr><tr><td>05/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-6,845</td><td class="n">R$ 17,52</td><td class="n">8,732</td></tr><tr><td>04/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,185</td><td class="n">R$ 17,52</td><td class="n">15,577</td></tr><tr><td>03/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,127</td><td class="n">R$ 17,52</td><td class="n">18,762</td></tr><tr><td>03/09/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-021619</a></td>
+      <td class="n ">11,000</td><td class="n">R$ 17,67</td><td class="n">21,889</td></tr><tr><td>02/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-2,665</td><td class="n">R$ 17,52</td><td class="n">10,889</td></tr><tr><td>01/09/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-2,749</td><td class="n">R$ 17,52</td><td class="n">13,554</td></tr><tr><td>31/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-4,156</td><td class="n">R$ 17,68</td><td class="n">16,303</td></tr><tr><td>31/08/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-021489</a></td>
+      <td class="n ">14,000</td><td class="n">R$ 17,43</td><td class="n">20,459</td></tr><tr><td>30/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,534</td><td class="n">R$ 17,68</td><td class="n">6,459</td></tr><tr><td>29/08/2026</td><td>Perda</td><td>Vencimento/deterioração</td><td></td>
+      <td class="n neg">-0,527</td><td class="n">R$ 17,68</td><td class="n">9,993</td></tr><tr><td>29/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,880</td><td class="n">R$ 17,68</td><td class="n">10,520</td></tr><tr><td>28/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-4,069</td><td class="n">R$ 17,68</td><td class="n">14,400</td></tr><tr><td>27/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,555</td><td class="n">R$ 17,68</td><td class="n">18,469</td></tr><tr><td>27/08/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-021359</a></td>
+      <td class="n ">6,000</td><td class="n">R$ 17,68</td><td class="n">22,024</td></tr><tr><td>26/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-1,892</td><td class="n">R$ 17,68</td><td class="n">16,024</td></tr><tr><td>25/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-2,489</td><td class="n">R$ 17,68</td><td class="n">17,916</td></tr><tr><td>24/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-2,183</td><td class="n">R$ 17,68</td><td class="n">20,405</td></tr><tr><td>24/08/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-021229</a></td>
+      <td class="n ">15,000</td><td class="n">R$ 17,30</td><td class="n">22,588</td></tr><tr><td>23/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-1,149</td><td class="n">R$ 17,68</td><td class="n">7,588</td></tr><tr><td>22/08/2026</td><td>Perda</td><td>Vencimento/deterioração</td><td></td>
+      <td class="n neg">-0,530</td><td class="n">R$ 17,68</td><td class="n">8,737</td></tr><tr><td>22/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-5,871</td><td class="n">R$ 17,68</td><td class="n">9,267</td></tr><tr><td>21/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,416</td><td class="n">R$ 17,68</td><td class="n">15,138</td></tr><tr><td>20/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-2,330</td><td class="n">R$ 17,68</td><td class="n">18,554</td></tr><tr><td>20/08/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-021099</a></td>
+      <td class="n ">7,000</td><td class="n">R$ 17,46</td><td class="n">20,884</td></tr><tr><td>19/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-6,302</td><td class="n">R$ 17,68</td><td class="n">13,884</td></tr><tr><td>18/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,089</td><td class="n">R$ 17,68</td><td class="n">20,186</td></tr><tr><td>17/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-2,354</td><td class="n">R$ 17,68</td><td class="n">23,275</td></tr><tr><td>17/08/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-020969</a></td>
+      <td class="n ">18,000</td><td class="n">R$ 17,55</td><td class="n">25,629</td></tr><tr><td>16/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-1,359</td><td class="n">R$ 17,68</td><td class="n">7,629</td></tr><tr><td>15/08/2026</td><td>Perda</td><td>Vencimento/deterioração</td><td></td>
+      <td class="n neg">-0,483</td><td class="n">R$ 17,68</td><td class="n">8,988</td></tr><tr><td>15/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-5,220</td><td class="n">R$ 17,68</td><td class="n">9,471</td></tr><tr><td>14/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-4,722</td><td class="n">R$ 17,68</td><td class="n">14,691</td></tr><tr><td>13/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-2,236</td><td class="n">R$ 17,68</td><td class="n">19,413</td></tr><tr><td>13/08/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-020839</a></td>
+      <td class="n ">11,000</td><td class="n">R$ 17,27</td><td class="n">21,649</td></tr><tr><td>12/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-4,763</td><td class="n">R$ 17,68</td><td class="n">10,649</td></tr><tr><td>11/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,002</td><td class="n">R$ 17,68</td><td class="n">15,412</td></tr><tr><td>10/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-1,399</td><td class="n">R$ 17,68</td><td class="n">18,414</td></tr><tr><td>10/08/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-020709</a></td>
+      <td class="n ">14,000</td><td class="n">R$ 17,76</td><td class="n">19,813</td></tr><tr><td>09/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-1,637</td><td class="n">R$ 17,68</td><td class="n">5,813</td></tr><tr><td>08/08/2026</td><td>Perda</td><td>Vencimento/deterioração</td><td></td>
+      <td class="n neg">-0,502</td><td class="n">R$ 17,68</td><td class="n">7,450</td></tr><tr><td>08/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-10,166</td><td class="n">R$ 17,68</td><td class="n">7,952</td></tr><tr><td>07/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-5,263</td><td class="n">R$ 17,68</td><td class="n">18,118</td></tr><tr><td>06/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-5,691</td><td class="n">R$ 17,68</td><td class="n">23,381</td></tr><tr><td>06/08/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-020579</a></td>
+      <td class="n ">23,000</td><td class="n">R$ 17,58</td><td class="n">29,072</td></tr><tr><td>05/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-2,945</td><td class="n">R$ 17,68</td><td class="n">6,072</td></tr><tr><td>04/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-6,713</td><td class="n">R$ 17,68</td><td class="n">9,017</td></tr><tr><td>03/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-4,256</td><td class="n">R$ 17,68</td><td class="n">15,730</td></tr><tr><td>03/08/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-020449</a></td>
+      <td class="n ">13,000</td><td class="n">R$ 18,64</td><td class="n">19,986</td></tr><tr><td>02/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-5,346</td><td class="n">R$ 17,68</td><td class="n">6,986</td></tr><tr><td>01/08/2026</td><td>Perda</td><td>Vencimento/deterioração</td><td></td>
+      <td class="n neg">-0,564</td><td class="n">R$ 18,62</td><td class="n">12,332</td></tr><tr><td>01/08/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-8,393</td><td class="n">R$ 17,68</td><td class="n">12,896</td></tr><tr><td>31/07/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-2,234</td><td class="n">R$ 18,71</td><td class="n">21,289</td></tr><tr><td>30/07/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,594</td><td class="n">R$ 18,71</td><td class="n">23,523</td></tr><tr><td>30/07/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-020319</a></td>
+      <td class="n ">17,000</td><td class="n">R$ 18,78</td><td class="n">27,117</td></tr><tr><td>29/07/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-8,183</td><td class="n">R$ 18,71</td><td class="n">10,117</td></tr><tr><td>28/07/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-4,866</td><td class="n">R$ 18,71</td><td class="n">18,300</td></tr><tr><td>27/07/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-7,321</td><td class="n">R$ 18,71</td><td class="n">23,166</td></tr><tr><td>27/07/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-020189</a></td>
+      <td class="n ">22,000</td><td class="n">R$ 18,86</td><td class="n">30,487</td></tr><tr><td>26/07/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-4,313</td><td class="n">R$ 18,71</td><td class="n">8,487</td></tr><tr><td>25/07/2026</td><td>Perda</td><td>Vencimento/deterioração</td><td></td>
+      <td class="n neg">-0,790</td><td class="n">R$ 18,71</td><td class="n">12,800</td></tr><tr><td>25/07/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-10,691</td><td class="n">R$ 18,71</td><td class="n">13,590</td></tr><tr><td>24/07/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-6,822</td><td class="n">R$ 18,71</td><td class="n">24,281</td></tr><tr><td>23/07/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-4,361</td><td class="n">R$ 18,71</td><td class="n">31,103</td></tr><tr><td>23/07/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-020059</a></td>
+      <td class="n ">19,000</td><td class="n">R$ 18,75</td><td class="n">35,464</td></tr><tr><td>22/07/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-2,148</td><td class="n">R$ 18,71</td><td class="n">16,464</td></tr><tr><td>21/07/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-4,098</td><td class="n">R$ 18,71</td><td class="n">18,612</td></tr><tr><td>20/07/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-3,588</td><td class="n">R$ 18,71</td><td class="n">22,710</td></tr><tr><td>20/07/2026</td><td>Entrada compra</td><td>Recebimento de mercadoria</td><td><a href="#" data-off="1">PC-019929</a></td>
+      <td class="n ">14,000</td><td class="n">R$ 18,73</td><td class="n">26,298</td></tr><tr><td>19/07/2026</td><td>Venda</td><td>Vendas do dia</td><td></td>
+      <td class="n neg">-2,060</td><td class="n">R$ 18,71</td><td class="n">12,298</td></tr>
+  </table></div></div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+<script>
+const g = {"custo": [16.54, 16.63, 16.48, 16.66, 16.62, 16.72, 17.06, 16.81, 16.5, 17.04, 17.16, 17.25, 17.37, 17.12, 17.38, 17.36, 17.48, 17.9, 18.41, 18.83, 18.71, 17.68, 17.52, 17.85], "dias": ["01/11/24", "02/11/24", "03/11/24", "04/11/24", "05/11/24", "06/11/24", "07/11/24", "08/11/24", "09/11/24", "10/11/24", "11/11/24", "12/11/24", "13/11/24", "14/11/24", "15/11/24", "16/11/24", "17/11/24", "18/11/24", "19/11/24", "20/11/24", "21/11/24", "22/11/24", "23/11/24", "24/11/24", "25/11/24", "26/11/24", "27/11/24", "28/11/24", "29/11/24", "30/11/24", "01/12/24", "02/12/24", "03/12/24", "04/12/24", "05/12/24", "06/12/24", "07/12/24", "08/12/24", "09/12/24", "10/12/24", "11/12/24", "12/12/24", "13/12/24", "14/12/24", "15/12/24", "16/12/24", "17/12/24", "18/12/24", "19/12/24", "20/12/24", "21/12/24", "22/12/24", "23/12/24", "24/12/24", "26/12/24", "27/12/24", "28/12/24", "29/12/24", "30/12/24", "31/12/24", "02/01/25", "03/01/25", "04/01/25", "05/01/25", "06/01/25", "07/01/25", "08/01/25", "09/01/25", "10/01/25", "11/01/25", "12/01/25", "13/01/25", "14/01/25", "15/01/25", "16/01/25", "17/01/25", "18/01/25", "19/01/25", "20/01/25", "21/01/25", "22/01/25", "23/01/25", "24/01/25", "25/01/25", "26/01/25", "27/01/25", "28/01/25", "29/01/25", "30/01/25", "31/01/25", "01/02/25", "02/02/25", "03/02/25", "04/02/25", "05/02/25", "06/02/25", "07/02/25", "08/02/25", "09/02/25", "10/02/25", "11/02/25", "12/02/25", "13/02/25", "14/02/25", "15/02/25", "16/02/25", "17/02/25", "18/02/25", "19/02/25", "20/02/25", "21/02/25", "22/02/25", "23/02/25", "24/02/25", "25/02/25", "26/02/25", "27/02/25", "28/02/25", "01/03/25", "02/03/25", "03/03/25", "04/03/25", "05/03/25", "06/03/25", "07/03/25", "08/03/25", "09/03/25", "10/03/25", "11/03/25", "12/03/25", "13/03/25", "14/03/25", "15/03/25", "16/03/25", "17/03/25", "18/03/25", "19/03/25", "20/03/25", "21/03/25", "22/03/25", "23/03/25", "24/03/25", "25/03/25", "26/03/25", "27/03/25", "28/03/25", "29/03/25", "30/03/25", "31/03/25", "01/04/25", "02/04/25", "03/04/25", "04/04/25", "05/04/25", "06/04/25", "07/04/25", "08/04/25", "09/04/25", "10/04/25", "11/04/25", "12/04/25", "13/04/25", "14/04/25", "15/04/25", "16/04/25", "17/04/25", "18/04/25", "19/04/25", "20/04/25", "21/04/25", "22/04/25", "23/04/25", "24/04/25", "25/04/25", "26/04/25", "27/04/25", "28/04/25", "29/04/25", "30/04/25", "01/05/25", "02/05/25", "03/05/25", "04/05/25", "05/05/25", "06/05/25", "07/05/25", "08/05/25", "09/05/25", "10/05/25", "11/05/25", "12/05/25", "13/05/25", "14/05/25", "15/05/25", "16/05/25", "17/05/25", "19/05/25", "20/05/25", "21/05/25", "22/05/25", "23/05/25", "24/05/25", "25/05/25", "26/05/25", "27/05/25", "28/05/25", "29/05/25", "30/05/25", "31/05/25", "01/06/25", "02/06/25", "03/06/25", "04/06/25", "05/06/25", "06/06/25", "07/06/25", "08/06/25", "09/06/25", "10/06/25", "11/06/25", "12/06/25", "13/06/25", "14/06/25", "15/06/25", "16/06/25", "17/06/25", "18/06/25", "19/06/25", "20/06/25", "21/06/25", "22/06/25", "23/06/25", "24/06/25", "25/06/25", "26/06/25", "27/06/25", "28/06/25", "29/06/25", "30/06/25", "01/07/25", "02/07/25", "03/07/25", "04/07/25", "05/07/25", "06/07/25", "07/07/25", "08/07/25", "09/07/25", "10/07/25", "11/07/25", "12/07/25", "13/07/25", "14/07/25", "15/07/25", "16/07/25", "17/07/25", "18/07/25", "19/07/25", "20/07/25", "21/07/25", "22/07/25", "23/07/25", "24/07/25", "25/07/25", "26/07/25", "27/07/25", "28/07/25", "29/07/25", "30/07/25", "31/07/25", "01/08/25", "02/08/25", "03/08/25", "04/08/25", "05/08/25", "06/08/25", "07/08/25", "08/08/25", "09/08/25", "10/08/25", "11/08/25", "12/08/25", "13/08/25", "14/08/25", "15/08/25", "16/08/25", "17/08/25", "18/08/25", "19/08/25", "20/08/25", "21/08/25", "22/08/25", "23/08/25", "24/08/25", "25/08/25", "26/08/25", "27/08/25", "28/08/25", "29/08/25", "30/08/25", "31/08/25", "01/09/25", "02/09/25", "03/09/25", "04/09/25", "05/09/25", "06/09/25", "07/09/25", "08/09/25", "09/09/25", "10/09/25", "11/09/25", "12/09/25", "13/09/25", "14/09/25", "15/09/25", "16/09/25", "17/09/25", "18/09/25", "19/09/25", "20/09/25", "21/09/25", "22/09/25", "23/09/25", "24/09/25", "25/09/25", "26/09/25", "27/09/25", "28/09/25", "29/09/25", "30/09/25", "01/10/25", "02/10/25", "03/10/25", "04/10/25", "05/10/25", "06/10/25", "07/10/25", "08/10/25", "09/10/25", "10/10/25", "11/10/25", "12/10/25", "13/10/25", "14/10/25", "15/10/25", "16/10/25", "17/10/25", "18/10/25", "19/10/25", "20/10/25", "21/10/25", "22/10/25", "23/10/25", "24/10/25", "25/10/25", "26/10/25", "27/10/25", "28/10/25", "29/10/25", "30/10/25", "31/10/25", "01/11/25", "02/11/25", "03/11/25", "04/11/25", "05/11/25", "06/11/25", "07/11/25", "08/11/25", "09/11/25", "10/11/25", "11/11/25", "12/11/25", "13/11/25", "14/11/25", "15/11/25", "16/11/25", "17/11/25", "18/11/25", "19/11/25", "20/11/25", "21/11/25", "22/11/25", "23/11/25", "24/11/25", "25/11/25", "26/11/25", "27/11/25", "28/11/25", "29/11/25", "30/11/25", "01/12/25", "02/12/25", "03/12/25", "04/12/25", "05/12/25", "06/12/25", "07/12/25", "08/12/25", "09/12/25", "10/12/25", "11/12/25", "12/12/25", "13/12/25", "14/12/25", "15/12/25", "16/12/25", "17/12/25", "18/12/25", "19/12/25", "20/12/25", "21/12/25", "22/12/25", "23/12/25", "24/12/25", "26/12/25", "27/12/25", "28/12/25", "29/12/25", "30/12/25", "31/12/25", "02/01/26", "03/01/26", "04/01/26", "05/01/26", "06/01/26", "07/01/26", "08/01/26", "09/01/26", "10/01/26", "11/01/26", "12/01/26", "13/01/26", "14/01/26", "15/01/26", "16/01/26", "17/01/26", "18/01/26", "19/01/26", "20/01/26", "21/01/26", "22/01/26", "23/01/26", "24/01/26", "25/01/26", "26/01/26", "27/01/26", "28/01/26", "29/01/26", "30/01/26", "31/01/26", "01/02/26", "02/02/26", "03/02/26", "04/02/26", "05/02/26", "06/02/26", "07/02/26", "08/02/26", "09/02/26", "10/02/26", "11/02/26", "12/02/26", "13/02/26", "14/02/26", "15/02/26", "16/02/26", "17/02/26", "18/02/26", "19/02/26", "20/02/26", "21/02/26", "22/02/26", "23/02/26", "24/02/26", "25/02/26", "26/02/26", "27/02/26", "28/02/26", "01/03/26", "02/03/26", "03/03/26", "04/03/26", "05/03/26", "06/03/26", "07/03/26", "08/03/26", "09/03/26", "10/03/26", "11/03/26", "12/03/26", "13/03/26", "14/03/26", "15/03/26", "16/03/26", "17/03/26", "18/03/26", "19/03/26", "20/03/26", "21/03/26", "22/03/26", "23/03/26", "24/03/26", "25/03/26", "26/03/26", "27/03/26", "28/03/26", "29/03/26", "30/03/26", "31/03/26", "01/04/26", "02/04/26", "03/04/26", "04/04/26", "05/04/26", "06/04/26", "07/04/26", "08/04/26", "09/04/26", "10/04/26", "11/04/26", "12/04/26", "13/04/26", "14/04/26", "15/04/26", "16/04/26", "17/04/26", "18/04/26", "19/04/26", "20/04/26", "21/04/26", "22/04/26", "23/04/26", "24/04/26", "25/04/26", "26/04/26", "27/04/26", "28/04/26", "29/04/26", "30/04/26", "01/05/26", "02/05/26", "03/05/26", "04/05/26", "05/05/26", "06/05/26", "07/05/26", "08/05/26", "09/05/26", "10/05/26", "11/05/26", "12/05/26", "13/05/26", "14/05/26", "15/05/26", "16/05/26", "17/05/26", "18/05/26", "19/05/26", "20/05/26", "21/05/26", "22/05/26", "23/05/26", "24/05/26", "25/05/26", "26/05/26", "27/05/26", "28/05/26", "29/05/26", "30/05/26", "31/05/26", "01/06/26", "02/06/26", "03/06/26", "04/06/26", "05/06/26", "06/06/26", "07/06/26", "08/06/26", "09/06/26", "10/06/26", "11/06/26", "12/06/26", "13/06/26", "14/06/26", "15/06/26", "16/06/26", "17/06/26", "18/06/26", "19/06/26", "20/06/26", "21/06/26", "22/06/26", "23/06/26", "24/06/26", "25/06/26", "26/06/26", "27/06/26", "28/06/26", "29/06/26", "30/06/26", "01/07/26", "02/07/26", "03/07/26", "04/07/26", "05/07/26", "06/07/26", "07/07/26", "08/07/26", "09/07/26", "10/07/26", "11/07/26", "12/07/26", "13/07/26", "14/07/26", "15/07/26", "16/07/26", "17/07/26", "18/07/26", "19/07/26", "20/07/26", "21/07/26", "22/07/26", "23/07/26", "24/07/26", "25/07/26", "26/07/26", "27/07/26", "28/07/26", "29/07/26", "30/07/26", "31/07/26", "01/08/26", "02/08/26", "03/08/26", "04/08/26", "05/08/26", "06/08/26", "07/08/26", "08/08/26", "09/08/26", "10/08/26", "11/08/26", "12/08/26", "13/08/26", "14/08/26", "15/08/26", "16/08/26", "17/08/26", "18/08/26", "19/08/26", "20/08/26", "21/08/26", "22/08/26", "23/08/26", "24/08/26", "25/08/26", "26/08/26", "27/08/26", "28/08/26", "29/08/26", "30/08/26", "31/08/26", "01/09/26", "02/09/26", "03/09/26", "04/09/26", "05/09/26", "06/09/26", "07/09/26", "08/09/26", "09/09/26", "10/09/26", "11/09/26", "12/09/26", "13/09/26", "14/09/26", "15/09/26", "16/09/26", "17/09/26", "18/09/26", "19/09/26", "20/09/26", "21/09/26", "22/09/26", "23/09/26", "24/09/26", "25/09/26", "26/09/26", "27/09/26", "28/09/26", "29/09/26", "30/09/26", "01/10/26", "02/10/26", "03/10/26", "04/10/26", "05/10/26", "06/10/26", "07/10/26", "08/10/26", "09/10/26", "10/10/26", "11/10/26", "12/10/26", "13/10/26", "14/10/26", "15/10/26", "16/10/26", "17/10/26", "18/10/26", "19/10/26", "20/10/26", "21/10/26", "22/10/26", "23/10/26", "24/10/26", "25/10/26", "26/10/26", "27/10/26", "28/10/26", "29/10/26", "30/10/26", "31/10/26"], "meses": ["nov/24", "dez/24", "jan/25", "fev/25", "mar/25", "abr/25", "mai/25", "jun/25", "jul/25", "ago/25", "set/25", "out/25", "nov/25", "dez/25", "jan/26", "fev/26", "mar/26", "abr/26", "mai/26", "jun/26", "jul/26", "ago/26", "set/26", "out/26"], "pmeses": ["nov/24", "dez/24", "jan/25", "fev/25", "mar/25", "abr/25", "mai/25", "jun/25", "jul/25", "ago/25", "set/25", "out/25", "nov/25", "dez/25", "jan/26", "fev/26", "mar/26", "abr/26", "mai/26", "jun/26", "jul/26", "ago/26", "set/26", "out/26"], "preco": [24.67, 24.67, 24.67, 24.88, 24.88, 24.88, 25.49, 25.49, 24.57, 25.39, 25.39, 25.39, 25.9, 25.9, 25.9, 25.9, 25.9, 25.9, 27.43, 27.43, 27.43, 26.41, 26.41, 26.41], "qtd": [108.276, 116.191, 97.09, 85.967, 107.973, 105.971, 110.842, 106.998, 109.947, 126.703, 113.698, 112.603, 118.454, 155.953, 104.754, 99.458, 119.441, 113.713, 106.601, 119.222, 131.011, 123.38, 108.567, 119.345], "saldo": [21.389, 15.093, 12.76, 17.126, 14.008, 10.791, 15.427, 11.447, 4.889, 4.577, 16.655, 14.695, 12.518, 19.264, 17.542, 10.979, 8.911, 16.212, 13.747, 13.149, 21.494, 15.789, 9.398, 7.449, 18.165, 13.339, 11.596, 20.871, 16.056, 8.29, 5.983, 16.557, 13.103, 9.715, 17.867, 13.197, 6.272, 5.459, 17.853, 13.609, 11.871, 20.567, 15.855, 12.155, 10.072, 23.279, 15.555, 12.786, 17.46, 12.861, 9.869, 8.826, 6.016, 0.271, 19.567, 16.289, 11.156, 9.796, 17.434, 10.353, 19.503, 16.486, 9.783, 9.04, 15.559, 11.05, 7.698, 15.097, 12.517, 8.069, 6.79, 19.11, 15.299, 13.31, 16.427, 14.803, 8.289, 5.657, 16.129, 14.014, 9.419, 16.826, 13.187, 6.231, 4.238, 15.302, 12.302, 10.808, 16.229, 12.803, 6.711, 5.011, 13.232, 11.902, 8.534, 15.082, 11.589, 8.455, 7.031, 14.976, 12.436, 9.864, 18.458, 14.245, 5.547, 4.989, 13.692, 11.224, 8.281, 16.565, 12.525, 7.618, 6.739, 18.619, 16.009, 13.022, 20.089, 16.283, 7.266, 5.341, 18.437, 15.277, 11.61, 15.453, 11.134, 5.299, 4.958, 17.732, 15.781, 14.186, 18.235, 13.719, 6.313, 5.236, 16.598, 14.012, 9.299, 17.11, 11.24, 6.988, 4.519, 13.473, 12.646, 10.606, 20.858, 15.819, 12.209, 9.992, 19.111, 15.277, 13.684, 21.668, 15.466, 6.884, 5.533, 21.156, 16.441, 12.356, 18.64, 14.081, 8.182, 5.448, 17.424, 11.786, 9.657, 15.952, 15.393, 10.067, 9.359, 17.363, 16.212, 13.197, 18.376, 14.076, 8.676, 6.212, 16.014, 12.854, 11.135, 18.245, 13.426, 9.457, 7.492, 15.889, 13.384, 9.225, 18.468, 13.622, 8.116, 5.466, 18.377, 13.515, 9.411, 10.931, 6.617, 0.13, 18.83, 14.436, 11.032, 20.473, 14.279, 8.023, 4.533, 18.295, 14.304, 11.076, 15.759, 12.26, 9.149, 6.805, 21.698, 16.518, 12.29, 16.135, 12.489, 7.133, 5.399, 18.385, 15.718, 12.061, 19.266, 15.971, 8.546, 5.926, 20.019, 13.246, 10.707, 16.867, 14.426, 8.932, 6.09, 15.484, 12.193, 10.007, 19.353, 16.226, 10.741, 8.886, 18.193, 14.928, 10.382, 21.375, 15.895, 7.786, 5.609, 16.04, 13.591, 9.68, 14.862, 11.791, 8.73, 7.337, 17.771, 14.163, 9.984, 14.977, 12.836, 8.268, 7.413, 18.37, 14.73, 10.059, 18.641, 14.684, 8.919, 8.071, 20.417, 16.492, 13.507, 22.399, 16.121, 9.861, 6.501, 20.765, 13.904, 11.115, 19.976, 16.211, 8.882, 5.694, 18.654, 15.751, 11.703, 20.059, 15.608, 9.077, 5.623, 21.244, 17.059, 9.139, 16.284, 13.313, 7.492, 5.727, 18.586, 13.917, 10.532, 20.738, 18.18, 12.077, 10.113, 17.788, 15.784, 12.459, 21.887, 17.512, 10.208, 5.371, 16.75, 13.619, 10.344, 21.055, 17.153, 10.963, 9.631, 20.609, 17.016, 13.462, 19.276, 15.366, 9.213, 4.777, 14.532, 11.508, 9.574, 18.775, 15.777, 10.56, 8.542, 21.107, 16.423, 13.992, 20.153, 16.261, 8.404, 6.795, 18.311, 15.849, 11.948, 15.881, 11.597, 7.502, 5.3, 17.384, 13.953, 9.971, 18.926, 16.618, 10.344, 6.278, 14.322, 11.06, 10.056, 20.941, 17.432, 13.81, 12.794, 24.524, 22.542, 15.133, 21.958, 15.855, 8.229, 5.417, 21.058, 15.095, 7.989, 20.306, 14.604, 8.971, 5.886, 16.875, 12.103, 9.396, 18.975, 16.093, 13.258, 10.376, 18.876, 15.396, 11.6, 22.413, 18.557, 10.265, 7.224, 21.835, 17.573, 13.09, 27.058, 22.652, 16.454, 14.558, 30.355, 25.682, 20.57, 43.155, 29.367, 14.607, 8.727, 26.645, 21.207, 11.749, 19.732, 14.073, 9.054, 7.304, 22.17, 17.609, 14.414, 22.5, 17.429, 13.02, 11.37, 25.363, 19.7, 11.294, 16.04, 12.234, 11.496, 22.755, 20.335, 14.299, 20.462, 15.383, 13.773, 18.731, 13.901, 10.38, 20.8, 16.638, 8.637, 6.55, 16.712, 11.722, 8.926, 20.018, 16.013, 9.538, 5.645, 14.453, 9.276, 7.455, 18.502, 15.545, 12.158, 9.569, 19.151, 14.711, 11.594, 15.799, 13.726, 7.864, 6.823, 16.763, 13.374, 10.56, 17.495, 15.132, 8.697, 6.127, 13.034, 10.005, 6.843, 16.973, 13.174, 8.521, 6.012, 17.115, 14.896, 10.318, 18.745, 13.659, 9.482, 7.704, 21.08, 15.958, 13.469, 24.743, 20.085, 10.564, 6.678, 25.74, 17.483, 10.22, 19.36, 17.248, 10.552, 7.97, 18.179, 13.165, 9.296, 24.431, 20.362, 11.488, 7.925, 17.911, 13.964, 10.932, 19.28, 16.324, 10.436, 8.415, 17.451, 14.74, 12.013, 18.936, 15.409, 11.708, 10.541, 21.354, 19.268, 16.7, 19.644, 16.735, 7.768, 5.299, 16.104, 12.712, 9.134, 21.805, 16.463, 10.067, 6.327, 15.697, 12.567, 9.903, 22.122, 16.143, 9.438, 7.318, 16.04, 14.758, 10.972, 17.828, 12.945, 8.201, 5.728, 16.627, 13.34, 10.069, 19.606, 18.084, 11.754, 10.447, 20.56, 17.412, 13.209, 18.618, 13.27, 7.871, 4.43, 14.9, 12.23, 9.932, 17.216, 14.556, 10.876, 7.485, 16.796, 14.14, 10.34, 19.926, 15.569, 9.58, 6.391, 15.712, 13.139, 10.348, 15.668, 11.321, 5.773, 4.589, 18.602, 13.064, 11.169, 17.175, 14.924, 8.926, 7.208, 17.78, 13.272, 10.784, 20.282, 13.758, 8.159, 5.699, 18.946, 16.447, 12.358, 23.408, 16.813, 9.461, 5.841, 9.473, 4.501, 1.67, 23.069, 16.933, 10.463, 7.858, 16.008, 12.54, 9.072, 23.815, 16.578, 10.241, 6.218, 17.069, 14.582, 9.974, 16.905, 13.723, 7.795, 5.987, 19.812, 17.655, 14.376, 23.662, 20.886, 14.358, 12.298, 22.71, 18.612, 16.464, 31.103, 24.281, 12.8, 8.487, 23.166, 18.3, 10.117, 23.523, 21.289, 12.332, 6.986, 15.73, 9.017, 6.072, 23.381, 18.118, 7.45, 5.813, 18.414, 15.412, 10.649, 19.413, 14.691, 8.988, 7.629, 23.275, 20.186, 13.884, 18.554, 15.138, 8.737, 7.588, 20.405, 17.916, 16.024, 18.469, 14.4, 9.993, 6.459, 16.303, 13.554, 10.889, 18.762, 15.577, 8.293, 6.97, 20.631, 18.209, 12.567, 18.734, 14.239, 9.115, 6.328, 17.61, 14.344, 10.573, 19.594, 15.633, 8.565, 6.454, 16.382, 13.198, 9.868, 17.05, 14.064, 9.011, 5.615, 15.961, 12.719, 10.907, 18.874, 15.754, 10.617, 9.7, 20.402, 15.858, 12.763, 18.647, 14.55, 6.802, 5.876, 19.203, 14.002, 11.322, 19.581, 14.428, 9.029, 5.322, 17.053, 12.893, 10.827, 19.102, 14.724, 9.275, 7.759, 19.795, 15.753, 10.848, 17.582, 13.128, 8.106]};
+VV.grafico('gSaldo', g.dias, [{nome: 'Saldo', dados: g.saldo, slot: 0}], {tipo: 'line', fmt: 'dec', legenda: false});
+VV.grafico('gQtd', g.meses, [{nome: 'Quantidade', dados: g.qtd, slot: 0}], {fmt: 'num', legenda: false});
+VV.grafico('gPreco', g.pmeses, [{nome: 'Custo', dados: g.custo, slot: 1}, {nome: 'Preço', dados: g.preco, slot: 0}], {tipo: 'line', fmt: 'brl', min: 0});
+</script>
+</body>
+</html>

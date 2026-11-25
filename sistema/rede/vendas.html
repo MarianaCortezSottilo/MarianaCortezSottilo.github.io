@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vendas · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="rede";window.VV_KEY="/vendas";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="ativo">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" selected>Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      
+    </div>
+    
+      
+    
+    
+<div class="topo">
+  <div><h1>Vendas</h1><div class="sub">out/26</div></div>
+  <form class="filtros" method="get">
+  <label>De</label>
+  <select name="ini"><option value="2024-11" >nov/24</option><option value="2024-12" >dez/24</option><option value="2025-01" >jan/25</option><option value="2025-02" >fev/25</option><option value="2025-03" >mar/25</option><option value="2025-04" >abr/25</option><option value="2025-05" >mai/25</option><option value="2025-06" >jun/25</option><option value="2025-07" >jul/25</option><option value="2025-08" >ago/25</option><option value="2025-09" >set/25</option><option value="2025-10" >out/25</option><option value="2025-11" >nov/25</option><option value="2025-12" >dez/25</option><option value="2026-01" >jan/26</option><option value="2026-02" >fev/26</option><option value="2026-03" >mar/26</option><option value="2026-04" >abr/26</option><option value="2026-05" >mai/26</option><option value="2026-06" >jun/26</option><option value="2026-07" >jul/26</option><option value="2026-08" >ago/26</option><option value="2026-09" >set/26</option><option value="2026-10" selected>out/26</option></select>
+  <label>até</label>
+  <select name="fim"><option value="2024-11" >nov/24</option><option value="2024-12" >dez/24</option><option value="2025-01" >jan/25</option><option value="2025-02" >fev/25</option><option value="2025-03" >mar/25</option><option value="2025-04" >abr/25</option><option value="2025-05" >mai/25</option><option value="2025-06" >jun/25</option><option value="2025-07" >jul/25</option><option value="2025-08" >ago/25</option><option value="2025-09" >set/25</option><option value="2025-10" >out/25</option><option value="2025-11" >nov/25</option><option value="2025-12" >dez/25</option><option value="2026-01" >jan/26</option><option value="2026-02" >fev/26</option><option value="2026-03" >mar/26</option><option value="2026-04" >abr/26</option><option value="2026-05" >mai/26</option><option value="2026-06" >jun/26</option><option value="2026-07" >jul/26</option><option value="2026-08" >ago/26</option><option value="2026-09" >set/26</option><option value="2026-10" selected>out/26</option></select>
+  
+  <button type="submit">Aplicar</button>
+  
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a>
+</form>
+</div>
+<div class="grade g6">
+  <div class="cartao kpi">
+  <div class="rot">Faturamento</div>
+  <div class="val">R$ 20,93 mi</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Cupons</div>
+  <div class="val">183.455</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Ticket médio</div>
+  <div class="val">R$ 114,08</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">CMV</div>
+  <div class="val">R$ 13,77 mi</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Margem bruta</div>
+  <div class="val">34,2%</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Cupons com CPF fidelidade</div>
+  <div class="val">37,8%</div>
+  <div class="det"></div>
+</div>
+</div>
+
+<div class="grade g2 mt">
+  <div class="cartao col2">
+    <h3>Faturamento diário</h3>
+    <div class="nota">Repare nos picos de sexta/sábado e no início do mês (pagamento de salários)</div>
+    <div class="grafico"><canvas id="gDia"></canvas></div>
+  </div>
+  <div class="cartao col2">
+    <h3>Mapa de calor: faturamento médio por dia da semana e hora</h3>
+    <div class="nota">Útil para dimensionar caixas abertos e a escala da frente de loja. Valores em R$ por loja-dia, a partir dos cupons individuais (desde 01/10/2026).</div>
+    
+    <div class="tabela-wrap"><table class="mapa">
+      <tr><th></th><th class="n">7h</th><th class="n">8h</th><th class="n">9h</th><th class="n">10h</th><th class="n">11h</th><th class="n">12h</th><th class="n">13h</th><th class="n">14h</th><th class="n">15h</th><th class="n">16h</th><th class="n">17h</th><th class="n">18h</th><th class="n">19h</th><th class="n">20h</th><th class="n">21h</th></tr>
+      
+      <tr><th>Seg</th>
+        
+        <td style="background:#b7d3f6;" title="Seg 7h: R$ 1.746,46">1,7</td>
+        <td style="background:#9ec5f4;" title="Seg 8h: R$ 3.580,03">3,6</td>
+        <td style="background:#86b6ef;" title="Seg 9h: R$ 5.073,98">5,1</td>
+        <td style="background:#6da7ec;" title="Seg 10h: R$ 6.249,58">6,2</td>
+        <td style="background:#5598e7;" title="Seg 11h: R$ 6.364,13">6,4</td>
+        <td style="background:#86b6ef;" title="Seg 12h: R$ 4.876,78">4,9</td>
+        <td style="background:#9ec5f4;" title="Seg 13h: R$ 3.292,96">3,3</td>
+        <td style="background:#9ec5f4;" title="Seg 14h: R$ 3.162,57">3,2</td>
+        <td style="background:#9ec5f4;" title="Seg 15h: R$ 3.062,05">3,1</td>
+        <td style="background:#9ec5f4;" title="Seg 16h: R$ 3.479,81">3,5</td>
+        <td style="background:#6da7ec;" title="Seg 17h: R$ 5.521,73">5,5</td>
+        <td style="background:#5598e7;" title="Seg 18h: R$ 6.339,85">6,3</td>
+        <td style="background:#6da7ec;" title="Seg 19h: R$ 5.184,30">5,2</td>
+        <td style="background:#b7d3f6;" title="Seg 20h: R$ 2.679,31">2,7</td>
+        <td style="background:#cde2fb;" title="Seg 21h: R$ 1.217,04">1,2</td>
+      </tr>
+      <tr><th>Ter</th>
+        
+        <td style="background:#cde2fb;" title="Ter 7h: R$ 1.716,08">1,7</td>
+        <td style="background:#b7d3f6;" title="Ter 8h: R$ 2.860,65">2,9</td>
+        <td style="background:#86b6ef;" title="Ter 9h: R$ 4.263,90">4,3</td>
+        <td style="background:#6da7ec;" title="Ter 10h: R$ 5.426,62">5,4</td>
+        <td style="background:#6da7ec;" title="Ter 11h: R$ 6.031,40">6,0</td>
+        <td style="background:#86b6ef;" title="Ter 12h: R$ 4.953,27">5,0</td>
+        <td style="background:#9ec5f4;" title="Ter 13h: R$ 3.413,09">3,4</td>
+        <td style="background:#9ec5f4;" title="Ter 14h: R$ 3.009,13">3,0</td>
+        <td style="background:#9ec5f4;" title="Ter 15h: R$ 3.270,49">3,3</td>
+        <td style="background:#9ec5f4;" title="Ter 16h: R$ 3.580,84">3,6</td>
+        <td style="background:#6da7ec;" title="Ter 17h: R$ 5.263,46">5,3</td>
+        <td style="background:#5598e7;" title="Ter 18h: R$ 6.685,26">6,7</td>
+        <td style="background:#6da7ec;" title="Ter 19h: R$ 5.337,56">5,3</td>
+        <td style="background:#9ec5f4;" title="Ter 20h: R$ 2.997,33">3,0</td>
+        <td style="background:#cde2fb;" title="Ter 21h: R$ 1.242,47">1,2</td>
+      </tr>
+      <tr><th>Qua</th>
+        
+        <td style="background:#b7d3f6;" title="Qua 7h: R$ 1.910,33">1,9</td>
+        <td style="background:#9ec5f4;" title="Qua 8h: R$ 3.191,85">3,2</td>
+        <td style="background:#86b6ef;" title="Qua 9h: R$ 4.517,67">4,5</td>
+        <td style="background:#6da7ec;" title="Qua 10h: R$ 5.483,54">5,5</td>
+        <td style="background:#6da7ec;" title="Qua 11h: R$ 6.056,38">6,1</td>
+        <td style="background:#86b6ef;" title="Qua 12h: R$ 4.959,97">5,0</td>
+        <td style="background:#9ec5f4;" title="Qua 13h: R$ 3.556,26">3,6</td>
+        <td style="background:#9ec5f4;" title="Qua 14h: R$ 3.131,73">3,1</td>
+        <td style="background:#9ec5f4;" title="Qua 15h: R$ 3.370,79">3,4</td>
+        <td style="background:#9ec5f4;" title="Qua 16h: R$ 3.704,81">3,7</td>
+        <td style="background:#6da7ec;" title="Qua 17h: R$ 5.455,06">5,5</td>
+        <td style="background:#5598e7;" title="Qua 18h: R$ 6.815,84">6,8</td>
+        <td style="background:#6da7ec;" title="Qua 19h: R$ 5.778,79">5,8</td>
+        <td style="background:#9ec5f4;" title="Qua 20h: R$ 3.211,59">3,2</td>
+        <td style="background:#cde2fb;" title="Qua 21h: R$ 1.263,93">1,3</td>
+      </tr>
+      <tr><th>Qui</th>
+        
+        <td style="background:#b7d3f6;" title="Qui 7h: R$ 1.930,28">1,9</td>
+        <td style="background:#9ec5f4;" title="Qui 8h: R$ 3.107,26">3,1</td>
+        <td style="background:#86b6ef;" title="Qui 9h: R$ 4.412,04">4,4</td>
+        <td style="background:#6da7ec;" title="Qui 10h: R$ 5.534,68">5,5</td>
+        <td style="background:#6da7ec;" title="Qui 11h: R$ 6.170,46">6,2</td>
+        <td style="background:#6da7ec;" title="Qui 12h: R$ 5.218,88">5,2</td>
+        <td style="background:#9ec5f4;" title="Qui 13h: R$ 3.737,17">3,7</td>
+        <td style="background:#9ec5f4;" title="Qui 14h: R$ 3.438,14">3,4</td>
+        <td style="background:#9ec5f4;" title="Qui 15h: R$ 3.224,39">3,2</td>
+        <td style="background:#9ec5f4;" title="Qui 16h: R$ 3.489,56">3,5</td>
+        <td style="background:#6da7ec;" title="Qui 17h: R$ 5.564,18">5,6</td>
+        <td style="background:#5598e7;" title="Qui 18h: R$ 7.071,17">7,1</td>
+        <td style="background:#6da7ec;" title="Qui 19h: R$ 5.665,49">5,7</td>
+        <td style="background:#9ec5f4;" title="Qui 20h: R$ 3.154,81">3,2</td>
+        <td style="background:#cde2fb;" title="Qui 21h: R$ 1.321,30">1,3</td>
+      </tr>
+      <tr><th>Sex</th>
+        
+        <td style="background:#b7d3f6;" title="Sex 7h: R$ 2.357,80">2,4</td>
+        <td style="background:#9ec5f4;" title="Sex 8h: R$ 3.838,95">3,8</td>
+        <td style="background:#6da7ec;" title="Sex 9h: R$ 5.322,53">5,3</td>
+        <td style="background:#5598e7;" title="Sex 10h: R$ 6.991,18">7,0</td>
+        <td style="background:#3987e5;color:#fff" title="Sex 11h: R$ 7.783,51">7,8</td>
+        <td style="background:#5598e7;" title="Sex 12h: R$ 6.356,17">6,4</td>
+        <td style="background:#86b6ef;" title="Sex 13h: R$ 4.495,80">4,5</td>
+        <td style="background:#9ec5f4;" title="Sex 14h: R$ 3.915,78">3,9</td>
+        <td style="background:#9ec5f4;" title="Sex 15h: R$ 3.772,28">3,8</td>
+        <td style="background:#86b6ef;" title="Sex 16h: R$ 4.834,71">4,8</td>
+        <td style="background:#5598e7;" title="Sex 17h: R$ 6.773,77">6,8</td>
+        <td style="background:#3987e5;color:#fff" title="Sex 18h: R$ 8.582,71">8,6</td>
+        <td style="background:#5598e7;" title="Sex 19h: R$ 6.947,58">6,9</td>
+        <td style="background:#9ec5f4;" title="Sex 20h: R$ 3.543,58">3,5</td>
+        <td style="background:#cde2fb;" title="Sex 21h: R$ 1.486,89">1,5</td>
+      </tr>
+      <tr><th>Sáb</th>
+        
+        <td style="background:#9ec5f4;" title="Sáb 7h: R$ 2.945,13">2,9</td>
+        <td style="background:#86b6ef;" title="Sáb 8h: R$ 5.091,25">5,1</td>
+        <td style="background:#5598e7;" title="Sáb 9h: R$ 7.227,96">7,2</td>
+        <td style="background:#2a78d6;color:#fff" title="Sáb 10h: R$ 9.415,79">9,4</td>
+        <td style="background:#256abf;color:#fff" title="Sáb 11h: R$ 10.379,23">10,4</td>
+        <td style="background:#3987e5;color:#fff" title="Sáb 12h: R$ 8.491,23">8,5</td>
+        <td style="background:#5598e7;" title="Sáb 13h: R$ 6.491,57">6,5</td>
+        <td style="background:#6da7ec;" title="Sáb 14h: R$ 5.194,71">5,2</td>
+        <td style="background:#6da7ec;" title="Sáb 15h: R$ 5.334,37">5,3</td>
+        <td style="background:#6da7ec;" title="Sáb 16h: R$ 6.174,01">6,2</td>
+        <td style="background:#2a78d6;color:#fff" title="Sáb 17h: R$ 9.371,39">9,4</td>
+        <td style="background:#1c5cab;color:#fff" title="Sáb 18h: R$ 11.498,57">11,5</td>
+        <td style="background:#2a78d6;color:#fff" title="Sáb 19h: R$ 9.514,24">9,5</td>
+        <td style="background:#6da7ec;" title="Sáb 20h: R$ 5.202,17">5,2</td>
+        <td style="background:#b7d3f6;" title="Sáb 21h: R$ 2.055,91">2,1</td>
+      </tr>
+      <tr><th>Dom</th>
+        
+        <td style="background:#f7fafe;" title="Dom 7h: R$ 0,00"></td>
+        <td style="background:#5598e7;" title="Dom 8h: R$ 6.545,35">6,5</td>
+        <td style="background:#256abf;color:#fff" title="Dom 9h: R$ 10.639,29">10,6</td>
+        <td style="background:#256abf;color:#fff" title="Dom 10h: R$ 10.564,18">10,6</td>
+        <td style="background:#2a78d6;color:#fff" title="Dom 11h: R$ 9.077,94">9,1</td>
+        <td style="background:#6da7ec;" title="Dom 12h: R$ 5.477,54">5,5</td>
+        <td style="background:#f7fafe;" title="Dom 13h: R$ 0,00"></td>
+        <td style="background:#f7fafe;" title="Dom 14h: R$ 0,00"></td>
+        <td style="background:#f7fafe;" title="Dom 15h: R$ 0,00"></td>
+        <td style="background:#f7fafe;" title="Dom 16h: R$ 0,00"></td>
+        <td style="background:#f7fafe;" title="Dom 17h: R$ 0,00"></td>
+        <td style="background:#f7fafe;" title="Dom 18h: R$ 0,00"></td>
+        <td style="background:#f7fafe;" title="Dom 19h: R$ 0,00"></td>
+        <td style="background:#f7fafe;" title="Dom 20h: R$ 0,00"></td>
+        <td style="background:#f7fafe;" title="Dom 21h: R$ 0,00"></td>
+      </tr>
+    </table></div>
+    <div class="muted" style="font-size:12px;margin-top:6px">Números em R$ mil. Tons mais escuros = mais faturamento.</div>
+  </div>
+  <div class="cartao col2">
+    <h3>Por loja</h3>
+    <div class="tabela-wrap"><table>
+      <tr><th>Loja</th><th class="n">Faturamento</th><th class="n">% da seleção</th><th class="n">Cupons</th><th class="n">Ticket</th><th class="n">Margem bruta</th></tr>
+      <tr><td>VV02 Vale Verde São Paulo Mooca</td><td class="n">R$ 2.863.474,85</td><td class="n">13,7%</td><td class="n">24.526</td><td class="n">R$ 116,75</td><td class="n">36,3%</td></tr><tr><td>VV03 Vale Verde Rio Tijuca</td><td class="n">R$ 2.628.729,68</td><td class="n">12,6%</td><td class="n">22.642</td><td class="n">R$ 116,10</td><td class="n">35,6%</td></tr><tr><td>VV01 Vale Verde Campinas Taquaral</td><td class="n">R$ 2.190.114,12</td><td class="n">10,5%</td><td class="n">19.554</td><td class="n">R$ 112,00</td><td class="n">34,1%</td></tr><tr><td>VV04 Vale Verde BH Savassi</td><td class="n">R$ 2.142.375,57</td><td class="n">10,2%</td><td class="n">18.810</td><td class="n">R$ 113,90</td><td class="n">33,7%</td></tr><tr><td>VV05 Vale Verde Curitiba Água Verde</td><td class="n">R$ 2.040.817,32</td><td class="n">9,8%</td><td class="n">17.892</td><td class="n">R$ 114,06</td><td class="n">33,8%</td></tr><tr><td>VV08 Vale Verde Salvador Pituba</td><td class="n">R$ 1.994.537,30</td><td class="n">9,5%</td><td class="n">17.899</td><td class="n">R$ 111,43</td><td class="n">32,2%</td></tr><tr><td>VV07 Vale Verde Goiânia Setor Bueno</td><td class="n">R$ 1.849.998,09</td><td class="n">8,8%</td><td class="n">16.787</td><td class="n">R$ 110,20</td><td class="n">31,7%</td></tr><tr><td>VV09 Vale Verde Recife Boa Viagem</td><td class="n">R$ 1.751.934,40</td><td class="n">8,4%</td><td class="n">15.739</td><td class="n">R$ 111,31</td><td class="n">32,2%</td></tr><tr><td>VV06 Vale Verde Porto Alegre Menino Deus</td><td class="n">R$ 1.749.982,54</td><td class="n">8,4%</td><td class="n">15.333</td><td class="n">R$ 114,13</td><td class="n">34,7%</td></tr><tr><td>VV10 Vale Verde Belém Nazaré</td><td class="n">R$ 1.716.502,76</td><td class="n">8,2%</td><td class="n">14.273</td><td class="n">R$ 120,26</td><td class="n">36,3%</td></tr>
+    </table></div>
+  </div>
+  <div class="cartao">
+    <h3>Por categoria</h3>
+    <div class="tabela-wrap"><table>
+      <tr><th>Categoria</th><th class="n">Faturamento</th><th class="n">% total</th><th class="n">Margem</th></tr>
+      <tr><td>Mercearia</td><td class="n">R$ 5.003.315,46</td><td class="n">23,9%</td><td class="n">29,8%</td></tr><tr><td>Bebidas</td><td class="n">R$ 3.343.587,25</td><td class="n">16,0%</td><td class="n">31,1%</td></tr><tr><td>Açougue</td><td class="n">R$ 3.244.482,79</td><td class="n">15,5%</td><td class="n">33,6%</td></tr><tr><td>Laticínios e Frios</td><td class="n">R$ 2.378.716,24</td><td class="n">11,4%</td><td class="n">29,2%</td></tr><tr><td>Hortifrúti</td><td class="n">R$ 2.325.721,21</td><td class="n">11,1%</td><td class="n">41,0%</td></tr><tr><td>Higiene e Perfumaria</td><td class="n">R$ 1.325.442,55</td><td class="n">6,3%</td><td class="n">36,3%</td></tr><tr><td>Padaria</td><td class="n">R$ 1.313.353,43</td><td class="n">6,3%</td><td class="n">57,1%</td></tr><tr><td>Limpeza</td><td class="n">R$ 1.014.452,44</td><td class="n">4,8%</td><td class="n">32,2%</td></tr><tr><td>Congelados</td><td class="n">R$ 572.102,32</td><td class="n">2,7%</td><td class="n">31,3%</td></tr><tr><td>Bazar e Pet</td><td class="n">R$ 408.539,77</td><td class="n">2,0%</td><td class="n">36,5%</td></tr>
+    </table></div>
+  </div>
+  <div class="cartao">
+    <h3>Formas de pagamento</h3>
+    <div class="tabela-wrap"><table>
+      <tr><th>Forma</th><th class="n">Cupons</th><th class="n">Faturamento</th><th class="n">%</th><th class="n">Ticket</th></tr>
+      <tr><td>Credito</td><td class="n">53.281</td><td class="n">R$ 7.009.494,04</td><td class="n">33,5%</td><td class="n">R$ 131,56</td></tr><tr><td>Pix</td><td class="n">51.802</td><td class="n">R$ 5.476.860,55</td><td class="n">26,2%</td><td class="n">R$ 105,73</td></tr><tr><td>Debito</td><td class="n">44.245</td><td class="n">R$ 4.893.739,66</td><td class="n">23,4%</td><td class="n">R$ 110,61</td></tr><tr><td>Dinheiro</td><td class="n">24.717</td><td class="n">R$ 2.508.670,80</td><td class="n">12,0%</td><td class="n">R$ 101,50</td></tr><tr><td>Voucher</td><td class="n">9.410</td><td class="n">R$ 1.039.701,58</td><td class="n">5,0%</td><td class="n">R$ 110,49</td></tr>
+    </table></div>
+  </div>
+  <div class="cartao">
+    <h3>Top 20 produtos</h3>
+    <div class="rolagem"><table>
+      <tr><th>Produto</th><th class="n">Qtd</th><th class="n">Faturamento</th><th class="n">Margem</th></tr>
+      <tr><td>Pão Francês</td><td class="n">33.640,4</td><td class="n">R$ 575.313,31</td><td class="n">57,0%</td></tr><tr><td>Leite UHT Integral 1L Campo Bom</td><td class="n">75.330,0</td><td class="n">R$ 496.532,60</td><td class="n">25,7%</td></tr><tr><td>Cerveja Lata 350ml Lúpulo Dourado</td><td class="n">98.458,0</td><td class="n">R$ 450.297,22</td><td class="n">27,6%</td></tr><tr><td>Alcatra Bovina</td><td class="n">5.515,5</td><td class="n">R$ 415.536,61</td><td class="n">33,9%</td></tr><tr><td>Arroz Branco Tipo 1 5kg Bom Grão</td><td class="n">12.120,0</td><td class="n">R$ 400.642,10</td><td class="n">28,8%</td></tr><tr><td>Contrafilé Bovino</td><td class="n">4.844,8</td><td class="n">R$ 391.059,19</td><td class="n">32,2%</td></tr><tr><td>Batata Lavada</td><td class="n">50.127,2</td><td class="n">R$ 387.671,20</td><td class="n">39,5%</td></tr><tr><td>Carne Moída Patinho</td><td class="n">6.542,6</td><td class="n">R$ 385.242,66</td><td class="n">31,1%</td></tr><tr><td>Banana Prata</td><td class="n">54.392,5</td><td class="n">R$ 384.367,88</td><td class="n">41,3%</td></tr><tr><td>Café Torrado e Moído 500g Bom Grão</td><td class="n">12.615,0</td><td class="n">R$ 343.167,95</td><td class="n">28,1%</td></tr><tr><td>Costela Bovina</td><td class="n">7.536,1</td><td class="n">R$ 321.773,36</td><td class="n">33,3%</td></tr><tr><td>Cerveja Pack 12 Latas 350ml Lúpulo Dourado</td><td class="n">5.693,0</td><td class="n">R$ 314.619,37</td><td class="n">33,1%</td></tr><tr><td>Picanha Bovina</td><td class="n">2.544,3</td><td class="n">R$ 310.637,24</td><td class="n">33,5%</td></tr><tr><td>Tomate Italiano</td><td class="n">31.773,7</td><td class="n">R$ 303.154,86</td><td class="n">42,3%</td></tr><tr><td>Cerveja Lata 350ml Cevada Nobre</td><td class="n">60.631,0</td><td class="n">R$ 302.722,99</td><td class="n">25,2%</td></tr><tr><td>Arroz Branco Tipo 1 5kg Tio Nino</td><td class="n">7.486,0</td><td class="n">R$ 299.169,94</td><td class="n">28,8%</td></tr><tr><td>Leite UHT Integral 1L Leiteria Mineira</td><td class="n">36.538,0</td><td class="n">R$ 298.407,02</td><td class="n">31,6%</td></tr><tr><td>Peito de Frango</td><td class="n">9.642,6</td><td class="n">R$ 278.396,37</td><td class="n">34,9%</td></tr><tr><td>Feijão Carioca 1kg Bom Grão</td><td class="n">28.455,0</td><td class="n">R$ 257.818,25</td><td class="n">24,0%</td></tr><tr><td>Refrigerante Cola 2L Serra Azul</td><td class="n">24.396,0</td><td class="n">R$ 255.148,74</td><td class="n">30,4%</td></tr>
+    </table></div>
+  </div>
+  <div class="cartao">
+    <h3>Produtividade dos operadores de caixa</h3>
+    <div class="rolagem"><table>
+      <tr><th>Operador</th><th>Loja</th><th class="n">Dias</th><th class="n">Cupons</th><th class="n">Cupons/dia</th><th class="n">Faturamento</th></tr>
+      <tr><td>Rita Santos Dias</td><td>VV08</td><td class="n">27</td><td class="n">4.236</td><td class="n">157</td><td class="n">R$ 481.009,83</td></tr><tr><td>Rita Lopes Nunes</td><td>VV08</td><td class="n">26</td><td class="n">3.848</td><td class="n">148</td><td class="n">R$ 440.527,34</td></tr><tr><td>Júlia Martins Ferreira</td><td>VV05</td><td class="n">27</td><td class="n">3.410</td><td class="n">126</td><td class="n">R$ 381.655,53</td></tr><tr><td>João Ribeiro Alves</td><td>VV05</td><td class="n">25</td><td class="n">3.071</td><td class="n">123</td><td class="n">R$ 350.530,14</td></tr><tr><td>Matheus Ribeiro Gonçalves</td><td>VV02</td><td class="n">26</td><td class="n">2.931</td><td class="n">113</td><td class="n">R$ 336.377,96</td></tr><tr><td>Natália Santos Freitas</td><td>VV02</td><td class="n">26</td><td class="n">2.896</td><td class="n">111</td><td class="n">R$ 342.913,91</td></tr><tr><td>Rita Lopes Pereira</td><td>VV09</td><td class="n">27</td><td class="n">2.883</td><td class="n">107</td><td class="n">R$ 323.322,19</td></tr><tr><td>Patrícia Nunes Cavalcanti</td><td>VV07</td><td class="n">25</td><td class="n">2.810</td><td class="n">112</td><td class="n">R$ 310.934,91</td></tr><tr><td>Fernanda Campos Freitas</td><td>VV01</td><td class="n">27</td><td class="n">2.808</td><td class="n">104</td><td class="n">R$ 299.469,77</td></tr><tr><td>Natália Teixeira Freitas</td><td>VV07</td><td class="n">27</td><td class="n">2.745</td><td class="n">102</td><td class="n">R$ 301.910,33</td></tr><tr><td>Isabela Nunes Moreira</td><td>VV07</td><td class="n">27</td><td class="n">2.677</td><td class="n">99</td><td class="n">R$ 296.717,14</td></tr><tr><td>Jéssica Marques Nunes</td><td>VV06</td><td class="n">27</td><td class="n">2.597</td><td class="n">96</td><td class="n">R$ 295.292,53</td></tr><tr><td>Patrícia Ribeiro Teixeira</td><td>VV02</td><td class="n">26</td><td class="n">2.589</td><td class="n">100</td><td class="n">R$ 302.113,59</td></tr><tr><td>Débora Cardoso Nascimento</td><td>VV02</td><td class="n">26</td><td class="n">2.582</td><td class="n">99</td><td class="n">R$ 302.137,37</td></tr><tr><td>Simone Teixeira Santana</td><td>VV04</td><td class="n">27</td><td class="n">2.485</td><td class="n">92</td><td class="n">R$ 286.045,52</td></tr><tr><td>Ana Gomes Campos</td><td>VV02</td><td class="n">27</td><td class="n">2.482</td><td class="n">92</td><td class="n">R$ 285.143,90</td></tr><tr><td>Vera Teixeira Rocha</td><td>VV09</td><td class="n">26</td><td class="n">2.456</td><td class="n">94</td><td class="n">R$ 273.697,33</td></tr><tr><td>Rafael Marques Andrade</td><td>VV02</td><td class="n">25</td><td class="n">2.402</td><td class="n">96</td><td class="n">R$ 281.927,64</td></tr><tr><td>José Cavalcanti Soares</td><td>VV06</td><td class="n">26</td><td class="n">2.387</td><td class="n">92</td><td class="n">R$ 276.605,79</td></tr><tr><td>Simone Almeida Santana</td><td>VV01</td><td class="n">26</td><td class="n">2.383</td><td class="n">92</td><td class="n">R$ 266.114,16</td></tr><tr><td>Marcos Mendes Soares</td><td>VV10</td><td class="n">27</td><td class="n">2.369</td><td class="n">88</td><td class="n">R$ 295.433,01</td></tr><tr><td>Raquel Freitas Ribeiro</td><td>VV01</td><td class="n">26</td><td class="n">2.356</td><td class="n">91</td><td class="n">R$ 266.488,29</td></tr><tr><td>Juliana Carvalho Ramos</td><td>VV02</td><td class="n">27</td><td class="n">2.337</td><td class="n">87</td><td class="n">R$ 280.134,97</td></tr><tr><td>João Fernandes Andrade</td><td>VV09</td><td class="n">24</td><td class="n">2.308</td><td class="n">96</td><td class="n">R$ 252.745,98</td></tr><tr><td>Leandro Marques Dias</td><td>VV10</td><td class="n">26</td><td class="n">2.300</td><td class="n">88</td><td class="n">R$ 274.743,53</td></tr><tr><td>Raimundo Mendes Pereira</td><td>VV02</td><td class="n">26</td><td class="n">2.299</td><td class="n">88</td><td class="n">R$ 273.198,24</td></tr><tr><td>Isabela Cardoso Nunes</td><td>VV01</td><td class="n">26</td><td class="n">2.293</td><td class="n">88</td><td class="n">R$ 256.398,10</td></tr><tr><td>Caio Gonçalves Prado</td><td>VV10</td><td class="n">26</td><td class="n">2.281</td><td class="n">88</td><td class="n">R$ 270.080,60</td></tr><tr><td>Francisca Nunes Martins</td><td>VV04</td><td class="n">27</td><td class="n">2.274</td><td class="n">84</td><td class="n">R$ 254.060,74</td></tr><tr><td>Júlia Martins Pinto</td><td>VV04</td><td class="n">27</td><td class="n">2.267</td><td class="n">84</td><td class="n">R$ 254.355,28</td></tr><tr><td>Larissa Costa Silva</td><td>VV05</td><td class="n">20</td><td class="n">2.259</td><td class="n">113</td><td class="n">R$ 259.240,40</td></tr><tr><td>Raquel Almeida Nascimento</td><td>VV01</td><td class="n">26</td><td class="n">2.202</td><td class="n">85</td><td class="n">R$ 247.568,56</td></tr><tr><td>Ricardo Prado Gonçalves</td><td>VV01</td><td class="n">26</td><td class="n">2.161</td><td class="n">83</td><td class="n">R$ 237.462,53</td></tr><tr><td>Carla Moreira Santos</td><td>VV04</td><td class="n">25</td><td class="n">2.158</td><td class="n">86</td><td class="n">R$ 242.202,96</td></tr><tr><td>José Vieira Alves</td><td>VV10</td><td class="n">27</td><td class="n">2.064</td><td class="n">76</td><td class="n">R$ 238.177,43</td></tr><tr><td>Vinícius Moreira Teixeira</td><td>VV03</td><td class="n">27</td><td class="n">2.063</td><td class="n">76</td><td class="n">R$ 239.138,69</td></tr><tr><td>Camila Prado Moreira</td><td>VV03</td><td class="n">27</td><td class="n">2.041</td><td class="n">76</td><td class="n">R$ 240.717,03</td></tr><tr><td>Letícia Cardoso Carvalho</td><td>VV01</td><td class="n">26</td><td class="n">2.041</td><td class="n">78</td><td class="n">R$ 234.240,20</td></tr><tr><td>Daniela Vieira Souza</td><td>VV03</td><td class="n">27</td><td class="n">2.027</td><td class="n">75</td><td class="n">R$ 231.082,19</td></tr><tr><td>Priscila Gomes Fernandes</td><td>VV01</td><td class="n">25</td><td class="n">2.020</td><td class="n">81</td><td class="n">R$ 237.158,20</td></tr><tr><td>Daniela Santana Vieira</td><td>VV04</td><td class="n">27</td><td class="n">1.989</td><td class="n">74</td><td class="n">R$ 228.307,60</td></tr><tr><td>Maria Pereira Costa</td><td>VV03</td><td class="n">26</td><td class="n">1.983</td><td class="n">76</td><td class="n">R$ 228.719,17</td></tr><tr><td>Otávio Lima Freitas</td><td>VV03</td><td class="n">27</td><td class="n">1.971</td><td class="n">73</td><td class="n">R$ 233.818,05</td></tr><tr><td>Rita Ferreira Pereira</td><td>VV10</td><td class="n">27</td><td class="n">1.955</td><td class="n">72</td><td class="n">R$ 236.102,27</td></tr><tr><td>Aline Moraes Campos</td><td>VV06</td><td class="n">27</td><td class="n">1.952</td><td class="n">72</td><td class="n">R$ 219.089,25</td></tr><tr><td>Luana Rodrigues Ribeiro</td><td>VV06</td><td class="n">21</td><td class="n">1.944</td><td class="n">93</td><td class="n">R$ 225.804,07</td></tr><tr><td>Márcia Gomes Ferreira</td><td>VV02</td><td class="n">23</td><td class="n">1.941</td><td class="n">84</td><td class="n">R$ 218.282,68</td></tr><tr><td>Isabela Andrade Marques</td><td>VV08</td><td class="n">25</td><td class="n">1.931</td><td class="n">77</td><td class="n">R$ 209.395,56</td></tr><tr><td>Murilo Gomes Carvalho</td><td>VV05</td><td class="n">27</td><td class="n">1.925</td><td class="n">71</td><td class="n">R$ 221.755,16</td></tr><tr><td>Mariana Machado Fernandes</td><td>VV03</td><td class="n">27</td><td class="n">1.921</td><td class="n">71</td><td class="n">R$ 225.729,96</td></tr><tr><td>Amanda Ramos Nunes</td><td>VV07</td><td class="n">25</td><td class="n">1.913</td><td class="n">77</td><td class="n">R$ 214.235,85</td></tr><tr><td>Júlia Moraes Pinto</td><td>VV10</td><td class="n">26</td><td class="n">1.886</td><td class="n">73</td><td class="n">R$ 218.869,24</td></tr><tr><td>Rafael Rocha Santos</td><td>VV06</td><td class="n">27</td><td class="n">1.882</td><td class="n">70</td><td class="n">R$ 216.363,14</td></tr><tr><td>Daniela Fernandes Mendes</td><td>VV09</td><td class="n">27</td><td class="n">1.881</td><td class="n">70</td><td class="n">R$ 203.336,32</td></tr><tr><td>André Rocha Ramos</td><td>VV06</td><td class="n">27</td><td class="n">1.838</td><td class="n">68</td><td class="n">R$ 204.582,81</td></tr><tr><td>Bruna Ramos Carvalho</td><td>VV03</td><td class="n">26</td><td class="n">1.829</td><td class="n">70</td><td class="n">R$ 219.707,75</td></tr><tr><td>Roberta Pinto Cavalcanti</td><td>VV04</td><td class="n">27</td><td class="n">1.826</td><td class="n">68</td><td class="n">R$ 214.858,85</td></tr><tr><td>Simone Rocha Martins</td><td>VV03</td><td class="n">27</td><td class="n">1.823</td><td class="n">68</td><td class="n">R$ 212.003,81</td></tr><tr><td>Natália Alves Pereira</td><td>VV03</td><td class="n">27</td><td class="n">1.821</td><td class="n">67</td><td class="n">R$ 210.501,50</td></tr><tr><td>Tiago Pereira Martins</td><td>VV04</td><td class="n">27</td><td class="n">1.805</td><td class="n">67</td><td class="n">R$ 202.057,01</td></tr>
+    </table></div>
+  </div>
+</div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+
+<script>
+const g = {"dias": ["01/10", "02/10", "03/10", "04/10", "05/10", "06/10", "07/10", "08/10", "09/10", "10/10", "11/10", "12/10", "13/10", "14/10", "15/10", "16/10", "17/10", "18/10", "19/10", "20/10", "21/10", "22/10", "23/10", "24/10", "25/10", "26/10", "27/10", "28/10", "29/10", "30/10", "31/10"], "receita": [699523.62, 889262.55, 1150529.77, 482455.29, 716707.73, 707753.02, 733951.34, 709086.41, 819619.47, 1148203.49, 410590.46, 352509.87, 574720.78, 603461.45, 599385.96, 728172.65, 1014130.28, 400856.72, 524827.59, 579085.84, 593632.17, 593528.29, 716444.45, 924437.51, 398269.46, 522316.86, 540502.59, 565296.04, 550466.0, 696663.19, 982075.78]};
+VV.grafico('gDia', g.dias, [{nome: 'Faturamento', dados: g.receita, slot: 0}], {fmt: 'brl'});
+</script>
+
+</body>
+</html>

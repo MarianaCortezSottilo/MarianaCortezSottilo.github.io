@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Produtos · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="vv03";window.VV_KEY="/cadastros/produtos";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="ativo">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" selected>VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      <a href="unidades_7.html">ficha da unidade</a>
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Cadastro de produtos</h1><div class="sub">237 SKUs · custo e preço de referência nacional (cada loja aplica seu fator de preço) · marcas fictícias · "Vale Verde" é a marca própria</div></div>
+  <div class="filtros">
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a></div></div>
+<div class="cartao"><div class="rolagem" style="max-height:75vh"><table>
+  <tr><th>SKU</th><th>EAN</th><th>Descrição</th><th>Categoria</th><th>Canal</th><th>Fornecedor de referência</th><th>Un.</th><th class="n">Emb.</th><th class="n">Custo</th><th class="n">Preço</th><th class="n">Margem</th><th class="n">Validade</th><th>Sazonalidade</th></tr>
+  <tr><td>040005</td><td>2001570044294</td><td><a href="#" data-off="1">Acém Bovino</a></td><td>Açougue</td><td>Direto</td><td>Frigorífico Boi Forte</td><td>KG</td>
+    <td class="n">5</td><td class="n">R$ 36,60</td><td class="n">R$ 55,89</td><td class="n">34,5%</td>
+    <td class="n">5.0</td><td>inverno</td></tr><tr><td>040002</td><td>2005303899724</td><td><a href="estoque_7_139.html">Alcatra Bovina</a></td><td>Açougue</td><td>Direto</td><td>Frigorífico Boi Forte</td><td>KG</td>
+    <td class="n">5</td><td class="n">R$ 49,08</td><td class="n">R$ 74,99</td><td class="n">34,6%</td>
+    <td class="n">5.0</td><td>fds</td></tr><tr><td>040011</td><td>2000070554920</td><td><a href="#" data-off="1">Bisteca Suína</a></td><td>Açougue</td><td>Direto</td><td>Avícola Santa Clara</td><td>KG</td>
+    <td class="n">5</td><td class="n">R$ 22,95</td><td class="n">R$ 38,09</td><td class="n">39,7%</td>
+    <td class="n">5.0</td><td></td></tr><tr><td>040001</td><td>2005933120342</td><td><a href="estoque_7_138.html">Carne Moída Patinho</a></td><td>Açougue</td><td>Direto</td><td>Frigorífico Boi Forte</td><td>KG</td>
+    <td class="n">5</td><td class="n">R$ 40,01</td><td class="n">R$ 60,89</td><td class="n">34,3%</td>
+    <td class="n">4.0</td><td></td></tr><tr><td>040004</td><td>2003675486535</td><td><a href="estoque_7_141.html">Contrafilé Bovino</a></td><td>Açougue</td><td>Direto</td><td>Frigorífico Boi Forte</td><td>KG</td>
+    <td class="n">5</td><td class="n">R$ 53,93</td><td class="n">R$ 83,69</td><td class="n">35,6%</td>
+    <td class="n">5.0</td><td>fds</td></tr><tr><td>040006</td><td>2006926562798</td><td><a href="#" data-off="1">Costela Bovina</a></td><td>Açougue</td><td>Direto</td><td>Frigorífico Boi Forte</td><td>KG</td>
+    <td class="n">5</td><td class="n">R$ 28,07</td><td class="n">R$ 42,49</td><td class="n">33,9%</td>
+    <td class="n">5.0</td><td>fds</td></tr><tr><td>040008</td><td>2002368088414</td><td><a href="#" data-off="1">Coxa e Sobrecoxa de Frango</a></td><td>Açougue</td><td>Direto</td><td>Avícola Santa Clara</td><td>KG</td>
+    <td class="n">5</td><td class="n">R$ 13,22</td><td class="n">R$ 21,09</td><td class="n">37,3%</td>
+    <td class="n">5.0</td><td>fds</td></tr><tr><td>040009</td><td>2004372461184</td><td><a href="#" data-off="1">Frango Inteiro Congelado</a></td><td>Açougue</td><td>Direto</td><td>Avícola Santa Clara</td><td>KG</td>
+    <td class="n">10</td><td class="n">R$ 11,54</td><td class="n">R$ 16,49</td><td class="n">30,0%</td>
+    <td class="n">180.0</td><td></td></tr><tr><td>040010</td><td>2004754416023</td><td><a href="#" data-off="1">Linguiça Toscana</a></td><td>Açougue</td><td>Direto</td><td>Avícola Santa Clara</td><td>KG</td>
+    <td class="n">5</td><td class="n">R$ 19,75</td><td class="n">R$ 30,69</td><td class="n">35,6%</td>
+    <td class="n">10.0</td><td>fds</td></tr><tr><td>040007</td><td>2009922202385</td><td><a href="#" data-off="1">Peito de Frango</a></td><td>Açougue</td><td>Direto</td><td>Avícola Santa Clara</td><td>KG</td>
+    <td class="n">5</td><td class="n">R$ 18,51</td><td class="n">R$ 28,69</td><td class="n">35,5%</td>
+    <td class="n">5.0</td><td></td></tr><tr><td>040012</td><td>2005255788435</td><td><a href="#" data-off="1">Pernil Suíno</a></td><td>Açougue</td><td>Direto</td><td>Avícola Santa Clara</td><td>KG</td>
+    <td class="n">5</td><td class="n">R$ 21,29</td><td class="n">R$ 32,39</td><td class="n">34,3%</td>
+    <td class="n">5.0</td><td>natal</td></tr><tr><td>040003</td><td>2001982319355</td><td><a href="#" data-off="1">Picanha Bovina</a></td><td>Açougue</td><td>Direto</td><td>Frigorífico Boi Forte</td><td>KG</td>
+    <td class="n">5</td><td class="n">R$ 79,96</td><td class="n">R$ 121,49</td><td class="n">34,2%</td>
+    <td class="n">5.0</td><td>fds</td></tr><tr><td>100005</td><td>2003412077804</td><td><a href="#" data-off="1">Carvão Vegetal 3kg</a></td><td>Bazar e Pet</td><td>CD</td><td>Andrade Bazar &amp; Pet</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 12,33</td><td class="n">R$ 19,79</td><td class="n">37,7%</td>
+    <td class="n">1000.0</td><td>fds</td></tr><tr><td>100008</td><td>2008417253239</td><td><a href="#" data-off="1">Copo Descartável 200ml 100un</a></td><td>Bazar e Pet</td><td>CD</td><td>Andrade Bazar &amp; Pet</td><td>UN</td>
+    <td class="n">20</td><td class="n">R$ 5,01</td><td class="n">R$ 8,49</td><td class="n">41,0%</td>
+    <td class="n">1000.0</td><td>natal</td></tr><tr><td>100007</td><td>2005609989242</td><td><a href="#" data-off="1">Fósforo 10 Caixas</a></td><td>Bazar e Pet</td><td>CD</td><td>Andrade Bazar &amp; Pet</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 3,87</td><td class="n">R$ 6,29</td><td class="n">38,5%</td>
+    <td class="n">1000.0</td><td></td></tr><tr><td>100006</td><td>2009664605093</td><td><a href="#" data-off="1">Pilha Alcalina AA 2un</a></td><td>Bazar e Pet</td><td>CD</td><td>Andrade Bazar &amp; Pet</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 7,93</td><td class="n">R$ 12,79</td><td class="n">38,0%</td>
+    <td class="n">1000.0</td><td>natal</td></tr><tr><td>100001</td><td>2007433905597</td><td><a href="#" data-off="1">Ração para Cães Adultos 10kg Amigo Fiel</a></td><td>Bazar e Pet</td><td>CD</td><td>Andrade Bazar &amp; Pet</td><td>UN</td>
+    <td class="n">2</td><td class="n">R$ 77,64</td><td class="n">R$ 124,79</td><td class="n">37,8%</td>
+    <td class="n">365.0</td><td></td></tr><tr><td>100002</td><td>2004860856256</td><td><a href="#" data-off="1">Ração para Cães Adultos 10kg Casa &amp; Cia</a></td><td>Bazar e Pet</td><td>CD</td><td>Andrade Bazar &amp; Pet</td><td>UN</td>
+    <td class="n">2</td><td class="n">R$ 86,91</td><td class="n">R$ 138,29</td><td class="n">37,2%</td>
+    <td class="n">365.0</td><td></td></tr><tr><td>100003</td><td>2001286912580</td><td><a href="#" data-off="1">Ração para Gatos 1kg Amigo Fiel</a></td><td>Bazar e Pet</td><td>CD</td><td>Andrade Bazar &amp; Pet</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 13,37</td><td class="n">R$ 20,49</td><td class="n">34,7%</td>
+    <td class="n">365.0</td><td></td></tr><tr><td>100004</td><td>2009949594739</td><td><a href="#" data-off="1">Ração para Gatos 1kg Casa &amp; Cia</a></td><td>Bazar e Pet</td><td>CD</td><td>Andrade Bazar &amp; Pet</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 15,61</td><td class="n">R$ 25,79</td><td class="n">39,5%</td>
+    <td class="n">365.0</td><td></td></tr><tr><td>020016</td><td>2003437709414</td><td><a href="#" data-off="1">Cerveja Lata 350ml Cevada Nobre</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 3,70</td><td class="n">R$ 5,19</td><td class="n">28,7%</td>
+    <td class="n">180.0</td><td>verao</td></tr><tr><td>020015</td><td>2002246420855</td><td><a href="estoque_7_98.html">Cerveja Lata 350ml Lúpulo Dourado</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 3,28</td><td class="n">R$ 4,79</td><td class="n">31,5%</td>
+    <td class="n">180.0</td><td>verao</td></tr><tr><td>020017</td><td>2009582066488</td><td><a href="#" data-off="1">Cerveja Lata 350ml Serra Fria</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 2,78</td><td class="n">R$ 4,09</td><td class="n">32,0%</td>
+    <td class="n">180.0</td><td>verao</td></tr><tr><td>020019</td><td>2004491299958</td><td><a href="#" data-off="1">Cerveja Long Neck 330ml Cevada Nobre</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">24</td><td class="n">R$ 4,93</td><td class="n">R$ 7,59</td><td class="n">35,0%</td>
+    <td class="n">180.0</td><td>verao</td></tr><tr><td>020018</td><td>2009244996771</td><td><a href="#" data-off="1">Cerveja Long Neck 330ml Lúpulo Dourado</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">24</td><td class="n">R$ 4,34</td><td class="n">R$ 6,59</td><td class="n">34,1%</td>
+    <td class="n">180.0</td><td>verao</td></tr><tr><td>020020</td><td>2009556815661</td><td><a href="#" data-off="1">Cerveja Long Neck 330ml Serra Fria</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">24</td><td class="n">R$ 3,80</td><td class="n">R$ 5,49</td><td class="n">30,8%</td>
+    <td class="n">180.0</td><td>verao</td></tr><tr><td>020022</td><td>2007936775260</td><td><a href="#" data-off="1">Cerveja Pack 12 Latas 350ml Cevada Nobre</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">2</td><td class="n">R$ 41,85</td><td class="n">R$ 61,49</td><td class="n">31,9%</td>
+    <td class="n">180.0</td><td>verao</td></tr><tr><td>020021</td><td>2008643986055</td><td><a href="#" data-off="1">Cerveja Pack 12 Latas 350ml Lúpulo Dourado</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">2</td><td class="n">R$ 36,58</td><td class="n">R$ 54,99</td><td class="n">33,5%</td>
+    <td class="n">180.0</td><td>verao</td></tr><tr><td>020023</td><td>2006471280321</td><td><a href="#" data-off="1">Cerveja Pack 12 Latas 350ml Serra Fria</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">2</td><td class="n">R$ 31,62</td><td class="n">R$ 47,99</td><td class="n">34,1%</td>
+    <td class="n">180.0</td><td>verao</td></tr><tr><td>020025</td><td>2008789298807</td><td><a href="#" data-off="1">Energético Lata 250ml</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 6,73</td><td class="n">R$ 10,49</td><td class="n">35,8%</td>
+    <td class="n">365.0</td><td></td></tr><tr><td>020014</td><td>2009310782246</td><td><a href="#" data-off="1">Refresco em Pó 25g</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">15</td><td class="n">R$ 0,78</td><td class="n">R$ 1,09</td><td class="n">28,4%</td>
+    <td class="n">365.0</td><td>verao</td></tr><tr><td>020001</td><td>2008405950843</td><td><a href="#" data-off="1">Refrigerante Cola 2L Serra Azul</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 7,21</td><td class="n">R$ 10,39</td><td class="n">30,6%</td>
+    <td class="n">180.0</td><td>verao</td></tr><tr><td>020002</td><td>2001636990428</td><td><a href="#" data-off="1">Refrigerante Cola 2L Tropical</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 8,32</td><td class="n">R$ 12,29</td><td class="n">32,3%</td>
+    <td class="n">180.0</td><td>verao</td></tr><tr><td>020003</td><td>2004599596850</td><td><a href="#" data-off="1">Refrigerante Cola 2L Vale Verde</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 6,15</td><td class="n">R$ 9,49</td><td class="n">35,2%</td>
+    <td class="n">180.0</td><td>verao</td></tr><tr><td>020004</td><td>2003088095201</td><td><a href="#" data-off="1">Refrigerante Guaraná 2L Serra Azul</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 5,59</td><td class="n">R$ 8,29</td><td class="n">32,6%</td>
+    <td class="n">180.0</td><td>verao</td></tr><tr><td>020005</td><td>2007523414664</td><td><a href="#" data-off="1">Refrigerante Guaraná 2L Tropical</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 6,56</td><td class="n">R$ 9,69</td><td class="n">32,3%</td>
+    <td class="n">180.0</td><td>verao</td></tr><tr><td>020006</td><td>2009439067798</td><td><a href="#" data-off="1">Refrigerante Guaraná 2L Vale Verde</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 4,93</td><td class="n">R$ 7,39</td><td class="n">33,3%</td>
+    <td class="n">180.0</td><td>verao</td></tr><tr><td>020011</td><td>2000713691487</td><td><a href="#" data-off="1">Suco Integral Caixinha 1L Serra Azul</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 5,18</td><td class="n">R$ 7,89</td><td class="n">34,3%</td>
+    <td class="n">270.0</td><td>verao</td></tr><tr><td>020012</td><td>2005465619659</td><td><a href="#" data-off="1">Suco Integral Caixinha 1L Tropical</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 5,58</td><td class="n">R$ 8,69</td><td class="n">35,8%</td>
+    <td class="n">270.0</td><td>verao</td></tr><tr><td>020013</td><td>2003117214405</td><td><a href="#" data-off="1">Suco Integral Caixinha 1L Vale Verde</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 4,41</td><td class="n">R$ 6,99</td><td class="n">36,9%</td>
+    <td class="n">270.0</td><td>verao</td></tr><tr><td>020024</td><td>2003222762730</td><td><a href="#" data-off="1">Vinho Tinto Seco 750ml</a></td><td>Bebidas</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 23,62</td><td class="n">R$ 33,79</td><td class="n">30,1%</td>
+    <td class="n">1000.0</td><td>inverno</td></tr><tr><td>020007</td><td>2008946544655</td><td><a href="#" data-off="1">Água Mineral sem Gás 1,5L Serra Azul</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 1,53</td><td class="n">R$ 2,19</td><td class="n">30,1%</td>
+    <td class="n">365.0</td><td>verao</td></tr><tr><td>020008</td><td>2006112637842</td><td><a href="#" data-off="1">Água Mineral sem Gás 1,5L Tropical</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 1,77</td><td class="n">R$ 2,49</td><td class="n">28,9%</td>
+    <td class="n">365.0</td><td>verao</td></tr><tr><td>020009</td><td>2002465162802</td><td><a href="#" data-off="1">Água Mineral sem Gás 1,5L Vale Verde</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 1,35</td><td class="n">R$ 2,09</td><td class="n">35,4%</td>
+    <td class="n">365.0</td><td>verao</td></tr><tr><td>020010</td><td>2006528647688</td><td><a href="#" data-off="1">Água Mineral sem Gás 500ml</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 1,02</td><td class="n">R$ 1,49</td><td class="n">31,5%</td>
+    <td class="n">365.0</td><td>verao</td></tr><tr><td>020026</td><td>2005246314513</td><td><a href="#" data-off="1">Água de Coco 1L</a></td><td>Bebidas</td><td>CD</td><td>Serra Azul Bebidas</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 7,38</td><td class="n">R$ 10,99</td><td class="n">32,8%</td>
+    <td class="n">180.0</td><td>verao</td></tr><tr><td>090007</td><td>2005211811320</td><td><a href="#" data-off="1">Batata Pré-Frita 1kg</a></td><td>Congelados</td><td>CD</td><td>Polar Congelados</td><td>UN</td>
+    <td class="n">8</td><td class="n">R$ 15,04</td><td class="n">R$ 21,29</td><td class="n">29,4%</td>
+    <td class="n">365.0</td><td></td></tr><tr><td>090005</td><td>2007172820083</td><td><a href="#" data-off="1">Hambúrguer Bovino 672g Polar</a></td><td>Congelados</td><td>CD</td><td>Polar Congelados</td><td>UN</td>
+    <td class="n">8</td><td class="n">R$ 14,67</td><td class="n">R$ 20,49</td><td class="n">28,4%</td>
+    <td class="n">180.0</td><td>verao</td></tr><tr><td>090006</td><td>2001570522228</td><td><a href="#" data-off="1">Hambúrguer Bovino 672g Sabor de Casa</a></td><td>Congelados</td><td>CD</td><td>Polar Congelados</td><td>UN</td>
+    <td class="n">8</td><td class="n">R$ 17,27</td><td class="n">R$ 25,99</td><td class="n">33,6%</td>
+    <td class="n">180.0</td><td>verao</td></tr><tr><td>090003</td><td>2000675111610</td><td><a href="#" data-off="1">Lasanha Congelada Bolonhesa 600g Polar</a></td><td>Congelados</td><td>CD</td><td>Polar Congelados</td><td>UN</td>
+    <td class="n">8</td><td class="n">R$ 14,08</td><td class="n">R$ 21,19</td><td class="n">33,6%</td>
+    <td class="n">180.0</td><td>inverno</td></tr><tr><td>090004</td><td>2003337116626</td><td><a href="#" data-off="1">Lasanha Congelada Bolonhesa 600g Sabor de Casa</a></td><td>Congelados</td><td>CD</td><td>Polar Congelados</td><td>UN</td>
+    <td class="n">8</td><td class="n">R$ 15,41</td><td class="n">R$ 23,69</td><td class="n">35,0%</td>
+    <td class="n">180.0</td><td>inverno</td></tr><tr><td>090001</td><td>2003429013277</td><td><a href="#" data-off="1">Pizza Congelada Mussarela 460g Polar</a></td><td>Congelados</td><td>CD</td><td>Polar Congelados</td><td>UN</td>
+    <td class="n">8</td><td class="n">R$ 13,02</td><td class="n">R$ 19,39</td><td class="n">32,9%</td>
+    <td class="n">180.0</td><td></td></tr><tr><td>090002</td><td>2007381868852</td><td><a href="#" data-off="1">Pizza Congelada Mussarela 460g Sabor de Casa</a></td><td>Congelados</td><td>CD</td><td>Polar Congelados</td><td>UN</td>
+    <td class="n">8</td><td class="n">R$ 16,05</td><td class="n">R$ 23,29</td><td class="n">31,1%</td>
+    <td class="n">180.0</td><td></td></tr><tr><td>090009</td><td>2008457161488</td><td><a href="#" data-off="1">Pão de Alho Congelado 400g</a></td><td>Congelados</td><td>CD</td><td>Polar Congelados</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 10,05</td><td class="n">R$ 15,29</td><td class="n">34,3%</td>
+    <td class="n">180.0</td><td>fds</td></tr><tr><td>090008</td><td>2001713516909</td><td><a href="#" data-off="1">Sorvete Napolitano 2L</a></td><td>Congelados</td><td>CD</td><td>Polar Congelados</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 16,61</td><td class="n">R$ 24,89</td><td class="n">33,3%</td>
+    <td class="n">365.0</td><td>verao</td></tr><tr><td>080020</td><td>2001389665550</td><td><a href="#" data-off="1">Absorvente com Abas 8un</a></td><td>Higiene e Perfumaria</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 4,91</td><td class="n">R$ 7,89</td><td class="n">37,8%</td>
+    <td class="n">1000.0</td><td></td></tr><tr><td>080014</td><td>2009732091650</td><td><a href="#" data-off="1">Condicionador 350ml Bem-Estar</a></td><td>Higiene e Perfumaria</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 13,46</td><td class="n">R$ 21,49</td><td class="n">37,4%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>080013</td><td>2007985348019</td><td><a href="#" data-off="1">Condicionador 350ml Suavità</a></td><td>Higiene e Perfumaria</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 11,88</td><td class="n">R$ 19,19</td><td class="n">38,1%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>080015</td><td>2009585381557</td><td><a href="#" data-off="1">Condicionador 350ml Vale Verde</a></td><td>Higiene e Perfumaria</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 10,67</td><td class="n">R$ 16,69</td><td class="n">36,1%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>080008</td><td>2002249885323</td><td><a href="#" data-off="1">Creme Dental 90g Bem-Estar</a></td><td>Higiene e Perfumaria</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 4,36</td><td class="n">R$ 7,09</td><td class="n">38,5%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>080007</td><td>2008853764214</td><td><a href="#" data-off="1">Creme Dental 90g Suavità</a></td><td>Higiene e Perfumaria</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 3,97</td><td class="n">R$ 6,49</td><td class="n">38,8%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>080009</td><td>2006896037920</td><td><a href="#" data-off="1">Creme Dental 90g Vale Verde</a></td><td>Higiene e Perfumaria</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 3,45</td><td class="n">R$ 6,09</td><td class="n">43,3%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>080017</td><td>2005855693146</td><td><a href="#" data-off="1">Desodorante Aerossol 150ml Bem-Estar</a></td><td>Higiene e Perfumaria</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 14,05</td><td class="n">R$ 22,69</td><td class="n">38,1%</td>
+    <td class="n">720.0</td><td>verao</td></tr><tr><td>080016</td><td>2000721554859</td><td><a href="#" data-off="1">Desodorante Aerossol 150ml Suavità</a></td><td>Higiene e Perfumaria</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 12,37</td><td class="n">R$ 19,29</td><td class="n">35,9%</td>
+    <td class="n">720.0</td><td>verao</td></tr><tr><td>080018</td><td>2000149244714</td><td><a href="#" data-off="1">Desodorante Aerossol 150ml Vale Verde</a></td><td>Higiene e Perfumaria</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 11,08</td><td class="n">R$ 17,99</td><td class="n">38,4%</td>
+    <td class="n">720.0</td><td>verao</td></tr><tr><td>080019</td><td>2003725518216</td><td><a href="#" data-off="1">Fralda Descartável Pacote</a></td><td>Higiene e Perfumaria</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">4</td><td class="n">R$ 41,08</td><td class="n">R$ 62,79</td><td class="n">34,6%</td>
+    <td class="n">1000.0</td><td></td></tr><tr><td>080002</td><td>2008324156326</td><td><a href="#" data-off="1">Papel Higiênico 12 Rolos Bem-Estar</a></td><td>Higiene e Perfumaria</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">4</td><td class="n">R$ 19,30</td><td class="n">R$ 29,09</td><td class="n">33,7%</td>
+    <td class="n">1000.0</td><td></td></tr><tr><td>080001</td><td>2000964971550</td><td><a href="#" data-off="1">Papel Higiênico 12 Rolos Suavità</a></td><td>Higiene e Perfumaria</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">4</td><td class="n">R$ 17,39</td><td class="n">R$ 27,59</td><td class="n">37,0%</td>
+    <td class="n">1000.0</td><td></td></tr><tr><td>080003</td><td>2009193349192</td><td><a href="#" data-off="1">Papel Higiênico 12 Rolos Vale Verde</a></td><td>Higiene e Perfumaria</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">4</td><td class="n">R$ 15,07</td><td class="n">R$ 24,99</td><td class="n">39,7%</td>
+    <td class="n">1000.0</td><td></td></tr><tr><td>080005</td><td>2004959623790</td><td><a href="#" data-off="1">Sabonete em Barra 85g Bem-Estar</a></td><td>Higiene e Perfumaria</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 2,22</td><td class="n">R$ 3,39</td><td class="n">34,5%</td>
+    <td class="n">1000.0</td><td></td></tr><tr><td>080004</td><td>2004923011349</td><td><a href="#" data-off="1">Sabonete em Barra 85g Suavità</a></td><td>Higiene e Perfumaria</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 2,00</td><td class="n">R$ 3,19</td><td class="n">37,3%</td>
+    <td class="n">1000.0</td><td></td></tr><tr><td>080006</td><td>2005879668885</td><td><a href="#" data-off="1">Sabonete em Barra 85g Vale Verde</a></td><td>Higiene e Perfumaria</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 1,76</td><td class="n">R$ 2,89</td><td class="n">39,1%</td>
+    <td class="n">1000.0</td><td></td></tr><tr><td>080011</td><td>2003551452241</td><td><a href="#" data-off="1">Shampoo 350ml Bem-Estar</a></td><td>Higiene e Perfumaria</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 12,98</td><td class="n">R$ 19,99</td><td class="n">35,1%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>080010</td><td>2005754799635</td><td><a href="#" data-off="1">Shampoo 350ml Suavità</a></td><td>Higiene e Perfumaria</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 11,05</td><td class="n">R$ 17,89</td><td class="n">38,2%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>080012</td><td>2001868905078</td><td><a href="#" data-off="1">Shampoo 350ml Vale Verde</a></td><td>Higiene e Perfumaria</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 10,00</td><td class="n">R$ 17,09</td><td class="n">41,5%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>050014</td><td>2002070386549</td><td><a href="#" data-off="1">Abobrinha</a></td><td>Hortifrúti</td><td>Direto</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>KG</td>
+    <td class="n">5</td><td class="n">R$ 3,77</td><td class="n">R$ 6,99</td><td class="n">46,1%</td>
+    <td class="n">8.0</td><td></td></tr><tr><td>050013</td><td>2008654706239</td><td><a href="#" data-off="1">Alface Crespa</a></td><td>Hortifrúti</td><td>Direto</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 1,71</td><td class="n">R$ 2,99</td><td class="n">42,8%</td>
+    <td class="n">3.0</td><td></td></tr><tr><td>050005</td><td>2007369738207</td><td><a href="#" data-off="1">Alho Nacional</a></td><td>Hortifrúti</td><td>Direto</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>KG</td>
+    <td class="n">2</td><td class="n">R$ 21,49</td><td class="n">R$ 35,59</td><td class="n">39,6%</td>
+    <td class="n">30.0</td><td></td></tr><tr><td>050001</td><td>2008232920361</td><td><a href="#" data-off="1">Banana Prata</a></td><td>Hortifrúti</td><td>Direto</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>KG</td>
+    <td class="n">10</td><td class="n">R$ 4,09</td><td class="n">R$ 7,79</td><td class="n">47,5%</td>
+    <td class="n">6.0</td><td></td></tr><tr><td>050003</td><td>2009697704626</td><td><a href="estoque_7_152.html">Batata Lavada</a></td><td>Hortifrúti</td><td>Direto</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>KG</td>
+    <td class="n">10</td><td class="n">R$ 4,61</td><td class="n">R$ 8,59</td><td class="n">46,3%</td>
+    <td class="n">15.0</td><td></td></tr><tr><td>050004</td><td>2009877540792</td><td><a href="#" data-off="1">Cebola</a></td><td>Hortifrúti</td><td>Direto</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>KG</td>
+    <td class="n">10</td><td class="n">R$ 3,82</td><td class="n">R$ 6,59</td><td class="n">42,0%</td>
+    <td class="n">20.0</td><td></td></tr><tr><td>050006</td><td>2005459670222</td><td><a href="#" data-off="1">Cenoura</a></td><td>Hortifrúti</td><td>Direto</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>KG</td>
+    <td class="n">5</td><td class="n">R$ 3,67</td><td class="n">R$ 6,19</td><td class="n">40,7%</td>
+    <td class="n">12.0</td><td></td></tr><tr><td>050008</td><td>2003561367214</td><td><a href="#" data-off="1">Laranja Pera</a></td><td>Hortifrúti</td><td>Direto</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>KG</td>
+    <td class="n">20</td><td class="n">R$ 3,36</td><td class="n">R$ 6,19</td><td class="n">45,7%</td>
+    <td class="n">15.0</td><td>inverno</td></tr><tr><td>050009</td><td>2006667565164</td><td><a href="#" data-off="1">Limão Tahiti</a></td><td>Hortifrúti</td><td>Direto</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>KG</td>
+    <td class="n">10</td><td class="n">R$ 3,85</td><td class="n">R$ 7,49</td><td class="n">48,6%</td>
+    <td class="n">15.0</td><td>verao</td></tr><tr><td>050010</td><td>2003490642437</td><td><a href="#" data-off="1">Mamão Formosa</a></td><td>Hortifrúti</td><td>Direto</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>KG</td>
+    <td class="n">10</td><td class="n">R$ 4,47</td><td class="n">R$ 8,09</td><td class="n">44,7%</td>
+    <td class="n">6.0</td><td></td></tr><tr><td>050007</td><td>2006221647534</td><td><a href="#" data-off="1">Maçã Gala</a></td><td>Hortifrúti</td><td>Direto</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>KG</td>
+    <td class="n">10</td><td class="n">R$ 8,52</td><td class="n">R$ 15,69</td><td class="n">45,7%</td>
+    <td class="n">20.0</td><td></td></tr><tr><td>050011</td><td>2007799374044</td><td><a href="#" data-off="1">Melancia</a></td><td>Hortifrúti</td><td>Direto</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>KG</td>
+    <td class="n">20</td><td class="n">R$ 1,99</td><td class="n">R$ 3,59</td><td class="n">44,6%</td>
+    <td class="n">10.0</td><td>verao</td></tr><tr><td>050015</td><td>2003734985030</td><td><a href="#" data-off="1">Pimentão Verde</a></td><td>Hortifrúti</td><td>Direto</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>KG</td>
+    <td class="n">5</td><td class="n">R$ 6,85</td><td class="n">R$ 11,49</td><td class="n">40,4%</td>
+    <td class="n">8.0</td><td></td></tr><tr><td>050002</td><td>2001788676249</td><td><a href="#" data-off="1">Tomate Italiano</a></td><td>Hortifrúti</td><td>Direto</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>KG</td>
+    <td class="n">10</td><td class="n">R$ 5,43</td><td class="n">R$ 10,19</td><td class="n">46,7%</td>
+    <td class="n">6.0</td><td></td></tr><tr><td>050012</td><td>2007132293094</td><td><a href="#" data-off="1">Uva Niágara</a></td><td>Hortifrúti</td><td>Direto</td><td>Hortifruti Irmãos Okada (CEASA)</td><td>KG</td>
+    <td class="n">5</td><td class="n">R$ 11,10</td><td class="n">R$ 18,89</td><td class="n">41,2%</td>
+    <td class="n">6.0</td><td>natal</td></tr><tr><td>030010</td><td>2003173179748</td><td><a href="#" data-off="1">Bebida Láctea Morango 900g Campo Bom</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Laticínios Campo Bom</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 6,11</td><td class="n">R$ 8,39</td><td class="n">27,2%</td>
+    <td class="n">30.0</td><td></td></tr><tr><td>030011</td><td>2004096477508</td><td><a href="#" data-off="1">Bebida Láctea Morango 900g Leiteria Mineira</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Laticínios Campo Bom</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 6,91</td><td class="n">R$ 10,09</td><td class="n">31,5%</td>
+    <td class="n">30.0</td><td></td></tr><tr><td>030012</td><td>2004209022526</td><td><a href="#" data-off="1">Bebida Láctea Morango 900g Vale Verde</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Laticínios Campo Bom</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 5,16</td><td class="n">R$ 8,19</td><td class="n">37,0%</td>
+    <td class="n">30.0</td><td></td></tr><tr><td>030007</td><td>2009701652912</td><td><a href="#" data-off="1">Iogurte Natural 170g Campo Bom</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Laticínios Campo Bom</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 2,60</td><td class="n">R$ 3,89</td><td class="n">33,2%</td>
+    <td class="n">30.0</td><td></td></tr><tr><td>030008</td><td>2002872779549</td><td><a href="#" data-off="1">Iogurte Natural 170g Leiteria Mineira</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Laticínios Campo Bom</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 2,89</td><td class="n">R$ 4,09</td><td class="n">29,3%</td>
+    <td class="n">30.0</td><td></td></tr><tr><td>030009</td><td>2006473745873</td><td><a href="#" data-off="1">Iogurte Natural 170g Vale Verde</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Laticínios Campo Bom</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 2,24</td><td class="n">R$ 3,39</td><td class="n">33,9%</td>
+    <td class="n">30.0</td><td></td></tr><tr><td>030004</td><td>2000735309650</td><td><a href="#" data-off="1">Leite UHT Desnatado 1L Campo Bom</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Laticínios Campo Bom</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 5,05</td><td class="n">R$ 7,29</td><td class="n">30,7%</td>
+    <td class="n">120.0</td><td></td></tr><tr><td>030005</td><td>2000281470163</td><td><a href="#" data-off="1">Leite UHT Desnatado 1L Leiteria Mineira</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Laticínios Campo Bom</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 5,76</td><td class="n">R$ 8,29</td><td class="n">30,5%</td>
+    <td class="n">120.0</td><td></td></tr><tr><td>030006</td><td>2002884438199</td><td><a href="#" data-off="1">Leite UHT Desnatado 1L Vale Verde</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Laticínios Campo Bom</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 4,40</td><td class="n">R$ 6,69</td><td class="n">34,2%</td>
+    <td class="n">120.0</td><td></td></tr><tr><td>030001</td><td>2007106080118</td><td><a href="estoque_7_110.html">Leite UHT Integral 1L Campo Bom</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Laticínios Campo Bom</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 4,83</td><td class="n">R$ 7,09</td><td class="n">31,9%</td>
+    <td class="n">120.0</td><td></td></tr><tr><td>030002</td><td>2001966918086</td><td><a href="#" data-off="1">Leite UHT Integral 1L Leiteria Mineira</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Laticínios Campo Bom</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 5,51</td><td class="n">R$ 8,09</td><td class="n">31,9%</td>
+    <td class="n">120.0</td><td></td></tr><tr><td>030003</td><td>2003865607993</td><td><a href="#" data-off="1">Leite UHT Integral 1L Vale Verde</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Laticínios Campo Bom</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 4,13</td><td class="n">R$ 6,49</td><td class="n">36,4%</td>
+    <td class="n">120.0</td><td></td></tr><tr><td>030015</td><td>2006421959130</td><td><a href="#" data-off="1">Manteiga com Sal 200g Campo Bom</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Laticínios Campo Bom</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 12,12</td><td class="n">R$ 17,49</td><td class="n">30,7%</td>
+    <td class="n">90.0</td><td></td></tr><tr><td>030016</td><td>2002942169911</td><td><a href="#" data-off="1">Manteiga com Sal 200g Leiteria Mineira</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Laticínios Campo Bom</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 13,99</td><td class="n">R$ 19,49</td><td class="n">28,2%</td>
+    <td class="n">90.0</td><td></td></tr><tr><td>030017</td><td>2001084914649</td><td><a href="#" data-off="1">Manteiga com Sal 200g Vale Verde</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Laticínios Campo Bom</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 10,57</td><td class="n">R$ 16,29</td><td class="n">35,1%</td>
+    <td class="n">90.0</td><td></td></tr><tr><td>030018</td><td>2006048610117</td><td><a href="#" data-off="1">Margarina 500g Campo Bom</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Laticínios Campo Bom</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 6,95</td><td class="n">R$ 10,39</td><td class="n">33,1%</td>
+    <td class="n">120.0</td><td></td></tr><tr><td>030019</td><td>2000957860687</td><td><a href="#" data-off="1">Margarina 500g Leiteria Mineira</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Laticínios Campo Bom</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 7,86</td><td class="n">R$ 11,19</td><td class="n">29,8%</td>
+    <td class="n">120.0</td><td></td></tr><tr><td>030020</td><td>2004308538706</td><td><a href="#" data-off="1">Margarina 500g Vale Verde</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Laticínios Campo Bom</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 6,25</td><td class="n">R$ 9,29</td><td class="n">32,7%</td>
+    <td class="n">120.0</td><td></td></tr><tr><td>030027</td><td>2001957262945</td><td><a href="#" data-off="1">Mortadela Fatiada</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Frios Serra da Mantiqueira</td><td>KG</td>
+    <td class="n">1</td><td class="n">R$ 17,85</td><td class="n">R$ 25,89</td><td class="n">31,1%</td>
+    <td class="n">15.0</td><td></td></tr><tr><td>030025</td><td>2001398455258</td><td><a href="#" data-off="1">Ovos Brancos Dúzia</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Avícola Santa Clara</td><td>UN</td>
+    <td class="n">30</td><td class="n">R$ 9,63</td><td class="n">R$ 13,49</td><td class="n">28,6%</td>
+    <td class="n">25.0</td><td>quaresma</td></tr><tr><td>030028</td><td>2006927875187</td><td><a href="#" data-off="1">Peito de Peru Defumado Fatiado</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Frios Serra da Mantiqueira</td><td>KG</td>
+    <td class="n">1</td><td class="n">R$ 55,57</td><td class="n">R$ 86,49</td><td class="n">35,7%</td>
+    <td class="n">15.0</td><td>natal</td></tr><tr><td>030014</td><td>2005404234486</td><td><a href="#" data-off="1">Presunto Cozido Fatiado</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Frios Serra da Mantiqueira</td><td>KG</td>
+    <td class="n">1</td><td class="n">R$ 26,58</td><td class="n">R$ 38,19</td><td class="n">30,4%</td>
+    <td class="n">15.0</td><td></td></tr><tr><td>030024</td><td>2009571203894</td><td><a href="#" data-off="1">Queijo Minas Frescal</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Laticínios Campo Bom</td><td>KG</td>
+    <td class="n">1</td><td class="n">R$ 34,66</td><td class="n">R$ 48,89</td><td class="n">29,1%</td>
+    <td class="n">15.0</td><td></td></tr><tr><td>030013</td><td>2003285208985</td><td><a href="#" data-off="1">Queijo Mussarela Fatiado</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Frios Serra da Mantiqueira</td><td>KG</td>
+    <td class="n">1</td><td class="n">R$ 38,39</td><td class="n">R$ 58,19</td><td class="n">34,0%</td>
+    <td class="n">20.0</td><td></td></tr><tr><td>030021</td><td>2007945688742</td><td><a href="#" data-off="1">Requeijão Cremoso 200g Campo Bom</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Laticínios Campo Bom</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 6,67</td><td class="n">R$ 9,29</td><td class="n">28,2%</td>
+    <td class="n">60.0</td><td></td></tr><tr><td>030022</td><td>2001394020870</td><td><a href="#" data-off="1">Requeijão Cremoso 200g Leiteria Mineira</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Laticínios Campo Bom</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 7,73</td><td class="n">R$ 10,79</td><td class="n">28,4%</td>
+    <td class="n">60.0</td><td></td></tr><tr><td>030023</td><td>2001238459330</td><td><a href="#" data-off="1">Requeijão Cremoso 200g Vale Verde</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Laticínios Campo Bom</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 5,79</td><td class="n">R$ 9,19</td><td class="n">37,0%</td>
+    <td class="n">60.0</td><td></td></tr><tr><td>030026</td><td>2002705075527</td><td><a href="#" data-off="1">Salsicha Hot Dog</a></td><td>Laticínios e Frios</td><td>Direto</td><td>Frios Serra da Mantiqueira</td><td>KG</td>
+    <td class="n">1</td><td class="n">R$ 13,98</td><td class="n">R$ 19,49</td><td class="n">28,3%</td>
+    <td class="n">30.0</td><td></td></tr><tr><td>070010</td><td>2003588453815</td><td><a href="#" data-off="1">Amaciante 2L Brilhante</a></td><td>Limpeza</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 10,05</td><td class="n">R$ 15,09</td><td class="n">33,4%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>070011</td><td>2003503353978</td><td><a href="#" data-off="1">Amaciante 2L Lar Limpo</a></td><td>Limpeza</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 12,06</td><td class="n">R$ 17,99</td><td class="n">33,0%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>070012</td><td>2009346765671</td><td><a href="#" data-off="1">Amaciante 2L Vale Verde</a></td><td>Limpeza</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 9,31</td><td class="n">R$ 14,99</td><td class="n">37,9%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>070016</td><td>2000055401904</td><td><a href="#" data-off="1">Desinfetante 2L Brilhante</a></td><td>Limpeza</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 6,95</td><td class="n">R$ 10,69</td><td class="n">35,0%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>070017</td><td>2009579495505</td><td><a href="#" data-off="1">Desinfetante 2L Lar Limpo</a></td><td>Limpeza</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 7,83</td><td class="n">R$ 10,99</td><td class="n">28,8%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>070018</td><td>2003866773703</td><td><a href="#" data-off="1">Desinfetante 2L Vale Verde</a></td><td>Limpeza</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 6,19</td><td class="n">R$ 9,79</td><td class="n">36,8%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>070001</td><td>2003965828199</td><td><a href="#" data-off="1">Detergente Líquido 500ml Brilhante</a></td><td>Limpeza</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">24</td><td class="n">R$ 1,98</td><td class="n">R$ 2,89</td><td class="n">31,5%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>070002</td><td>2009146983954</td><td><a href="#" data-off="1">Detergente Líquido 500ml Lar Limpo</a></td><td>Limpeza</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">24</td><td class="n">R$ 2,29</td><td class="n">R$ 3,39</td><td class="n">32,4%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>070003</td><td>2002371093177</td><td><a href="#" data-off="1">Detergente Líquido 500ml Vale Verde</a></td><td>Limpeza</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">24</td><td class="n">R$ 1,74</td><td class="n">R$ 2,79</td><td class="n">37,6%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>070019</td><td>2004839240017</td><td><a href="#" data-off="1">Esponja Multiuso 3un</a></td><td>Limpeza</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">20</td><td class="n">R$ 2,95</td><td class="n">R$ 4,49</td><td class="n">34,3%</td>
+    <td class="n">1000.0</td><td></td></tr><tr><td>070007</td><td>2009835438789</td><td><a href="#" data-off="1">Lava-Roupas Líquido 3L Brilhante</a></td><td>Limpeza</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 27,72</td><td class="n">R$ 41,49</td><td class="n">33,2%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>070008</td><td>2009045327262</td><td><a href="#" data-off="1">Lava-Roupas Líquido 3L Lar Limpo</a></td><td>Limpeza</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 32,15</td><td class="n">R$ 45,39</td><td class="n">29,2%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>070009</td><td>2002750973236</td><td><a href="#" data-off="1">Lava-Roupas Líquido 3L Vale Verde</a></td><td>Limpeza</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 23,85</td><td class="n">R$ 40,89</td><td class="n">41,7%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>070004</td><td>2001894384755</td><td><a href="#" data-off="1">Sabão em Pó 1,6kg Brilhante</a></td><td>Limpeza</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">9</td><td class="n">R$ 16,00</td><td class="n">R$ 23,19</td><td class="n">31,0%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>070005</td><td>2007653563317</td><td><a href="#" data-off="1">Sabão em Pó 1,6kg Lar Limpo</a></td><td>Limpeza</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">9</td><td class="n">R$ 18,01</td><td class="n">R$ 26,79</td><td class="n">32,8%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>070006</td><td>2007269736648</td><td><a href="#" data-off="1">Sabão em Pó 1,6kg Vale Verde</a></td><td>Limpeza</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">9</td><td class="n">R$ 13,24</td><td class="n">R$ 20,29</td><td class="n">34,7%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>070020</td><td>2000337634730</td><td><a href="#" data-off="1">Saco de Lixo 50L 10un</a></td><td>Limpeza</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">20</td><td class="n">R$ 5,95</td><td class="n">R$ 9,59</td><td class="n">38,0%</td>
+    <td class="n">1000.0</td><td></td></tr><tr><td>070013</td><td>2002654681022</td><td><a href="#" data-off="1">Água Sanitária 2L Brilhante</a></td><td>Limpeza</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 4,46</td><td class="n">R$ 6,59</td><td class="n">32,3%</td>
+    <td class="n">180.0</td><td></td></tr><tr><td>070014</td><td>2003488913341</td><td><a href="#" data-off="1">Água Sanitária 2L Lar Limpo</a></td><td>Limpeza</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 5,13</td><td class="n">R$ 7,59</td><td class="n">32,4%</td>
+    <td class="n">180.0</td><td></td></tr><tr><td>070015</td><td>2000220657174</td><td><a href="#" data-off="1">Água Sanitária 2L Vale Verde</a></td><td>Limpeza</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 4,01</td><td class="n">R$ 6,39</td><td class="n">37,2%</td>
+    <td class="n">180.0</td><td></td></tr><tr><td>010049</td><td>2009191109897</td><td><a href="#" data-off="1">Achocolatado em Pó 400g Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 7,47</td><td class="n">R$ 11,29</td><td class="n">33,8%</td>
+    <td class="n">365.0</td><td>inverno</td></tr><tr><td>010050</td><td>2009939678692</td><td><a href="#" data-off="1">Achocolatado em Pó 400g Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 8,82</td><td class="n">R$ 12,59</td><td class="n">29,9%</td>
+    <td class="n">365.0</td><td>inverno</td></tr><tr><td>010051</td><td>2009416653631</td><td><a href="#" data-off="1">Achocolatado em Pó 400g Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 6,64</td><td class="n">R$ 9,99</td><td class="n">33,5%</td>
+    <td class="n">365.0</td><td>inverno</td></tr><tr><td>010001</td><td>2004803328383</td><td><a href="estoque_7_1.html">Arroz Branco Tipo 1 5kg Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 23,31</td><td class="n">R$ 32,89</td><td class="n">29,1%</td>
+    <td class="n">365.0</td><td></td></tr><tr><td>010002</td><td>2005103856651</td><td><a href="#" data-off="1">Arroz Branco Tipo 1 5kg Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 28,17</td><td class="n">R$ 39,79</td><td class="n">29,2%</td>
+    <td class="n">365.0</td><td></td></tr><tr><td>010003</td><td>2005672580216</td><td><a href="#" data-off="1">Arroz Branco Tipo 1 5kg Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 20,05</td><td class="n">R$ 29,99</td><td class="n">33,1%</td>
+    <td class="n">365.0</td><td></td></tr><tr><td>010076</td><td>2002637925754</td><td><a href="#" data-off="1">Aveia em Flocos 200g Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 4,35</td><td class="n">R$ 6,39</td><td class="n">31,9%</td>
+    <td class="n">270.0</td><td></td></tr><tr><td>010077</td><td>2006748213748</td><td><a href="#" data-off="1">Aveia em Flocos 200g Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 4,56</td><td class="n">R$ 6,69</td><td class="n">31,8%</td>
+    <td class="n">270.0</td><td></td></tr><tr><td>010078</td><td>2008067286861</td><td><a href="#" data-off="1">Aveia em Flocos 200g Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 3,72</td><td class="n">R$ 5,69</td><td class="n">34,6%</td>
+    <td class="n">270.0</td><td></td></tr><tr><td>010070</td><td>2001668832956</td><td><a href="#" data-off="1">Azeite de Oliva Extra Virgem 500ml Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 34,68</td><td class="n">R$ 49,39</td><td class="n">29,8%</td>
+    <td class="n">540.0</td><td>natal</td></tr><tr><td>010071</td><td>2007999500946</td><td><a href="#" data-off="1">Azeite de Oliva Extra Virgem 500ml Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 41,22</td><td class="n">R$ 60,59</td><td class="n">32,0%</td>
+    <td class="n">540.0</td><td>natal</td></tr><tr><td>010072</td><td>2005838611198</td><td><a href="#" data-off="1">Azeite de Oliva Extra Virgem 500ml Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 29,95</td><td class="n">R$ 47,49</td><td class="n">36,9%</td>
+    <td class="n">540.0</td><td>natal</td></tr><tr><td>010010</td><td>2008575170331</td><td><a href="#" data-off="1">Açúcar Refinado 1kg Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 4,13</td><td class="n">R$ 6,09</td><td class="n">32,2%</td>
+    <td class="n">540.0</td><td></td></tr><tr><td>010011</td><td>2005829461740</td><td><a href="#" data-off="1">Açúcar Refinado 1kg Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 4,97</td><td class="n">R$ 6,69</td><td class="n">25,7%</td>
+    <td class="n">540.0</td><td></td></tr><tr><td>010012</td><td>2001194356117</td><td><a href="#" data-off="1">Açúcar Refinado 1kg Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 3,82</td><td class="n">R$ 5,49</td><td class="n">30,4%</td>
+    <td class="n">540.0</td><td></td></tr><tr><td>010046</td><td>2003021897220</td><td><a href="#" data-off="1">Biscoito Cream Cracker 350g Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">20</td><td class="n">R$ 4,69</td><td class="n">R$ 6,59</td><td class="n">28,8%</td>
+    <td class="n">240.0</td><td></td></tr><tr><td>010047</td><td>2002870048937</td><td><a href="#" data-off="1">Biscoito Cream Cracker 350g Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">20</td><td class="n">R$ 5,28</td><td class="n">R$ 7,59</td><td class="n">30,4%</td>
+    <td class="n">240.0</td><td></td></tr><tr><td>010048</td><td>2001041741301</td><td><a href="#" data-off="1">Biscoito Cream Cracker 350g Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">20</td><td class="n">R$ 4,10</td><td class="n">R$ 5,99</td><td class="n">31,6%</td>
+    <td class="n">240.0</td><td></td></tr><tr><td>010043</td><td>2003666597646</td><td><a href="#" data-off="1">Biscoito Recheado 130g Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">30</td><td class="n">R$ 2,21</td><td class="n">R$ 3,39</td><td class="n">34,8%</td>
+    <td class="n">240.0</td><td></td></tr><tr><td>010044</td><td>2001850590206</td><td><a href="#" data-off="1">Biscoito Recheado 130g Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">30</td><td class="n">R$ 2,55</td><td class="n">R$ 3,69</td><td class="n">30,9%</td>
+    <td class="n">240.0</td><td></td></tr><tr><td>010045</td><td>2002242357766</td><td><a href="#" data-off="1">Biscoito Recheado 130g Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">30</td><td class="n">R$ 2,01</td><td class="n">R$ 2,79</td><td class="n">28,0%</td>
+    <td class="n">240.0</td><td></td></tr><tr><td>010013</td><td>2004203188259</td><td><a href="#" data-off="1">Café Torrado e Moído 500g Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 19,37</td><td class="n">R$ 28,49</td><td class="n">32,0%</td>
+    <td class="n">180.0</td><td></td></tr><tr><td>010014</td><td>2002541374662</td><td><a href="#" data-off="1">Café Torrado e Moído 500g Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 21,69</td><td class="n">R$ 32,29</td><td class="n">32,8%</td>
+    <td class="n">180.0</td><td></td></tr><tr><td>010015</td><td>2000571285385</td><td><a href="#" data-off="1">Café Torrado e Moído 500g Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 16,88</td><td class="n">R$ 26,39</td><td class="n">36,0%</td>
+    <td class="n">180.0</td><td></td></tr><tr><td>010061</td><td>2009683677187</td><td><a href="#" data-off="1">Cereal Matinal 300g Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 10,49</td><td class="n">R$ 15,49</td><td class="n">32,3%</td>
+    <td class="n">270.0</td><td></td></tr><tr><td>010062</td><td>2006080090281</td><td><a href="#" data-off="1">Cereal Matinal 300g Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 12,58</td><td class="n">R$ 17,89</td><td class="n">29,7%</td>
+    <td class="n">270.0</td><td></td></tr><tr><td>010063</td><td>2000372426406</td><td><a href="#" data-off="1">Cereal Matinal 300g Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 9,02</td><td class="n">R$ 13,39</td><td class="n">32,6%</td>
+    <td class="n">270.0</td><td></td></tr><tr><td>010079</td><td>2001618109404</td><td><a href="#" data-off="1">Chocolate em Barra 90g Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">20</td><td class="n">R$ 5,52</td><td class="n">R$ 7,99</td><td class="n">30,9%</td>
+    <td class="n">270.0</td><td>inverno</td></tr><tr><td>010080</td><td>2002269976759</td><td><a href="#" data-off="1">Chocolate em Barra 90g Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">20</td><td class="n">R$ 6,42</td><td class="n">R$ 8,69</td><td class="n">26,1%</td>
+    <td class="n">270.0</td><td>inverno</td></tr><tr><td>010081</td><td>2005919951113</td><td><a href="#" data-off="1">Chocolate em Barra 90g Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">20</td><td class="n">R$ 4,93</td><td class="n">R$ 7,69</td><td class="n">35,9%</td>
+    <td class="n">270.0</td><td>inverno</td></tr><tr><td>010055</td><td>2002793025169</td><td><a href="#" data-off="1">Creme de Leite 200g Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">24</td><td class="n">R$ 3,09</td><td class="n">R$ 4,39</td><td class="n">29,6%</td>
+    <td class="n">270.0</td><td>natal</td></tr><tr><td>010056</td><td>2001928045997</td><td><a href="#" data-off="1">Creme de Leite 200g Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">24</td><td class="n">R$ 3,70</td><td class="n">R$ 5,09</td><td class="n">27,3%</td>
+    <td class="n">270.0</td><td>natal</td></tr><tr><td>010057</td><td>2008197933277</td><td><a href="#" data-off="1">Creme de Leite 200g Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">24</td><td class="n">R$ 2,72</td><td class="n">R$ 4,19</td><td class="n">35,1%</td>
+    <td class="n">270.0</td><td>natal</td></tr><tr><td>010031</td><td>2004601583151</td><td><a href="#" data-off="1">Extrato de Tomate 340g Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">24</td><td class="n">R$ 3,86</td><td class="n">R$ 5,59</td><td class="n">30,9%</td>
+    <td class="n">540.0</td><td></td></tr><tr><td>010032</td><td>2003864746556</td><td><a href="#" data-off="1">Extrato de Tomate 340g Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">24</td><td class="n">R$ 4,38</td><td class="n">R$ 6,19</td><td class="n">29,2%</td>
+    <td class="n">540.0</td><td></td></tr><tr><td>010033</td><td>2003702858274</td><td><a href="#" data-off="1">Extrato de Tomate 340g Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">24</td><td class="n">R$ 3,43</td><td class="n">R$ 5,19</td><td class="n">33,9%</td>
+    <td class="n">540.0</td><td></td></tr><tr><td>010025</td><td>2001863439219</td><td><a href="#" data-off="1">Farinha de Trigo 1kg Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 4,77</td><td class="n">R$ 7,29</td><td class="n">34,6%</td>
+    <td class="n">180.0</td><td></td></tr><tr><td>010026</td><td>2000552728818</td><td><a href="#" data-off="1">Farinha de Trigo 1kg Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 5,56</td><td class="n">R$ 8,09</td><td class="n">31,3%</td>
+    <td class="n">180.0</td><td></td></tr><tr><td>010027</td><td>2007291064627</td><td><a href="#" data-off="1">Farinha de Trigo 1kg Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 4,09</td><td class="n">R$ 5,89</td><td class="n">30,6%</td>
+    <td class="n">180.0</td><td></td></tr><tr><td>010064</td><td>2008438908958</td><td><a href="#" data-off="1">Farofa Pronta 400g Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">20</td><td class="n">R$ 4,41</td><td class="n">R$ 6,89</td><td class="n">36,0%</td>
+    <td class="n">240.0</td><td>verao</td></tr><tr><td>010065</td><td>2000690198160</td><td><a href="#" data-off="1">Farofa Pronta 400g Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">20</td><td class="n">R$ 5,05</td><td class="n">R$ 7,49</td><td class="n">32,6%</td>
+    <td class="n">240.0</td><td>verao</td></tr><tr><td>010066</td><td>2000676776061</td><td><a href="#" data-off="1">Farofa Pronta 400g Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">20</td><td class="n">R$ 3,99</td><td class="n">R$ 5,89</td><td class="n">32,3%</td>
+    <td class="n">240.0</td><td>verao</td></tr><tr><td>010004</td><td>2007759982982</td><td><a href="#" data-off="1">Feijão Carioca 1kg Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 6,82</td><td class="n">R$ 9,79</td><td class="n">30,3%</td>
+    <td class="n">270.0</td><td></td></tr><tr><td>010005</td><td>2001491357572</td><td><a href="#" data-off="1">Feijão Carioca 1kg Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 7,77</td><td class="n">R$ 10,99</td><td class="n">29,3%</td>
+    <td class="n">270.0</td><td></td></tr><tr><td>010006</td><td>2008478282599</td><td><a href="#" data-off="1">Feijão Carioca 1kg Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 6,01</td><td class="n">R$ 8,69</td><td class="n">30,8%</td>
+    <td class="n">270.0</td><td></td></tr><tr><td>010007</td><td>2004164932922</td><td><a href="#" data-off="1">Feijão Preto 1kg Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 7,50</td><td class="n">R$ 11,29</td><td class="n">33,6%</td>
+    <td class="n">270.0</td><td>inverno</td></tr><tr><td>010008</td><td>2002368915772</td><td><a href="#" data-off="1">Feijão Preto 1kg Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 8,66</td><td class="n">R$ 12,69</td><td class="n">31,8%</td>
+    <td class="n">270.0</td><td>inverno</td></tr><tr><td>010009</td><td>2006417615026</td><td><a href="#" data-off="1">Feijão Preto 1kg Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 6,52</td><td class="n">R$ 10,29</td><td class="n">36,6%</td>
+    <td class="n">270.0</td><td>inverno</td></tr><tr><td>010073</td><td>2008048952426</td><td><a href="#" data-off="1">Fubá Mimoso 1kg Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 3,28</td><td class="n">R$ 4,79</td><td class="n">31,5%</td>
+    <td class="n">180.0</td><td>inverno</td></tr><tr><td>010074</td><td>2003495406874</td><td><a href="#" data-off="1">Fubá Mimoso 1kg Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 3,88</td><td class="n">R$ 5,39</td><td class="n">28,0%</td>
+    <td class="n">180.0</td><td>inverno</td></tr><tr><td>010075</td><td>2004337020371</td><td><a href="#" data-off="1">Fubá Mimoso 1kg Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 2,93</td><td class="n">R$ 4,39</td><td class="n">33,3%</td>
+    <td class="n">180.0</td><td>inverno</td></tr><tr><td>010052</td><td>2006523263456</td><td><a href="#" data-off="1">Leite Condensado 395g Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">24</td><td class="n">R$ 5,56</td><td class="n">R$ 8,19</td><td class="n">32,1%</td>
+    <td class="n">365.0</td><td>natal</td></tr><tr><td>010053</td><td>2006107793850</td><td><a href="#" data-off="1">Leite Condensado 395g Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">24</td><td class="n">R$ 6,89</td><td class="n">R$ 9,69</td><td class="n">28,9%</td>
+    <td class="n">365.0</td><td>natal</td></tr><tr><td>010054</td><td>2003915707451</td><td><a href="#" data-off="1">Leite Condensado 395g Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">24</td><td class="n">R$ 4,96</td><td class="n">R$ 7,39</td><td class="n">32,9%</td>
+    <td class="n">365.0</td><td>natal</td></tr><tr><td>010019</td><td>2008673675493</td><td><a href="#" data-off="1">Macarrão Espaguete 500g Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">20</td><td class="n">R$ 3,70</td><td class="n">R$ 5,49</td><td class="n">32,6%</td>
+    <td class="n">365.0</td><td>inverno</td></tr><tr><td>010020</td><td>2008685973570</td><td><a href="#" data-off="1">Macarrão Espaguete 500g Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">20</td><td class="n">R$ 4,25</td><td class="n">R$ 6,19</td><td class="n">31,3%</td>
+    <td class="n">365.0</td><td>inverno</td></tr><tr><td>010021</td><td>2007245824598</td><td><a href="#" data-off="1">Macarrão Espaguete 500g Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">20</td><td class="n">R$ 3,34</td><td class="n">R$ 5,29</td><td class="n">36,9%</td>
+    <td class="n">365.0</td><td>inverno</td></tr><tr><td>010022</td><td>2008961463764</td><td><a href="#" data-off="1">Macarrão Parafuso 500g Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">20</td><td class="n">R$ 4,06</td><td class="n">R$ 5,79</td><td class="n">29,9%</td>
+    <td class="n">365.0</td><td></td></tr><tr><td>010023</td><td>2000874974221</td><td><a href="#" data-off="1">Macarrão Parafuso 500g Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">20</td><td class="n">R$ 4,58</td><td class="n">R$ 6,59</td><td class="n">30,5%</td>
+    <td class="n">365.0</td><td></td></tr><tr><td>010024</td><td>2007750871636</td><td><a href="#" data-off="1">Macarrão Parafuso 500g Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">20</td><td class="n">R$ 3,39</td><td class="n">R$ 5,09</td><td class="n">33,4%</td>
+    <td class="n">365.0</td><td></td></tr><tr><td>010058</td><td>2002376323392</td><td><a href="#" data-off="1">Maionese 500g Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 8,39</td><td class="n">R$ 12,89</td><td class="n">34,9%</td>
+    <td class="n">240.0</td><td>verao</td></tr><tr><td>010059</td><td>2007301693120</td><td><a href="#" data-off="1">Maionese 500g Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 9,54</td><td class="n">R$ 13,69</td><td class="n">30,3%</td>
+    <td class="n">240.0</td><td>verao</td></tr><tr><td>010060</td><td>2000812979349</td><td><a href="#" data-off="1">Maionese 500g Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 7,44</td><td class="n">R$ 10,99</td><td class="n">32,3%</td>
+    <td class="n">240.0</td><td>verao</td></tr><tr><td>010037</td><td>2005745790856</td><td><a href="#" data-off="1">Milho Verde Lata 170g Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">24</td><td class="n">R$ 2,79</td><td class="n">R$ 4,19</td><td class="n">33,4%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>010038</td><td>2006512433723</td><td><a href="#" data-off="1">Milho Verde Lata 170g Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">24</td><td class="n">R$ 3,30</td><td class="n">R$ 4,89</td><td class="n">32,5%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>010039</td><td>2005229421955</td><td><a href="#" data-off="1">Milho Verde Lata 170g Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">24</td><td class="n">R$ 2,43</td><td class="n">R$ 3,59</td><td class="n">32,3%</td>
+    <td class="n">720.0</td><td></td></tr><tr><td>010028</td><td>2008496826508</td><td><a href="#" data-off="1">Molho de Tomate Sachê 300g Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">24</td><td class="n">R$ 2,10</td><td class="n">R$ 3,29</td><td class="n">36,2%</td>
+    <td class="n">365.0</td><td></td></tr><tr><td>010029</td><td>2003816945082</td><td><a href="#" data-off="1">Molho de Tomate Sachê 300g Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">24</td><td class="n">R$ 2,38</td><td class="n">R$ 3,49</td><td class="n">31,8%</td>
+    <td class="n">365.0</td><td></td></tr><tr><td>010030</td><td>2005508671484</td><td><a href="#" data-off="1">Molho de Tomate Sachê 300g Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">24</td><td class="n">R$ 1,84</td><td class="n">R$ 2,79</td><td class="n">34,1%</td>
+    <td class="n">365.0</td><td></td></tr><tr><td>010082</td><td>2002829675238</td><td><a href="#" data-off="1">Ovo de Páscoa ao Leite 200g</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 35,83</td><td class="n">R$ 52,79</td><td class="n">32,1%</td>
+    <td class="n">180.0</td><td>pascoa</td></tr><tr><td>010083</td><td>2004914103268</td><td><a href="#" data-off="1">Panetone Frutas 500g</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 15,46</td><td class="n">R$ 22,39</td><td class="n">31,0%</td>
+    <td class="n">120.0</td><td>panetone</td></tr><tr><td>010034</td><td>2006907222963</td><td><a href="#" data-off="1">Sal Refinado 1kg Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 1,72</td><td class="n">R$ 2,49</td><td class="n">30,9%</td>
+    <td class="n">900.0</td><td></td></tr><tr><td>010035</td><td>2007498685373</td><td><a href="#" data-off="1">Sal Refinado 1kg Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 1,98</td><td class="n">R$ 2,89</td><td class="n">31,5%</td>
+    <td class="n">900.0</td><td></td></tr><tr><td>010036</td><td>2000698777978</td><td><a href="#" data-off="1">Sal Refinado 1kg Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Dist. Paulista</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 1,50</td><td class="n">R$ 2,19</td><td class="n">31,5%</td>
+    <td class="n">900.0</td><td></td></tr><tr><td>010040</td><td>2002294739916</td><td><a href="#" data-off="1">Sardinha em Lata 125g Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">24</td><td class="n">R$ 4,61</td><td class="n">R$ 6,59</td><td class="n">30,0%</td>
+    <td class="n">720.0</td><td>quaresma</td></tr><tr><td>010041</td><td>2002941325202</td><td><a href="#" data-off="1">Sardinha em Lata 125g Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">24</td><td class="n">R$ 5,27</td><td class="n">R$ 7,79</td><td class="n">32,3%</td>
+    <td class="n">720.0</td><td>quaresma</td></tr><tr><td>010042</td><td>2006196089049</td><td><a href="#" data-off="1">Sardinha em Lata 125g Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">24</td><td class="n">R$ 4,03</td><td class="n">R$ 6,59</td><td class="n">38,8%</td>
+    <td class="n">720.0</td><td>quaresma</td></tr><tr><td>010067</td><td>2002487739136</td><td><a href="#" data-off="1">Tempero Completo 300g Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 3,64</td><td class="n">R$ 5,49</td><td class="n">33,7%</td>
+    <td class="n">365.0</td><td></td></tr><tr><td>010068</td><td>2008234800869</td><td><a href="#" data-off="1">Tempero Completo 300g Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 4,28</td><td class="n">R$ 5,89</td><td class="n">27,3%</td>
+    <td class="n">365.0</td><td></td></tr><tr><td>010069</td><td>2006782399279</td><td><a href="#" data-off="1">Tempero Completo 300g Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 3,17</td><td class="n">R$ 4,99</td><td class="n">36,5%</td>
+    <td class="n">365.0</td><td></td></tr><tr><td>010016</td><td>2009168198640</td><td><a href="#" data-off="1">Óleo de Soja 900ml Bom Grão</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">20</td><td class="n">R$ 6,52</td><td class="n">R$ 9,39</td><td class="n">30,6%</td>
+    <td class="n">365.0</td><td></td></tr><tr><td>010017</td><td>2000039409889</td><td><a href="#" data-off="1">Óleo de Soja 900ml Tio Nino</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">20</td><td class="n">R$ 7,50</td><td class="n">R$ 10,69</td><td class="n">29,8%</td>
+    <td class="n">365.0</td><td></td></tr><tr><td>010018</td><td>2005962856762</td><td><a href="#" data-off="1">Óleo de Soja 900ml Vale Verde</a></td><td>Mercearia</td><td>CD</td><td>Atacado Real</td><td>UN</td>
+    <td class="n">20</td><td class="n">R$ 5,56</td><td class="n">R$ 8,49</td><td class="n">34,5%</td>
+    <td class="n">365.0</td><td></td></tr><tr><td>060003</td><td>2006678208333</td><td><a href="#" data-off="1">Bolo Caseiro Fubá</a></td><td>Padaria</td><td>Direto</td><td>Massas Congeladas Trigo de Ouro</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 8,44</td><td class="n">R$ 19,89</td><td class="n">57,6%</td>
+    <td class="n">4.0</td><td>inverno</td></tr><tr><td>060001</td><td>2002826805478</td><td><a href="estoque_7_165.html">Pão Francês</a></td><td>Padaria</td><td>Direto</td><td>Massas Congeladas Trigo de Ouro</td><td>KG</td>
+    <td class="n">10</td><td class="n">R$ 7,24</td><td class="n">R$ 18,99</td><td class="n">61,9%</td>
+    <td class="n">1.0</td><td></td></tr><tr><td>060004</td><td>2005884224243</td><td><a href="#" data-off="1">Pão de Forma Tradicional 500g</a></td><td>Padaria</td><td>Direto</td><td>Massas Congeladas Trigo de Ouro</td><td>UN</td>
+    <td class="n">10</td><td class="n">R$ 6,07</td><td class="n">R$ 14,99</td><td class="n">59,5%</td>
+    <td class="n">10.0</td><td></td></tr><tr><td>060002</td><td>2000241252266</td><td><a href="#" data-off="1">Pão de Queijo</a></td><td>Padaria</td><td>Direto</td><td>Massas Congeladas Trigo de Ouro</td><td>KG</td>
+    <td class="n">5</td><td class="n">R$ 20,27</td><td class="n">R$ 49,89</td><td class="n">59,4%</td>
+    <td class="n">2.0</td><td></td></tr><tr><td>060005</td><td>2008211652924</td><td><a href="#" data-off="1">Rosca Doce</a></td><td>Padaria</td><td>Direto</td><td>Massas Congeladas Trigo de Ouro</td><td>UN</td>
+    <td class="n">6</td><td class="n">R$ 5,67</td><td class="n">R$ 13,79</td><td class="n">58,9%</td>
+    <td class="n">3.0</td><td></td></tr><tr><td>060006</td><td>2001467046608</td><td><a href="#" data-off="1">Sonho de Creme</a></td><td>Padaria</td><td>Direto</td><td>Massas Congeladas Trigo de Ouro</td><td>UN</td>
+    <td class="n">12</td><td class="n">R$ 2,00</td><td class="n">R$ 4,89</td><td class="n">59,1%</td>
+    <td class="n">2.0</td><td></td></tr><tr><td>110003</td><td></td><td><a href="#" data-off="1">Bandeja de Isopor (pct 400un)</a></td><td>Uso Interno</td><td>CD</td><td>Vale Pack</td><td>PCT</td>
+    <td class="n">2</td><td class="n">R$ 79,09</td><td class="n">uso interno</td><td class="n">–</td>
+    <td class="n"></td><td></td></tr><tr><td>110002</td><td></td><td><a href="#" data-off="1">Bobina Térmica PDV 80mm (cx 30 rolos)</a></td><td>Uso Interno</td><td>CD</td><td>Vale Pack</td><td>CX</td>
+    <td class="n">1</td><td class="n">R$ 120,61</td><td class="n">uso interno</td><td class="n">–</td>
+    <td class="n"></td><td></td></tr><tr><td>110008</td><td></td><td><a href="#" data-off="1">Desinfetante Profissional 5L</a></td><td>Uso Interno</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">4</td><td class="n">R$ 28,44</td><td class="n">uso interno</td><td class="n">–</td>
+    <td class="n"></td><td></td></tr><tr><td>110007</td><td></td><td><a href="#" data-off="1">Detergente Profissional 5L</a></td><td>Uso Interno</td><td>CD</td><td>Nova Era</td><td>UN</td>
+    <td class="n">4</td><td class="n">R$ 30,45</td><td class="n">uso interno</td><td class="n">–</td>
+    <td class="n"></td><td></td></tr><tr><td>110006</td><td></td><td><a href="#" data-off="1">Etiqueta para Balança (cx 12 rolos)</a></td><td>Uso Interno</td><td>CD</td><td>Vale Pack</td><td>CX</td>
+    <td class="n">1</td><td class="n">R$ 102,07</td><td class="n">uso interno</td><td class="n">–</td>
+    <td class="n"></td><td></td></tr><tr><td>110004</td><td></td><td><a href="#" data-off="1">Filme PVC 28cm x 300m</a></td><td>Uso Interno</td><td>CD</td><td>Vale Pack</td><td>UN</td>
+    <td class="n">4</td><td class="n">R$ 53,46</td><td class="n">uso interno</td><td class="n">–</td>
+    <td class="n"></td><td></td></tr><tr><td>110010</td><td></td><td><a href="#" data-off="1">Luva Descartável (cx 100un)</a></td><td>Uso Interno</td><td>CD</td><td>Vale Pack</td><td>CX</td>
+    <td class="n">4</td><td class="n">R$ 25,66</td><td class="n">uso interno</td><td class="n">–</td>
+    <td class="n"></td><td></td></tr><tr><td>110009</td><td></td><td><a href="#" data-off="1">Papel Toalha Interfolha (cx 1000 fls)</a></td><td>Uso Interno</td><td>CD</td><td>Nova Era</td><td>CX</td>
+    <td class="n">4</td><td class="n">R$ 20,63</td><td class="n">uso interno</td><td class="n">–</td>
+    <td class="n"></td><td></td></tr><tr><td>110005</td><td></td><td><a href="#" data-off="1">Saco para Pão Kraft (pct 1000un)</a></td><td>Uso Interno</td><td>CD</td><td>Vale Pack</td><td>PCT</td>
+    <td class="n">4</td><td class="n">R$ 45,57</td><td class="n">uso interno</td><td class="n">–</td>
+    <td class="n"></td><td></td></tr><tr><td>110001</td><td></td><td><a href="#" data-off="1">Sacola Plástica Reciclada (pct 1000un)</a></td><td>Uso Interno</td><td>CD</td><td>Vale Pack</td><td>PCT</td>
+    <td class="n">5</td><td class="n">R$ 95,84</td><td class="n">uso interno</td><td class="n">–</td>
+    <td class="n"></td><td></td></tr>
+</table></div></div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PC-023823 · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="vv01";window.VV_KEY="/compras/23823";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" selected>VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      <a href="unidades_5.html">ficha da unidade</a>
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Pedido PC-023823 <span class="etq ok">Recebido</span></h1>
+  <div class="sub">VV01 · Vale Verde Campinas Taquaral · Laticínios Campo Bom Ltda. (22 km) · pedido em 30/10/2026 · previsto 31/10/2026
+  · recebido 31/10/2026 (NF 190343) · prazo de pagamento 14 dias · comprador Larissa Freitas Pereira</div></div>
+  <a class="btn" href="compras.html">‹ Pedidos</a></div>
+<form method="post" action="/compras/23823/receber">
+<div class="cartao">
+  <table>
+    <tr><th>SKU</th><th>Produto</th><th class="n">Pedido</th><th class="n">Recebido</th><th class="n">Custo unit.</th><th class="n">Total</th></tr>
+    <tr><td>030010</td><td>Bebida Láctea Morango 900g Campo Bom</td><td class="n">36</td>
+      <td class="n">
+        36</td>
+      <td class="n">R$ 6,26</td><td class="n">R$ 225,36</td></tr><tr><td>030011</td><td>Bebida Láctea Morango 900g Leiteria Mineira</td><td class="n">24</td>
+      <td class="n">
+        24</td>
+      <td class="n">R$ 6,88</td><td class="n">R$ 165,12</td></tr><tr><td>030012</td><td>Bebida Láctea Morango 900g Vale Verde</td><td class="n">24</td>
+      <td class="n">
+        24</td>
+      <td class="n">R$ 5,14</td><td class="n">R$ 123,36</td></tr><tr><td>030007</td><td>Iogurte Natural 170g Campo Bom</td><td class="n">48</td>
+      <td class="n">
+        48</td>
+      <td class="n">R$ 2,60</td><td class="n">R$ 124,80</td></tr><tr><td>030008</td><td>Iogurte Natural 170g Leiteria Mineira</td><td class="n">24</td>
+      <td class="n">
+        24</td>
+      <td class="n">R$ 2,91</td><td class="n">R$ 69,84</td></tr><tr><td>030009</td><td>Iogurte Natural 170g Vale Verde</td><td class="n">36</td>
+      <td class="n">
+        36</td>
+      <td class="n">R$ 2,22</td><td class="n">R$ 79,92</td></tr><tr><td>030004</td><td>Leite UHT Desnatado 1L Campo Bom</td><td class="n">240</td>
+      <td class="n">
+        240</td>
+      <td class="n">R$ 5,07</td><td class="n">R$ 1.216,80</td></tr><tr><td>030005</td><td>Leite UHT Desnatado 1L Leiteria Mineira</td><td class="n">36</td>
+      <td class="n">
+        36</td>
+      <td class="n">R$ 5,81</td><td class="n">R$ 209,16</td></tr><tr><td>030006</td><td>Leite UHT Desnatado 1L Vale Verde</td><td class="n">120</td>
+      <td class="n">
+        120</td>
+      <td class="n">R$ 4,39</td><td class="n">R$ 526,80</td></tr><tr><td>030001</td><td>Leite UHT Integral 1L Campo Bom</td><td class="n">504</td>
+      <td class="n">
+        504</td>
+      <td class="n">R$ 4,82</td><td class="n">R$ 2.429,28</td></tr><tr><td>030002</td><td>Leite UHT Integral 1L Leiteria Mineira</td><td class="n">252</td>
+      <td class="n">
+        252</td>
+      <td class="n">R$ 5,46</td><td class="n">R$ 1.375,92</td></tr><tr><td>030003</td><td>Leite UHT Integral 1L Vale Verde</td><td class="n">444</td>
+      <td class="n">
+        444</td>
+      <td class="n">R$ 4,13</td><td class="n">R$ 1.833,72</td></tr><tr><td>030015</td><td>Manteiga com Sal 200g Campo Bom</td><td class="n">24</td>
+      <td class="n">
+        24</td>
+      <td class="n">R$ 12,02</td><td class="n">R$ 288,48</td></tr><tr><td>030016</td><td>Manteiga com Sal 200g Leiteria Mineira</td><td class="n">24</td>
+      <td class="n">
+        24</td>
+      <td class="n">R$ 13,96</td><td class="n">R$ 335,04</td></tr><tr><td>030017</td><td>Manteiga com Sal 200g Vale Verde</td><td class="n">36</td>
+      <td class="n">
+        36</td>
+      <td class="n">R$ 10,50</td><td class="n">R$ 378,00</td></tr><tr><td>030018</td><td>Margarina 500g Campo Bom</td><td class="n">36</td>
+      <td class="n">
+        36</td>
+      <td class="n">R$ 6,91</td><td class="n">R$ 248,76</td></tr><tr><td>030019</td><td>Margarina 500g Leiteria Mineira</td><td class="n">36</td>
+      <td class="n">
+        36</td>
+      <td class="n">R$ 7,94</td><td class="n">R$ 285,84</td></tr><tr><td>030020</td><td>Margarina 500g Vale Verde</td><td class="n">36</td>
+      <td class="n">
+        36</td>
+      <td class="n">R$ 6,26</td><td class="n">R$ 225,36</td></tr><tr><td>030024</td><td>Queijo Minas Frescal</td><td class="n">8,000</td>
+      <td class="n">
+        8,000</td>
+      <td class="n">R$ 34,40</td><td class="n">R$ 275,20</td></tr><tr><td>030021</td><td>Requeijão Cremoso 200g Campo Bom</td><td class="n">48</td>
+      <td class="n">
+        48</td>
+      <td class="n">R$ 6,72</td><td class="n">R$ 322,56</td></tr><tr><td>030022</td><td>Requeijão Cremoso 200g Leiteria Mineira</td><td class="n">84</td>
+      <td class="n">
+        84</td>
+      <td class="n">R$ 7,62</td><td class="n">R$ 640,08</td></tr><tr><td>030023</td><td>Requeijão Cremoso 200g Vale Verde</td><td class="n">36</td>
+      <td class="n">
+        36</td>
+      <td class="n">R$ 5,75</td><td class="n">R$ 207,00</td></tr>
+    <tr class="total"><td colspan="5">Total</td><td class="n">R$ 11.586,40</td></tr>
+  </table>
+  
+</div>
+</form>
+<div class="cartao mt"><h3>Financeiro</h3><table>
+  <tr><th>Favorecido</th><th>Vencimento</th><th class="n">Valor</th><th>Pagamento</th><th>Status</th></tr>
+  <tr><td>Laticínios Campo Bom</td><td>14/11/2026</td><td class="n">R$ 11.586,40</td><td>–</td><td><span class="etq alerta">Aberto</span></td></tr>
+</table></div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+
+</body>
+</html>

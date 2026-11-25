@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comparativo da rede · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+<script src="../static/vv_mapa.js"></script>
+<script>window.VV_DIR="vv01";window.VV_KEY="/rede";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="ativo">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" selected>VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      <a href="unidades_5.html">ficha da unidade</a>
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Comparativo da rede</h1>
+  <div class="sub">Últimos 12 meses fechados (nov/25 a out/26). Crescimento "mesmas lojas" considera só lojas com 12 meses completos nos dois anos.</div></div>
+  <div class="filtros">
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a></div></div>
+<div class="grade g6">
+  <div class="cartao kpi">
+  <div class="rot">Faturamento da rede</div>
+  <div class="val">R$ 224,16 mi</div>
+  <div class="det">10 lojas em 9 estados</div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Crescimento mesmas lojas</div>
+  <div class="val">+8,2%</div>
+  <div class="det">same-store sales, 12m vs 12m</div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Resultado das lojas (LAIR)</div>
+  <div class="val">R$ 12,98 mi</div>
+  <div class="det">5,79% do faturamento</div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Funcionários nas lojas</div>
+  <div class="val">423</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Lojas franqueadas</div>
+  <div class="val">6</div>
+  <div class="det">R$ 126,04 mi · LAIR 4,15%</div>
+</div><div class="cartao kpi">
+  <div class="rot">Lojas próprias</div>
+  <div class="val">4</div>
+  <div class="det">R$ 98,12 mi · LAIR 7,90%</div>
+</div>
+</div>
+
+<div class="cartao mt">
+  <div class="controles-mapa">
+    <b>Mapa de desempenho</b>
+    <label>Cor das lojas <select id="metrica">
+      <option value="margem_lair">Margem antes do IR</option><option value="crescimento">Crescimento mesmas lojas</option>
+      <option value="perdas_pct">Perdas (% faturamento)</option><option value="receita_m2_ano">Faturamento por m²/ano</option>
+      <option value="folha_pct">Custo de pessoal (% faturamento)</option></select></label>
+    <label>Estados <select id="camadaUf"><option value="receita">Faturamento 12m</option><option value="receita_per_capita">Faturamento por habitante</option><option value="">Sem preenchimento</option></select></label>
+    <label><input type="checkbox" id="rotas" checked> rotas CD → loja</label>
+    <span class="muted">Tamanho da bolha = faturamento · clique para detalhes</span>
+  </div>
+  <div id="mapa" class="mapa"></div>
+</div>
+
+<div class="grade g2 mt">
+  <div class="cartao"><h3>Faturamento 12 meses por loja</h3><div class="nota">Azul = própria · laranja = franqueada</div><div class="grafico alto"><canvas id="gRec"></canvas></div></div>
+  <div class="cartao"><h3>Margem antes do IR por loja</h3><div class="nota">Franqueadas pagam royalties e fundo; lojas novas ainda estão em maturação</div><div class="grafico alto"><canvas id="gLair"></canvas></div></div>
+</div>
+
+<div class="cartao mt"><h3>Ranking das lojas</h3><div class="tabela-wrap"><table>
+  <tr><th>Loja</th><th>Modelo</th><th>Região</th><th class="n">Meses</th><th class="n">Faturamento 12m</th><th class="n">Cresc.</th><th class="n">Ticket</th><th class="n">Margem bruta</th>
+      <th class="n">Perdas</th><th class="n">Pessoal</th><th class="n">LAIR</th><th class="n">Fat./m²/ano</th><th class="n">Func.</th><th class="n">Concor. ≤2km</th></tr>
+  <tr><td style="white-space:nowrap" title="Vale Verde São Paulo Mooca"><a href="unidades_6.html">VV02</a> São Paulo</td>
+    <td><span class="etq PROPRIA">Própria</span></td><td>Sudeste</td><td class="n">75</td>
+    <td class="n">R$ 32,56 mi</td><td class="n">+8,5%</td><td class="n">R$ 114,98</td>
+    <td class="n">36,0%</td><td class="n">1,76%</td><td class="n">9,4%</td>
+    <td class="n ">11,05%</td><td class="n">R$ 18.188</td><td class="n">50</td><td class="n">3</td></tr><tr><td style="white-space:nowrap" title="Vale Verde Rio Tijuca · Grupo Tijuca"><a href="unidades_7.html">VV03</a> Rio de Janeiro</td>
+    <td><span class="etq FRANQUIA">Franquia</span></td><td>Sudeste</td><td class="n">66</td>
+    <td class="n">R$ 29,51 mi</td><td class="n">+8,1%</td><td class="n">R$ 113,47</td>
+    <td class="n">35,4%</td><td class="n">1,83%</td><td class="n">9,6%</td>
+    <td class="n ">7,29%</td><td class="n">R$ 18.544</td><td class="n">48</td><td class="n">4</td></tr><tr><td style="white-space:nowrap" title="Vale Verde Campinas Taquaral"><a href="unidades_5.html">VV01</a> Campinas</td>
+    <td><span class="etq PROPRIA">Própria</span></td><td>Sudeste</td><td class="n">92</td>
+    <td class="n">R$ 25,17 mi</td><td class="n">+8,5%</td><td class="n">R$ 111,38</td>
+    <td class="n">33,9%</td><td class="n">1,83%</td><td class="n">10,6%</td>
+    <td class="n ">8,06%</td><td class="n">R$ 18.079</td><td class="n">44</td><td class="n">3</td></tr><tr><td style="white-space:nowrap" title="Vale Verde BH Savassi · Horizonte Varejo"><a href="unidades_8.html">VV04</a> Belo Horizonte</td>
+    <td><span class="etq FRANQUIA">Franquia</span></td><td>Sudeste</td><td class="n">60</td>
+    <td class="n">R$ 23,64 mi</td><td class="n">+7,1%</td><td class="n">R$ 110,69</td>
+    <td class="n">33,5%</td><td class="n">1,90%</td><td class="n">10,7%</td>
+    <td class="n ">4,38%</td><td class="n">R$ 18.288</td><td class="n">44</td><td class="n">1</td></tr><tr><td style="white-space:nowrap" title="Vale Verde Curitiba Água Verde · Pinhais Alimentos"><a href="unidades_9.html">VV05</a> Curitiba</td>
+    <td><span class="etq FRANQUIA">Franquia</span></td><td>Sul</td><td class="n">55</td>
+    <td class="n">R$ 22,79 mi</td><td class="n">+7,9%</td><td class="n">R$ 110,67</td>
+    <td class="n">33,7%</td><td class="n">1,84%</td><td class="n">11,3%</td>
+    <td class="n ">3,76%</td><td class="n">R$ 17.624</td><td class="n">42</td><td class="n">4</td></tr><tr><td style="white-space:nowrap" title="Vale Verde Salvador Pituba · Itapuã Varejo"><a href="unidades_12.html">VV08</a> Salvador</td>
+    <td><span class="etq FRANQUIA">Franquia</span></td><td>Nordeste</td><td class="n">49</td>
+    <td class="n">R$ 22,44 mi</td><td class="n">+8,8%</td><td class="n">R$ 109,39</td>
+    <td class="n">31,9%</td><td class="n">1,94%</td><td class="n">10,2%</td>
+    <td class="n ">3,04%</td><td class="n">R$ 17.353</td><td class="n">42</td><td class="n">1</td></tr><tr><td style="white-space:nowrap" title="Vale Verde Goiânia Setor Bueno"><a href="unidades_11.html">VV07</a> Goiânia</td>
+    <td><span class="etq PROPRIA">Própria</span></td><td>Centro-Oeste</td><td class="n">45</td>
+    <td class="n">R$ 20,86 mi</td><td class="n">+8,1%</td><td class="n">R$ 108,26</td>
+    <td class="n">31,5%</td><td class="n">1,90%</td><td class="n">11,0%</td>
+    <td class="n ">5,34%</td><td class="n">R$ 17.483</td><td class="n">42</td><td class="n">2</td></tr><tr><td style="white-space:nowrap" title="Vale Verde Recife Boa Viagem"><a href="unidades_13.html">VV09</a> Recife</td>
+    <td><span class="etq PROPRIA">Própria</span></td><td>Nordeste</td><td class="n">20</td>
+    <td class="n">R$ 19,53 mi</td><td class="n">nova</td><td class="n">R$ 109,54</td>
+    <td class="n">32,0%</td><td class="n">1,91%</td><td class="n">11,1%</td>
+    <td class="n ">5,19%</td><td class="n">R$ 16.362</td><td class="n">40</td><td class="n">0</td></tr><tr><td style="white-space:nowrap" title="Vale Verde Porto Alegre Menino Deus · Guaíba Supermercados"><a href="#" data-off="1">VV06</a> Porto Alegre</td>
+    <td><span class="etq FRANQUIA">Franquia</span></td><td>Sul</td><td class="n">14</td>
+    <td class="n">R$ 18,68 mi</td><td class="n">nova</td><td class="n">R$ 112,78</td>
+    <td class="n">34,6%</td><td class="n">1,88%</td><td class="n">12,8%</td>
+    <td class="n ">1,68%</td><td class="n">R$ 15.652</td><td class="n">40</td><td class="n">1</td></tr><tr><td style="white-space:nowrap" title="Vale Verde Belém Nazaré · Marajó Alimentos"><a href="#" data-off="1">VV10</a> Belém</td>
+    <td><span class="etq FRANQUIA">Franquia</span></td><td>Norte</td><td class="n">7</td>
+    <td class="n">R$ 8,98 mi</td><td class="n">nova</td><td class="n">R$ 118,56</td>
+    <td class="n">36,1%</td><td class="n">1,92%</td><td class="n">11,8%</td>
+    <td class="n ">2,11%</td><td class="n">R$ 13.929</td><td class="n">31</td><td class="n">1</td></tr>
+</table></div></div>
+
+<div class="grade g3 mt">
+  <div class="cartao"><h3>Por região</h3><table><tr><th>Região</th><th class="n">Lojas</th><th class="n">Faturamento</th><th class="n">LAIR</th><th class="n">Perdas</th></tr>
+    <tr><td>Sudeste</td><td class="n">4</td><td class="n">R$ 110,88 mi</td><td class="n">7,95%</td><td class="n">1,82%</td></tr><tr><td>Nordeste</td><td class="n">2</td><td class="n">R$ 41,96 mi</td><td class="n">4,04%</td><td class="n">1,93%</td></tr><tr><td>Sul</td><td class="n">2</td><td class="n">R$ 41,47 mi</td><td class="n">2,82%</td><td class="n">1,86%</td></tr><tr><td>Centro-Oeste</td><td class="n">1</td><td class="n">R$ 20,86 mi</td><td class="n">5,34%</td><td class="n">1,90%</td></tr><tr><td>Norte</td><td class="n">1</td><td class="n">R$ 8,98 mi</td><td class="n">2,11%</td><td class="n">1,92%</td></tr></table></div>
+  <div class="cartao"><h3>Por estado</h3><table><tr><th>UF</th><th class="n">Lojas</th><th class="n">Faturamento</th><th class="n">R$/habitante</th></tr>
+    <tr><td>SP</td><td class="n">2</td><td class="n">R$ 57,73 mi</td><td class="n">R$ 4,59</td></tr><tr><td>RJ</td><td class="n">1</td><td class="n">R$ 29,51 mi</td><td class="n">R$ 4,75</td></tr><tr><td>MG</td><td class="n">1</td><td class="n">R$ 23,64 mi</td><td class="n">R$ 10,21</td></tr><tr><td>PR</td><td class="n">1</td><td class="n">R$ 22,79 mi</td><td class="n">R$ 12,85</td></tr><tr><td>BA</td><td class="n">1</td><td class="n">R$ 22,44 mi</td><td class="n">R$ 9,28</td></tr><tr><td>GO</td><td class="n">1</td><td class="n">R$ 20,86 mi</td><td class="n">R$ 14,52</td></tr><tr><td>PE</td><td class="n">1</td><td class="n">R$ 19,53 mi</td><td class="n">R$ 13,12</td></tr><tr><td>RS</td><td class="n">1</td><td class="n">R$ 18,68 mi</td><td class="n">R$ 14,02</td></tr><tr><td>PA</td><td class="n">1</td><td class="n">R$ 8,98 mi</td><td class="n">R$ 6,89</td></tr></table></div>
+  <div class="cartao"><h3>Centros de distribuição</h3><table><tr><th>CD</th><th class="n">Lojas</th><th class="n">Transferido</th><th class="n">Margem</th><th class="n">Frete</th></tr>
+    <tr><td><a href="#" data-off="1">CD01</a> Hortolândia</td><td class="n">5</td><td class="n">R$ 52,29 mi</td><td class="n">R$ 3,62 mi</td><td class="n">R$ 1,14 mi</td></tr><tr><td><a href="#" data-off="1">CD02</a> Araucária</td><td class="n">2</td><td class="n">R$ 16,54 mi</td><td class="n">R$ 1,15 mi</td><td class="n">R$ 380 mil</td></tr><tr><td><a href="#" data-off="1">CD03</a> Cabo de Santo Agostinho</td><td class="n">3</td><td class="n">R$ 20,63 mi</td><td class="n">R$ 1,43 mi</td><td class="n">R$ 708 mil</td></tr></table>
+    <p class="mt"><a href="mapas_logistica.html">Ver mapa de logística ›</a></p></div>
+</div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+
+<script>
+const lojas = [{"area_m2": 1400, "cd_codigo": "CD01", "cidade": "Campinas", "clientes": 3600, "codigo": "VV01", "crescimento": 0.08459485435041536, "folha_pct": 0.10630620781425183, "franqueado": null, "funcionarios": 44, "id": 5, "lair": 2029548.5317340996, "lat": -22.886477, "lon": -47.041083, "margem_bruta": 0.33890178714898933, "margem_lair": 0.0806219988166761, "meses_operacao": 91.8421052631579, "modelo": "PROPRIA", "nome": "Vale Verde Campinas Taquaral", "perdas_pct": 0.01828254272507086, "receita": 25172012.67, "receita_m2_ano": 18079.072460743802, "receita_mensal": 2108069.380628099, "regiao": "Sudeste", "ticket": 111.37713730105706, "uf": "SP"}, {"area_m2": 1800, "cd_codigo": "CD01", "cidade": "S\u00e3o Paulo", "clientes": 4500, "codigo": "VV02", "crescimento": 0.08497356418135715, "folha_pct": 0.09448842796360674, "franqueado": null, "funcionarios": 50, "id": 6, "lair": 3596418.9410869, "lat": -23.561311, "lon": -46.589076, "margem_bruta": 0.36046153564935446, "margem_lair": 0.1104539731495631, "meses_operacao": 75.06578947368422, "modelo": "PROPRIA", "nome": "Vale Verde S\u00e3o Paulo Mooca", "perdas_pct": 0.017581130210612885, "receita": 32558323.98, "receita_m2_ano": 18187.61593617998, "receita_mensal": 2726647.5178842978, "regiao": "Sudeste", "ticket": 114.97679503342479, "uf": "SP"}, {"area_m2": 1600, "cd_codigo": "CD01", "cidade": "Rio de Janeiro", "clientes": 4140, "codigo": "VV03", "crescimento": 0.08125238426423187, "folha_pct": 0.09577922200221627, "franqueado": "Grupo Tijuca", "funcionarios": 48, "id": 7, "lair": 2152082.4790585004, "lat": -22.915809, "lon": -43.219845, "margem_bruta": 0.35425780339060176, "margem_lair": 0.07292852056333535, "meses_operacao": 66.08552631578948, "modelo": "FRANQUIA", "nome": "Vale Verde Rio Tijuca", "perdas_pct": 0.018348304885811267, "receita": 29507600.51, "receita_m2_ano": 18543.860513343665, "receita_mensal": 2471159.9325179067, "regiao": "Sudeste", "ticket": 113.46633228996832, "uf": "RJ"}, {"area_m2": 1300, "cd_codigo": "CD01", "cidade": "Belo Horizonte", "clientes": 3420, "codigo": "VV04", "crescimento": 0.0713323763940199, "folha_pct": 0.1068833543697032, "franqueado": "Horizonte Varejo", "funcionarios": 44, "id": 8, "lair": 1036163.6528419998, "lat": -19.929313, "lon": -43.926834, "margem_bruta": 0.3353601063757077, "margem_lair": 0.04381997476884045, "meses_operacao": 60.03289473684211, "modelo": "FRANQUIA", "nome": "Vale Verde BH Savassi", "perdas_pct": 0.018965528724995438, "receita": 23644375.73, "receita_m2_ano": 18288.190594299638, "receita_mensal": 1980135.0473608815, "regiao": "Sudeste", "ticket": 110.69101541616146, "uf": "MG"}, {"area_m2": 1300, "cd_codigo": "CD02", "cidade": "Curitiba", "clientes": 3240, "codigo": "VV05", "crescimento": 0.07939655044772187, "folha_pct": 0.11301520063981099, "franqueado": "Pinhais Alimentos", "funcionarios": 42, "id": 9, "lair": 857769.9587088013, "lat": -25.446418, "lon": -49.283275, "margem_bruta": 0.33657044478847886, "margem_lair": 0.037643700240349375, "meses_operacao": 55.06578947368421, "modelo": "FRANQUIA", "nome": "Vale Verde Curitiba \u00c1gua Verde", "perdas_pct": 0.018438892399351894, "receita": 22785066.57, "receita_m2_ano": 17623.541636045775, "receita_mensal": 1908170.8642644628, "regiao": "Sul", "ticket": 110.67212571461879, "uf": "PR"}, {"area_m2": 1200, "cd_codigo": "CD02", "cidade": "Porto Alegre", "clientes": 2880, "codigo": "VV06", "crescimento": null, "folha_pct": 0.12847421650965538, "franqueado": "Gua\u00edba Supermercados", "funcionarios": 40, "id": 10, "lair": 313460.8728207991, "lat": -30.056222, "lon": -51.211456, "margem_bruta": 0.345957446998725, "margem_lair": 0.0167795493792349, "meses_operacao": 13.980263157894738, "modelo": "FRANQUIA", "nome": "Vale Verde Porto Alegre Menino Deus", "perdas_pct": 0.01877681230632009, "receita": 18679935.05, "receita_m2_ano": 15652.379001951333, "receita_mensal": 1564380.2355922866, "regiao": "Sul", "ticket": 112.77770428955233, "uf": "RS"}, {"area_m2": 1200, "cd_codigo": "CD01", "cidade": "Goi\u00e2nia", "clientes": 3060, "codigo": "VV07", "crescimento": 0.08136259213638097, "folha_pct": 0.10980992984457841, "franqueado": null, "funcionarios": 42, "id": 11, "lair": 1113607.7998920998, "lat": -16.701314, "lon": -49.281729, "margem_bruta": 0.31543313784934646, "margem_lair": 0.05336972099893199, "meses_operacao": 45.0, "modelo": "PROPRIA", "nome": "Vale Verde Goi\u00e2nia Setor Bueno", "perdas_pct": 0.01903753452703883, "receita": 20864508.64, "receita_m2_ano": 17482.887175390268, "receita_mensal": 1747330.7511184574, "regiao": "Centro-Oeste", "ticket": 108.2560259011171, "uf": "GO"}, {"area_m2": 1300, "cd_codigo": "CD03", "cidade": "Salvador", "clientes": 3240, "codigo": "VV08", "crescimento": 0.08780346818668039, "folha_pct": 0.10245486424965355, "franqueado": "Itapu\u00e3 Varejo", "funcionarios": 42, "id": 12, "lair": 681277.0434286001, "lat": -12.964186, "lon": -38.464619, "margem_bruta": 0.3194456247241232, "margem_lair": 0.030363303040270254, "meses_operacao": 49.04605263157895, "modelo": "FRANQUIA", "nome": "Vale Verde Salvador Pituba", "perdas_pct": 0.01941043921952849, "receita": 22435595.78, "receita_m2_ano": 17353.236829201105, "receita_mensal": 1878903.8890137742, "regiao": "Nordeste", "ticket": 109.39123713401108, "uf": "BA"}, {"area_m2": 1200, "cd_codigo": "CD03", "cidade": "Recife", "clientes": 2880, "codigo": "VV09", "crescimento": null, "folha_pct": 0.11147308826457894, "franqueado": null, "funcionarios": 40, "id": 13, "lair": 1013626.3326337005, "lat": -8.09715, "lon": -34.867901, "margem_bruta": 0.319663473782986, "margem_lair": 0.05190409311049775, "meses_operacao": 19.572368421052634, "modelo": "PROPRIA", "nome": "Vale Verde Recife Boa Viagem", "perdas_pct": 0.019137459092671116, "receita": 19527134.79, "receita_m2_ano": 16362.268591253443, "receita_mensal": 1635330.29646281, "regiao": "Nordeste", "ticket": 109.54053981734954, "uf": "PE"}, {"area_m2": 1100, "cd_codigo": "CD03", "cidade": "Bel\u00e9m", "clientes": 2520, "codigo": "VV10", "crescimento": null, "folha_pct": 0.11757573108664097, "franqueado": "Maraj\u00f3 Alimentos", "funcionarios": 31, "id": 14, "lair": 189932.51596969974, "lat": -1.461205, "lon": -48.479386, "margem_bruta": 0.3609731932815662, "margem_lair": 0.021141992508308994, "meses_operacao": 7.006578947368421, "modelo": "FRANQUIA", "nome": "Vale Verde Bel\u00e9m Nazar\u00e9", "perdas_pct": 0.019189372679651796, "receita": 8982991.73, "receita_m2_ano": 13928.598052039084, "receita_mensal": 1276088.54482243, "regiao": "Norte", "ticket": 118.55604764418636, "uf": "PA"}], cds = [{"cidade": "Hortol\u00e2ndia", "codigo": "CD01", "frete": 1138771.8, "id": 2, "lat": -22.871814, "lojas": 5, "lon": -47.200446, "margem": 3624401.03, "nome": "CD Sudeste/Centro-Oeste", "transferido": 52294926.92}, {"cidade": "Arauc\u00e1ria", "codigo": "CD02", "frete": 379750.8, "id": 3, "lat": -25.576891, "lojas": 2, "lon": -49.419683, "margem": 1146381.8099999998, "nome": "CD Sul", "transferido": 16540652.48}, {"cidade": "Cabo de Santo Agostinho", "codigo": "CD03", "frete": 708469.12, "id": 4, "lat": -8.300218, "lojas": 3, "lon": -34.997988, "margem": 1429755.2000000002, "nome": "CD Nordeste/Norte", "transferido": 20629325.01}], sede = [{"cidade": "Campinas", "codigo": "SEDE", "lat": -22.902693, "lon": -47.050863, "nome": "Sede Vale Verde Franquias"}], ufDados = {"BA": {"lair": 681277.0434286001, "lojas": 1, "populacao": 2418000, "receita": 22435595.78, "receita_per_capita": 9.27857559139785, "regiao": "Nordeste", "uf": "BA"}, "GO": {"lair": 1113607.7998920998, "lojas": 1, "populacao": 1437000, "receita": 20864508.64, "receita_per_capita": 14.519491050800278, "regiao": "Centro-Oeste", "uf": "GO"}, "MG": {"lair": 1036163.6528419998, "lojas": 1, "populacao": 2316000, "receita": 23644375.73, "receita_per_capita": 10.20914323402418, "regiao": "Sudeste", "uf": "MG"}, "PA": {"lair": 189932.51596969974, "lojas": 1, "populacao": 1303000, "receita": 8982991.73, "receita_per_capita": 6.894084213353799, "regiao": "Norte", "uf": "PA"}, "PE": {"lair": 1013626.3326337005, "lojas": 1, "populacao": 1488000, "receita": 19527134.79, "receita_per_capita": 13.123074455645162, "regiao": "Nordeste", "uf": "PE"}, "PR": {"lair": 857769.9587088013, "lojas": 1, "populacao": 1773000, "receita": 22785066.57, "receita_per_capita": 12.851137377326566, "regiao": "Sul", "uf": "PR"}, "RJ": {"lair": 2152082.4790585004, "lojas": 1, "populacao": 6211000, "receita": 29507600.51, "receita_per_capita": 4.750861457092256, "regiao": "Sudeste", "uf": "RJ"}, "RS": {"lair": 313460.8728207991, "lojas": 1, "populacao": 1332000, "receita": 18679935.05, "receita_per_capita": 14.023975262762763, "regiao": "Sul", "uf": "RS"}, "SP": {"lair": 5625967.472820999, "lojas": 2, "populacao": 12589000, "receita": 57730336.650000006, "receita_per_capita": 4.585776205417428, "regiao": "Sudeste", "uf": "SP"}}, UF_IBGE = {"11": "RO", "12": "AC", "13": "AM", "14": "RR", "15": "PA", "16": "AP", "17": "TO", "21": "MA", "22": "PI", "23": "CE", "24": "RN", "25": "PB", "26": "PE", "27": "AL", "28": "SE", "29": "BA", "31": "MG", "32": "ES", "33": "RJ", "35": "SP", "41": "PR", "42": "SC", "43": "RS", "50": "MS", "51": "MT", "52": "GO", "53": "DF"};
+const g = {"lair": [8.06, 11.05, 7.29, 4.38, 3.76, 1.68, 5.34, 3.04, 5.19, 2.11], "modelo": ["PROPRIA", "PROPRIA", "FRANQUIA", "FRANQUIA", "FRANQUIA", "FRANQUIA", "PROPRIA", "FRANQUIA", "PROPRIA", "FRANQUIA"], "nomes": ["VV01 Campinas", "VV02 S\u00e3o Paulo", "VV03 Rio de Janeiro", "VV04 Belo Horizonte", "VV05 Curitiba", "VV06 Porto Alegre", "VV07 Goi\u00e2nia", "VV08 Salvador", "VV09 Recife", "VV10 Bel\u00e9m"], "receita": [25172012.67, 32558323.98, 29507600.51, 23644375.73, 22785066.57, 18679935.05, 20864508.64, 22435595.78, 19527134.79, 8982991.73]};
+VV.grafico('gRec', g.nomes, [{nome: 'Faturamento', dados: g.receita, cores: g.modelo.map(x => x === 'PROPRIA' ? VV.cores[0] : VV.cores[1])}], {fmt: 'brl', horizontal: true, legenda: false});
+VV.grafico('gLair', g.nomes, [{nome: 'Margem antes do IR', dados: g.lair, cores: g.lair.map((x, i) => x < 0 ? VV.status.critico : (g.modelo[i] === 'PROPRIA' ? VV.cores[0] : VV.cores[1]))}], {fmt: 'pct', horizontal: true, legenda: false, min: Math.min(0, ...g.lair)});
+
+const mapa = VVMapa.criar('mapa');
+if (mapa) {
+  const camLojas = L.layerGroup().addTo(mapa), camRotas = L.layerGroup().addTo(mapa);
+  let camUf = null, legLojas = null, legUf = null;
+  const vmax = Math.max(...lojas.map(l => l.receita || 0));
+  const rot = {margem_lair: 'Margem antes do IR', crescimento: 'Crescimento mesmas lojas', perdas_pct: 'Perdas', receita_m2_ano: 'Faturamento por m²/ano', folha_pct: 'Pessoal / faturamento'};
+  const fmt = (k, v) => v == null ? '–' : (k === 'receita_m2_ano' ? VV.brl(v) : VV.fmtNum(1).format(v * 100) + '%');
+  function desenharLojas() {
+    camLojas.clearLayers();
+    const k = document.getElementById('metrica').value;
+    const vals = lojas.map(l => l[k]);
+    const inverso = (k === 'perdas_pct' || k === 'folha_pct');
+    const med = [...vals.filter(v => v != null)].sort((a, b) => a - b)[Math.floor(vals.filter(v => v != null).length / 2)];
+    const meio = (k === 'margem_lair' || k === 'crescimento') ? 0 : med;
+    const esc = VVMapa.escalaDiv(Math.min(...vals.filter(v => v != null)), meio, Math.max(...vals.filter(v => v != null)));
+    lojas.forEach(l => {
+      let v = l[k]; const cor = v == null ? '#e1e0d9' : esc(inverso ? 2 * meio - v : v);
+      L.circleMarker([l.lat, l.lon], {radius: VVMapa.raioBolha(l.receita, vmax, 8, 32), color: '#fcfcfb', weight: 2, fillColor: cor, fillOpacity: .9})
+        .bindPopup(`<b>${l.codigo} · ${l.nome}</b><br>${l.cidade}/${l.uf} · ${l.modelo === 'PROPRIA' ? 'loja própria' : 'franquia ' + (l.franqueado || '')}<br>
+          Faturamento 12m: <b>${VV.compacto(l.receita)}</b> (${VV.compacto(l.receita_mensal)}/mês)<br>
+          Crescimento: ${l.crescimento == null ? 'loja nova' : fmt('crescimento', l.crescimento)} · Ticket: ${VV.brl(l.ticket)}<br>
+          Margem bruta ${fmt('x', l.margem_bruta)} · Perdas ${fmt('x', l.perdas_pct)} · LAIR ${fmt('x', l.margem_lair)}<br>
+          ${l.funcionarios} funcionários · ${VV.fmtNum(0).format(l.clientes)} clientes fidelidade · CD ${l.cd_codigo}<br>
+          <a href="#" data-off="1">ficha da unidade</a> · <a href="mapas_clientes__loja-24-7Bl-id-7D.html">área de influência</a>`)
+        .bindTooltip(`${l.codigo} ${l.cidade}: ${rot[k]} ${fmt(k, v)}`).addTo(camLojas);
+    });
+    if (legLojas) legLojas.remove();
+    legLojas = VVMapa.legenda(mapa, `<b>${rot[k]}</b><br><i style="background:#1c5cab"></i>${inverso ? 'melhor (menor)' : 'melhor'}<br><i style="background:#cde2fb"></i>${k === 'margem_lair' || k === 'crescimento' ? 'positivo, perto de zero' : 'perto da mediana'}<br><i style="background:#d03b3b"></i>${inverso ? 'pior (maior)' : (k === 'margem_lair' || k === 'crescimento' ? 'negativo' : 'abaixo da mediana')}<br>
+      <i style="background:${VVMapa.cores.cd}" class="q"></i>CD &nbsp; <i style="background:${VVMapa.cores.sede}" class="q"></i>Sede`);
+  }
+  cds.forEach(c => L.marker([c.lat, c.lon], {icon: L.divIcon({className: '', html: `<div style="background:${VVMapa.cores.cd};color:#fff;font:600 11px system-ui;padding:3px 5px;border-radius:4px;border:2px solid #fff;white-space:nowrap">${c.codigo}</div>`})})
+    .bindPopup(`<b>${c.codigo} · ${c.nome}</b><br>${c.cidade}<br>Atende ${c.lojas || 0} lojas · transferido 12m ${VV.compacto(c.transferido)}<br>Margem de distribuição ${VV.compacto(c.margem)} · frete ${VV.compacto(c.frete)}`).addTo(mapa));
+  sede.forEach(s => L.marker([s.lat, s.lon], {icon: L.divIcon({className: '', html: `<div style="background:${VVMapa.cores.sede};color:#fff;font:600 11px system-ui;padding:3px 5px;border-radius:4px;border:2px solid #fff">SEDE</div>`})}).bindPopup(`<b>${s.nome}</b><br>${s.cidade}`).addTo(mapa));
+  lojas.forEach(l => { const c = cds.find(x => x.codigo === l.cd_codigo); if (c) L.polyline([[c.lat, c.lon], [l.lat, l.lon]], {color: VVMapa.cores.cd, weight: 1.5, opacity: .6, dashArray: '4 4'}).addTo(camRotas); });
+  document.getElementById('rotas').onchange = e => e.target.checked ? camRotas.addTo(mapa) : camRotas.remove();
+  document.getElementById('metrica').onchange = desenharLojas;
+  desenharLojas();
+  function desenharUf() {
+    const k = document.getElementById('camadaUf').value;
+    if (camUf) { camUf.remove(); camUf = null; } if (legUf) { legUf.remove(); legUf = null; }
+    if (!k) return;
+    VVMapa.estados(gj => {
+      if (!gj) { legUf = VVMapa.legenda(mapa, 'Contornos dos estados indisponíveis (API do IBGE fora do ar ou sem internet).', 'topright'); return; }
+      const vals = Object.values(ufDados).map(r => r[k]);
+      const esc = VVMapa.escalaSeq(vals, ['#e9f2fd', '#b7d3f6', '#6da7ec', '#256abf']);
+      camUf = L.geoJSON(gj, {style: f => { const uf = UF_IBGE[String(f.properties.codarea)]; const r = ufDados[uf];
+        return {color: '#fcfcfb', weight: 1, fillColor: r ? esc(r[k]) : '#f1f0ec', fillOpacity: r ? .55 : .35}; },
+        onEachFeature: (f, lyr) => { const uf = UF_IBGE[String(f.properties.codarea)]; const r = ufDados[uf];
+          lyr.bindTooltip(r ? `${uf}: ${r.lojas} loja(s) · ${VV.compacto(r.receita)} · ${VV.brl(r.receita_per_capita)}/hab.` : `${uf}: sem lojas`); }}).addTo(mapa);
+      camUf.bringToBack();
+      legUf = VVMapa.legenda(mapa, `<b>${k === 'receita' ? 'Faturamento 12m' : 'Faturamento por habitante'} (estado)</b><br>${['#e9f2fd', '#b7d3f6', '#6da7ec', '#256abf'].map((c, i) => `<i class="q" style="background:${c}"></i>${i === 0 ? 'menor' : i === 3 ? 'maior' : ''}`).join('<br>')}<br><i class="q" style="background:#f1f0ec"></i>sem loja`, 'topright');
+    });
+  }
+  document.getElementById('camadaUf').onchange = desenharUf;
+  desenharUf();
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projeções · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="vv03";window.VV_KEY="/projecoes";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="ativo">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" selected>VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      <a href="unidades_7.html">ficha da unidade</a>
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Projeções e simulador de cenários</h1>
+  <div class="sub"><b>VV03 · Vale Verde Rio Tijuca</b> · modelo em painel com todas as lojas: efeito de cada loja + tendência + sazonalidade mensal + curva de maturação das lojas novas (por isso lojas recém-inauguradas continuam crescendo na projeção). A projeção soma as lojas da seleção.</div></div>
+  <div class="filtros"><form class="filtros"><label>Horizonte</label><select name="meses" onchange="this.form.submit()"><option >6</option><option selected>12</option><option >18</option><option >24</option></select><label>meses</label></form>
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a></div></div>
+<div class="grade g4">
+  <div class="cartao kpi">
+  <div class="rot">Faturamento projetado (12 meses)</div>
+  <div class="val">R$ 31,86 mi</div>
+  <div class="det"></div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Crescimento de tendência</div>
+  <div class="val">+8,0%</div>
+  <div class="det">ao ano (volume + preço)</div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Erro médio do ajuste (MAPE)</div>
+  <div class="val">1,46%</div>
+  <div class="det">no histórico usado para treinar</div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Erro no teste fora da amostra</div>
+  <div class="val">2,92%</div>
+  <div class="det">modelo treinado sem os últimos 6 meses</div>
+</div>
+</div>
+<div class="grade g2 mt">
+  <div class="cartao col2"><h3>Faturamento realizado e projetado</h3><div class="nota">Faixa sombreada = intervalo de ~80% de confiança</div>
+    <div class="grafico alto"><canvas id="gProj"></canvas></div></div>
+  <div class="cartao col2"><h3>Sazonalidade estimada (índice, janeiro = 100)</h3><div class="nota">Quanto cada mês vende por dia em relação a janeiro, já descontada a tendência</div><div class="grafico baixo"><canvas id="gSaz"></canvas></div></div>
+  <div class="cartao"><h3>Projeção mês a mês</h3><table><tr><th>Mês</th><th class="n">Pessimista</th><th class="n">Base</th><th class="n">Otimista</th></tr>
+    <tr><td>nov/26</td><td class="n">R$ 2.416.962</td><td class="n"><b>R$ 2.524.738</b></td><td class="n">R$ 2.637.320</td></tr><tr><td>dez/26</td><td class="n">R$ 3.070.977</td><td class="n"><b>R$ 3.207.917</b></td><td class="n">R$ 3.350.963</td></tr><tr><td>jan/27</td><td class="n">R$ 2.372.281</td><td class="n"><b>R$ 2.478.065</b></td><td class="n">R$ 2.588.566</td></tr><tr><td>fev/27</td><td class="n">R$ 2.143.283</td><td class="n"><b>R$ 2.238.855</b></td><td class="n">R$ 2.338.690</td></tr><tr><td>mar/27</td><td class="n">R$ 2.495.697</td><td class="n"><b>R$ 2.606.984</b></td><td class="n">R$ 2.723.234</td></tr><tr><td>abr/27</td><td class="n">R$ 2.483.396</td><td class="n"><b>R$ 2.594.135</b></td><td class="n">R$ 2.709.811</td></tr><tr><td>mai/27</td><td class="n">R$ 2.624.603</td><td class="n"><b>R$ 2.741.638</b></td><td class="n">R$ 2.863.892</td></tr><tr><td>jun/27</td><td class="n">R$ 2.476.978</td><td class="n"><b>R$ 2.587.431</b></td><td class="n">R$ 2.702.808</td></tr><tr><td>jul/27</td><td class="n">R$ 2.593.862</td><td class="n"><b>R$ 2.709.527</b></td><td class="n">R$ 2.830.349</td></tr><tr><td>ago/27</td><td class="n">R$ 2.665.358</td><td class="n"><b>R$ 2.784.211</b></td><td class="n">R$ 2.908.363</td></tr><tr><td>set/27</td><td class="n">R$ 2.479.709</td><td class="n"><b>R$ 2.590.283</b></td><td class="n">R$ 2.705.788</td></tr><tr><td>out/27</td><td class="n">R$ 2.679.107</td><td class="n"><b>R$ 2.798.573</b></td><td class="n">R$ 2.923.365</td></tr></table></div>
+  <div class="cartao"><h3>Backtest: projetado × realizado</h3><div class="nota">Como o modelo teria se saído nos últimos 6 meses</div>
+    <table><tr><th>Mês</th><th class="n">Projetado</th><th class="n">Realizado</th><th class="n">Erro</th></tr>
+    <tr><td>mai/26</td><td class="n">R$ 2.607.858</td><td class="n">R$ 2.459.006</td><td class="n">+6,1%</td></tr><tr><td>jun/26</td><td class="n">R$ 2.383.766</td><td class="n">R$ 2.318.471</td><td class="n">+2,8%</td></tr><tr><td>jul/26</td><td class="n">R$ 2.502.154</td><td class="n">R$ 2.472.824</td><td class="n">+1,2%</td></tr><tr><td>ago/26</td><td class="n">R$ 2.547.117</td><td class="n">R$ 2.621.073</td><td class="n">-2,8%</td></tr><tr><td>set/26</td><td class="n">R$ 2.384.218</td><td class="n">R$ 2.407.816</td><td class="n">-1,0%</td></tr><tr><td>out/26</td><td class="n">R$ 2.531.981</td><td class="n">R$ 2.628.730</td><td class="n">-3,7%</td></tr></table></div>
+</div>
+
+<h2 style="font-size:18px;margin:26px 0 4px">Simulador de DRE projetada</h2>
+<div class="muted" style="margin-bottom:12px">Premissas-base extraídas dos últimos 12 meses fechados (nov/25 a out/26). Mova os controles para testar cenários.</div>
+<div class="grade g2">
+  <div class="cartao">
+    <h3>Premissas</h3>
+    <div class="form-grade" style="grid-template-columns:1fr">
+      <div class="campo"><label>Volume de vendas vs. projeção base</label><div class="slider"><input type="range" id="vol" min="-20" max="20" step="1" value="0"><output id="o_vol"></output></div></div>
+      <div class="campo"><label>Variação da margem bruta (p.p.)</label><div class="slider"><input type="range" id="mg" min="-3" max="3" step="0.1" value="0"><output id="o_mg"></output></div></div>
+      <div class="campo"><label>Perdas (% do faturamento)</label><div class="slider"><input type="range" id="per" min="0.5" max="4" step="0.1"><output id="o_per"></output></div></div>
+      <div class="campo"><label>Dissídio salarial a partir de maio</label><div class="slider"><input type="range" id="dis" min="0" max="12" step="0.5" value="5"><output id="o_dis"></output></div></div>
+      <div class="campo"><label>Variação do quadro de funcionários</label><div class="slider"><input type="range" id="hc" min="-8" max="10" step="1" value="0"><output id="o_hc"></output></div></div>
+      <div class="campo"><label>Inflação das despesas fixas (ao ano)</label><div class="slider"><input type="range" id="inf" min="0" max="12" step="0.5" value="4.5"><output id="o_inf"></output></div></div>
+    </div>
+    <button class="mt" onclick="resetar()">Voltar ao cenário base</button>
+  </div>
+  <div class="cartao">
+    <h3>Resultado do cenário</h3>
+    <div class="grade g2" id="kpisSim"></div>
+    <div class="grafico baixo mt"><canvas id="gSim"></canvas></div>
+  </div>
+</div>
+<div class="cartao mt"><h3>DRE projetada</h3><div class="tabela-wrap"><table id="tabSim"></table></div></div>
+
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+<script>
+const g = {"inf": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2416961.9, 3070977.45, 2372281.45, 2143282.96, 2495697.29, 2483395.97, 2624602.66, 2476978.32, 2593862.35, 2665358.1, 2479708.56, 2679106.92], "meses": ["nov/24", "dez/24", "jan/25", "fev/25", "mar/25", "abr/25", "mai/25", "jun/25", "jul/25", "ago/25", "set/25", "out/25", "nov/25", "dez/25", "jan/26", "fev/26", "mar/26", "abr/26", "mai/26", "jun/26", "jul/26", "ago/26", "set/26", "out/26", "nov/26", "dez/26", "jan/27", "fev/27", "mar/27", "abr/27", "mai/27", "jun/27", "jul/27", "ago/27", "set/27", "out/27"], "proj": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2628729.68, 2524738.11, 3207917.27, 2478065.29, 2238855.4, 2606984.45, 2594134.59, 2741637.91, 2587430.76, 2709526.84, 2784210.7, 2590282.76, 2798572.6], "real": [2169694.55, 2664430.2, 2108320.1, 1954229.18, 2281694.29, 2235904.84, 2379960.05, 2162932.84, 2339446.61, 2376204.16, 2222539.97, 2394849.4, 2303395.94, 3037500.27, 2388893.66, 2056516.25, 2397846.09, 2415530.1, 2459005.58, 2318470.54, 2472823.78, 2621072.62, 2407816.0, 2628729.68, null, null, null, null, null, null, null, null, null, null, null, null], "saz": ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"], "saz_v": [100.0, 96.2, 100.5, 102.7, 104.3, 101.1, 101.8, 103.9, 99.3, 103.1, 103.2, 130.3], "sup": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2637320.25, 3350963.46, 2588566.21, 2338689.56, 2723234.07, 2709811.22, 2863891.96, 2702808.46, 2830349.0, 2908363.14, 2705787.63, 2923365.46]};
+VV.grafico('gProj', g.meses, [
+  {nome: 'Realizado', dados: g.real, slot: 0},
+  {nome: 'Projeção', dados: g.proj, slot: 0, tracejado: true, tipo: 'line'},
+  {nome: '_sup', dados: g.sup, cor: 'rgba(42,120,214,0)', fundo: 'rgba(42,120,214,.13)', tipo: 'line', preencher: '+1'},
+  {nome: '_inf', dados: g.inf, cor: 'rgba(42,120,214,0)', tipo: 'line'},
+], {tipo: 'line', fmt: 'brl', min: 0});
+
+const S = {"comps": ["2026-11", "2026-12", "2027-01", "2027-02", "2027-03", "2027-04", "2027-05", "2027-06", "2027-07", "2027-08", "2027-09", "2027-10"], "rotulos": ["nov/26", "dez/26", "jan/27", "fev/27", "mar/27", "abr/27", "mai/27", "jun/27", "jul/27", "ago/27", "set/27", "out/27"], "receita": [2524738.11, 3207917.27, 2478065.29, 2238855.4, 2606984.45, 2594134.59, 2741637.91, 2587430.76, 2709526.84, 2784210.7, 2590282.76, 2798572.6], "base": {"competencias": ["2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06", "2026-07", "2026-08", "2026-09", "2026-10"], "receita_12m": 29509476.71, "desconto_pct": 6.357957541701187e-05, "impostos_pct": 0.06, "outras_receitas_pct": 0.0, "cmv_pct": 0.645701140594709, "perdas_pct": 0.018347138308377003, "consumo_pct": 0.004384897807810025, "folha_mes": 235517.91833333333, "fixas_mes": 92228.47666666667, "variaveis_pct": 0.06214054074969735, "depreciacao_mes": 7771.429999999998, "ir_pct": 0.34, "lucro_12m": 1420374.4361786102}, "hc": 46.8};
+VV.grafico('gSaz', g.saz, [{nome: 'Índice sazonal', dados: g.saz_v, slot: 0}], {fmt: 'num', legenda: false, min: 80});
+const B = S.base;
+const hcAtual = S.hc || 1;
+const ids = ['vol', 'mg', 'per', 'dis', 'hc', 'inf'];
+const padrao = {vol: 0, mg: 0, per: B ? +(B.perdas_pct * 100).toFixed(1) : 2, dis: 5, hc: 0, inf: 4.5};
+let gSim = null;
+function resetar() { ids.forEach(i => document.getElementById(i).value = padrao[i]); calc(); }
+function calc() {
+  const v = {}; ids.forEach(i => v[i] = +document.getElementById(i).value);
+  const fmtO = {vol: x => (x > 0 ? '+' : '') + x + '%', mg: x => (x > 0 ? '+' : '') + x.toFixed(1), per: x => x.toFixed(1) + '%',
+                dis: x => x.toFixed(1) + '%', hc: x => (x > 0 ? '+' : '') + x, inf: x => x.toFixed(1) + '%'};
+  ids.forEach(i => document.getElementById('o_' + i).textContent = fmtO[i](v[i]));
+  const custoFunc = B.folha_mes / hcAtual;
+  const cmvPct = B.cmv_pct - v.mg / 100;
+  let passouMaio = false;
+  const L = {outras: [], rec: [], ded: [], cmv: [], per: [], cons: [], folha: [], vari: [], fixas: [], dep: [], lair: [], ir: [], ll: [], pe: []};
+  S.comps.forEach((c, k) => {
+    if (c.slice(5) === '05') passouMaio = true;
+    const rec = S.receita[k] * (1 + v.vol / 100);
+    const ded = rec * (B.desconto_pct + B.impostos_pct);
+    const cmv = rec * cmvPct, per = rec * v.per / 100, cons = rec * B.consumo_pct, vari = rec * B.variaveis_pct;
+    const folha = (B.folha_mes + v.hc * custoFunc) * (passouMaio ? 1 + v.dis / 100 : 1);
+    const fixas = B.fixas_mes * Math.pow(1 + v.inf / 100, (k + 1) / 12);
+    const dep = B.depreciacao_mes;
+    const outras = rec * (B.outras_receitas_pct || 0);
+    const lair = rec + outras - ded - cmv - per - cons - folha - vari - fixas - dep;
+    const ir = Math.max(lair, 0) * B.ir_pct;
+    const mc = 1 + (B.outras_receitas_pct || 0) - B.desconto_pct - B.impostos_pct - cmvPct - v.per / 100 - B.consumo_pct - B.variaveis_pct;
+    Object.entries({outras, rec, ded, cmv, per, cons, folha, vari, fixas, dep, lair, ir, ll: lair - ir, pe: (folha + fixas + dep) / mc})
+      .forEach(([kk, x]) => L[kk].push(x));
+  });
+  const soma = a => a.reduce((x, y) => x + y, 0);
+  const tot = {}; Object.keys(L).forEach(k => tot[k] = soma(L[k]));
+  const meses = S.comps.length;
+  const anual = x => x * 12 / meses;
+  const kp = [
+    ['Faturamento', VV.compacto(tot.rec), `${meses} meses`],
+    ['Lucro líquido', VV.compacto(tot.ll), `margem ${VV.fmtNum(2).format(tot.ll / tot.rec * 100)}% · últimos 12m reais: ${VV.compacto(B.lucro_12m)}`],
+    ['Ponto de equilíbrio médio', VV.compacto(tot.pe / meses) + '/mês', `faturamento mínimo para lucro zero`],
+    ['Margem de segurança', VV.fmtNum(1).format((1 - tot.pe / tot.rec) * 100) + '%', 'quanto as vendas podem cair até o prejuízo'],
+  ];
+  document.getElementById('kpisSim').innerHTML = kp.map(([a, b, c]) => `<div class="kpi"><div class="rot">${a}</div><div class="val">${b}</div><div class="det">${c}</div></div>`).join('');
+  const linhas = [['Faturamento', 'rec', 1], ['(+) Royalties e margem dos CDs', 'outras', 1], ['(-) Descontos e impostos s/ vendas', 'ded', -1], ['(-) CMV', 'cmv', -1], ['(-) Perdas', 'per', -1], ['(-) Consumo interno', 'cons', -1],
+    ['(-) Folha e encargos', 'folha', -1], ['(-) Despesas variáveis', 'vari', -1], ['(-) Despesas fixas', 'fixas', -1], ['(-) Depreciação', 'dep', -1],
+    ['= Lucro antes do IR', 'lair', 1, 'sub'], ['(-) IR/CSLL', 'ir', -1], ['= Lucro líquido', 'll', 1, 'total'], ['Ponto de equilíbrio (faturamento)', 'pe', 1]];
+  const f0 = x => VV.fmtNum(0).format(x);
+  let h = '<tr><th style="min-width:240px">Linha</th>' + S.rotulos.map(r => `<th class="n">${r}</th>`).join('') + '<th class="n">Total</th></tr>';
+  linhas.forEach(([rot, k, s, cls]) => {
+    h += `<tr class="${cls || ''}"><td>${rot}</td>` + L[k].map(x => `<td class="n ${s * x < 0 && cls ? 'neg' : ''}">${f0(s * x)}</td>`).join('') +
+         `<td class="n">${k === 'pe' ? f0(tot.pe / meses) + ' /mês' : f0(s * tot[k])}</td></tr>`;
+  });
+  document.getElementById('tabSim').innerHTML = h;
+  if (gSim) gSim.destroy();
+  gSim = VV.grafico('gSim', S.rotulos, [
+    {nome: 'Lucro líquido', dados: L.ll.map(x => Math.round(x)), cores: L.ll.map(x => x < 0 ? VV.status.critico : VV.cores[2])}], {fmt: 'brl', legenda: false});
+}
+if (S.base) { ids.forEach(i => document.getElementById(i).addEventListener('input', calc)); resetar(); }
+</script>
+</body>
+</html>

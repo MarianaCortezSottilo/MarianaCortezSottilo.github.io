@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contas a pagar · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="vv03";window.VV_KEY="/financeiro/contas";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="ativo">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" >Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" selected>VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      <a href="unidades_7.html">ficha da unidade</a>
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Contas a pagar</h1><div class="sub">VV03 · Vale Verde Rio Tijuca · data de referência dos dados: 31/10/2026</div></div>
+  <form class="filtros">
+    <select name="status"><option value="ABERTO" selected>Em aberto</option><option value="PAGO" >Pagas (últimas 500)</option><option value="" >Todas</option></select>
+    <select name="origem"><option value="">Todas as origens</option><option >COMPRA</option><option >TRANSFERENCIA</option><option >DESPESA</option><option >FRANQUIA</option><option >FOLHA</option><option >ENCARGOS</option><option >IMPOSTOS</option></select>
+    <button>Filtrar</button>
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a></form></div>
+<div class="grade g6"><div class="cartao kpi">
+  <div class="rot">Até 7 dias</div>
+  <div class="val">R$ 570 mil</div>
+  <div class="det">29 títulos</div>
+</div><div class="cartao kpi">
+  <div class="rot">8 a 30 dias</div>
+  <div class="val">R$ 1,05 mi</div>
+  <div class="det">47 títulos</div>
+</div></div>
+<div class="cartao mt"><div class="rolagem"><table>
+  <tr><th>Unidade</th><th>Origem</th><th>Referência</th><th>Favorecido</th><th>Competência</th><th>Vencimento</th><th class="n">Valor</th><th>Pagamento</th><th>Status</th><th></th></tr>
+  <tr><td>VV03</td><td>Despesa</td>
+    <td>MDR adquirentes 2026-10</td>
+    <td>Adquirentes (cartões/vouchers)</td><td>2026-10</td>
+    <td>01/11/2026</td>
+    <td class="n">R$ 34.691,09</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/30284/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-01"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023049</a></td>
+    <td>Frios Serra da Mantiqueira</td><td>2026-10</td>
+    <td>02/11/2026</td>
+    <td class="n">R$ 2.512,05</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23049/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-02"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023310</a></td>
+    <td>Frigorífico Boi Forte</td><td>2026-10</td>
+    <td>02/11/2026</td>
+    <td class="n">R$ 11.604,50</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23310/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-02"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023311</a></td>
+    <td>Massas Congeladas Trigo de Ouro</td><td>2026-10</td>
+    <td>02/11/2026</td>
+    <td class="n">R$ 2.733,06</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23311/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-02"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023313</a></td>
+    <td>Laticínios Campo Bom</td><td>2026-10</td>
+    <td>02/11/2026</td>
+    <td class="n">R$ 14.504,19</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23313/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-02"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023361</a></td>
+    <td>Massas Congeladas Trigo de Ouro</td><td>2026-10</td>
+    <td>02/11/2026</td>
+    <td class="n">R$ 4.789,55</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23361/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-02"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023363</a></td>
+    <td>Avícola Santa Clara</td><td>2026-10</td>
+    <td>02/11/2026</td>
+    <td class="n">R$ 12.008,40</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23363/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-02"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023572</a></td>
+    <td>Hortifruti Irmãos Okada (CEASA)</td><td>2026-10</td>
+    <td>02/11/2026</td>
+    <td class="n">R$ 5.705,60</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23572/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-02"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023622</a></td>
+    <td>Hortifruti Irmãos Okada (CEASA)</td><td>2026-10</td>
+    <td>02/11/2026</td>
+    <td class="n">R$ 11.984,18</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23622/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-02"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023393</a></td>
+    <td>Frigorífico Boi Forte</td><td>2026-10</td>
+    <td>04/11/2026</td>
+    <td class="n">R$ 13.320,90</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23393/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-04"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023394</a></td>
+    <td>Massas Congeladas Trigo de Ouro</td><td>2026-10</td>
+    <td>04/11/2026</td>
+    <td class="n">R$ 2.196,38</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23394/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-04"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023396</a></td>
+    <td>Laticínios Campo Bom</td><td>2026-10</td>
+    <td>04/11/2026</td>
+    <td class="n">R$ 9.951,60</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23396/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-04"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023655</a></td>
+    <td>Hortifruti Irmãos Okada (CEASA)</td><td>2026-10</td>
+    <td>04/11/2026</td>
+    <td class="n">R$ 3.049,29</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23655/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-04"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Transferencia</td>
+    <td><a href="transferencias_2119.html">TR-002119</a></td>
+    <td>CD Sudeste/Centro-Oeste</td><td>2026-10</td>
+    <td>04/11/2026</td>
+    <td class="n">R$ 93.764,06</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/24905/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-04"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023179</a></td>
+    <td>Frios Serra da Mantiqueira</td><td>2026-10</td>
+    <td>05/11/2026</td>
+    <td class="n">R$ 2.120,99</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23179/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-05"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023440</a></td>
+    <td>Massas Congeladas Trigo de Ouro</td><td>2026-10</td>
+    <td>05/11/2026</td>
+    <td class="n">R$ 1.723,82</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23440/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-05"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023442</a></td>
+    <td>Avícola Santa Clara</td><td>2026-10</td>
+    <td>05/11/2026</td>
+    <td class="n">R$ 5.830,30</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23442/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-05"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023701</a></td>
+    <td>Hortifruti Irmãos Okada (CEASA)</td><td>2026-10</td>
+    <td>05/11/2026</td>
+    <td class="n">R$ 5.030,93</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23701/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-05"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Despesa</td>
+    <td>Aluguel 2026-10</td>
+    <td>Locador do imóvel (fictício)</td><td>2026-10</td>
+    <td>05/11/2026</td>
+    <td class="n">R$ 51.566,50</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/30265/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-05"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Despesa</td>
+    <td>Pró-labore do franqueado</td>
+    <td>Renato Albuquerque Siqueira</td><td>2026-10</td>
+    <td>05/11/2026</td>
+    <td class="n">R$ 15.000,00</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/30275/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-05"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023488</a></td>
+    <td>Frigorífico Boi Forte</td><td>2026-10</td>
+    <td>06/11/2026</td>
+    <td class="n">R$ 12.133,20</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23488/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-06"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023489</a></td>
+    <td>Massas Congeladas Trigo de Ouro</td><td>2026-10</td>
+    <td>06/11/2026</td>
+    <td class="n">R$ 2.252,84</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23489/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-06"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023491</a></td>
+    <td>Laticínios Campo Bom</td><td>2026-10</td>
+    <td>06/11/2026</td>
+    <td class="n">R$ 8.100,51</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23491/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-06"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023750</a></td>
+    <td>Hortifruti Irmãos Okada (CEASA)</td><td>2026-10</td>
+    <td>06/11/2026</td>
+    <td class="n">R$ 5.413,83</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23747/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-06"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Folha</td>
+    <td>Folha 2026-10</td>
+    <td>Funcionários (salário líquido)</td><td>2026-10</td>
+    <td>06/11/2026</td>
+    <td class="n">R$ 115.962,23</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/32592/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-06"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023529</a></td>
+    <td>Massas Congeladas Trigo de Ouro</td><td>2026-10</td>
+    <td>07/11/2026</td>
+    <td class="n">R$ 2.627,88</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23529/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-07"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023531</a></td>
+    <td>Avícola Santa Clara</td><td>2026-10</td>
+    <td>07/11/2026</td>
+    <td class="n">R$ 5.536,35</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23531/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-07"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="compras_23790.html">PC-023790</a></td>
+    <td>Hortifruti Irmãos Okada (CEASA)</td><td>2026-10</td>
+    <td>07/11/2026</td>
+    <td class="n">R$ 4.259,90</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23786/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-07"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Transferencia</td>
+    <td><a href="transferencias_2130.html">TR-002130</a></td>
+    <td>CD Sudeste/Centro-Oeste</td><td>2026-10</td>
+    <td>07/11/2026</td>
+    <td class="n">R$ 109.460,28</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/24910/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-07"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023309</a></td>
+    <td>Frios Serra da Mantiqueira</td><td>2026-10</td>
+    <td>09/11/2026</td>
+    <td class="n">R$ 2.528,08</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23309/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-09"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023570</a></td>
+    <td>Frigorífico Boi Forte</td><td>2026-10</td>
+    <td>09/11/2026</td>
+    <td class="n">R$ 14.359,50</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23570/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-09"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023571</a></td>
+    <td>Massas Congeladas Trigo de Ouro</td><td>2026-10</td>
+    <td>09/11/2026</td>
+    <td class="n">R$ 3.212,54</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23571/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-09"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023573</a></td>
+    <td>Laticínios Campo Bom</td><td>2026-10</td>
+    <td>09/11/2026</td>
+    <td class="n">R$ 14.764,61</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23573/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-09"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023621</a></td>
+    <td>Massas Congeladas Trigo de Ouro</td><td>2026-10</td>
+    <td>09/11/2026</td>
+    <td class="n">R$ 4.738,84</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23621/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-09"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023623</a></td>
+    <td>Avícola Santa Clara</td><td>2026-10</td>
+    <td>09/11/2026</td>
+    <td class="n">R$ 11.028,90</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23623/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-09"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Despesa</td>
+    <td>Controle de pragas mensal</td>
+    <td>Higienize Serviços Ambientais</td><td>2026-10</td>
+    <td>10/11/2026</td>
+    <td class="n">R$ 650,00</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/30267/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-10"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Despesa</td>
+    <td>Manutenção preventiva e corretiva</td>
+    <td>Frio Total Refrigeração</td><td>2026-10</td>
+    <td>10/11/2026</td>
+    <td class="n">R$ 7.233,57</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/30268/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-10"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Despesa</td>
+    <td>Coleta de resíduos orgânicos e recicláveis</td>
+    <td>Coleta Ambiental</td><td>2026-10</td>
+    <td>10/11/2026</td>
+    <td class="n">R$ 1.028,57</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/30271/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-10"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Despesa</td>
+    <td>Licenças de PDV e retaguarda</td>
+    <td>Sistemas Varejo Mais</td><td>2026-10</td>
+    <td>10/11/2026</td>
+    <td class="n">R$ 3.591,00</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/30273/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-10"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Despesa</td>
+    <td>Honorários contábeis</td>
+    <td>Escritório contábil local</td><td>2026-10</td>
+    <td>10/11/2026</td>
+    <td class="n">R$ 4.800,00</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/30274/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-10"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Franquia</td>
+    <td>Royalties 2026-10 (1.5%)</td>
+    <td>Vale Verde Franquias</td><td>2026-10</td>
+    <td>10/11/2026</td>
+    <td class="n">R$ 39.430,95</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/30278/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-10"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Franquia</td>
+    <td>Fundo de marketing 2026-10</td>
+    <td>Vale Verde Franquias</td><td>2026-10</td>
+    <td>10/11/2026</td>
+    <td class="n">R$ 13.143,65</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/30279/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-10"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Despesa</td>
+    <td>Monitoramento 24h e alarmes</td>
+    <td>Guardião Segurança Eletrônica</td><td>2026-10</td>
+    <td>10/11/2026</td>
+    <td class="n">R$ 4.685,71</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/30280/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-10"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Despesa</td>
+    <td>Papelaria e suprimentos</td>
+    <td>Papelaria Central</td><td>2026-10</td>
+    <td>10/11/2026</td>
+    <td class="n">R$ 420,87</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/30282/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-10"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Despesa</td>
+    <td>Entregas (terceirizado)</td>
+    <td>Leva &amp; Traz Entregas</td><td>2026-10</td>
+    <td>10/11/2026</td>
+    <td class="n">R$ 5.962,97</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/30285/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-10"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Despesa</td>
+    <td>Uniformes, botas e aventais</td>
+    <td>Uniformes Ideal</td><td>2026-10</td>
+    <td>10/11/2026</td>
+    <td class="n">R$ 480,00</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/30286/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-10"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Despesa</td>
+    <td>ASO admissional/periódico/demissional</td>
+    <td>Clínica Saúde do Trabalho</td><td>2026-10</td>
+    <td>10/11/2026</td>
+    <td class="n">R$ 378,41</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/30287/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-10"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023653</a></td>
+    <td>Frigorífico Boi Forte</td><td>2026-10</td>
+    <td>11/11/2026</td>
+    <td class="n">R$ 10.906,75</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23653/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-11"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023654</a></td>
+    <td>Massas Congeladas Trigo de Ouro</td><td>2026-10</td>
+    <td>11/11/2026</td>
+    <td class="n">R$ 2.464,06</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23654/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-11"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023656</a></td>
+    <td>Laticínios Campo Bom</td><td>2026-10</td>
+    <td>11/11/2026</td>
+    <td class="n">R$ 8.967,48</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23656/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-11"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Transferencia</td>
+    <td><a href="transferencias_2142.html">TR-002142</a></td>
+    <td>CD Sudeste/Centro-Oeste</td><td>2026-10</td>
+    <td>11/11/2026</td>
+    <td class="n">R$ 108.763,52</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/24917/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-11"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023439</a></td>
+    <td>Frios Serra da Mantiqueira</td><td>2026-10</td>
+    <td>12/11/2026</td>
+    <td class="n">R$ 2.019,37</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23439/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-12"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023700</a></td>
+    <td>Massas Congeladas Trigo de Ouro</td><td>2026-10</td>
+    <td>12/11/2026</td>
+    <td class="n">R$ 2.530,56</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23700/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-12"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023702</a></td>
+    <td>Avícola Santa Clara</td><td>2026-10</td>
+    <td>12/11/2026</td>
+    <td class="n">R$ 6.526,85</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23702/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-12"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Despesa</td>
+    <td>Conta de energia 2026-10</td>
+    <td>Concessionária de Energia Elétrica</td><td>2026-10</td>
+    <td>12/11/2026</td>
+    <td class="n">R$ 43.329,56</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/30269/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-12"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Despesa</td>
+    <td>Conta de água 2026-10</td>
+    <td>Companhia de Saneamento</td><td>2026-10</td>
+    <td>12/11/2026</td>
+    <td class="n">R$ 4.112,28</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/30270/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-12"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023748</a></td>
+    <td>Frigorífico Boi Forte</td><td>2026-10</td>
+    <td>13/11/2026</td>
+    <td class="n">R$ 10.603,70</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23745/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-13"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023749</a></td>
+    <td>Massas Congeladas Trigo de Ouro</td><td>2026-10</td>
+    <td>13/11/2026</td>
+    <td class="n">R$ 4.757,80</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23746/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-13"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023751</a></td>
+    <td>Laticínios Campo Bom</td><td>2026-10</td>
+    <td>13/11/2026</td>
+    <td class="n">R$ 11.261,34</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23748/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-13"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="compras_23789.html">PC-023789</a></td>
+    <td>Massas Congeladas Trigo de Ouro</td><td>2026-10</td>
+    <td>14/11/2026</td>
+    <td class="n">R$ 1.395,76</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23785/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-14"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="compras_23791.html">PC-023791</a></td>
+    <td>Avícola Santa Clara</td><td>2026-10</td>
+    <td>14/11/2026</td>
+    <td class="n">R$ 8.448,30</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23787/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-14"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Transferencia</td>
+    <td><a href="transferencias_2153.html">TR-002153</a></td>
+    <td>CD Sudeste/Centro-Oeste</td><td>2026-10</td>
+    <td>14/11/2026</td>
+    <td class="n">R$ 114.625,69</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/24922/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-14"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Despesa</td>
+    <td>Link dedicado + telefonia</td>
+    <td>Conecta Telecom</td><td>2026-10</td>
+    <td>15/11/2026</td>
+    <td class="n">R$ 1.150,00</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/30272/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-15"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Despesa</td>
+    <td>Carro de som, panfletos e redes sociais locais</td>
+    <td>Agência regional</td><td>2026-10</td>
+    <td>15/11/2026</td>
+    <td class="n">R$ 5.351,19</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/30283/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-15"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023569</a></td>
+    <td>Frios Serra da Mantiqueira</td><td>2026-10</td>
+    <td>16/11/2026</td>
+    <td class="n">R$ 2.796,29</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23569/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-16"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Transferencia</td>
+    <td><a href="transferencias_2165.html">TR-002165</a></td>
+    <td>CD Sudeste/Centro-Oeste</td><td>2026-10</td>
+    <td>18/11/2026</td>
+    <td class="n">R$ 111.599,85</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/24929/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-18"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Compra</td>
+    <td><a href="#" data-off="1">PC-023699</a></td>
+    <td>Frios Serra da Mantiqueira</td><td>2026-10</td>
+    <td>19/11/2026</td>
+    <td class="n">R$ 2.099,61</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/23699/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-19"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Despesa</td>
+    <td>INSS 20% sobre pró-labore</td>
+    <td>Receita Federal</td><td>2026-10</td>
+    <td>20/11/2026</td>
+    <td class="n">R$ 3.000,00</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/30276/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-20"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Despesa</td>
+    <td>Seguro do estabelecimento (parcela)</td>
+    <td>Seguradora Horizonte</td><td>2026-10</td>
+    <td>20/11/2026</td>
+    <td class="n">R$ 1.691,43</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/30281/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-20"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Encargos</td>
+    <td>INSS 2026-10</td>
+    <td>Receita Federal (DCTFWeb)</td><td>2026-10</td>
+    <td>20/11/2026</td>
+    <td class="n">R$ 48.986,27</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/32595/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-20"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Encargos</td>
+    <td>FGTS 2026-10</td>
+    <td>FGTS Digital (Caixa)</td><td>2026-10</td>
+    <td>20/11/2026</td>
+    <td class="n">R$ 10.769,93</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/32596/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-20"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Encargos</td>
+    <td>IRRF folha 2026-10</td>
+    <td>Receita Federal</td><td>2026-10</td>
+    <td>20/11/2026</td>
+    <td class="n">R$ 2.894,81</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/32597/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-20"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Impostos</td>
+    <td>ICMS 2026-10</td>
+    <td>Secretaria da Fazenda</td><td>2026-10</td>
+    <td>20/11/2026</td>
+    <td class="n">R$ 118.292,84</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/33074/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-20"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Transferencia</td>
+    <td><a href="transferencias_2176.html">TR-002176</a></td>
+    <td>CD Sudeste/Centro-Oeste</td><td>2026-10</td>
+    <td>21/11/2026</td>
+    <td class="n">R$ 156.553,03</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/24934/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-21"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Impostos</td>
+    <td>PIS/COFINS 2026-10</td>
+    <td>Receita Federal</td><td>2026-10</td>
+    <td>25/11/2026</td>
+    <td class="n">R$ 39.430,95</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/33075/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-25"><button class="btn-peq">Pagar</button></form></td></tr><tr><td>VV03</td><td>Impostos</td>
+    <td>IRPJ/CSLL estimativa 2026-10</td>
+    <td>Receita Federal</td><td>2026-10</td>
+    <td>28/11/2026</td>
+    <td class="n">R$ 74.473,51</td><td>–</td><td><span class="etq alerta">Aberto</span></td>
+    <td><form method="post" action="/financeiro/contas/33208/pagar" style="display:flex;gap:4px"><input type="date" name="data" value="2026-11-28"><button class="btn-peq">Pagar</button></form></td></tr>
+</table></div></div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+
+</body>
+</html>

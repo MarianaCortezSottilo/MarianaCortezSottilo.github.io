@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fluxo de caixa · Rede Vale Verde</title>
+  <link rel="stylesheet" href="../static/vv.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../static/vv.js"></script>
+  
+<script>window.VV_DIR="proprias";window.VV_KEY="/financeiro/fluxo";</script><script src="../static/demo_mapa.js"></script><script src="../static/demo.js"></script></head>
+<body><div class="vv-demo"><span><b>Demonstração somente leitura</b> · dados fictícios · telas que gravam dados estão desativadas</span><span><a target="_top" href="https://github.com/MarianaCortezSottilo/rede-vale-verde">Código no GitHub</a> · <a target="_top" href="https://marianacortezsottilo.github.io">Voltar ao portfólio</a></span></div>
+<div class="layout">
+  <nav class="lateral">
+    <div class="marca">
+      <div class="logo">VV</div>
+      <div><b>Rede Vale Verde</b><small>Franquia de supermercados · fictícia</small></div>
+    </div>
+    
+    
+    <a href="index.html" class="">Painel geral</a>
+    <h6>Rede e mapas</h6>
+    <a href="rede.html" class="">Comparativo da rede</a>
+    <a href="mapas_clientes.html" class="">Clientes e área de influência</a>
+    <a href="mapas_logistica.html" class="">Logística e CDs</a>
+    <a href="mapas_expansao.html" class="">Expansão</a>
+    <a href="franquia.html" class="">Franqueadora e franqueados</a>
+    <h6>Comercial</h6>
+    <a href="vendas.html" class="">Vendas</a>
+    <a href="vendas_abc.html" class="">Curva ABC</a>
+    <a href="vendas_promocoes.html" class="">Promoções</a>
+    <a href="vendas_cupons.html" class="">Cupons fiscais</a>
+    <a href="pdv.html" class="">PDV · nova venda</a>
+    <h6>Suprimentos</h6>
+    <a href="compras.html" class="">Pedidos de compra</a>
+    <a href="transferencias.html" class="">Transferências CD → loja</a>
+    <a href="compras_sugestao.html" class="">Sugestão de compra</a>
+    <a href="estoque.html" class="">Estoque</a>
+    <a href="estoque_perdas.html" class="">Perdas e rupturas</a>
+    <a href="consumo.html" class="">Consumo interno</a>
+    <h6>Financeiro</h6>
+    <a href="financeiro_dre.html" class="">DRE gerencial</a>
+    <a href="financeiro_fluxo.html" class="ativo">Fluxo de caixa</a>
+    <a href="financeiro_contas.html" class="">Contas a pagar</a>
+    <a href="financeiro_despesas.html" class="">Despesas fixas e variáveis</a>
+    <a href="projecoes.html" class="">Projeções e cenários</a>
+    <h6>Pessoas</h6>
+    <a href="rh.html" class="">Funcionários</a>
+    <a href="rh_escala.html" class="">Escala de trabalho</a>
+    <a href="rh_folha.html" class="">Folha de pagamento</a>
+    <a href="rh_indicadores.html" class="">Indicadores de RH</a>
+    <h6>Dados</h6>
+    <a href="cadastros_produtos.html" class="">Produtos</a>
+    <a href="cadastros_fornecedores.html" class="">Fornecedores</a>
+    <a href="cadastros_clientes.html" class="">Clientes (RFM)</a>
+    <a href="sql.html" class="">Consulta SQL</a>
+    <a href="dicionario.html" class="">Dicionário de dados</a>
+  </nav>
+  <main>
+    <div class="barra-unidade">
+      <label for="selU">Visão</label>
+      <select id="selU" onchange="vvVisao(this.value)">
+        <optgroup label="Agrupamentos"><option value="rede" >Rede (todas as lojas)</option><option value="proprias" selected>Lojas próprias</option><option value="franquias" >Lojas franqueadas</option></optgroup>
+        
+        <optgroup label="Lojas"><option value="5" >VV01 · Vale Verde Campinas Taquaral</option><option value="7" >VV03 · Vale Verde Rio Tijuca (franquia)</option></optgroup>
+        
+        
+        
+        
+        
+      </select>
+      
+    </div>
+    
+      
+    
+    
+<div class="topo"><div><h1>Fluxo de caixa</h1>
+  <div class="sub"><b>Lojas próprias</b> · regime de caixa: vendas entram quando o dinheiro cai (débito D+1, crédito e voucher D+30); saídas pela data de pagamento dos títulos.</div></div>
+  <div class="filtros">
+<a class="btn" href="#" data-off="1" title="Baixar dados em Excel">⬇ Excel</a></div></div>
+<div class="grade g4">
+  <div class="cartao kpi">
+  <div class="rot">Saldo atual de caixa</div>
+  <div class="val">R$ 88,21 mi</div>
+  <div class="det">saldo inicial de referência + movimento do período</div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">A receber (60 dias)</div>
+  <div class="val">R$ 3,32 mi</div>
+  <div class="det">cartões/vouchers já vendidos e títulos da rede</div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">A pagar (60 dias)</div>
+  <div class="val">R$ 2,66 mi</div>
+  <div class="det">títulos em aberto, incluindo vencidos</div>
+</div>
+  <div class="cartao kpi">
+  <div class="rot">Saldo projetado em 60 dias</div>
+  <div class="val">R$ 88,88 mi</div>
+  <div class="det">sem considerar novas vendas</div>
+</div>
+</div>
+<div class="grade g2 mt">
+  <div class="cartao"><h3>Entradas × saídas por mês</h3><div class="grafico"><canvas id="gES"></canvas></div></div>
+  <div class="cartao"><h3>Saldo acumulado de caixa</h3><div class="grafico"><canvas id="gSaldo"></canvas></div></div>
+  <div class="cartao col2"><h3>Projeção dos próximos 60 dias (apenas compromissos já existentes)</h3>
+    <div class="nota">Mostra a pressão de caixa dos títulos já emitidos; as vendas futuras ainda não estão aqui — use a tela de projeções.</div>
+    <div class="grafico baixo"><canvas id="gProj"></canvas></div></div>
+</div>
+<div class="cartao mt"><h3>Realizado por mês</h3><div class="tabela-wrap"><table>
+  <tr><th>Mês</th><th class="n">Recebimento de vendas</th><th class="n">Recebido da rede</th><th class="n">Fornecedores</th><th class="n">Transf. CD</th><th class="n">Folha</th><th class="n">Encargos</th><th class="n">Impostos</th><th class="n">Royalties/fundo</th><th class="n">Despesas</th><th class="n">Saldo do mês</th><th class="n">Saldo acumulado</th></tr>
+  <tr><td>nov/24</td><td class="n">3.503.825</td><td class="n">0</td><td class="n neg">-854.799</td><td class="n neg">0</td><td class="n neg">-287.979</td>
+    <td class="n neg">-0</td><td class="n neg">-0</td><td class="n neg">0</td><td class="n neg">-8.987</td>
+    <td class="n ">2.352.060</td><td class="n">4.152.060</td></tr><tr><td>dez/24</td><td class="n">6.762.832</td><td class="n">0</td><td class="n neg">-1.768.312</td><td class="n neg">0</td><td class="n neg">-597.575</td>
+    <td class="n neg">-167.097</td><td class="n neg">-351.249</td><td class="n neg">0</td><td class="n neg">-404.042</td>
+    <td class="n ">3.474.557</td><td class="n">7.626.617</td></tr><tr><td>jan/25</td><td class="n">6.210.078</td><td class="n">0</td><td class="n neg">-1.632.404</td><td class="n neg">0</td><td class="n neg">-435.375</td>
+    <td class="n neg">-178.815</td><td class="n neg">-437.856</td><td class="n neg">0</td><td class="n neg">-450.605</td>
+    <td class="n ">3.075.023</td><td class="n">10.701.641</td></tr><tr><td>fev/25</td><td class="n">5.137.606</td><td class="n">0</td><td class="n neg">-1.409.719</td><td class="n neg">0</td><td class="n neg">-411.345</td>
+    <td class="n neg">-165.242</td><td class="n neg">-332.167</td><td class="n neg">0</td><td class="n neg">-441.875</td>
+    <td class="n ">2.377.259</td><td class="n">13.078.899</td></tr><tr><td>mar/25</td><td class="n">6.255.691</td><td class="n">0</td><td class="n neg">-1.623.888</td><td class="n neg">0</td><td class="n neg">-450.823</td>
+    <td class="n neg">-173.827</td><td class="n neg">-306.633</td><td class="n neg">0</td><td class="n neg">-541.238</td>
+    <td class="n ">3.159.282</td><td class="n">16.238.181</td></tr><tr><td>abr/25</td><td class="n">6.710.242</td><td class="n">0</td><td class="n neg">-1.922.103</td><td class="n neg">0</td><td class="n neg">-514.637</td>
+    <td class="n neg">-207.579</td><td class="n neg">-392.039</td><td class="n neg">0</td><td class="n neg">-539.997</td>
+    <td class="n ">3.133.886</td><td class="n">19.372.068</td></tr><tr><td>mai/25</td><td class="n">7.484.639</td><td class="n">0</td><td class="n neg">-2.174.399</td><td class="n neg">0</td><td class="n neg">-522.174</td>
+    <td class="n neg">-210.722</td><td class="n neg">-423.946</td><td class="n neg">0</td><td class="n neg">-512.077</td>
+    <td class="n ">3.641.320</td><td class="n">23.013.387</td></tr><tr><td>jun/25</td><td class="n">7.180.023</td><td class="n">0</td><td class="n neg">-2.006.025</td><td class="n neg">0</td><td class="n neg">-535.000</td>
+    <td class="n neg">-217.828</td><td class="n neg">-460.297</td><td class="n neg">0</td><td class="n neg">-532.601</td>
+    <td class="n ">3.428.273</td><td class="n">26.441.660</td></tr><tr><td>jul/25</td><td class="n">7.367.081</td><td class="n">0</td><td class="n neg">-2.284.134</td><td class="n neg">0</td><td class="n neg">-532.474</td>
+    <td class="n neg">-215.577</td><td class="n neg">-414.843</td><td class="n neg">0</td><td class="n neg">-497.518</td>
+    <td class="n ">3.422.535</td><td class="n">29.864.195</td></tr><tr><td>ago/25</td><td class="n">7.657.061</td><td class="n">0</td><td class="n neg">-2.254.811</td><td class="n neg">0</td><td class="n neg">-540.235</td>
+    <td class="n neg">-221.917</td><td class="n neg">-450.189</td><td class="n neg">0</td><td class="n neg">-486.689</td>
+    <td class="n ">3.703.221</td><td class="n">33.567.416</td></tr><tr><td>set/25</td><td class="n">7.213.775</td><td class="n">0</td><td class="n neg">-2.149.637</td><td class="n neg">0</td><td class="n neg">-533.840</td>
+    <td class="n neg">-213.682</td><td class="n neg">-457.082</td><td class="n neg">0</td><td class="n neg">-508.256</td>
+    <td class="n ">3.351.277</td><td class="n">36.918.693</td></tr><tr><td>out/25</td><td class="n">7.524.865</td><td class="n">0</td><td class="n neg">-2.122.452</td><td class="n neg">0</td><td class="n neg">-537.353</td>
+    <td class="n neg">-216.161</td><td class="n neg">-430.377</td><td class="n neg">0</td><td class="n neg">-531.882</td>
+    <td class="n ">3.686.640</td><td class="n">40.605.333</td></tr><tr><td>nov/25</td><td class="n">7.595.125</td><td class="n">0</td><td class="n neg">-2.122.219</td><td class="n neg">0</td><td class="n neg">-761.432</td>
+    <td class="n neg">-221.807</td><td class="n neg">-459.090</td><td class="n neg">0</td><td class="n neg">-538.228</td>
+    <td class="n ">3.492.348</td><td class="n">44.097.681</td></tr><tr><td>dez/25</td><td class="n">9.048.538</td><td class="n">0</td><td class="n neg">-2.372.193</td><td class="n neg">0</td><td class="n neg">-773.825</td>
+    <td class="n neg">-220.979</td><td class="n neg">-459.339</td><td class="n neg">0</td><td class="n neg">-525.957</td>
+    <td class="n ">4.696.246</td><td class="n">48.793.927</td></tr><tr><td>jan/26</td><td class="n">8.420.230</td><td class="n">0</td><td class="n neg">-2.242.658</td><td class="n neg">0</td><td class="n neg">-578.201</td>
+    <td class="n neg">-244.932</td><td class="n neg">-591.573</td><td class="n neg">0</td><td class="n neg">-599.786</td>
+    <td class="n ">4.163.081</td><td class="n">52.957.008</td></tr><tr><td>fev/26</td><td class="n">6.898.011</td><td class="n">0</td><td class="n neg">-1.830.018</td><td class="n neg">0</td><td class="n neg">-545.706</td>
+    <td class="n neg">-218.298</td><td class="n neg">-461.893</td><td class="n neg">0</td><td class="n neg">-569.669</td>
+    <td class="n ">3.272.428</td><td class="n">56.229.436</td></tr><tr><td>mar/26</td><td class="n">7.980.868</td><td class="n">0</td><td class="n neg">-2.129.458</td><td class="n neg">0</td><td class="n neg">-535.551</td>
+    <td class="n neg">-214.145</td><td class="n neg">-412.429</td><td class="n neg">0</td><td class="n neg">-551.764</td>
+    <td class="n ">4.137.523</td><td class="n">60.366.958</td></tr><tr><td>abr/26</td><td class="n">7.823.650</td><td class="n">0</td><td class="n neg">-2.271.422</td><td class="n neg">0</td><td class="n neg">-533.471</td>
+    <td class="n neg">-213.633</td><td class="n neg">-480.154</td><td class="n neg">0</td><td class="n neg">-563.716</td>
+    <td class="n ">3.761.252</td><td class="n">64.128.211</td></tr><tr><td>mai/26</td><td class="n">8.236.679</td><td class="n">0</td><td class="n neg">-2.287.975</td><td class="n neg">0</td><td class="n neg">-543.665</td>
+    <td class="n neg">-216.098</td><td class="n neg">-469.105</td><td class="n neg">0</td><td class="n neg">-537.000</td>
+    <td class="n ">4.182.835</td><td class="n">68.311.046</td></tr><tr><td>jun/26</td><td class="n">8.069.941</td><td class="n">0</td><td class="n neg">-2.469.177</td><td class="n neg">0</td><td class="n neg">-562.660</td>
+    <td class="n neg">-226.489</td><td class="n neg">-501.631</td><td class="n neg">0</td><td class="n neg">-547.764</td>
+    <td class="n ">3.762.221</td><td class="n">72.073.267</td></tr><tr><td>jul/26</td><td class="n">8.352.462</td><td class="n">0</td><td class="n neg">-2.462.714</td><td class="n neg">0</td><td class="n neg">-561.650</td>
+    <td class="n neg">-225.111</td><td class="n neg">-483.964</td><td class="n neg">0</td><td class="n neg">-529.813</td>
+    <td class="n ">4.089.210</td><td class="n">76.162.478</td></tr><tr><td>ago/26</td><td class="n">8.651.309</td><td class="n">0</td><td class="n neg">-2.760.483</td><td class="n neg">0</td><td class="n neg">-565.053</td>
+    <td class="n neg">-232.350</td><td class="n neg">-501.169</td><td class="n neg">0</td><td class="n neg">-558.043</td>
+    <td class="n ">4.034.211</td><td class="n">80.196.689</td></tr><tr><td>set/26</td><td class="n">8.092.927</td><td class="n">0</td><td class="n neg">-2.378.391</td><td class="n neg">0</td><td class="n neg">-560.190</td>
+    <td class="n neg">-224.244</td><td class="n neg">-519.845</td><td class="n neg">0</td><td class="n neg">-530.960</td>
+    <td class="n ">3.879.297</td><td class="n">84.075.985</td></tr><tr><td>out/26</td><td class="n">8.551.444</td><td class="n">0</td><td class="n neg">-2.579.418</td><td class="n neg">0</td><td class="n neg">-561.994</td>
+    <td class="n neg">-227.667</td><td class="n neg">-486.886</td><td class="n neg">0</td><td class="n neg">-559.077</td>
+    <td class="n ">4.136.403</td><td class="n">88.212.388</td></tr>
+</table></div>
+<p class="muted">"Recebido da rede" = pagamentos de franqueados à franqueadora (transferências dos CDs, royalties e fundo) e taxas iniciais de franquia. Pagamentos entre unidades da própria seleção são eliminados. Saldo inicial de referência: R$ 450 mil por unidade.</p></div>
+
+  </main>
+</div>
+<script>
+function trocarUnidade(v) { const u = new URL(location.href); u.searchParams.set('u', v); u.searchParams.delete('unidade_id'); u.searchParams.delete('loja'); location.href = u.toString(); }
+</script>
+<script>
+const g = {"dias": ["01/11", "02/11", "03/11", "04/11", "05/11", "06/11", "07/11", "08/11", "09/11", "10/11", "11/11", "12/11", "13/11", "14/11", "15/11", "16/11", "17/11", "18/11", "19/11", "20/11", "21/11", "22/11", "23/11", "24/11", "25/11", "26/11", "27/11", "28/11", "29/11", "30/11", "01/12", "02/12", "03/12", "04/12", "05/12", "06/12", "07/12", "08/12", "09/12", "10/12", "11/12", "12/12", "13/12", "14/12", "15/12", "16/12", "17/12", "18/12", "19/12", "20/12", "21/12", "22/12", "23/12", "24/12", "25/12", "26/12", "27/12", "28/12", "29/12", "30/12"], "ent": [3503824.87, 6762832.41, 6210078.46, 5137606.2, 6255691.11, 6710241.69, 7484638.56, 7180022.8, 7367080.63, 7657061.1, 7213774.67, 7524864.7, 7595125.13, 9048538.48, 8420229.97, 6898011.39, 7980868.39, 7823649.91, 8236678.87, 8069940.77, 8352461.55, 8651308.6, 8092926.68, 8551444.11], "meses": ["nov/24", "dez/24", "jan/25", "fev/25", "mar/25", "abr/25", "mai/25", "jun/25", "jul/25", "ago/25", "set/25", "out/25", "nov/25", "dez/25", "jan/26", "fev/26", "mar/26", "abr/26", "mai/26", "jun/26", "jul/26", "ago/26", "set/26", "out/26"], "psaldo": [88337930.49, 88425455.78, 88416606.01, 88484756.84, 88327419.45, 87965661.39, 87952326.7, 88078988.63, 88221174.75, 88120875.1, 88143140.88, 87992011.55, 88049044.55, 88039915.38, 88130501.11, 88294877.98, 88358699.23, 88438825.41, 88531217.1, 87994757.53, 88086201.67, 88193957.62, 88328428.53, 88393853.44, 88344510.05, 88430667.06, 88515583.03, 88601839.2, 88715004.92, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9, 88875836.9], "sai": [1151764.89, 3288275.04, 3135055.24, 2760347.5, 3096408.97, 3576355.55, 3843318.65, 3751750.05, 3944545.81, 3953840.08, 3862497.89, 3838224.83, 4102776.79, 4352292.48, 4257149.37, 3625583.41, 3843345.86, 4062397.47, 4053843.39, 4307719.47, 4263251.4, 4617097.59, 4213629.74, 4415041.26], "saldo": [4152059.98, 7626617.35, 10701640.57, 13078899.27, 16238181.41, 19372067.55, 23013387.46, 26441660.21, 29864195.03, 33567416.05, 36918692.83, 40605332.7, 44097681.04, 48793927.04, 52957007.64, 56229435.62, 60366958.15, 64128210.59, 68311046.07, 72073267.37, 76162477.52, 80196688.53, 84075985.47, 88212388.32]};
+VV.grafico('gES', g.meses, [{nome: 'Entradas', dados: g.ent, slot: 0}, {nome: 'Saídas', dados: g.sai, slot: 1}], {fmt: 'brl'});
+VV.grafico('gSaldo', g.meses, [{nome: 'Saldo acumulado', dados: g.saldo, slot: 0, pontos: 3}], {tipo: 'line', fmt: 'brl', legenda: false});
+VV.grafico('gProj', g.dias, [{nome: 'Saldo projetado', dados: g.psaldo, slot: 0}], {tipo: 'line', fmt: 'brl', legenda: false, min: Math.min(0, ...g.psaldo)});
+</script>
+</body>
+</html>
